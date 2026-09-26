@@ -54,6 +54,8 @@ summary { cursor: pointer; font-weight: 600; }
 details p { color: var(--muted); margin: 8px 0 0; }
 .journal h2 { font-size: 18px; font-family: var(--mono); margin-top: 28px; }
 .prose { max-width: 70ch; }
+.prose, .journal { overflow-wrap: anywhere; }
+.prose pre { overflow-x: auto; }
 .prose img { max-width: 100%; }
 .diagram svg { width: 100%; height: auto; display: block; }
 .diagram .diagram-narrow { display: none; }
