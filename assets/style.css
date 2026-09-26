@@ -56,13 +56,13 @@ details p { color: var(--muted); margin: 8px 0 0; }
 .prose { max-width: 70ch; }
 .prose img { max-width: 100%; }
 .diagram svg { width: 100%; height: auto; display: block; }
-.diagram-narrow { display: none; }
+.diagram .diagram-narrow { display: none; }
 footer { padding: 36px 0 60px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
 @media (max-width: 760px) {
   .stats { grid-template-columns: repeat(2, 1fr); }
   .two { grid-template-columns: 1fr; }
   nav a { margin-left: 12px; }
   nav a.hide-sm { display: none; }
-  .diagram-wide { display: none; }
-  .diagram-narrow { display: block; }
+  .diagram .diagram-wide { display: none; }
+  .diagram .diagram-narrow { display: block; }
 }
