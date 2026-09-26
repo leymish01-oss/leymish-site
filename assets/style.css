@@ -58,6 +58,7 @@ details p { color: var(--muted); margin: 8px 0 0; }
 .prose pre { overflow-x: auto; }
 .steps { padding-left: 1.3em; max-width: 70ch; }
 .steps li { margin: 10px 0; }
+.shot { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); }
 .prose img { max-width: 100%; }
 .diagram svg { width: 100%; height: auto; display: block; }
 .diagram .diagram-narrow { display: none; }

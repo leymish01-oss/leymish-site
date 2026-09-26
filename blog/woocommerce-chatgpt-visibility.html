@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is my WooCommerce store visible in ChatGPT? A checklist you can run today — LeyMish Labs</title><meta name="description" content="Shopify stores are in ChatGPT shopping by default; WooCommerce stores aren&#x27;t. Ten checks, with the commands to run them yourself, that decide whether AI shopping agents can find, read and trust your products.">
+<link rel="canonical" href="https://www.leymish.com/blog/woocommerce-chatgpt-visibility.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/#checks">What it checks</a><a href="/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a><a href="/labs/">Labs</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-09-27</p><h1>Is my WooCommerce store visible in ChatGPT? A checklist you can run today</h1><p><strong>Short answer:</strong> probably not fully, and you can find out in about ten minutes. Since 24 March 2026,
+eligible Shopify stores have been discoverable in ChatGPT, Microsoft Copilot, Gemini and Google's AI Mode
+by default, with no setup (<a href="https://www.shopify.com/news/agentic-commerce-momentum">Shopify's announcement</a>).
+WooCommerce has no equivalent built in yet: its
+<a href="https://developer.woocommerce.com/2025/10/03/ai-agentic-commerce-in-woocommerce/">AI and agentic commerce roadmap</a>
+talks about product feeds and agentic checkout, but no native ChatGPT integration is shipped or dated.</p>
+<p>That doesn't mean WooCommerce products can't appear. It means nothing does it for you. This checklist
+covers what AI shopping agents need from your store, in the order it usually goes wrong, with a command
+you can run for each check.</p>
+<h2>How ChatGPT finds products in the first place</h2>
+<p>There are three ways an AI assistant learns about a product:</p>
+<ol>
+<li><strong>Its search index.</strong> OpenAI's <code>OAI-SearchBot</code> crawls the web to power ChatGPT search results,
+   including shopping answers. Anthropic (<code>Claude-SearchBot</code>) and Perplexity (<code>PerplexityBot</code>) run their
+   own. If they can't fetch and understand your product pages, you're not in the index.</li>
+<li><strong>Merchant product feeds.</strong> OpenAI publishes a
+   <a href="https://developers.openai.com/commerce/product-feeds/spec">Product Feed Spec</a> for merchants: required
+   fields are <code>item_id</code>, <code>title</code>, <code>description</code>, <code>url</code>, <code>brand</code>, <code>seller_name</code>, <code>image_url</code>,
+   <code>availability</code> and <code>price</code>, with <code>gtin</code> and <code>mpn</code> strongly recommended.</li>
+<li><strong>Live fetches.</strong> When a shopper pastes your link or asks about your product, <code>ChatGPT-User</code>,
+   <code>Claude-User</code> or <code>Perplexity-User</code> fetches the page on the spot.</li>
+</ol>
+<p>All three depend on the same basics. Here they are.</p>
+<h2>1. Is the store actually live?</h2>
+<p>New WooCommerce stores start in <strong>"coming soon" mode</strong>: logged-out visitors (and crawlers) see a
+placeholder page, while you, logged in as admin, see the real shop. It's the most common reason a store
+is invisible, and it's easy to miss because it looks fine to you.</p>
+<p>Check: open a product page in a private browser window. If you see "coming soon", go to
+<strong>WooCommerce → Settings → Site visibility</strong> and choose <strong>Live</strong>.</p>
+<p>Also check <strong>Settings → Reading → "Discourage search engines from indexing this site"</strong> is unticked.
+With it on, WordPress tells every crawler not to index the site.</p>
+<h2>2. Does robots.txt let the AI crawlers in?</h2>
+<p>Fetch your robots.txt and look for rules that name AI crawlers, or a blanket <code>Disallow: /</code>:</p>
+<pre><code class="language-bash">curl -s https://yourstore.com/robots.txt
+</code></pre>
+<p>The user agents that matter for shopping visibility are the search and user bots: <code>OAI-SearchBot</code>,
+<code>ChatGPT-User</code>, <code>Claude-SearchBot</code>, <code>Claude-User</code>, <code>PerplexityBot</code> and <code>Perplexity-User</code>. The training
+crawlers (<code>GPTBot</code>, <code>ClaudeBot</code>, <code>Google-Extended</code>) are a separate decision: blocking them keeps your
+content out of model training, not out of search answers. Many stores block training and allow search;
+that's a legitimate choice. Blocking the search bots is what costs visibility.</p>
+<h2>3. Is a firewall blocking them anyway?</h2>
+<p>robots.txt is only half of it. Security plugins and CDNs often block AI crawlers by user agent before
+robots.txt is even read, and nothing in your WordPress settings shows it. Test it directly: request the
+same product page as a browser and as each bot, and compare the status codes.</p>
+<pre><code class="language-bash">URL=https://yourstore.com/product/your-product/
+curl -s -o /dev/null -w &quot;browser: %{http_code}\n&quot; -A &quot;Mozilla/5.0&quot; &quot;$URL&quot;
+for bot in OAI-SearchBot ChatGPT-User Claude-SearchBot PerplexityBot; do
+  curl -s -o /dev/null -w &quot;$bot: %{http_code}\n&quot; -A &quot;Mozilla/5.0 (compatible; $bot/1.0)&quot; &quot;$URL&quot;
+done
+</code></pre>
+<p>A <code>200</code> for the browser and a <code>403</code>, <code>406</code> or <code>429</code> for a bot means something is blocking that bot. One
+caveat: some CDNs verify bots by IP address, so a fake bot request from your laptop can be blocked even
+though the real crawler gets through. Treat a block here as "check your CDN and security plugin
+settings", not as proof.</p>
+<h2>4. Is there valid Product structured data?</h2>
+<p>AI agents and Google read the schema.org Product JSON-LD in your page to get the name, price, currency,
+availability, brand and identifiers without guessing. WooCommerce outputs it by default, but themes and
+plugins sometimes remove or break it.</p>
+<pre><code class="language-bash">curl -s https://yourstore.com/product/your-product/ | grep -o '&quot;@type&quot;:&quot;Product&quot;' | head -1
+</code></pre>
+<p>No output means no Product markup. If it's there, check it includes <code>offers.price</code>,
+<code>offers.priceCurrency</code>, <code>offers.availability</code>, a <code>gtin</code> (or <code>mpn</code>) and a <code>brand</code>. Google's Rich
+Results Test shows the full parsed data.</p>
+<h2>5. Can the name and price be read without JavaScript?</h2>
+<p>Most AI crawlers don't run JavaScript. If your theme or page builder loads the title or price with
+JavaScript, the crawler sees an empty template.</p>
+<pre><code class="language-bash">curl -s https://yourstore.com/product/your-product/ | grep -c &quot;Your Product Name&quot;
+</code></pre>
+<p>Zero means the name isn't in the HTML the server sends.</p>
+<h2>6. Does every product have an identifier?</h2>
+<p>Agents match products across sellers by GTIN (the barcode number: UPC, EAN, ISBN) or by brand plus MPN.
+Google Merchant Center requires the GTIN whenever the manufacturer assigned one
+(<a href="https://support.google.com/merchants/answer/7052112">product data spec</a>), and OpenAI's feed spec
+recommends it. WooCommerce 9.2+ has a built-in "GTIN, UPC, EAN, or ISBN" field on every product and
+variation. Most catalogs have it half-filled. We wrote a separate guide on
+<a href="/blog/woocommerce-missing-gtin-ai-shopping.html">missing GTINs and how to fix them</a>.</p>
+<h2>7. Does every product have a brand?</h2>
+<p>Brand is a required field in OpenAI's feed spec and required by Google for new products. WooCommerce 9.6+
+includes a Brands taxonomy (Products → Brands). Your own products get your own brand.</p>
+<h2>8. Are variations complete?</h2>
+<p>A variable product whose variations are set to "Any size" or "Any colour" leaves an agent unable to say
+what the shopper would get. Each variation needs its own price, stock status, attribute values and,
+ideally, its own GTIN.</p>
+<h2>9. Does the Store API answer?</h2>
+<p>The WooCommerce Store API is the public, read-only product endpoint that headless tools and agents can
+use:</p>
+<pre><code class="language-bash">curl -s &quot;https://yourstore.com/wp-json/wc/store/v1/products?per_page=1&quot; | head -c 300
+</code></pre>
+<p>You should see JSON. An error or an HTML page usually means a security plugin is blocking <code>/wp-json/</code>.</p>
+<h2>10. Can a shopper check out as a guest?</h2>
+<p>Agents buying on someone's behalf struggle with mandatory account creation. Turn on <strong>WooCommerce →
+Settings → Accounts &amp; Privacy → "Allow customers to place orders without an account"</strong>.</p>
+<h2>Lower priority: llms.txt and UCP</h2>
+<ul>
+<li><strong>llms.txt</strong> is a Markdown file at <code>/llms.txt</code> that summarises your site for language models
+  (<a href="https://llmstxt.org/">llmstxt.org</a>). It's new and lightly used; worth a few minutes, not a weekend.</li>
+<li><strong>UCP</strong> (the <a href="http://ucp.dev/">Universal Commerce Protocol</a>) lets agents discover your checkout
+  capabilities from a profile at <code>/.well-known/ucp</code>. It needs a checkout integration that implements it;
+  nothing in WooCommerce core provides one yet. Watch it; don't lose sleep over it.</li>
+<li><strong>WooCommerce MCP</strong> (added in 10.3) lets AI assistants help <em>you</em> manage the store. It doesn't make
+  products visible to shoppers.</li>
+</ul>
+<h2>Running all ten at once</h2>
+<p>We built a free WordPress plugin that runs these checks from inside your store:
+<a href="/">LeyMish AI Shopping Readiness</a>. Under <strong>WooCommerce → AI Readiness</strong> it gives a 0–100 score, a fix
+list ordered by how many points each fix is worth, and a CSV of every product's gaps. It runs entirely on
+your site: its only requests go to your own store's pages, it needs no account, and it sends nothing
+anywhere.</p>
+<p>What it can't do is promise you a spot in ChatGPT. OpenAI, Google and the others decide what they show.
+What the checklist does is remove the reasons they'd leave you out.</p></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Shopping Readiness plugin gives you a 0–100 score and a fix list, and runs entirely on your site.</p><p><a class="btn primary" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Download the free plugin</a> <a class="btn" href="/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a></footer>
+</div></body></html>

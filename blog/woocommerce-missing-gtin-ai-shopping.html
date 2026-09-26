@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Missing GTINs: why AI shopping agents skip WooCommerce products — LeyMish Labs</title><meta name="description" content="GTINs are how ChatGPT, Google and other shopping agents match your products to what shoppers ask for. Where WooCommerce stores them, how to check the check digit, the mistakes that break them, and what to do when a product has none.">
+<link rel="canonical" href="https://www.leymish.com/blog/woocommerce-missing-gtin-ai-shopping.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/#checks">What it checks</a><a href="/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a><a href="/labs/">Labs</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-09-27</p><h1>Missing GTINs: why AI shopping agents skip WooCommerce products</h1><p>When a shopper asks an AI assistant for "the Stanley Quencher 40 oz in cream", the assistant has to work
+out that your listing, three other stores' listings and the manufacturer's page are all the same product.
+The most reliable way it does that is the <strong>GTIN</strong>: the number under the barcode. No GTIN, and your
+product is a guess. Guesses lose to listings that can be matched exactly.</p>
+<p>This guide covers what GTINs are, why the AI shopping specs care, where WooCommerce keeps them, and how to
+find and fix the gaps.</p>
+<h2>What a GTIN is</h2>
+<p>GTIN (Global Trade Item Number) is the umbrella name for the product numbers issued through GS1:</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Digits</th>
+<th>Where you see it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GTIN-8 (EAN-8)</td>
+<td>8</td>
+<td>Small packaging</td>
+</tr>
+<tr>
+<td>GTIN-12 (UPC-A)</td>
+<td>12</td>
+<td>North America</td>
+</tr>
+<tr>
+<td>GTIN-13 (EAN-13, and ISBN-13 for books)</td>
+<td>13</td>
+<td>Most of the world</td>
+</tr>
+<tr>
+<td>GTIN-14</td>
+<td>14</td>
+<td>Cases and multi-packs</td>
+</tr>
+</tbody>
+</table>
+<p>The last digit is a <strong>check digit</strong> calculated from the others, so a mistyped GTIN can usually be caught
+without looking it up anywhere.</p>
+<h2>Why the AI shopping specs care</h2>
+<ul>
+<li><strong>OpenAI's product feed</strong> lists <code>gtin</code> as a recommended field: "exactly 8, 12, 13, or 14 digits with valid
+  check digit", keeping leading zeros. If there's no GTIN, <code>mpn</code> (manufacturer part number) is the fallback
+  (<a href="https://developers.openai.com/commerce/product-feeds/spec">Product Feed Spec</a>).</li>
+<li><strong>Google Merchant Center</strong> goes further: if the manufacturer assigned a GTIN, you must provide it; if
+  there isn't one, you need brand <strong>and</strong> MPN; and <code>identifier_exists = no</code> is only for products that
+  truly have no identifiers (<a href="https://support.google.com/merchants/answer/7052112">product data spec</a>).
+  Google's AI Mode and Gemini shopping draw on the same product data.</li>
+<li><strong>Structured data on your page</strong> (schema.org Product) has <code>gtin8</code>, <code>gtin12</code>, <code>gtin13</code>, <code>gtin14</code> and <code>mpn</code>
+  properties. WooCommerce fills them from the product when the data exists.</li>
+</ul>
+<p>In every case, identifiers are the difference between "this is the same product" and "this might be".</p>
+<h2>Where WooCommerce stores GTINs</h2>
+<p>Since <strong>WooCommerce 9.2</strong>, every product and every variation has a built-in field labelled
+<strong>"GTIN, UPC, EAN, or ISBN"</strong> (Product data → Inventory). Developers know it as the product's "global
+unique ID". Before that, stores used plugins, each with its own custom field, which is why older catalogs
+often have GTINs scattered across several fields or none at all.</p>
+<p><strong>Brand</strong> has had a home in core since <strong>WooCommerce 9.6</strong> (Products → Brands). <strong>MPN</strong> still has no core
+field; stores keep it in a custom field or an attribute.</p>
+<p><strong>Variations need their own GTINs.</strong> A t-shirt in five sizes is five different trade items with five
+different barcodes. A GTIN on the parent product alone doesn't tell an agent which size it's looking at.</p>
+<h2>Checking a GTIN yourself</h2>
+<p>The check digit works like this: take every digit except the last, and starting from the right, multiply
+alternately by 3 and 1. Add the results, and the check digit is whatever brings the total up to the next
+multiple of ten.</p>
+<p>For <code>4006381333931</code>:</p>
+<pre><code>digits (without check):  4 0 0 6 3 8 1 3 3 3 9 3
+weights from the right:  1 3 1 3 1 3 1 3 1 3 1 3
+products:                4 0 0 18 3 24 1 9 3 9 9 9   → sum 89
+next multiple of 10 is 90 → check digit 1 ✓
+</code></pre>
+<p>The same logic in PHP (this is the function our plugin uses):</p>
+<pre><code class="language-php">function gtin_is_valid( $value ) {
+    $gtin = preg_replace( '/[\s\-]+/', '', (string) $value );
+    if ( ! preg_match( '/^(\d{8}|\d{12}|\d{13}|\d{14})$/', $gtin ) || preg_match( '/^0+$/', $gtin ) ) {
+        return false;
+    }
+    $digits = array_map( 'intval', str_split( $gtin ) );
+    $check  = array_pop( $digits );
+    $sum    = 0;
+    foreach ( array_reverse( $digits ) as $i =&gt; $d ) {
+        $sum += ( 0 === $i % 2 ) ? $d * 3 : $d;
+    }
+    return ( ( 10 - ( $sum % 10 ) ) % 10 ) === $check;
+}
+</code></pre>
+<p>A valid check digit doesn't prove the GTIN belongs to <em>your</em> product, but an invalid one proves it
+doesn't belong to anything.</p>
+<h2>The mistakes that break GTINs</h2>
+<ol>
+<li><strong>Leading zeros stripped by a spreadsheet.</strong> Open a UPC like <code>036000291452</code> in Excel and it becomes
+   <code>36000291452</code>: eleven digits, invalid. Format the column as text before importing.</li>
+<li><strong>The SKU in the GTIN field.</strong> Your internal SKU (<code>MUG-BLK-350</code>) isn't a GTIN. It fails the digit and
+   length rules immediately.</li>
+<li><strong>One GTIN on every variation.</strong> Copying the parent's barcode to all sizes tells agents they're
+   identical products.</li>
+<li><strong>Made-up numbers.</strong> Some stores generate "GTINs" to pass feed validation. Google's spec asks for
+   GTINs assigned by the manufacturer, and invalid or invented codes can get products disapproved, which
+   is worse than leaving the field empty.</li>
+<li><strong>Spaces and hyphens.</strong> Harmless if your tools strip them, but some feed tools don't. Store digits only.</li>
+</ol>
+<h2>Finding the right GTIN for a product</h2>
+<p>If you resell products, the GTIN already exists; you just need to collect it:</p>
+<ul>
+<li><strong>The packaging.</strong> The number printed under the barcode is the GTIN. Scanning apps read it too.</li>
+<li><strong>Your supplier or distributor.</strong> Their product data sheets, price lists or data feeds almost always
+  include a UPC or EAN column. Ask for it in a spreadsheet; it's faster than typing.</li>
+<li><strong>The manufacturer's site or B2B portal.</strong> Many brands publish GTINs in spec sheets for exactly this
+  reason.</li>
+<li><strong>GS1's lookup.</strong> GS1, the organisation that issues GTINs, runs a public lookup service ("Verified by
+  GS1") that shows which company a GTIN is registered to. Use it to double-check a number you're unsure of.</li>
+</ul>
+<p>If you <strong>make</strong> the products and sell them through other retailers or marketplaces, you may want real
+GTINs of your own. Those come from your country's GS1 member organisation. Be wary of sites selling very
+cheap barcodes: the numbers may be registered to a different company in GS1's records, so they won't
+match your brand when a platform checks.</p>
+<h2>What if a product has no GTIN?</h2>
+<p>Handmade goods, private-label products and custom items often have none, and that's fine. In that case:</p>
+<ul>
+<li>Set a <strong>brand</strong> (your own shop name counts for your own products), and</li>
+<li>give it an <strong>MPN</strong>: your own consistent part number works if it's the one you'd use to identify the
+  product.</li>
+</ul>
+<p>In a Google feed, <code>identifier_exists = no</code> is correct only when there genuinely is no GTIN, brand or MPN
+from the manufacturer. Don't use it to silence a warning for products that do have barcodes.</p>
+<h2>Finding every gap in your catalog</h2>
+<p>Doing this by hand across hundreds of products isn't realistic. The free
+<a href="/">LeyMish AI Shopping Readiness</a> plugin checks every published product, including each variation, for
+a valid GTIN (check digit included) or an MPN, plus brand, price, image, description and attributes. It
+gives a per-product completeness score and a <strong>CSV of every gap</strong>, so you can sort by what's missing and
+work through it.</p>
+<h2>Fixing them in bulk</h2>
+<p>Three ways, from free to fastest:</p>
+<ol>
+<li><strong>WooCommerce's CSV importer</strong> (Products → Import) can update existing products by ID or SKU. Export
+   your products, fill the GTIN column (as text), and import with "Update existing products" ticked.</li>
+<li><strong>Edit product by product.</strong> Fine for twenty products; painful for two thousand, especially with
+   variations.</li>
+<li><strong>A bulk editor.</strong> Our <a href="/pro.html">Pro add-on</a> adds one table for GTIN, brand and MPN across all
+   products and variations. It checks each GTIN's check digit before saving and writes to WooCommerce's
+   own GTIN field and Brands, so any feed or schema plugin that reads core fields picks the data up.</li>
+</ol>
+<p>Whichever route you take, re-run the audit afterwards. Identifiers are the single biggest block of points
+in it, because they're the single biggest reason products get skipped.</p></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Shopping Readiness plugin gives you a 0–100 score and a fix list, and runs entirely on your site.</p><p><a class="btn primary" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Download the free plugin</a> <a class="btn" href="/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a></footer>
+</div></body></html>

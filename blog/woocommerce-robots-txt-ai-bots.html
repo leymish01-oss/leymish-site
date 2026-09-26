@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>robots.txt, security plugins and AI shopping bots: a WooCommerce checklist — LeyMish Labs</title><meta name="description" content="Which AI crawlers matter for shopping visibility, what each one does, how to allow the search bots while blocking training bots, and how to test whether a security plugin or CDN is blocking them anyway.">
+<link rel="canonical" href="https://www.leymish.com/blog/woocommerce-robots-txt-ai-bots.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/#checks">What it checks</a><a href="/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a><a href="/labs/">Labs</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-09-27</p><h1>robots.txt, security plugins and AI shopping bots: a WooCommerce checklist</h1><p>A WooCommerce store can have a perfect product catalog and still be invisible to AI shopping agents,
+because the crawlers never get the page. There are two places that happens: <strong>robots.txt</strong>, which asks
+crawlers to stay out, and <strong>firewalls</strong> (security plugins, CDNs, hosting rules), which block them
+outright. The first is easy to see. The second usually isn't.</p>
+<p>This checklist covers both, with the exact user agents to look for and commands to test them.</p>
+<h2>The AI crawlers, and what each one does</h2>
+<p>Each vendor now runs separate bots for training, search indexing and user-requested fetches, and you can
+treat them differently.</p>
+<table>
+<thead>
+<tr>
+<th>User agent</th>
+<th>Vendor</th>
+<th>What it does</th>
+<th>Follows robots.txt?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GPTBot</code></td>
+<td>OpenAI</td>
+<td>Collects content that may train models</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>OAI-SearchBot</code></td>
+<td>OpenAI</td>
+<td>Indexes pages for ChatGPT search and shopping answers</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>ChatGPT-User</code></td>
+<td>OpenAI</td>
+<td>Fetches a page when a person asks ChatGPT about it</td>
+<td>May not ("robots.txt rules may not apply")</td>
+</tr>
+<tr>
+<td><code>ClaudeBot</code></td>
+<td>Anthropic</td>
+<td>Training</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>Claude-SearchBot</code></td>
+<td>Anthropic</td>
+<td>Indexes pages for Claude's search results</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>Claude-User</code></td>
+<td>Anthropic</td>
+<td>Fetches a page when a person asks Claude</td>
+<td>Yes, according to Anthropic</td>
+</tr>
+<tr>
+<td><code>PerplexityBot</code></td>
+<td>Perplexity</td>
+<td>Indexes pages for Perplexity's answers</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td><code>Perplexity-User</code></td>
+<td>Perplexity</td>
+<td>Fetches a page for a live user</td>
+<td>Generally not</td>
+</tr>
+<tr>
+<td><code>Google-Extended</code></td>
+<td>Google</td>
+<td>A robots.txt token (not a crawler) controlling use in Gemini models</td>
+<td>Yes</td>
+</tr>
+</tbody>
+</table>
+<p>Sources: <a href="https://developers.openai.com/api/docs/bots">OpenAI's crawler overview</a>,
+<a href="https://support.claude.com/en/articles/8896518-does-anthropic-crawl-data-from-the-web-and-how-can-site-owners-block-the-crawler">Anthropic's crawler help page</a>,
+<a href="https://docs.perplexity.ai/docs/resources/perplexity-crawlers">Perplexity's crawler docs</a>.</p>
+<p><strong>For shopping visibility, the search bots matter most:</strong> <code>OAI-SearchBot</code>, <code>Claude-SearchBot</code> and
+<code>PerplexityBot</code> build the indexes that product recommendations come from. The user bots matter when a
+shopper pastes your link. The training bots are a separate question.</p>
+<h2>A robots.txt that allows search and blocks training</h2>
+<p>If you want to be recommended but would rather not have your content used for model training, this is a
+reasonable starting point:</p>
+<pre><code># AI search and user-requested fetches: allowed
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+Allow: /
+
+# Model training: not allowed
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+Disallow: /
+
+# Everyone else: your normal rules
+User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /cart/
+Disallow: /checkout/
+Disallow: /my-account/
+</code></pre>
+<p>Two details that trip people up:</p>
+<ul>
+<li><strong>A crawler uses the most specific group that names it.</strong> A bot listed in its own group ignores the
+  <code>User-agent: *</code> rules entirely, so repeat anything important (like keeping bots out of checkout) if you
+  need to.</li>
+<li><strong>Blocking training is fine; blocking search is what costs you.</strong> A blanket <code>User-agent: * / Disallow: /</code>
+  or a plugin's "block all AI bots" button hides you from the search bots too.</li>
+</ul>
+<h2>WooCommerce URLs that must stay crawlable</h2>
+<p>When you tighten robots.txt, it's easy to block something a shopping agent needs. Keep these open:</p>
+<ul>
+<li><strong>Product pages</strong> (<code>/product/…/</code> by default) and <strong>product category pages</strong> (<code>/product-category/…/</code>).
+  Category pages are how crawlers discover products you haven't linked elsewhere.</li>
+<li><strong>Product images</strong> in <code>/wp-content/uploads/</code>. Agents show images, and feeds point to them. A rule like
+  <code>Disallow: /wp-content/</code> blocks every product photo.</li>
+<li><strong>Your sitemap.</strong> WordPress core publishes one at <code>/wp-sitemap.xml</code>; SEO plugins often use
+  <code>/sitemap_index.xml</code>. Add a <code>Sitemap:</code> line with its full URL at the end of robots.txt so every crawler
+  finds it.</li>
+<li><strong>The Store API</strong> (<code>/wp-json/wc/store/v1/products</code>) if you want headless tools and agents to read product
+  data directly. Blocking <code>/wp-json/</code> in robots.txt is common and mostly harmless for search, but a
+  firewall rule on it is not.</li>
+</ul>
+<p>Cart, checkout and account pages can stay disallowed: there's nothing there for a crawler, and keeping
+bots out saves your server work.</p>
+<h2>Where WordPress robots.txt comes from</h2>
+<p>WordPress serves a virtual robots.txt unless a real <code>robots.txt</code> file exists in your site's root folder,
+in which case the file wins and the virtual rules are ignored. SEO plugins usually offer an editor for the
+virtual one. So if your edits don't show up, check for a physical file (your host's file manager shows
+it).</p>
+<p>Also check <strong>Settings → Reading → "Discourage search engines from indexing this site"</strong>. With it on,
+WordPress asks every crawler not to index your pages.</p>
+<h2>The part robots.txt doesn't show: firewalls</h2>
+<p>Security plugins, CDNs and hosts can block crawlers by user agent, by IP reputation or by rate, and the
+crawler never gets far enough to read robots.txt. Common causes:</p>
+<ul>
+<li>a security plugin's "block bad bots" or "block AI crawlers" option,</li>
+<li>a CDN setting that blocks AI crawlers (Cloudflare, for example, has a dashboard switch for this and
+  announced in 2025 that it would block known AI crawlers by default for new domains),</li>
+<li>rate limits that treat a crawler's burst of requests as an attack,</li>
+<li>a hosting-level firewall rule you never set yourself.</li>
+</ul>
+<h3>Test it</h3>
+<p>Ask for the same product page as a browser and as each bot, and compare:</p>
+<pre><code class="language-bash">URL=https://yourstore.com/product/your-product/
+curl -s -o /dev/null -w &quot;browser          %{http_code}\n&quot; -A &quot;Mozilla/5.0&quot; &quot;$URL&quot;
+for bot in OAI-SearchBot ChatGPT-User Claude-SearchBot Claude-User PerplexityBot Perplexity-User GPTBot ClaudeBot; do
+  printf &quot;%-16s &quot; &quot;$bot&quot;
+  curl -s -o /dev/null -w &quot;%{http_code}\n&quot; -A &quot;Mozilla/5.0 (compatible; $bot/1.0)&quot; &quot;$URL&quot;
+done
+</code></pre>
+<p>If the browser gets <code>200</code> and a bot gets <code>403</code>, <code>406</code>, <code>429</code> or <code>503</code>, or a challenge page, something is
+blocking that bot.</p>
+<h3>Read the result carefully</h3>
+<p>Some CDNs verify crawlers by IP address: a request claiming to be <code>OAI-SearchBot</code> from your laptop is
+obviously fake, so it gets blocked, while the real crawler from OpenAI's published IP ranges gets through.
+OpenAI publishes those ranges for each of its bots, and good CDNs use them. So a block in this test means
+<strong>look at your firewall's bot settings and logs</strong>, not necessarily that the real crawler is blocked. If the
+logs show real crawler requests (from the vendor's published IPs) being blocked, that's the one to fix.</p>
+<h2>Checking all of this from inside WordPress</h2>
+<p>The free <a href="/">LeyMish AI Shopping Readiness</a> plugin does both checks from your own store:</p>
+<ul>
+<li>it reads your robots.txt and evaluates it for nine AI user agents (the ones in the table above), using
+  the same "most specific group, longest matching rule" logic crawlers use, against a real product URL;</li>
+<li>it requests one of your product pages with each crawler's user agent and compares the response with a
+  normal browser request, flagging anything blocked as a "possible block" to confirm in your firewall.</li>
+</ul>
+<p>It also checks that the store is live, which catches WooCommerce's "coming soon" mode, the other common
+reason crawlers see nothing. Everything runs on your site with no outside calls.</p>
+<h2>The short version</h2>
+<ol>
+<li>Store live, and search engines not discouraged.</li>
+<li>robots.txt allows <code>OAI-SearchBot</code>, <code>Claude-SearchBot</code> and <code>PerplexityBot</code> on product pages.</li>
+<li>The user bots aren't blocked (they may ignore robots.txt, but a firewall still stops them).</li>
+<li>No security plugin, CDN or host rule blocks those user agents. Test it, then confirm in the logs.</li>
+<li>Training bots: your call. Blocking them doesn't hurt shopping visibility.</li>
+</ol></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Shopping Readiness plugin gives you a 0–100 score and a fix list, and runs entirely on your site.</p><p><a class="btn primary" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Download the free plugin</a> <a class="btn" href="/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a></footer>
+</div></body></html>
