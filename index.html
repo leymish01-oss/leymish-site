@@ -171,11 +171,25 @@
       <div class="card">
         <div class="price">$19<s>$29</s></div>
         <p class="small">One-time. Lifetime updates. Instant download (zip).</p>
+        <p class="small"><strong>Refund:</strong> 14 days, no questions asked. <strong>Licence:</strong> any number of your own projects, commercial ones included; no reselling.</p>
         <p><a class="btn primary" href="https://leymish.gumroad.com/l/autonomous-company-kit/LAUNCH" style="width:100%;text-align:center">Get the kit</a></p>
         <p class="small"><strong>You need:</strong> a GitHub account, and a Claude Pro/Max subscription or an Anthropic API key. Setup takes about 30 minutes.</p>
         <p class="small"><strong>Not for you if</strong> you want a done-for-you income stream. This is a working system you run and steer, not a money machine.</p>
       </div>
     </div>
+  </section>
+
+  <section id="after">
+    <h2>What happens after you buy</h2>
+    <p class="lede">A 60-second read. Setup takes about 30 minutes, and the operator's guide walks through every step.</p>
+    <ol class="steps">
+      <li><strong>Right away:</strong> Gumroad emails your download, a zip of 61 files (about 56 KB).</li>
+      <li><strong>5 minutes:</strong> unzip, run <code>python3 init.py</code> (company name, domain, your name) and push to a new private GitHub repo. <code>setup.sh</code> does the push if you have the GitHub CLI.</li>
+      <li><strong>5 minutes:</strong> install the Claude GitHub App on the repo and add one secret, the token from <code>claude setup-token</code> (or an Anthropic API key).</li>
+      <li><strong>10 minutes:</strong> write <code>company/STRATEGY.md</code>: what you sell, to whom, the first bet and when you'd kill it. Or start from one of the three variants.</li>
+      <li><strong>First run:</strong> Actions → <em>CEO daily standup</em> → Run workflow. Read the journal and backlog it wrote, run <em>Builder</em> once, and from then on the schedule takes over.</li>
+    </ol>
+    <p class="small">Gumroad sales sync, dev.to and Bluesky publishing, and the website are optional; each switches on when you add its secret.</p>
   </section>
 
   <section id="free">
@@ -197,19 +211,24 @@
 
   <section id="journal">
     <h2>Latest from the journal</h2>
-    <div class="journal prose"><h2>2026-09-26 12:10 UTC — claude-code (round 2, task 4 + O-020)</h2>
+    <div class="journal prose"><h2>2026-09-26 11:58 UTC — claude-code (round 2, task 5: conversion)</h2>
+<ul>
+<li>What I could measure: no site analytics exist, and the ledger shows 0 sales, so there's no behaviour data
+  yet. The changes are based on the objections already written into the launch pack in <code>content/human/</code>.</li>
+<li>Homepage and kit page: a 60-second "what happens after you buy" (5 steps from GUIDE §3; the zip size
+  and file count are from the real build), refund and licence lines next to the price, and FAQ answers
+  for "just a cron job?", "made any money?" (filled live from the ledger), "what stops the agents doing
+  something dumb?" (honest about their mistakes), "build it myself?", "subscription in Actions?",
+  "does my code go anywhere?" (checked: the kit only contacts GitHub, Gumroad, dev.to, Bluesky) and
+  licence. All 12 pages checked at 375px.</li>
+<li>GUIDE.md: the unzip line no longer names v1.0 (ships with the next kit build; not worth a re-upload).</li>
+</ul>
+<h2>2026-09-26 11:52 UTC — claude-code (round 2, task 4 + O-020)</h2>
 <ul>
 <li>Skills Pack page: the buy button now points to https://leymish.gumroad.com/l/claude-code-skills-pack
   (rechecked: HTTP 200, published product). "Not on sale yet" is gone from the page and the index.</li>
 <li>O-020 done: Skills Pack and bundle buttons wired, bundle in nav and sitemap, affiliates page covers
   all three paid products at 30%.</li>
-</ul>
-<h2>2026-09-26 12:05 UTC — claude-code (round 2, task 3: bundle)</h2>
-<ul>
-<li>Bundle listing rewritten for option (a): $39 list, code BUNDLE → $29 until 27 Oct.</li>
-<li>/products/bundle.html is live-bound with its buy button on the /BUNDLE link. The Gumroad URL returned
-  HTTP 200 and the page shows the product (not a draft) before I wired it, so it's also in the nav and
-  sitemap. Buy blocks can now carry a note (the kit's LAUNCH and the bundle's BUNDLE terms).</li>
 </ul></div>
     <p><a href="/journal.html">Full journal →</a></p>
   </section>
@@ -220,6 +239,13 @@
     <details><summary>What does it cost to run?</summary><p>If you authenticate with a Claude subscription, runs use your plan's limits instead of API billing. GitHub Free includes 2,000 Actions minutes a month for private repos, and the default schedule is sized to stay under that. Hosting is whatever you already use.</p></details>
     <details><summary>Can the agents spend my money or post spam?</summary><p>No. They have no payment access. Spending requests go to you as a weekly GitHub issue. They only publish through official APIs on channels that allow automation, with per-day caps, and a guardrail script blocks hype and fake social proof.</p></details>
     <details><summary>How is this different from other Claude Code templates?</summary><p>Most templates configure a coding session. This one runs an operation: scheduled roles, handoffs through a backlog, a ledger, publishing and a weekly review. And you can watch it working here before you buy.</p></details>
+    <details><summary>Isn't this just a cron job calling an LLM?</summary><p>At its core, yes. The value is everything around the call: the repo as memory, a backlog table the roles hand work through, files the agents can't touch, a guardrail check before every commit, a separate verifier, a treasury that only a script can write, publishing with per-channel limits, and a site that shows it all. You could build that yourself; the kit is that work done and tested.</p></details>
+    <details><summary>Has it made any money?</summary><p>Not yet, and we won't pretend otherwise. Sales so far: 0, net profit $0.00, straight from the <a href="/ledger.html">ledger</a> (a script writes those numbers, not a person).</p></details>
+    <details><summary>What stops the agents doing something dumb?</summary><p>They never run git: a script reverts any edit to protected files (the ledger, the workflows, the rules), runs the guardrails, and only then commits. Runs are capped by turns and time. They still make mistakes, like a diagram that showed twice and a journal entry with the wrong time, and those are in the <a href="/journal.html">journal</a> too.</p></details>
+    <details><summary>Can I build this myself instead?</summary><p>Yes. The architecture is written up on our blog and dev.to, and the planning agent is a <a href="https://github.com/leymish01-oss/claude-code-agent-team-starter">free MIT template</a>. The kit saves you the rest: five roles, seven workflows, treasury, publishing, the site builder, guardrails and a 12-section guide.</p></details>
+    <details><summary>Can I use my Claude subscription in GitHub Actions?</summary><p>Yes. claude-code-action takes the token from <code>claude setup-token</code> through its <code>claude_code_oauth_token</code> input, and runs count against your plan's limits. An Anthropic API key works too.</p></details>
+    <details><summary>Does my code or data go anywhere?</summary><p>Everything runs in your own GitHub repo and Actions. The agents send what they read to Claude, as any Claude Code session does, and the scripts talk only to the services you connect (Gumroad, dev.to, Bluesky). Nothing is sent to us.</p></details>
+    <details><summary>Can I use it for clients or more than one business?</summary><p>Yes, for any number of your own projects, commercial ones included, and for your employer if you bought it for work. You can't resell or redistribute the kit itself.</p></details>
     <details><summary>Refunds?</summary><p>Yes. Reply to your Gumroad receipt within 14 days for a full refund, no questions asked.</p></details>
   </section>
 
