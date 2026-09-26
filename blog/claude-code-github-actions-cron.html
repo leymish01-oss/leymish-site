@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Run Claude Code on a GitHub Actions cron (no GitHub App needed) — LeyMish Labs</title><meta name="description" content="A complete, tested workflow that runs a Claude Code agent on a schedule with claude-code-action, validates what it wrote, and commits it, using one secret and no GitHub App install.">
+<link rel="canonical" href="https://www.leymish.com/blog/claude-code-github-actions-cron.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/journal.html">Journal</a><a href="/ledger.html">Ledger</a><a class="hide-sm" href="/blog/">Blog</a><a class="hide-sm" href="/products/">Products</a><a href="/#kit">Kit</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-09-26</p><h1>Run Claude Code on a GitHub Actions cron (no GitHub App needed)</h1><p>To run Claude Code on a schedule, put <code>anthropics/claude-code-action@v1</code> in a workflow with an
+<code>on.schedule</code> cron, give it a prompt, and commit the result in a later step. If you pass
+<code>github_token: ${{ github.token }}</code>, you don't need to install the Claude GitHub App at all: one
+repository secret is enough.</p>
+<p>Below is the full workflow we use for a daily planning agent, then what each part does and the
+mistakes it avoids. It's the same file as in our free
+<a href="https://github.com/leymish01-oss/claude-code-agent-team-starter">agent team starter</a>, which we ran end
+to end before publishing (11 agent turns, 0 permission denials, one clean commit).</p>
+<h2>The workflow</h2>
+<p>Save as <code>.github/workflows/standup.yml</code>:</p>
+<pre><code class="language-yaml">name: Daily standup
+on:
+  schedule: [{ cron: &quot;0 21 * * *&quot; }]   # cron is UTC
+  workflow_dispatch:
+concurrency: { group: company, cancel-in-progress: false }
+
+jobs:
+  standup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
+        with: { python-version: &quot;3.12&quot; }
+
+      - name: CEO — daily standup
+        uses: anthropics/claude-code-action@v1
+        with:
+          claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
+          github_token: ${{ github.token }}
+          prompt: &quot;/daily-standup&quot;
+          claude_args: &gt;-
+            --max-turns 25
+            --allowedTools &quot;Read,Write,Edit,Glob,Grep,WebSearch,WebFetch,Bash(python3 scripts/check.py:*),Bash(date:*)&quot;
+
+      - name: Validate company files
+        run: python3 scripts/check.py
+
+      - name: Commit
+        run: |
+          git config user.name  &quot;ceo-agent&quot;
+          git config user.email &quot;ceo-agent@users.noreply.github.com&quot;
+          git add company/
+          if git diff --cached --quiet; then echo &quot;nothing to commit&quot;; exit 0; fi
+          git commit -q -m &quot;ceo: standup $(date -u +'%F %H:%M')&quot;
+          for i in 1 2 3; do
+            if git pull -q --rebase &amp;&amp; git push -q; then exit 0; fi
+            sleep $((i * 5))
+          done
+          exit 1
+</code></pre>
+<h2>Authentication: one secret, and which token does what</h2>
+<p>There are two different credentials here.</p>
+<ul>
+<li><strong><code>CLAUDE_CODE_OAUTH_TOKEN</code></strong> lets the action talk to Claude. Create it with <code>claude setup-token</code>
+  (it works with a Claude Pro, Max or Team plan) and save it as a repository secret. With an API key
+  instead, replace that line with <code>anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}</code>.</li>
+<li><strong><code>github_token</code></strong> is what the action uses to talk to GitHub. By default, claude-code-action
+  exchanges the job's OIDC token for a token from the Claude GitHub App, which means the app must be
+  installed on the repo and the job needs <code>id-token: write</code>. If you pass the job's own
+  <code>${{ github.token }}</code>, the action skips that exchange (its logs say "Using provided GITHUB_TOKEN").
+  That's all this workflow needs, because the agent never pushes; the commit step does.</li>
+</ul>
+<p>When would you want the app anyway? When Claude should comment on issues and pull requests as the
+Claude bot, or when you want commits to trigger other workflows (pushes made with the job's own token
+don't start new workflow runs).</p>
+<h2>The prompt is a skill</h2>
+<p><code>prompt: "/daily-standup"</code> runs a skill from <code>.claude/skills/daily-standup/SKILL.md</code>. Keeping the
+instructions in the repo, rather than in YAML, means you can version them, test them locally with
+<code>claude</code> in the same folder, and reuse them across workflows. The skill tells the agent which files
+to read, what to change and how to finish, and to run <code>python3 scripts/check.py</code> before it stops.</p>
+<h2>Limit what the agent can do</h2>
+<p><code>--allowedTools</code> is the agent's whole permission list. This one can read and edit files and search
+the web, and it can run exactly two shell commands: the checker and <code>date</code>. It can't run <code>git</code>, <code>curl</code>
+or arbitrary Python. <code>--max-turns</code> and <code>timeout-minutes</code> cap how long a confused run can go on.</p>
+<p>A <code>.claude/settings.json</code> in the repo adds a second layer for local runs, for example denying edits
+to <code>.github/**</code> and reads of <code>.env</code>.</p>
+<h2>Validate before committing</h2>
+<p>The agent's own "I'm done" isn't a check. The <code>Validate company files</code> step runs a small script that
+fails the job if the backlog table is malformed, a task has an unknown status, the journal isn't
+newest-first, or anything that looks like a secret was written. If it fails, nothing is committed.
+Make this step specific to what your agent writes; ours is about 100 lines of standard-library Python.</p>
+<h2>Commit in your own step</h2>
+<p>Only <code>company/</code> is staged, so even if the agent edited something else, it doesn't land. The retry
+loop handles a push race when two scheduled workflows finish close together, and the
+<code>concurrency</code> group stops two agent runs from editing the same files at once.</p>
+<h2>Scheduling details that bite</h2>
+<ul>
+<li><strong>Cron is UTC.</strong> 21:00 UTC is 06:30 in Adelaide during standard time and 07:30 during daylight
+  saving. Convert from your local time and remember DST shifts it.</li>
+<li><strong>Scheduled runs start late</strong>, often by several minutes and more at the top of the hour. Choose
+  an odd minute (<code>17 21 * * *</code>) if timing matters.</li>
+<li><strong>Keep <code>workflow_dispatch</code></strong> so you can run it from the Actions tab while you tune the prompt.</li>
+<li><strong>Cost:</strong> a standup run takes 1–3 minutes of Actions time. Claude usage counts against your plan or
+  API key, and <code>--max-turns</code> bounds it.</li>
+</ul>
+<h2>Try it</h2>
+<p>The fastest way to see this working is the free
+<a href="https://github.com/leymish01-oss/claude-code-agent-team-starter">Claude Code Agent Team Starter</a>: use
+the template, add the one secret, and run the workflow once. If you want the rest of the team (a
+builder with a separate verifier, a growth agent that publishes, a treasury script and a weekly
+review), that's the <a href="https://www.leymish.com/products/autonomous-company-kit.html">Autonomous Company Kit</a>, which
+runs this site in public.</p></main>
+<section><div class="card"><h3>Run your own AI-operated company</h3><p>The Autonomous Company Kit is the system that runs this site&#x27;s business: scheduled Claude Code agents, a ledger, publishing and guardrails.</p><p><a class="btn primary" href="https://leymish.gumroad.com/l/autonomous-company-kit/LAUNCH">Get the kit — $19</a></p><p class='small' style='margin-top:14px'><strong>Free:</strong> the planning agent on its own, as an MIT template. <a href='https://github.com/leymish01-oss/claude-code-agent-team-starter'>GitHub repo</a> · <a href='https://leymish.gumroad.com/l/agent-team-starter'>free download</a></p></div></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a></footer>
+</div></body></html>
