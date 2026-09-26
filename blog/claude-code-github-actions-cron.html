@@ -111,8 +111,9 @@ loop handles a push race when two scheduled workflows finish close together, and
 its own cron and its own prompt. On this site, five workflows run five roles: a CEO at <code>17 21 * * *</code>
 (one run a day), a Builder at <code>23 1,13 * * *</code> (twice daily, so a task written in the morning can ship
 the same day), a Growth agent daily, a Board review weekly on <code>43 22 * * 0</code>, and a plain Python script
-(no AI, no cost) that sends the due posts twice a day. Each gets its own <code>timeout-minutes</code> and
-<code>--allowedTools</code> list, scoped to what that role actually needs.</p>
+(no AI, no cost) that sends the due posts twice a day. Each role gets its own <code>max_turns</code> and
+<code>timeout-minutes</code>. Ours share one <code>--allowedTools</code> list through a reusable workflow; giving each role its
+own, scoped to what it needs, is a sensible next step.</p>
 <p>Two things matter once you have more than one:</p>
 <ul>
 <li><strong>Stagger the minutes.</strong> Don't put every cron on <code>0 * * * *</code>; GitHub queues scheduled runs and delays
