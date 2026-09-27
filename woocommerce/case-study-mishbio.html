@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Case study: a real WooCommerce store, 77 → 96 — LeyMish Labs</title><meta name="description" content="We ran the free AI Shopping Readiness plugin on mishbio.us, a live US skincare store, fixed what it found and ran it again. The before and after, check by check, including what we couldn&#x27;t fix.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/case-study-mishbio.html"><meta property="og:title" content="Case study: a real WooCommerce store, 77 → 96"><meta property="og:description" content="We ran the free AI Shopping Readiness plugin on mishbio.us, a live US skincare store, fixed what it found and ran it again. The before and after, check by check, including what we couldn&#x27;t fix."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/woocommerce/case-study-mishbio.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/woocommerce/#checks">What it checks</a><a href="/woocommerce/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a><a href="/claude-code/">Claude Code</a><a href="/journal.html">Journal</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><div class="eyebrow">Case study · mishbio.us</div>
+
+<h1>A real WooCommerce store: 77 → 96</h1>
+<p>We ran our free plugin on <strong>mishbio.us</strong>, a live WooCommerce store selling skincare in the US, fixed what it
+found, and ran it again. <strong>Disclosure:</strong> mishbio.us belongs to the owner of LeyMish Labs, and our agents run it
+as a partner store. That's why we could make the changes, and it's why we're telling you.</p>
+<div class="stats" aria-label="Scores">
+  <div class="stat"><div class="k">Before</div><div class="v">77/100</div></div>
+  <div class="stat"><div class="k">After</div><div class="v">96/100</div></div>
+  <div class="stat"><div class="k">Products</div><div class="v">23</div></div>
+  <div class="stat"><div class="k">Plugin</div><div class="v">Free</div></div>
+</div>
+
+<h2>What the audit found</h2>
+<p>The store looked fine to a shopper. The problems were all invisible from the front end:</p>
+<ol>
+<li><strong>An invisible character before every page.</strong> A theme file had been saved as "UTF-8 with BOM", so three
+   bytes went out before every response, including the Store API's JSON. Browsers ignore them; strict JSON
+   parsers, which AI agents and feed tools use, reject the response. The Store API check scored <strong>0/5</strong>.
+   (It also exposed a bug in our own plugin, which said "Fail: HTTP 200" and blamed a security plugin. Version
+   1.0.1 now names the BOM and says how to find the file.)</li>
+<li><strong>No product identifiers and no brand on any product.</strong> 24 of 24 products had no GTIN or MPN and no brand.
+   Product data scored <strong>28.3/40</strong>; AI shopping agents and Google's product listings skip products they can't
+   identify.</li>
+<li><strong>Structured data without SKU or MPN.</strong> The theme's Product JSON-LD was otherwise good (price, stock,
+   return policy, shipping). JSON-LD scored <strong>9/12</strong>.</li>
+<li><strong>GPTBot got HTTP 429</strong> from the host's CDN while browsers and the other AI crawlers got through
+   (<strong>10.5/12</strong>).</li>
+</ol>
+<h2>What we changed</h2>
+<ul>
+<li>Re-saved the theme file without the BOM (Store API <strong>0 → 5</strong>).</li>
+<li>Gave every product a SKU and an MPN (a brand-assigned part number) and the brand "Mish Bioscience". <strong>We
+  didn't invent GTINs</strong>: a barcode has to come from the manufacturer or GS1, and a made-up one gets products
+  rejected.</li>
+<li>While we were there, we took one product off sale because its wording made it a US over-the-counter drug
+  claim, unpublished two template pages with untrue filler text, and toned two phrases to cosmetic wording.
+  None of that changes the score; it's what an honest audit should also catch.</li>
+</ul>
+<h2>Before and after, check by check</h2>
+<table>
+<thead>
+<tr>
+<th>Check</th>
+<th style="text-align: right;">Before</th>
+<th style="text-align: right;">After</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Product data completeness</td>
+<td style="text-align: right;">28.3 / 40</td>
+<td style="text-align: right;">39.8/40 (23 products, 99% complete; 1 product without attributes)</td>
+</tr>
+<tr>
+<td>Store is live to the public</td>
+<td style="text-align: right;">5 / 5</td>
+<td style="text-align: right;">5/5</td>
+</tr>
+<tr>
+<td>robots.txt allows AI shopping crawlers</td>
+<td style="text-align: right;">12 / 12</td>
+<td style="text-align: right;">12/12</td>
+</tr>
+<tr>
+<td>AI bots not blocked by a firewall or CDN</td>
+<td style="text-align: right;">10.5 / 12</td>
+<td style="text-align: right;">10.5/12 (GPTBot HTTP 429 from Hostinger CDN)</td>
+</tr>
+<tr>
+<td>Product structured data (JSON-LD)</td>
+<td style="text-align: right;">9 / 12</td>
+<td style="text-align: right;">12/12 (identifier and brand present)</td>
+</tr>
+<tr>
+<td>Name and price readable without JavaScript</td>
+<td style="text-align: right;">5 / 5</td>
+<td style="text-align: right;">5/5</td>
+</tr>
+<tr>
+<td>WooCommerce Store API reachable</td>
+<td style="text-align: right;">0 / 5</td>
+<td style="text-align: right;">5/5 (BOM removed)</td>
+</tr>
+<tr>
+<td>llms.txt present</td>
+<td style="text-align: right;">4 / 4</td>
+<td style="text-align: right;">4/4</td>
+</tr>
+<tr>
+<td>Guest checkout enabled</td>
+<td style="text-align: right;">3 / 3</td>
+<td style="text-align: right;">3/3</td>
+</tr>
+<tr>
+<td>UCP profile at /.well-known/ucp</td>
+<td style="text-align: right;">0 / 2</td>
+<td style="text-align: right;">0/2</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td style="text-align: right;"><strong>77</strong></td>
+<td style="text-align: right;"><strong>96</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Before: 2026-09-27T04:22:00Z. After: 2026-09-27T07:32:00Z, read from the plugin's own audit screen.</p>
+<h2>What's still not fixed, and why</h2>
+<ul>
+<li><strong>GPTBot still gets HTTP 429 from the CDN.</strong> It's a hosting-level setting, and our test comes from the
+  store's own server, so a CDN that checks real crawler IP addresses may treat the real GPTBot differently.
+  OpenAI's shopping and search crawlers (OAI-SearchBot, ChatGPT-User) get through.</li>
+<li><strong>No UCP profile.</strong> The Universal Commerce Protocol needs a checkout integration that implements it; nothing
+  in WooCommerce core provides one yet. Worth watching, not urgent.</li>
+</ul>
+<h2>What it took</h2>
+<p>About an hour of work, most of it adding identifiers to 23 products (Pro's bulk editor does that in one
+table). The audit itself takes under a minute and runs entirely on the store: nothing is sent anywhere.</p>
+<p><img alt="The plugin's audit screen: score and fix list (demo store in our test suite, not mishbio.us)" src="/assets/woo/screenshot-1.png" /></p>
+<p><em>The screenshot is from the demo store in our test suite, so you can see what the screen looks like; the
+mishbio.us numbers above come from its own audit screen.</em></p>
+<p><strong>Run it on your store:</strong> <a href="/woocommerce/">download the free plugin</a> · <a href="/woocommerce/pro.html">what Pro adds</a></p></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Shopping Readiness plugin gives you a 0–100 score and a fix list, and runs entirely on your site.</p><p><a class="btn primary" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a></footer>
+</div></body></html>
