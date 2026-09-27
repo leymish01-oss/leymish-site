@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeyMishCensus: how we check WooCommerce stores for AI-shopping readiness — LeyMish Labs</title><meta name="description" content="What the LeyMishCensus crawler requests, how often, what it records, and how to opt out. Public signals only; results are published as aggregates with no store named.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/census.html"><meta property="og:title" content="LeyMishCensus: how we check WooCommerce stores for AI-shopping readiness"><meta property="og:description" content="What the LeyMishCensus crawler requests, how often, what it records, and how to opt out. Public signals only; results are published as aggregates with no store named."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/woocommerce/census.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/woocommerce/#checks">What it checks</a><a href="/woocommerce/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a><a href="/claude-code/">Claude Code</a><a href="/journal.html">Journal</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><div class="eyebrow">Method · LeyMishCensus/1.0</div>
+
+<h1>How the WooCommerce AI-shopping census works</h1>
+<p>If you found <code>LeyMishCensus/1.0 (+https://www.leymish.com/woocommerce/census.html)</code> in your server logs, this page
+explains it. LeyMish Labs makes a free WooCommerce plugin that checks whether AI shopping agents can read a store.
+To find out how common the problems it checks for are, we looked at public signals on a sample of WooCommerce
+stores, and we publish only totals: <strong>no store is ever named</strong>.</p>
+<h2>What it requests (at most 5 requests per store)</h2>
+<ol>
+<li><code>/robots.txt</code>: to read the rules for nine AI crawler names (GPTBot, OAI-SearchBot, ChatGPT-User, ClaudeBot,
+   Claude-SearchBot, Claude-User, PerplexityBot, Perplexity-User, Google-Extended).</li>
+<li>The home page: to see whether the store is in "coming soon" or maintenance mode.</li>
+<li><code>/wp-json/wc/store/v1/products?per_page=1</code>: WooCommerce's public Store API, to check it answers with valid
+   JSON (and without a byte-order mark), and to get the address of one product.</li>
+<li>That one product page: to read its Product structured data (JSON-LD) for identifiers (GTIN, MPN, SKU) and brand.</li>
+<li><code>/llms.txt</code>: to see whether one exists.</li>
+</ol>
+<h2>How it behaves</h2>
+<ul>
+<li><strong>It says who it is.</strong> The census uses its own user agent above, never a browser's or an AI crawler's. The AI
+  crawler results come from <em>reading your robots.txt rules</em>, not from pretending to be those crawlers.</li>
+<li><strong>It obeys robots.txt.</strong> If your robots.txt disallows <code>LeyMishCensus</code> (or all robots) for a path, the census
+  skips that request.</li>
+<li><strong>It's slow on purpose:</strong> one request per second overall, at most five per store, and one pass.</li>
+<li><strong>It reads only public pages.</strong> No logins, no forms, no carts, no checkout.</li>
+</ul>
+<h2>Where the stores came from</h2>
+<p>The sample is taken from the public <a href="https://woocommerce.com/showcase/">WooCommerce showcase</a> and its filter
+pages, which list stores that chose to be featured. That's a sample of well-kept stores, not of WooCommerce as a
+whole, and we say so wherever we use the numbers. The list is kept in our company repository with the date it was
+collected.</p>
+<h2>What we publish</h2>
+<p>Totals and percentages only (for example "x of 100 stores block at least one AI crawler in robots.txt"). Per-store
+results stay private and are never published, sold or used for outreach.</p>
+<h2>Opting out</h2>
+<p>Add this to your robots.txt and the census won't request anything else from your store:</p>
+<pre><code>User-agent: LeyMishCensus
+Disallow: /
+</code></pre>
+<p>Questions: open an issue on the plugin's <a href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/issues">GitHub repository</a>.</p></main>
+<section></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a></footer>
+</div></body></html>
