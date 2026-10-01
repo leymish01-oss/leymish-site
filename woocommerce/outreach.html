@@ -1,40 +1,31 @@
 <!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>LeyMishLeads: why we may have checked your store, and how to opt out — LeyMish Labs</title><meta name="description" content="LeyMish Labs checks a small number of WooCommerce stores for one public AI-shopping issue and may email the store&#x27;s published contact address about it. What we request, what we keep, and how to opt out.">
-<link rel="canonical" href="https://www.leymish.com/woocommerce/outreach.html"><meta property="og:title" content="LeyMishLeads: why we may have checked your store, and how to opt out"><meta property="og:description" content="LeyMish Labs checks a small number of WooCommerce stores for one public AI-shopping issue and may email the store&#x27;s published contact address about it. What we request, what we keep, and how to opt out."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/woocommerce/outreach.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
+<title>LeyMishLeads: why we may have checked your store, and how to opt out — LeyMish Labs</title><meta name="description" content="What the LeyMishLeads crawler requests from a WooCommerce store, what LeyMish Labs keeps, and how to opt out of checks and emails.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/outreach.html"><meta property="og:title" content="LeyMishLeads: why we may have checked your store, and how to opt out"><meta property="og:description" content="What the LeyMishLeads crawler requests from a WooCommerce store, what LeyMish Labs keeps, and how to opt out of checks and emails."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/woocommerce/outreach.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css"><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
 <body><div class="wrap">
 <header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
 <nav><a href="/woocommerce/#checks">What it checks</a><a href="/woocommerce/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a><a href="/claude-code/">Claude Code</a><a href="/journal.html">Journal</a></nav></header>
-<main class="prose " style="padding:24px 0 48px"><div class="eyebrow">Outreach · LeyMishLeads/1.0</div>
+<main class="prose " style="padding:24px 0 48px"><div class="eyebrow">Crawler · LeyMishLeads/1.0</div>
 
 <h1>Why we may have checked your store</h1>
-<p>If <code>LeyMishLeads/1.0 (+https://www.leymish.com/woocommerce/outreach.html)</code> appears in your logs, this is why.
-LeyMish Labs makes a free WooCommerce plugin that checks whether AI shopping agents can read a store. We look at a
-small number of stores from the outside for <strong>one</strong> public issue (for example product pages without a GTIN or
-MPN), and we may send <strong>one</strong> short, plain-text email about it to the contact address the store publishes.</p>
-<h2>What it requests (at most 6 requests per store, one per second)</h2>
-<p><code>/robots.txt</code>, the home page, up to two contact or imprint pages linked from it, the public Store API
-(<code>/wp-json/wc/store/v1/products?per_page=1</code>) and one product page. It identifies itself honestly, obeys robots.txt
-for <code>LeyMishLeads</code>, and never logs in, fills in forms or touches carts.</p>
-<h2>What we keep, and what we don't</h2>
-<ul>
-<li>The store's domain, the <strong>business</strong> contact address as published on its own contact page, that page's address,
-  and the one issue we found. Nothing else.</li>
-<li>Only role addresses (info@, hello@, contact@, sales@…), never a person's name address or webmail, and nothing
-  from a site that asks not to receive unsolicited email.</li>
-<li>This list is never published, shared or sold. It's separate from our <a href="/woocommerce/census.html">census</a>: stores
-  in the census are never contacted, as that page promises.</li>
-</ul>
+<p>If <code>LeyMishLeads/1.0 (+https://www.leymish.com/woocommerce/outreach.html)</code> appears in your logs, it's us.
+LeyMish Labs makes a free WooCommerce plugin that checks whether AI shopping agents can read a store. We look at
+some stores from the outside for one public issue, and we may send one short email about it to the store's published
+business contact address.</p>
+<h2>What it requests</h2>
+<p>A handful of public pages at most, one request per second: <code>/robots.txt</code>, the home page, a contact page, the
+public Store API and one product page. It identifies itself, obeys robots.txt, and never logs in, fills in forms or
+touches carts.</p>
+<h2>What we keep</h2>
+<p>The store's domain, its published business contact address and the issue we found. It is never published, shared
+or sold. Stores in our <a href="/woocommerce/census.html">census</a> are never contacted.</p>
 <h2>Emails</h2>
-<ul>
-<li>From "LeyMish Labs" at hello@leymish.com, with our postal address, and marked as written and sent by Claude (an AI)
-  for LeyMish Labs, with the owner's permission.</li>
-<li>One email, and at most one follow-up. No tracking pixels, no attachments.</li>
-<li>Reply "unsubscribe" and your domain goes on a permanent do-not-contact list.</li>
-</ul>
+<p>Plain text, from hello@leymish.com with our postal address, written by an AI agent for LeyMish Labs and labelled as
+such. No tracking pixels and no attachments. Reply "unsubscribe" and your domain goes on a permanent do-not-contact
+list.</p>
 <h2>Opt out before we ever check</h2>
 <pre><code>User-agent: LeyMishLeads
 Disallow: /
