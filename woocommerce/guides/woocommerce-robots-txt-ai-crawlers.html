@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WooCommerce robots.txt for AI crawlers: what to allow — LeyMish Labs</title><meta name="description" content="Which AI crawlers fetch pages for shopping answers and which only collect training data, a robots.txt you can copy, and how to edit it in WordPress.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html"><meta property="og:title" content="WooCommerce robots.txt for AI crawlers: what to allow"><meta property="og:description" content="Which AI crawlers fetch pages for shopping answers and which only collect training data, a robots.txt you can copy, and how to edit it in WordPress."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "WooCommerce robots.txt for AI crawlers: what to allow", "description": "Which AI crawlers fetch pages for shopping answers and which only collect training data, a robots.txt you can copy, and how to edit it in WordPress.", "url": "https://www.leymish.com/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html", "datePublished": "2026-10-03", "author": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "publisher": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "step": [{"@type": "HowToStep", "position": 1, "name": "Open your current robots.txt"}, {"@type": "HowToStep", "position": 2, "name": "Decide which AI crawlers to allow"}, {"@type": "HowToStep", "position": 3, "name": "Edit robots.txt in WordPress"}, {"@type": "HowToStep", "position": 4, "name": "Check Search engine visibility is off"}, {"@type": "HowToStep", "position": 5, "name": "Test the result"}], "image": "https://www.leymish.com/assets/woo/guides/robots-default.png"}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/woocommerce/#checks">What it checks</a><a href="/woocommerce/check/">Free check</a><a href="/woocommerce/guides/">Guides</a><a href="/woocommerce/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a><a href="/claude-code/">Claude Code</a><a href="/journal.html">Journal</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-10-03 · <a href='/woocommerce/guides/'>Guides</a></p><h1>WooCommerce robots.txt for AI crawlers: what to allow</h1><p>Every AI company now runs crawlers, and many store owners have started blocking them, sometimes on purpose,
+sometimes because a security plugin or a copied robots.txt did it for them. The catch is that not all AI
+crawlers do the same job. Some collect pages to train models. Others fetch pages so an assistant can answer
+a shopper's question with your product in it. Block the second kind and your products quietly drop out of
+AI shopping answers.</p>
+<p>This guide explains which is which, gives you a robots.txt to copy, and shows where to edit it in WordPress.</p>
+<h2>Step 1: open your current robots.txt</h2>
+<p>Go to <code>yourstore.com/robots.txt</code> in your browser. WordPress creates this file automatically, and WooCommerce
+adds a few lines of its own. A fresh store's file looks like this:</p>
+<p><img alt="A default WooCommerce robots.txt that keeps crawlers out of wp-admin, add-to-cart links and WooCommerce upload folders" src="/assets/woo/guides/robots-default.png" /></p>
+<p>Those default lines are fine: they keep crawlers out of the admin area, the add-to-cart links (which would
+otherwise fill your cart logs) and private upload folders. Nothing there blocks your products. What you're
+looking for is anything extra, especially a <code>Disallow: /</code> under an AI crawler's name or under
+<code>User-agent: *</code>.</p>
+<h2>Step 2: decide which AI crawlers to allow</h2>
+<p>Here are the crawlers that matter for a store, grouped by what they do.</p>
+<p><strong>Fetch pages for AI search and shopping answers. Allow these if you want to be recommended:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Crawler</th>
+<th>Company</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>OAI-SearchBot</td>
+<td>OpenAI</td>
+<td>Reads pages for ChatGPT search and shopping results</td>
+</tr>
+<tr>
+<td>ChatGPT-User</td>
+<td>OpenAI</td>
+<td>Fetches a page when a ChatGPT user asks about it</td>
+</tr>
+<tr>
+<td>Claude-SearchBot</td>
+<td>Anthropic</td>
+<td>Reads pages for Claude's search answers</td>
+</tr>
+<tr>
+<td>Claude-User</td>
+<td>Anthropic</td>
+<td>Fetches a page when a Claude user asks about it</td>
+</tr>
+<tr>
+<td>PerplexityBot</td>
+<td>Perplexity</td>
+<td>Builds Perplexity's search index</td>
+</tr>
+<tr>
+<td>Perplexity-User</td>
+<td>Perplexity</td>
+<td>Fetches a page when a Perplexity user asks about it</td>
+</tr>
+<tr>
+<td>Googlebot</td>
+<td>Google</td>
+<td>Google Search, including AI Overviews and AI Mode</td>
+</tr>
+<tr>
+<td>Bingbot</td>
+<td>Microsoft</td>
+<td>Bing, which Copilot's answers draw on</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Collect pages for model training. Blocking these is your choice and doesn't stop the search crawlers
+above from recommending you:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Crawler</th>
+<th>Company</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPTBot</td>
+<td>OpenAI</td>
+<td>Training data for OpenAI's models</td>
+</tr>
+<tr>
+<td>ClaudeBot</td>
+<td>Anthropic</td>
+<td>Training data for Anthropic's models</td>
+</tr>
+<tr>
+<td>Google-Extended</td>
+<td>Google</td>
+<td>Controls whether Google may use your pages for Gemini; it doesn't affect Google Search</td>
+</tr>
+<tr>
+<td>Applebot-Extended</td>
+<td>Apple</td>
+<td>Controls whether Apple may use your pages for training</td>
+</tr>
+<tr>
+<td>CCBot</td>
+<td>Common Crawl</td>
+<td>An open web archive that many AI models are trained on</td>
+</tr>
+</tbody>
+</table>
+<p>One honest caveat: the user-triggered fetchers (ChatGPT-User, Claude-User, Perplexity-User) act for a person
+in real time, and their companies say they may not follow robots.txt for that. A firewall block still stops
+them. So if you want them in, robots.txt and your firewall both need to let them through.</p>
+<h2>A robots.txt you can copy</h2>
+<p>This keeps WooCommerce's sensible defaults, welcomes the search and shopping crawlers, and opts out of
+training. If you'd rather allow training too, delete the second block.</p>
+<pre><code>User-agent: *
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /*?add-to-cart=
+Disallow: /*?*add-to-cart=
+Disallow: /wp-content/uploads/wc-logs/
+Disallow: /wp-content/uploads/woocommerce_uploads/
+
+User-agent: GPTBot
+User-agent: ClaudeBot
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Disallow: /
+
+Sitemap: https://yourstore.com/wp-sitemap.xml
+</code></pre>
+<p>You don't need a separate block for OAI-SearchBot and the others: anything not named gets the
+<code>User-agent: *</code> rules, which allow your products. Change the sitemap line to your real sitemap address. If
+you use an SEO plugin, it's usually <code>/sitemap_index.xml</code>.</p>
+<h2>Step 3: edit robots.txt in WordPress</h2>
+<p>WordPress doesn't have a robots.txt editor of its own. You have three options:</p>
+<ul>
+<li><strong>Your SEO plugin.</strong> Yoast SEO has it under <strong>Yoast SEO → Tools → File editor</strong>. Rank Math has it under
+  <strong>Rank Math → General Settings → Edit robots.txt</strong>. Most other SEO plugins have something similar.</li>
+<li><strong>A real file.</strong> Upload a file called <code>robots.txt</code> to your site's root folder (the one with
+  <code>wp-config.php</code>) with your host's file manager or SFTP. A real file replaces the automatic one completely,
+  so include WooCommerce's default lines.</li>
+<li><strong>Ask your host.</strong> Some managed hosts control robots.txt for you, especially on staging sites.</li>
+</ul>
+<div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker runs 5 outside checks on your store, including this one, and gives you a score out of 5.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div>
+<h2>Step 4: check Search engine visibility is off</h2>
+<p>There's one more switch that affects every crawler at once. Go to <strong>Settings → Reading</strong> and make sure
+<strong>Discourage search engines from indexing this site</strong> is <em>not</em> ticked. When it's ticked, WordPress asks all
+search engines to skip your pages, and AI crawlers follow that too.</p>
+<p><img alt="The Search engine visibility setting in WordPress, with Discourage search engines from indexing this site unticked" src="/assets/woo/guides/reading-settings.png" /></p>
+<h2>Step 5: test the result</h2>
+<p>Reload <code>yourstore.com/robots.txt</code> to see the new rules. If they haven't changed, a caching plugin or CDN may
+be serving the old file: clear the cache and try again.</p>
+<p>Then check the firewall side. In your security plugin, look for settings like "block bad bots" or "block AI
+crawlers". If you use Cloudflare, check its AI crawler and bot settings. If these block the search crawlers,
+your robots.txt can be perfect and the crawlers still get an error page.</p>
+<h2>Common mistakes</h2>
+<ul>
+<li><strong>Copying a "block all AI" list.</strong> Many lists online mix training bots and search bots. Blocking
+  OAI-SearchBot or PerplexityBot costs you visibility.</li>
+<li><strong><code>Disallow: /</code> left over from building the site.</strong> Developers often block everything before launch and
+  forget to remove it.</li>
+<li><strong>Blocking <code>/wp-content/uploads/</code> completely.</strong> That folder holds your product images. AI answers and
+  Google Shopping both show images.</li>
+</ul>
+<p>The free plugin checks your robots.txt against 9 AI crawlers, tests whether your firewall lets them in, and
+tells you which rule to change if one is blocked.</p></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Shopping Readiness plugin gives you a 0–100 score and a fix list, and runs entirely on your site.</p><p><a class="btn primary" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a></footer>
+</div></body></html>

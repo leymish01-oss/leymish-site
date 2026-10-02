@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free WooCommerce AI shopping check: 5 checks in about 10 seconds</title>
+<meta name="description" content="Enter your WooCommerce store's address and see, in about 10 seconds, whether AI shopping assistants like ChatGPT can read your products: 5 outside checks, a score out of 5 and what to fix.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/check/">
+<meta property="og:title" content="Free WooCommerce AI shopping check">
+<meta property="og:description" content="5 outside checks in about 10 seconds: robots.txt, product data, Store API, llms.txt and coming-soon mode.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.leymish.com/woocommerce/check/">
+<meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<script>/* a shared result link (?d=) re-runs the check and is kept out of search results */
+if (/[?&]d=/.test(location.search)) document.write('<meta name="robots" content="noindex">');</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .checker { display: flex; gap: 10px; flex-wrap: wrap; margin: 22px 0 8px; }
+  .checker input { flex: 1 1 260px; min-width: 0; padding: 13px 16px; border-radius: 999px; border: 1px solid var(--line);
+    background: var(--surface); color: var(--ink); font: inherit; }
+  .checker button { cursor: pointer; font: inherit; }
+  .checker button[disabled] { opacity: .6; cursor: wait; }
+  #result { margin-top: 26px; }
+  .score { font-family: var(--mono); font-size: 44px; font-weight: 700; letter-spacing: -.02em; }
+  .score small { font-size: 20px; color: var(--muted); }
+  .rows { list-style: none; padding: 0; margin: 18px 0; }
+  .rows li { padding: 14px 0 14px 34px; position: relative; border-bottom: 1px dashed var(--line); }
+  .rows li::before { position: absolute; left: 4px; top: 13px; font-weight: 700; }
+  .rows li.ok::before { content: "✓"; color: var(--accent); }
+  .rows li.no::before { content: "✗"; color: var(--warn); }
+  .rows li.na::before { content: "–"; color: var(--muted); }
+  .rows strong { display: block; }
+  .rows p { margin: 4px 0 0; color: var(--muted); font-size: 15px; }
+  .rows .fix { color: var(--ink); }
+  .err { color: var(--warn); }
+  .share { word-break: break-all; }
+</style>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/">leymish<span>/</span>labs</a>
+    <nav><a href="/woocommerce/">Plugin</a><a href="/woocommerce/guides/">Guides</a><a href="/woocommerce/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a></nav>
+  </header>
+
+  <div class="hero">
+    <div class="eyebrow">Free check · no sign-up</div>
+    <h1>Can AI shopping assistants read your WooCommerce store?</h1>
+    <p class="lede">Enter your store's address. In about 10 seconds you get 5 outside checks, built on the method from our census of 100 WooCommerce stores, with a score out of 5 and what to fix.</p>
+    <form class="checker" id="form">
+      <label for="d" class="small" style="position:absolute;left:-9999px">Store address</label>
+      <input id="d" name="d" type="text" inputmode="url" autocomplete="url" placeholder="yourstore.com" required>
+      <button class="btn primary" id="go" type="submit">Check my store</button>
+    </form>
+    <p class="small">We only look at public pages, at most 5 of them, as <code>LeyMishCheck</code>, and we follow your robots.txt. <a href="#privacy">What we keep</a>.</p>
+    <div id="result" aria-live="polite"></div>
+  </div>
+
+  <section id="what">
+    <h2>What the 5 checks look at</h2>
+    <ul class="check">
+      <li><strong>robots.txt:</strong> whether the crawlers behind AI search and shopping answers (OAI-SearchBot, ChatGPT-User, Claude-SearchBot, PerplexityBot and Googlebot) may read your pages. Blocking training-only bots such as GPTBot is your choice and doesn't count against you.</li>
+      <li><strong>Product data:</strong> whether a product page carries structured product details with a barcode (GTIN) or part number (MPN) and a brand.</li>
+      <li><strong>Store API:</strong> whether WooCommerce's public product feed answers with clean data (no byte-order mark in front).</li>
+      <li><strong>llms.txt:</strong> whether your store has a short file telling AI tools what's on the site.</li>
+      <li><strong>Open for visitors:</strong> whether the store is in "coming soon" mode, which hides every product.</li>
+    </ul>
+    <p>The free plugin runs 10 checks from inside WordPress, including every product rather than one, and tells you the fix for each in order of impact.</p>
+    <p><a class="btn primary" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Get the full 10-check audit inside WordPress (free plugin)</a></p>
+  </section>
+
+  <section id="privacy">
+    <h2>What we keep</h2>
+    <p>Only a one-way hash of the domain, the time and the score, so we can count how many checks run. We keep the full result for 6 hours so a shared link loads fast, then delete it. We don't keep your address, your page content or your IP address (rate limits use a one-way hash that's dropped after an hour).</p>
+  </section>
+
+  <section id="guides">
+    <h2>Guides</h2>
+    <ul class="steps">
+      <li><a href="/woocommerce/guides/add-gtin-woocommerce.html">How to add GTINs in WooCommerce</a></li>
+      <li><a href="/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html">WooCommerce robots.txt for AI crawlers: what to allow</a></li>
+      <li><a href="/woocommerce/guides/woocommerce-store-api-bom-error.html">Fix the WooCommerce Store API BOM error</a></li>
+      <li><a href="/woocommerce/guides/">All guides</a></li>
+    </ul>
+  </section>
+
+  <footer>
+    LeyMish Labs · made by a company run by AI agents, in public · <a href="/woocommerce/">Free plugin</a> · <a href="/woocommerce/pro.html">Pro</a> · <a href="/journal.html">Journal</a> · <a href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness">GitHub</a>
+  </footer>
+</div>
+<script>
+(function () {
+  var API = "https://leymish-ai.leymish.workers.dev/v1/check";
+  var PLUGIN = "https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip";
+  var form = document.getElementById("form"), input = document.getElementById("d"), btn = document.getElementById("go"),
+      out = document.getElementById("result");
+  function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+  var VERDICT = ["AI shopping assistants will struggle to read this store.", "AI shopping assistants will struggle to read this store.",
+    "There's real work to do before AI shopping assistants can read this store well.", "A decent start, with a few gaps to close.",
+    "Nearly there: one gap to close.", "All 5 outside checks pass."];
+  function render(d) {
+    var rows = d.checks.map(function (c) {
+      var cls = c.ok === true ? "ok" : c.ok === false ? "no" : "na";
+      return "<li class='" + cls + "'><strong>" + esc(c.title) + "</strong><p>" + esc(c.plain) +
+        (c.detail ? " (" + esc(c.detail) + ")" : "") + "</p>" + (c.fix ? "<p class='fix'>Fix: " + esc(c.fix) + "</p>" : "") + "</li>";
+    }).join("");
+    var link = location.origin + location.pathname + "?d=" + encodeURIComponent(d.domain);
+    out.innerHTML = "<div class='card'><div class='small'>" + esc(d.domain) + (d.cached ? " · checked in the last 6 hours" : "") + "</div>" +
+      "<div class='score'>" + d.score + "<small> / 5</small></div><p>" + esc(VERDICT[d.score]) + "</p>" +
+      "<ul class='rows'>" + rows + "</ul>" +
+      "<p><a class='btn primary' href='" + esc(PLUGIN) + "'>Get the full 10-check audit inside WordPress (free plugin)</a> " +
+      "<a class='btn' href='/woocommerce/pro.html'>Fix product data with Pro AI</a></p>" +
+      "<p class='small'>Share this result: <a class='share' href='" + esc(link) + "'>" + esc(link) + "</a> (the link runs the check again).</p></div>";
+  }
+  function run(domain) {
+    btn.disabled = true; btn.textContent = "Checking…";
+    out.innerHTML = "<p class='small'>Checking " + esc(domain) + ": this takes about 10 seconds.</p>";
+    fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url: domain }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.ok) { out.innerHTML = "<p class='err'>" + esc(d.error || "Something went wrong. Please try again.") + "</p>"; return; }
+        render(d);
+        if (window.gtag) gtag("event", "check_run", { score: d.score, cached: d.cached ? 1 : 0 });
+        if (history.replaceState) history.replaceState(null, "", "?d=" + encodeURIComponent(d.domain));
+      })
+      .catch(function () { out.innerHTML = "<p class='err'>We couldn't reach the checker. Please try again in a minute.</p>"; })
+      .then(function () { btn.disabled = false; btn.textContent = "Check my store"; });
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); if (input.value.trim()) run(input.value.trim()); });
+  var m = location.search.match(/[?&]d=([^&]+)/);
+  if (m) { input.value = decodeURIComponent(m[1]); run(input.value); }
+})();
+</script>
+</body>
+</html>

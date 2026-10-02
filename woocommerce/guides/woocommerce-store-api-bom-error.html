@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fix the WooCommerce Store API BOM error — LeyMish Labs</title><meta name="description" content="Why WooCommerce&#x27;s Store API, cart and checkout can break with &quot;not a valid JSON response&quot;, how to confirm a byte-order mark is the cause, and how to find and fix the file.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/guides/woocommerce-store-api-bom-error.html"><meta property="og:title" content="Fix the WooCommerce Store API BOM error"><meta property="og:description" content="Why WooCommerce&#x27;s Store API, cart and checkout can break with &quot;not a valid JSON response&quot;, how to confirm a byte-order mark is the cause, and how to find and fix the file."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/woocommerce/guides/woocommerce-store-api-bom-error.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Fix the WooCommerce Store API BOM error", "description": "Why WooCommerce's Store API, cart and checkout can break with \"not a valid JSON response\", how to confirm a byte-order mark is the cause, and how to find and fix the file.", "url": "https://www.leymish.com/woocommerce/guides/woocommerce-store-api-bom-error.html", "datePublished": "2026-10-03", "author": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "publisher": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "step": [{"@type": "HowToStep", "position": 1, "name": "Open the Store API in your browser"}, {"@type": "HowToStep", "position": 2, "name": "Confirm the response starts with a byte-order mark"}, {"@type": "HowToStep", "position": 3, "name": "Find the PHP file that adds it"}, {"@type": "HowToStep", "position": 4, "name": "Re-save the file without the BOM"}, {"@type": "HowToStep", "position": 5, "name": "Clear caches and test again"}], "image": "https://www.leymish.com/assets/woo/guides/store-api-json.png"}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/woocommerce/#checks">What it checks</a><a href="/woocommerce/check/">Free check</a><a href="/woocommerce/guides/">Guides</a><a href="/woocommerce/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a><a href="/claude-code/">Claude Code</a><a href="/journal.html">Journal</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-10-03 · <a href='/woocommerce/guides/'>Guides</a></p><h1>Fix the WooCommerce Store API BOM error</h1><p>WooCommerce has a public product feed called the <strong>Store API</strong>. Your cart and checkout blocks use it, and so
+do apps and AI tools that want clean product data without reading your page design. When it works, it
+answers with tidy JSON. When something adds three invisible characters in front of that JSON, everything that
+reads it fails, often with messages like "The response is not a valid JSON response" or "Unexpected token"
+in the checkout.</p>
+<p>Those three characters are a <strong>byte-order mark</strong> (BOM). This guide shows how to confirm it's the cause and how
+to get rid of it.</p>
+<h2>What a BOM is and where it comes from</h2>
+<p>A BOM is a hidden marker (the bytes <code>EF BB BF</code>) that some text editors put at the very start of a file saved
+as "UTF-8 with BOM". It's harmless in a text document. In a PHP file it isn't: PHP sends it to the browser as
+output before anything else, so every page and every API response from your site starts with it.</p>
+<p>Web pages usually survive this because browsers ignore it. JSON readers often don't. The JSON is no longer
+valid from the first byte, and the cart, the checkout and anything else reading the Store API gives up.</p>
+<p>The usual culprits are files someone edited by hand: the theme's <code>functions.php</code>, a child theme, a small
+custom plugin, or <code>wp-config.php</code>.</p>
+<h2>Step 1: open the Store API in your browser</h2>
+<p>Go to this address, with your own domain:</p>
+<p><code>https://yourstore.com/wp-json/wc/store/v1/products?per_page=1</code></p>
+<p>A healthy store shows one product as JSON. Here is what our test store returns:</p>
+<p><img alt="The WooCommerce Store API in a browser: one product, the Linen tea towel, as JSON" src="/assets/woo/guides/store-api-json.png" /></p>
+<p>If you get an error page, a login page or nothing at all, the Store API is blocked rather than broken. Check
+your security plugin and any "disable REST API" setting before you go further: those need the WooCommerce
+Store API (<code>/wp-json/wc/store/</code>) allowed for the cart and checkout blocks to work.</p>
+<h2>Step 2: confirm the response starts with a BOM</h2>
+<p>Browsers hide the BOM, so you can't see it on screen. Two ways to check:</p>
+<p><strong>From a terminal</strong> (macOS, Linux, or Git Bash on Windows):</p>
+<pre><code>curl -s &quot;https://yourstore.com/wp-json/wc/store/v1/products?per_page=1&quot; | head -c 3 | xxd
+</code></pre>
+<p>If the output contains <code>efbb bf</code>, there's a BOM. A healthy response starts with <code>5b7b</code>, which is <code>[{</code>.</p>
+<p><strong>Without a terminal:</strong> the free checker below fetches the Store API and tells you whether it starts with a
+BOM, among its 5 checks.</p>
+<div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker runs 5 outside checks on your store, including this one, and gives you a score out of 5.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div>
+<h2>Step 3: find the PHP file that adds it</h2>
+<p>If your host gives you SSH access, this command lists every PHP file in your site that starts with a BOM.
+Run it from the folder that contains <code>wp-config.php</code>:</p>
+<pre><code>grep -rlI --include=*.php $'^\xEF\xBB\xBF' .
+</code></pre>
+<p>Most of the time it finds one or two files, usually in <code>wp-content/themes/</code> or <code>wp-content/plugins/</code>.</p>
+<p>No SSH? Work backwards from what changed recently:</p>
+<ol>
+<li>Which files have you or a developer edited by hand? Start with the active theme's <code>functions.php</code>.</li>
+<li>Switch to a default theme such as Twenty Twenty-Five for a minute and check the Store API again (Step 2).
+   If the BOM is gone, it's in your theme.</li>
+<li>If it's still there, deactivate plugins one at a time, starting with custom or recently installed ones,
+   checking after each. Do this on a staging copy if your host offers one.</li>
+</ol>
+<p>While you're in there, check for spaces or blank lines before the opening <code>&lt;?php</code> tag. They cause the same
+kind of breakage for the same reason.</p>
+<h2>Step 4: re-save the file without the BOM</h2>
+<p>Open the file in a code editor and change its encoding:</p>
+<ul>
+<li><strong>VS Code:</strong> click the encoding in the bottom bar (it will say "UTF-8 with BOM"), choose <strong>Save with
+  Encoding</strong>, then <strong>UTF-8</strong>.</li>
+<li><strong>Notepad++:</strong> <strong>Encoding → UTF-8</strong> (not "UTF-8-BOM"), then save.</li>
+<li><strong>Windows Notepad:</strong> <strong>Save as</strong>, then set <strong>Encoding</strong> to <strong>UTF-8</strong>, not "UTF-8 with BOM".</li>
+</ul>
+<p>Upload the file back to the same place. If the file belongs to a plugin or theme you didn't write, tell its
+author too, so the next update doesn't bring the BOM back.</p>
+<h2>Step 5: clear caches and test again</h2>
+<p>Clear your caching plugin, your host's cache and your CDN, if you use one. Then repeat Step 2. The response
+should now start with <code>[{</code>. Add a product to the cart and go to checkout to confirm the blocks load without
+errors.</p>
+<h2>Why it matters beyond checkout</h2>
+<p>AI shopping tools and product feed services increasingly read structured product data directly, and the
+Store API is the public, standard place a WooCommerce store offers it. A feed that fails to parse looks the
+same to them as a store with no products. It's a five-minute fix once you've found the file.</p>
+<p>The free plugin checks the Store API from inside your site, along with robots.txt, structured data and your
+product data, and lists the fixes in order of impact.</p></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Shopping Readiness plugin gives you a 0–100 score and a fix list, and runs entirely on your site.</p><p><a class="btn primary" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a></footer>
+</div></body></html>

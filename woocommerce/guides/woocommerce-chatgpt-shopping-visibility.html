@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is your WooCommerce store visible in ChatGPT shopping? — LeyMish Labs</title><meta name="description" content="How ChatGPT finds products to recommend, how to test whether it can see your WooCommerce store, and the five things to fix first if it can&#x27;t.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html"><meta property="og:title" content="Is your WooCommerce store visible in ChatGPT shopping?"><meta property="og:description" content="How ChatGPT finds products to recommend, how to test whether it can see your WooCommerce store, and the five things to fix first if it can&#x27;t."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Is your WooCommerce store visible in ChatGPT shopping?", "description": "How ChatGPT finds products to recommend, how to test whether it can see your WooCommerce store, and the five things to fix first if it can't.", "url": "https://www.leymish.com/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html", "datePublished": "2026-10-03", "author": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "publisher": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "step": [{"@type": "HowToStep", "position": 1, "name": "Ask ChatGPT about one of your own products"}, {"@type": "HowToStep", "position": 2, "name": "Check that OpenAI's crawlers may read your pages"}, {"@type": "HowToStep", "position": 3, "name": "Check nothing blocks them at the firewall"}, {"@type": "HowToStep", "position": 4, "name": "Check your products carry structured data"}, {"@type": "HowToStep", "position": 5, "name": "Check the store is live and indexable"}, {"@type": "HowToStep", "position": 6, "name": "Fix the gaps, starting with the biggest"}], "image": "https://www.leymish.com/assets/woo/guides/robots-default.png"}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/woocommerce/#checks">What it checks</a><a href="/woocommerce/check/">Free check</a><a href="/woocommerce/guides/">Guides</a><a href="/woocommerce/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a><a href="/claude-code/">Claude Code</a><a href="/journal.html">Journal</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-10-03 · <a href='/woocommerce/guides/'>Guides</a></p><h1>Is your WooCommerce store visible in ChatGPT shopping?</h1><p>When someone asks ChatGPT "what's a good linen apron under $40?", it can answer with products: names, prices,
+pictures and links to the stores that sell them. Shopify stores are connected to this by default. A
+WooCommerce store isn't connected to anything automatically, so whether it shows up depends on whether
+ChatGPT can find and read your product pages on its own.</p>
+<p>The good news is that most of what decides that is in your control, and you can check it yourself in about
+fifteen minutes.</p>
+<h2>How ChatGPT finds products</h2>
+<p>ChatGPT's shopping answers come from the web. OpenAI runs a crawler called <strong>OAI-SearchBot</strong> that reads
+pages for ChatGPT's search results, and when a person asks about a page directly, ChatGPT fetches it as
+<strong>ChatGPT-User</strong>. From your product pages it picks up the product's name, price, availability, images and
+identifiers, mostly from the structured data WooCommerce writes into every product page. OpenAI also has a
+sign-up for merchants who want to send product data directly, but that is an extra, not a replacement for
+pages it can read.</p>
+<p>OpenAI doesn't publish a ranking formula, and no plugin can promise placement. What you can control is
+whether ChatGPT is able to read your products and match them to what people ask for. Here's how to test
+each part.</p>
+<h2>Step 1: ask ChatGPT about your own product</h2>
+<p>Open ChatGPT with search turned on and ask for something specific that only your store sells, using the
+product's real name and your store name: "Linen &amp; Co washed linen apron price". If ChatGPT finds your product
+page and gets the price right, the basics work. If it can't find your store at all, or describes your
+product from another site, keep going.</p>
+<p>This is a rough test. Answers vary from day to day, and a new store can take weeks to be crawled. The checks
+below tell you <em>why</em> something is missing.</p>
+<h2>Step 2: check OpenAI's crawlers may read your pages</h2>
+<p>Open <code>yourstore.com/robots.txt</code> in your browser. This file tells crawlers which parts of your site they may
+read. A fresh WooCommerce store's file looks like this: it keeps crawlers out of the admin, cart links and
+log folders, and lets them read everything else, products included.</p>
+<p><img alt="A default WooCommerce robots.txt: Disallow lines for wp-admin, add-to-cart links and WooCommerce upload folders, then the sitemap line" src="/assets/woo/guides/robots-default.png" /></p>
+<p>Look for a block that starts <code>User-agent: OAI-SearchBot</code> or <code>User-agent: ChatGPT-User</code> followed by
+<code>Disallow: /</code>. That tells ChatGPT to stay away. Also check for <code>User-agent: *</code> followed by <code>Disallow: /</code>,
+which blocks everyone. Our guide to
+<a href="/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html">robots.txt for AI crawlers</a> explains what to
+allow and what's safe to block.</p>
+<h2>Step 3: check nothing blocks them at the firewall</h2>
+<p>robots.txt is a polite request. A firewall is a locked door. Security plugins, hosting firewalls and CDNs
+like Cloudflare can block AI crawlers outright, and some have an "AI bots" switch that may be on without you
+knowing. Look in your security plugin's bot settings and, if you use a CDN, its bot or AI crawler settings.
+If OAI-SearchBot is blocked there, robots.txt doesn't matter.</p>
+<h2>Step 4: check your products carry structured data</h2>
+<p>Open one of your product pages, right-click, choose <strong>View page source</strong> and search for <code>"@type":"Product"</code>.
+WooCommerce adds this block automatically, with the name, price, stock status and, if you've filled them in,
+the GTIN and brand. If it's missing, a theme, page builder or SEO plugin may have removed or replaced it.</p>
+<p>While you're there, search for <code>gtin</code> and <code>brand</code>. These are what let ChatGPT match your product to a
+shopper's question and to other stores selling the same thing. Most WooCommerce stores leave them empty. Two
+guides cover them: <a href="/woocommerce/guides/add-gtin-woocommerce.html">adding GTINs</a> and
+<a href="/woocommerce/guides/add-brand-woocommerce-products.html">adding a brand</a>.</p>
+<div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker runs 5 outside checks on your store, including this one, and gives you a score out of 5.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div>
+<h2>Step 5: check the store is live and indexable</h2>
+<p>Two settings hide a whole store:</p>
+<ul>
+<li><strong>WooCommerce → Settings → Site visibility.</strong> If it says <strong>Coming soon</strong>, visitors and crawlers see a
+  placeholder instead of your products. Set it to <strong>Live</strong> when you're ready.</li>
+<li><strong>Settings → Reading → Search engine visibility.</strong> If <strong>Discourage search engines from indexing this
+  site</strong> is ticked, WordPress asks every crawler to skip the site. Untick it.</li>
+</ul>
+<p><img alt="WooCommerce's Site visibility settings with the Coming soon and Live options, Live selected" src="/assets/woo/guides/site-visibility.png" /></p>
+<h2>Step 6: fix the gaps, biggest first</h2>
+<p>If you found several problems, fix them in this order, because each one blocks everything after it:</p>
+<ol>
+<li>Store set to <strong>Coming soon</strong> or search engines discouraged: nothing else matters until this is fixed.</li>
+<li>Crawlers blocked by a firewall or by robots.txt.</li>
+<li>Product structured data missing.</li>
+<li>GTIN and brand missing.</li>
+<li>Thin product data: one-line descriptions, no attributes such as size, colour or material, no images.</li>
+</ol>
+<p>Then ask ChatGPT again in a week or two. Crawlers don't revisit every page every day.</p>
+<h2>Check every product, not just one</h2>
+<p>The steps above check one page by hand. The free plugin runs the same checks from inside WordPress across
+your whole catalogue (robots.txt, firewall blocks, structured data, identifiers, brand, descriptions and
+more) and gives you a score out of 100 with the fixes in order of points.</p>
+<p><img alt="The AI Shopping Readiness screen in WooCommerce: a score of 65 out of 100 and a &quot;Fix these first&quot; list led by product data completeness" src="/assets/woo/guides/ai-readiness-audit.png" /></p></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Shopping Readiness plugin gives you a 0–100 score and a fix list, and runs entirely on your site.</p><p><a class="btn primary" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a></footer>
+</div></body></html>

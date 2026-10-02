@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Add a brand to WooCommerce products — LeyMish Labs</title><meta name="description" content="WooCommerce has a built-in Brands feature. How to create brands, assign them to products one at a time or in bulk, and check the brand reaches your product pages.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/guides/add-brand-woocommerce-products.html"><meta property="og:title" content="Add a brand to WooCommerce products"><meta property="og:description" content="WooCommerce has a built-in Brands feature. How to create brands, assign them to products one at a time or in bulk, and check the brand reaches your product pages."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/woocommerce/guides/add-brand-woocommerce-products.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Add a brand to WooCommerce products", "description": "WooCommerce has a built-in Brands feature. How to create brands, assign them to products one at a time or in bulk, and check the brand reaches your product pages.", "url": "https://www.leymish.com/woocommerce/guides/add-brand-woocommerce-products.html", "datePublished": "2026-10-03", "author": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "publisher": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "step": [{"@type": "HowToStep", "position": 1, "name": "Open Products, Brands"}, {"@type": "HowToStep", "position": 2, "name": "Create your brands"}, {"@type": "HowToStep", "position": 3, "name": "Assign a brand to each product"}, {"@type": "HowToStep", "position": 4, "name": "Assign brands in bulk"}, {"@type": "HowToStep", "position": 5, "name": "Check the brand appears in the product page's structured data"}], "image": "https://www.leymish.com/assets/woo/guides/brands-page.png"}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/woocommerce/#checks">What it checks</a><a href="/woocommerce/check/">Free check</a><a href="/woocommerce/guides/">Guides</a><a href="/woocommerce/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a><a href="/claude-code/">Claude Code</a><a href="/journal.html">Journal</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-10-03 · <a href='/woocommerce/guides/'>Guides</a></p><h1>Add a brand to WooCommerce products</h1><p>"Brand" sounds like marketing, but for shopping systems it's data. When an AI assistant or Google Shopping
+reads your product page, the brand is one of the first things it uses to work out what the product is and
+whether it matches what the shopper asked for: "a Le Creuset casserole dish", "an apron from a small linen
+maker". A product with no brand is just a name and a price.</p>
+<p>WooCommerce has a built-in <strong>Brands</strong> feature (it became part of WooCommerce itself in version 9.6, so on an
+up-to-date store you don't need an extension). This guide shows how to use it.</p>
+<h2>Who is the brand?</h2>
+<ul>
+<li><strong>If you resell other companies' products,</strong> the brand is the manufacturer's brand, exactly as it's
+  printed on the packaging.</li>
+<li><strong>If you make your own products,</strong> the brand is your own brand name, usually your store's name.</li>
+<li><strong>If it's unbranded,</strong> leave it empty rather than inventing one.</li>
+</ul>
+<p>Use the same spelling every time. "Linen &amp; Co", "Linen and Co" and "LINEN&amp;CO" look like three different brands
+to a machine.</p>
+<h2>Step 1: open Products → Brands</h2>
+<p>In your WordPress admin, go to <strong>Products → Brands</strong>. If you don't see it, update WooCommerce. Older versions
+needed the separate WooCommerce Brands extension, and if you used that before, your existing brands carry
+over.</p>
+<p><img alt="The Product brands screen in WooCommerce: an Add New Brand form on the left and the brand list on the right" src="/assets/woo/guides/brands-page.png" /></p>
+<h2>Step 2: create your brands</h2>
+<p>Fill in the <strong>Add New Brand</strong> form on the left:</p>
+<ul>
+<li><strong>Name:</strong> the brand as customers know it.</li>
+<li><strong>Slug:</strong> leave it empty and WordPress makes one from the name.</li>
+<li><strong>Description and Thumbnail:</strong> optional. Some themes show them on the brand's archive page.</li>
+</ul>
+<p>Click <strong>Add New Brand</strong>. Repeat for each brand you sell. If you only sell your own brand, you need just one.</p>
+<h2>Step 3: assign a brand to each product</h2>
+<p>Open a product (<strong>Products</strong>, then click its name). In the right-hand column there's a <strong>Brands</strong> box, much
+like the <strong>Product categories</strong> box. Tick the brand and click <strong>Update</strong>.</p>
+<p>A product should normally have one brand. Ticking several makes it unclear which one made the product.</p>
+<h2>Step 4: assign brands in bulk</h2>
+<p>For a large catalogue, use bulk edit:</p>
+<ol>
+<li>Go to <strong>Products → All Products</strong>. Filter or search to show the products of one brand, for example by
+   searching for the brand name or filtering by category.</li>
+<li>Tick the products, choose <strong>Edit</strong> from the <strong>Bulk actions</strong> menu and click <strong>Apply</strong>.</li>
+<li>In the bulk edit panel, tick the brand in the <strong>Brands</strong> list and click <strong>Update</strong>.</li>
+</ol>
+<p>You can also set brands with a CSV import. Export a few products first (<strong>Products → All Products →
+Export</strong>) to see the exact column name your store uses, fill it in, and import with <strong>Update existing
+products</strong> ticked. Try two or three products before the whole file.</p>
+<div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker runs 5 outside checks on your store, including this one, and gives you a score out of 5.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div>
+<h2>Step 5: check the brand reaches the product page</h2>
+<p>WooCommerce writes each product's details into the page as structured data, the code AI tools and search
+engines read. When a product has a brand, that block includes it. To check, open the product page, right-click,
+choose <strong>View page source</strong>, and search for <code>"brand"</code>. You should see something like:</p>
+<pre><code>&quot;brand&quot;:{&quot;@type&quot;:&quot;Brand&quot;,&quot;name&quot;:&quot;Linen &amp; Co&quot;}
+</code></pre>
+<p>On our own test store, the brand appears here as soon as it's ticked on the product. One thing we noticed:
+our test brand "Linen &amp; Co" came out as <code>Linen &amp;amp;amp; Co</code> in the structured data, an encoding quirk with
+the ampersand. If your brand name contains an <code>&amp;</code>, check how it appears in your page source. Most systems
+reading it will cope, but if you have the choice, "and" avoids the question.</p>
+<p>If there's no brand in the source at all:</p>
+<ul>
+<li><strong>Clear your cache</strong> so you're not looking at an old copy of the page.</li>
+<li><strong>Check your SEO plugin.</strong> Some replace WooCommerce's structured data with their own and have a separate
+  setting for which field to use as the brand. Point it at the WooCommerce brand.</li>
+</ul>
+<h2>Brand plus part number when there's no barcode</h2>
+<p>If your products have no GTIN (handmade, made to order, or your own brand without barcodes), the brand
+becomes even more important. Shopping systems accept <strong>brand plus manufacturer part number (MPN)</strong> as the
+next best identifier. If you're the maker, your SKU can serve as the MPN, as long as each SKU is unique and
+stays the same.</p>
+<p>Where you do have barcodes, add those as well. Our guide on
+<a href="/woocommerce/guides/add-gtin-woocommerce.html">adding GTINs in WooCommerce</a> shows where they go.</p>
+<h2>Check every product at once</h2>
+<p>The free plugin counts how many of your products are missing a brand, a GTIN or MPN, an image, attributes
+or a real description, and puts the biggest gap first. On our partner store, filling in brands and other
+product data was part of what moved its score from 77 to 96.</p></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Shopping Readiness plugin gives you a 0–100 score and a fix list, and runs entirely on your site.</p><p><a class="btn primary" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a></footer>
+</div></body></html>

@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to add GTINs in WooCommerce (with the built-in field) — LeyMish Labs</title><meta name="description" content="WooCommerce has a built-in GTIN field. Where to find it, what to type, how to fill it for variations and in bulk, and how to check it reaches your product pages.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/guides/add-gtin-woocommerce.html"><meta property="og:title" content="How to add GTINs in WooCommerce (with the built-in field)"><meta property="og:description" content="WooCommerce has a built-in GTIN field. Where to find it, what to type, how to fill it for variations and in bulk, and how to check it reaches your product pages."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/woocommerce/guides/add-gtin-woocommerce.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "How to add GTINs in WooCommerce (with the built-in field)", "description": "WooCommerce has a built-in GTIN field. Where to find it, what to type, how to fill it for variations and in bulk, and how to check it reaches your product pages.", "url": "https://www.leymish.com/woocommerce/guides/add-gtin-woocommerce.html", "datePublished": "2026-10-03", "author": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "publisher": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "step": [{"@type": "HowToStep", "position": 1, "name": "Find the barcode number for the product"}, {"@type": "HowToStep", "position": 2, "name": "Open the product's Inventory tab"}, {"@type": "HowToStep", "position": 3, "name": "Type the number in the GTIN, UPC, EAN, or ISBN box"}, {"@type": "HowToStep", "position": 4, "name": "Add numbers to each variation"}, {"@type": "HowToStep", "position": 5, "name": "Fill many products at once with a CSV import"}, {"@type": "HowToStep", "position": 6, "name": "Check the number appears on the product page"}], "image": "https://www.leymish.com/assets/woo/guides/gtin-inventory-tab.png"}</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/woocommerce/#checks">What it checks</a><a href="/woocommerce/check/">Free check</a><a href="/woocommerce/guides/">Guides</a><a href="/woocommerce/pro.html">Pro</a><a class="hide-sm" href="/blog/">Blog</a><a href="/claude-code/">Claude Code</a><a href="/journal.html">Journal</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-10-03 · <a href='/woocommerce/guides/'>Guides</a></p><h1>How to add GTINs in WooCommerce (with the built-in field)</h1><p>A GTIN is the number under a product's barcode. Shopping systems use it to know that the jar of honey on your
+store is the same jar of honey on ten other stores. Google Shopping asks for it, and AI shopping assistants
+lean on the same kind of product data when they decide what to recommend. Without one, your product is
+harder to match, compare and trust.</p>
+<p>WooCommerce has had a built-in field for it since version 9.2, so you don't need a plugin. This guide shows
+where it is, what to put in it, and how to check it worked.</p>
+<h2>What counts as a GTIN</h2>
+<p>GTIN is the umbrella name. The number on your product will be one of these:</p>
+<ul>
+<li><strong>UPC</strong> (12 digits): common in the US and Canada.</li>
+<li><strong>EAN</strong> (13 digits): common in Europe, Australia and most other places.</li>
+<li><strong>ISBN</strong> (13 digits, or 10 on older books): books.</li>
+<li><strong>GTIN-14</strong> (14 digits): usually on outer cartons, not single items.</li>
+</ul>
+<p>All of them go in the same WooCommerce field. Type the digits only, with no spaces or dashes.</p>
+<p><strong>Only use a real number.</strong> If you make your own products and have never bought barcodes, you don't have a
+GTIN, and inventing one does more harm than leaving it blank, because a made-up number can match someone
+else's product. Brand owners get real numbers from GS1, the body that issues barcodes. If you resell, the
+number is printed on the packaging or in your supplier's product sheet.</p>
+<h2>Step 1: find the number</h2>
+<p>Look at the barcode on the product or its packaging. The digits printed under the bars are the GTIN. Your
+supplier's price list or product spreadsheet usually has a column called EAN, UPC or barcode too. That is
+the quickest way to get numbers for a whole range.</p>
+<h2>Step 2: open the product's Inventory tab</h2>
+<p>In your WordPress admin, go to <strong>Products</strong>, click the product, and scroll down to the <strong>Product data</strong> box.
+Click the <strong>Inventory</strong> tab on the left.</p>
+<p><img alt="The Inventory tab of a WooCommerce product, with the SKU box and, below it, the box labelled GTIN, UPC, EAN, or ISBN" src="/assets/woo/guides/gtin-inventory-tab.png" /></p>
+<h2>Step 3: type the number</h2>
+<p>Put the digits in the box labelled <strong>GTIN, UPC, EAN, or ISBN</strong>, then click <strong>Update</strong> at the top right of
+the page. That's it for a simple product.</p>
+<p>Two things that often go wrong:</p>
+<ul>
+<li><strong>Pasting with spaces.</strong> "5 012345 678900" won't be accepted as a clean number. Remove the spaces.</li>
+<li><strong>Putting the GTIN in the SKU box.</strong> The SKU is your own stock code. Keep the two separate, so the SKU can
+  stay whatever your warehouse uses.</li>
+</ul>
+<h2>Step 4: add numbers to each variation</h2>
+<p>If a product comes in sizes or colours, each one usually has its own barcode. Open the <strong>Variations</strong> tab,
+expand each variation, and you'll find the same <strong>GTIN, UPC, EAN, or ISBN</strong> box there. Fill it in for every
+variation that has its own barcode, then click <strong>Save changes</strong>.</p>
+<p>If the variations really do share one barcode (rare, but it happens with some bundles), put the number on
+the main product only.</p>
+<h2>Step 5: fill many products at once</h2>
+<p>Typing numbers one by one is fine for ten products. For a hundred, use a spreadsheet:</p>
+<ol>
+<li>Go to <strong>Products → All Products</strong> and click <strong>Export</strong>. Tick at least the ID, SKU and GTIN columns.</li>
+<li>Open the file in a spreadsheet. Fill the column called <strong>GTIN, UPC, EAN, or ISBN</strong> from your supplier's
+   list, matching rows on SKU.</li>
+<li>Format that column as text before you paste, so the spreadsheet doesn't turn long numbers into
+   "5.01235E+12" or drop a leading zero.</li>
+<li>Go back to <strong>Products → All Products</strong>, click <strong>Import</strong>, choose the file and tick <strong>Update existing
+   products</strong>. On the column mapping screen, make sure the GTIN column maps to the GTIN field.</li>
+</ol>
+<p>Import a small test file with two or three products first and check them before you run the full file.</p>
+<div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker runs 5 outside checks on your store, including this one, and gives you a score out of 5.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div>
+<h2>Step 6: check it reaches your product page</h2>
+<p>WooCommerce writes product details into each product page as structured data: a block of code that search
+engines and AI tools read instead of guessing from the page design. When the GTIN box is filled, that block
+includes a <code>gtin</code> value.</p>
+<p>To see it, open the product page in your browser, right-click and choose <strong>View page source</strong>, then search
+for <code>gtin</code>. On our test store, the apron above shows <code>"gtin":"9312345678907"</code> right after its SKU. If you
+can't find it:</p>
+<ul>
+<li><strong>Clear your cache.</strong> A caching plugin or your host may still be serving the old page.</li>
+<li><strong>Check your SEO plugin.</strong> Some SEO plugins replace WooCommerce's structured data with their own. Look in
+  the plugin's WooCommerce or schema settings for a GTIN option, or test the page in Google's Rich Results
+  Test to see what it actually outputs.</li>
+</ul>
+<h2>How many products need it</h2>
+<p>All of them, ideally, but start where it pays. Fill your best sellers first, then everything you advertise,
+then the rest. In our census of 100 WooCommerce stores, only 4 of the 76 product pages we could read had a
+GTIN or MPN, so even a partly filled catalogue puts you ahead of most stores.</p>
+<p>If a product genuinely has no GTIN (handmade, made to order, or your own brand with no barcodes), give it a
+<strong>brand</strong> and keep your SKU as the manufacturer part number instead. Our guide on
+<a href="/woocommerce/guides/add-brand-woocommerce-products.html">adding a brand to WooCommerce products</a> covers that.</p>
+<h2>Check the whole catalogue</h2>
+<p>Checking one page by hand is easy. Checking every product is what the free plugin does: it counts how many
+products are missing a GTIN or MPN, a brand, an image or a real description, and lists them in order of how
+much each fix is worth.</p></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Shopping Readiness plugin gives you a 0–100 score and a fix list, and runs entirely on your site.</p><p><a class="btn primary" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a></footer>
+</div></body></html>
