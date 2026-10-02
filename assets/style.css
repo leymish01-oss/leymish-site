@@ -71,3 +71,12 @@ footer { padding: 36px 0 60px; color: var(--muted); font-size: 14px; border-top:
   .diagram .diagram-wide { display: none; }
   .diagram .diagram-narrow { display: block; }
 }
+
+/* Pricing table (P-015) */
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 14px; margin: 18px 0; align-items: stretch; }
+.plan { display: flex; flex-direction: column; position: relative; }
+.plan .price { font-size: 36px; }
+.plan ul.check { flex: 1; }
+.plan.rec { border: 2px solid var(--accent); }
+.plan .badge { position: absolute; top: -11px; right: 14px; background: var(--accent); color: var(--accent-ink); font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
+.plan-faq { margin-top: 10px; }
