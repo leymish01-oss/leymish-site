@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Is your WooCommerce store visible to ChatGPT? Free AI shopping readiness audit</title>
-<meta name="description" content="Shopify stores are in ChatGPT shopping by default; WooCommerce stores aren't. A free WooCommerce plugin that scores how well AI shopping agents can read your products and tells you what to fix first.">
+<meta name="description" content="Only 4 of 76 WooCommerce product pages in our census had a GTIN or MPN AI agents can match. Free check and free plugin: firewall or CDN blocks on AI crawlers, Store API errors, product data gaps.">
 <link rel="canonical" href="https://www.leymish.com/woocommerce/">
 <meta property="og:title" content="Is your WooCommerce store visible to ChatGPT?">
 <meta property="og:description" content="A free WooCommerce plugin: a 0–100 AI shopping readiness score and a prioritised fix list. Runs entirely on your site.">
@@ -25,16 +25,16 @@
   </header>
 
   <div class="hero">
-    <div class="eyebrow">Free WooCommerce plugin · runs on your site</div>
+    <div class="eyebrow">Free outside check · free WooCommerce plugin</div>
     <h1>Is your WooCommerce store visible to ChatGPT?</h1>
-    <p class="lede">Since March 2026, Shopify stores show up in ChatGPT, Copilot, Gemini and Google's AI Mode by default. WooCommerce stores don't. Here's how a WooCommerce store catches up: find out exactly what stops AI shopping agents reading your products, and fix it in order of impact.</p>
+    <p class="lede">In our <a href="/blog/woocommerce-ai-readiness-census.html">census of 100 WooCommerce stores</a>, only 4 of 76 product pages had a GTIN or MPN that AI shopping agents can match. The free check looks at your store from the outside, the way an AI tool does: robots.txt, product data, whether the Store API answers with clean data, llms.txt and "coming soon" mode.</p>
     <div class="cta">
-      <a class="btn primary" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Download the free plugin</a>
-      <a class="btn" href="/woocommerce/#download">See plans</a>
+      <a class="btn primary" href="/woocommerce/check/">Check your store free</a>
+      <a class="btn" href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness/releases/latest/download/leymish-ai-shopping-readiness.zip">Download the free plugin</a>
     </div>
-    <p class="small">Not ready to install anything? <a href="/woocommerce/check/">Run the free online check</a>: 5 outside checks on your store in about 10 seconds.</p>
-    <p class="small"><strong>Free, no account, and it sends nothing anywhere.</strong> In our <a href="/woocommerce/census.html">census of 100 WooCommerce stores</a>, only 4 of 76 product pages had a GTIN or MPN that AI agents can match. On our partner store, fixing the list took the score <a href="/woocommerce/case-study-mishbio.html">from 77 to 96</a>.</p>
-    <p class="small">Version 1.0.4 · WordPress 6.4+ · WooCommerce 8+ · PHP 7.4+ · GPL · <a href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness">source on GitHub</a> · Submitted to the WordPress.org plugin directory (in review)</p>
+    <p class="small">See your own store's results in about 10 seconds: nothing to install, no account.</p>
+    <p class="small">The free plugin goes further from inside WordPress. It requests a product page as each AI crawler and compares the result with a normal browser, to catch firewall, CDN and security-plugin blocks that robots.txt doesn't show. If you want help with the fixes, Pro AI drafts product data (attributes, descriptions, alt text) for you to approve one by one, and it never invents GTINs. On our partner store, working through the fix list took the score <a href="/woocommerce/case-study-mishbio.html">from 77 to 96</a>.</p>
+    <p class="small">Version 1.0.4 · WordPress 6.4+ · WooCommerce 8+ · PHP 7.4+ · GPL · <a href="https://github.com/leymish01-oss/leymish-ai-shopping-readiness">source on GitHub</a> · Submitted to the WordPress.org plugin directory (in review). The free plugin sends nothing anywhere and keeps working without Pro.</p>
   </div>
 
   <section id="shot">
@@ -62,6 +62,26 @@
       <div class="card"><div class="role">5 points</div><h3>Store is live</h3><p>Not stuck in WooCommerce's "coming soon" mode, and not set to discourage search engines. Either hides every product.</p></div>
       <div class="card"><div class="role">14 points</div><h3>Commerce endpoints</h3><p>Store API reachable, guest checkout on, llms.txt present, and a UCP profile at /.well-known/ucp.</p></div>
     </div>
+  </section>
+
+  <section id="differ">
+    <h2>How we differ from similar plugins</h2>
+    <p class="lede">Several free plugins generate llms.txt, add product JSON-LD or give you a score, and some of them do it well. Here's what each one's own page lists for the checks that catch the problems a score can miss.</p>
+    <div class="compare-wrap">
+    <table class="compare">
+      <thead><tr><th></th><th>LeyMish (this plugin)</th><th><a href="https://wordpress.org/plugins/codeatoz-ai-readiness-woocommerce/">CodeAtoZ AI Readiness</a></th><th><a href="https://wordpress.org/plugins/ai-store-signals-for-woocommerce/">AI Store Signals</a></th><th><a href="https://github.com/athenalion007/shop2llm">shop2llm</a></th><th><a href="https://www.webtoffee.com/product/woocommerce-product-feed/">WebToffee Product Feed</a></th></tr></thead>
+      <tbody>
+        <tr><th>Free check without installing</th><td>Yes, 5 checks from outside</td><td>Not listed</td><td>Not listed</td><td>Not listed</td><td>Not listed</td></tr>
+        <tr><th>Requests pages as AI crawlers to catch firewall/CDN blocks</th><td>Yes, in the free plugin</td><td>Not listed</td><td>Listed ("AI Bot Blind-Spot Scanner")</td><td>Not listed</td><td>Not listed</td></tr>
+        <tr><th>Store API reachable, no BOM in front of the data</th><td>Yes, in the free plugin and the free check</td><td>Not listed</td><td>Not listed</td><td>Not listed</td><td>Not listed</td></tr>
+        <tr><th>AI product-data fixes you approve</th><td>Pro AI; never invents GTINs</td><td>Not listed</td><td>Not listed (Pro add-on lists AI-generated FAQs)</td><td>Not listed</td><td>Not listed</td></tr>
+        <tr><th>Also listed</th><td>0–100 score, CSV of product gaps</td><td>llms.txt, JSON-LD, readiness score</td><td>llms.txt, schema audit, 0–100 score</td><td>llms.txt, Product JSON-LD</td><td>OpenAI Agentic Commerce feed (premium)</td></tr>
+        <tr><th>Price on its page</th><td>Free; Pro $29 once; Pro AI $12 a month</td><td>Free; no paid tier listed</td><td>Free; Pro add-on, price not listed</td><td>Free (GPL); Pro mentioned, price not listed</td><td>From $89 a year</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="small">Checked on each product's own page on 5 October 2026. "Not listed" means the page doesn't mention it, not that the product can't do it.</p>
+    <div class="cta"><a class="btn primary" href="/woocommerce/check/">Check your store free</a></div>
   </section>
 
   <section id="how">

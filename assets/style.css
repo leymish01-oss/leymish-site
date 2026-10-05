@@ -80,3 +80,12 @@ footer { padding: 36px 0 60px; color: var(--muted); font-size: 14px; border-top:
 .plan.rec { border: 2px solid var(--accent); }
 .plan .badge { position: absolute; top: -11px; right: 14px; background: var(--accent); color: var(--accent-ink); font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 999px; }
 .plan-faq { margin-top: 10px; }
+
+/* Comparison table (T-037) */
+.compare-wrap { overflow-x: auto; margin: 18px 0 10px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.compare { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 760px; }
+.compare th, .compare td { padding: 10px 12px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.compare thead th { font-size: 13px; }
+.compare tbody th { font-weight: 600; color: var(--muted); }
+.compare td:nth-child(2), .compare thead th:nth-child(2) { background: var(--accent-soft); }
+.compare tbody tr:last-child th, .compare tbody tr:last-child td { border-bottom: 0; }
