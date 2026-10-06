@@ -38,7 +38,7 @@ if (/[?&]d=/.test(location.search)) document.write('<meta name="robots" content=
   .err { color: var(--warn); }
   .share { word-break: break-all; }
 </style>
-<script>(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
 <body>
 <div class="wrap">
   <header class="top">
@@ -124,6 +124,9 @@ if (/[?&]d=/.test(location.search)) document.write('<meta name="robots" content=
         if (!d.ok) { out.innerHTML = "<p class='err'>" + esc(d.error || "Something went wrong. Please try again.") + "</p>"; return; }
         render(d);
         if (window.gtag) gtag("event", "check_run", { score: d.score, cached: d.cached ? 1 : 0 });
+        if (window.lsEmailVariant && navigator.sendBeacon) {  // first-party count of checks from each email variant
+          try { navigator.sendBeacon("https://leymish-ai.leymish.workers.dev/v1/count", JSON.stringify({ e: "email_check_" + window.lsEmailVariant })); } catch (e) { /* not important */ }
+        }
         if (history.replaceState) history.replaceState(null, "", "?d=" + encodeURIComponent(d.domain));
       })
       .catch(function () { out.innerHTML = "<p class='err'>We couldn't reach the checker. Please try again in a minute.</p>"; })
