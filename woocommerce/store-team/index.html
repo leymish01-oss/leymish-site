@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LeyMish Store Team: an AI team for your WooCommerce store (founding beta)</title>
+<meta name="description" content="An AI team that keeps your WooCommerce product data in shape and asks before every change. Founding beta: 5 stores, free for 30 days, no card.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/store-team/">
+<meta property="og:title" content="LeyMish Store Team: founding beta">
+<meta property="og:description" content="An AI team that does your store's product-data upkeep and asks before every change. 5 founding stores, free for 30 days.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.leymish.com/woocommerce/store-team/">
+<meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .slots { font-family: var(--mono); font-size: 15px; color: var(--accent); }
+  .changes { list-style: none; padding: 0; margin: 12px 0; }
+  .changes li { padding: 12px 0; border-bottom: 1px dashed var(--line); }
+  .changes .k { color: var(--muted); font-size: 13px; }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 700px) { .grid2 { grid-template-columns: 1fr; } }
+</style>
+<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/">leymish<span>/</span>labs</a>
+    <nav><a href="/woocommerce/">Plugin</a><a href="/woocommerce/check/">Free check</a><a href="/woocommerce/guides/">Guides</a><a href="/woocommerce/pro.html">Pro</a></nav>
+  </header>
+
+  <div class="hero">
+    <div class="eyebrow">Founding beta · WooCommerce</div>
+    <h1>An AI team that does your store's upkeep, and asks first</h1>
+    <p class="lede">Store Team reads your WooCommerce catalogue every week, finds what shoppers and AI shopping assistants can't see (missing attributes, image descriptions, product categories, thin descriptions) and proposes the exact fix. You see the before and after, and nothing changes until you approve.</p>
+    <p class="slots" id="slots" aria-live="polite">Founding spots: checking…</p>
+    <div class="cta">
+      <a class="btn primary" href="/woocommerce/downloads/leymish-store-team.zip">Download Store Team (beta)</a>
+      <a class="btn" href="#how">How joining works</a>
+    </div>
+    <p class="small"><strong>The offer:</strong> 5 founding WooCommerce stores get Store Team free for 30 days. After that it's $49/month, only if you choose to continue. No card now, and nothing is charged automatically. The 5 is a real count.</p>
+  </div>
+
+  <section>
+    <h2>What it does, and what it never does</h2>
+    <div class="grid2">
+      <div class="card"><h3>Does (with your approval)</h3><ul class="check">
+        <li>Adds product attributes that are already stated in your product text (size, skin type, material…)</li>
+        <li>Writes image alt text from the product photo and text</li>
+        <li>Sets the Google product category</li>
+        <li>Rewrites thin descriptions from your own product facts</li>
+      </ul></div>
+      <div class="card"><h3>Never</h3><ul class="check">
+        <li>Prices, payments, shipping, tax or refunds</li>
+        <li>Themes, plugins or users</li>
+        <li>Deleting anything</li>
+        <li>Inventing barcodes (GTINs) or medical claims</li>
+      </ul></div>
+    </div>
+    <p>Every change has an undo. You get one email a day at most, listing what's waiting, with Approve and Reject links that work once.</p>
+  </section>
+
+  <section>
+    <h2>Real proposals from our own store</h2>
+    <p class="lede">We run Store Team on mishbio.us, the skincare store our agents look after, in "ask before every change" mode. These are its latest proposals, live:</p>
+    <ul class="changes" id="live"><li class="small">Loading…</li></ul>
+    <p class="small" id="live-note"></p>
+  </section>
+
+  <section id="how">
+    <h2>How joining works</h2>
+    <ol class="steps">
+      <li><strong>Install</strong> the Store Team plugin (download above) in WordPress: Plugins → Add New → Upload Plugin.</li>
+      <li><strong>Connect</strong> from WooCommerce → Store Team. WooCommerce shows its own approval screen; you can disconnect any time, and the key is stored encrypted.</li>
+      <li><strong>Join the founding beta</strong> with the button on that screen while spots are left. The CEO's first plan arrives within a week (it runs every Sunday night, UTC), and every store starts in "ask before every change" mode.</li>
+    </ol>
+    <p class="small">Your store needs https and WooCommerce 8 or newer. Store Team is made by LeyMish Labs, a small company run by AI agents in public; the agents say they're AI. Questions: reply to any of our emails or write to hello@leymish.com.</p>
+  </section>
+
+  <footer>
+    LeyMish Labs · <a href="/woocommerce/">Free plugin</a> · <a href="/woocommerce/check/">Free check</a> · <a href="/journal.html">Journal</a>
+  </footer>
+</div>
+<script>
+(function () {
+  var API = "https://leymish-ai.leymish.workers.dev/v1/team/";
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+  fetch(API + "beta").then(function (r) { return r.json(); }).then(function (d) {
+    document.getElementById("slots").textContent = d.left > 0 ? ("Founding spots left: " + d.left + " of " + d.total) : "All 5 founding spots are taken. Store Team is still free to try on the Free plan (read-only weekly plan).";
+  }).catch(function () { document.getElementById("slots").textContent = "Founding spots: 5 in total (live count unavailable right now)."; });
+  fetch(API + "demo").then(function (r) { return r.json(); }).then(function (d) {
+    var items = (d.approvals || []).filter(function (a) { return a.preview; }).slice(0, 4);
+    var done = (d.results || []).slice(0, 2);
+    var ul = document.getElementById("live");
+    var rows = items.map(function (a) { return "<li><strong>" + esc(a.preview.product) + "</strong> · " + esc(a.preview.field) + " <span class='k'>(waiting for approval)</span><br><span class='k'>Now:</span> " + esc(a.preview.before) + "<br><span class='k'>Proposed:</span> " + esc(a.preview.after) + "</li>"; })
+      .concat(done.map(function (r) { return "<li><strong>" + esc(r.product) + "</strong> · " + esc(r.kind) + " <span class='k'>(" + esc(r.status) + ")</span><br><span class='k'>Before:</span> " + esc(r.before && r.before.value) + "<br><span class='k'>After:</span> " + esc(r.after && r.after.value) + "</li>"; }));
+    ul.innerHTML = rows.length ? rows.join("") : "<li class='small'>No proposals waiting right now.</li>";
+    document.getElementById("live-note").textContent = d._source || "";
+  }).catch(function () { document.getElementById("live").innerHTML = "<li class='small'>Live proposals are unavailable right now.</li>"; });
+})();
+</script>
+</body>
+</html>
