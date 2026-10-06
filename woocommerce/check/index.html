@@ -37,6 +37,10 @@ if (/[?&]d=/.test(location.search)) document.write('<meta name="robots" content=
   .rows .fix { color: var(--ink); }
   .err { color: var(--warn); }
   .share { word-break: break-all; }
+  .report { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--line); }
+  .report h3 { margin: 0 0 8px; font-size: 16px; }
+  .report input[type=email] { padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; max-width: 100%; width: 320px; }
+  .report label { font-size: 14px; }
 </style>
 <script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
 <body>
@@ -75,6 +79,7 @@ if (/[?&]d=/.test(location.search)) document.write('<meta name="robots" content=
   <section id="privacy">
     <h2>What we keep</h2>
     <p>Only a one-way hash of the domain, the time and the score, so we can count how many checks run. We keep the full result for 6 hours so a shared link loads fast, then delete it. We don't keep your address, your page content or your IP address (rate limits use a one-way hash that's dropped after an hour).</p>
+    <p>If you ask us to email you the report, we keep your email address and the store address, and the date you agreed, to send it (and occasional news, as the box says), apart from the check counts. Every email has an unsubscribe link; unsubscribing deletes what we kept for that address.</p>
   </section>
 
   <section id="guides">
@@ -95,6 +100,8 @@ if (/[?&]d=/.test(location.search)) document.write('<meta name="robots" content=
 (function () {
   var API = "https://leymish-ai.leymish.workers.dev/v1/check";
   var PLUGIN = "https://wordpress.org/plugins/leymish-ai-shopping-readiness/";
+  var REPORT_API = "https://leymish-ai.leymish.workers.dev/v1/check/report";
+  var CONSENT = "Email me the full report, and occasional news about LeyMish tools for WooCommerce. I can unsubscribe any time.";
   var form = document.getElementById("form"), input = document.getElementById("d"), btn = document.getElementById("go"),
       out = document.getElementById("result");
   function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
@@ -113,7 +120,23 @@ if (/[?&]d=/.test(location.search)) document.write('<meta name="robots" content=
       "<ul class='rows'>" + rows + "</ul>" +
       "<p><a class='btn primary' href='" + esc(PLUGIN) + "'>Get the full 10-check audit inside WordPress (free plugin)</a> " +
       "<a class='btn' href='/woocommerce/pro.html'>Fix product data with Pro AI</a></p>" +
-      "<p class='small'>Share this result: <a class='share' href='" + esc(link) + "'>" + esc(link) + "</a> (the link runs the check again).</p></div>";
+      "<p class='small'>Share this result: <a class='share' href='" + esc(link) + "'>" + esc(link) + "</a> (the link runs the check again).</p>" +
+      "<form class='report' id='report' novalidate><h3>Email me the full report</h3>" +
+      "<label for='rep-email'>Your email</label> <input id='rep-email' type='email' autocomplete='email' required> " +
+      "<p><label><input id='rep-ok' type='checkbox'> " + esc(CONSENT) + "</label></p>" +
+      "<button class='btn' type='submit'>Email me the report</button> <span id='rep-msg' role='status' class='small'></span></form></div>";
+    var f = document.getElementById("report");
+    f.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var msg = document.getElementById("rep-msg");
+      if (!document.getElementById("rep-ok").checked) { msg.textContent = "Tick the box to agree first."; return; }
+      msg.textContent = "Sending…";
+      fetch(REPORT_API, { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ domain: d.domain, email: document.getElementById("rep-email").value, consent: true }) })
+        .then(function (r) { return r.json(); })
+        .then(function (r) { msg.textContent = r.ok ? (r.sent ? "Sent. Check your inbox." : (r.note || "Done.")) : (r.error || "Couldn't send it."); })
+        .catch(function () { msg.textContent = "Couldn't reach the server. Try again in a minute."; });
+    });
   }
   function run(domain) {
     btn.disabled = true; btn.textContent = "Checking…";
