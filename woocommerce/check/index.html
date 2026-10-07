@@ -42,7 +42,7 @@ if (/[?&]d=/.test(location.search)) document.write('<meta name="robots" content=
   .report input[type=email] { padding: 10px 12px; border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; max-width: 100%; width: 320px; }
   .report label { font-size: 14px; }
 </style>
-<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
 <body>
 <div class="wrap">
   <header class="top">
@@ -59,7 +59,7 @@ if (/[?&]d=/.test(location.search)) document.write('<meta name="robots" content=
       <input id="d" name="d" type="text" inputmode="url" autocomplete="url" placeholder="yourstore.com" required>
       <button class="btn primary" id="go" type="submit">Check my store</button>
     </form>
-    <p class="small">We only look at public pages, at most 5 of them, as <code>LeyMishCheck</code>, and we follow your robots.txt. <a href="#privacy">What we keep</a>.</p>
+    <p class="small">We only look at public pages, at most 6 of them, as <code>LeyMishCheck</code>, and we follow your robots.txt. <a href="#privacy">What we keep</a>.</p>
     <div id="result" aria-live="polite"></div>
   </div>
 
@@ -72,6 +72,7 @@ if (/[?&]d=/.test(location.search)) document.write('<meta name="robots" content=
       <li><strong>llms.txt:</strong> whether your store has a short file telling AI tools what's on the site.</li>
       <li><strong>Open for visitors:</strong> whether the store is in "coming soon" mode, which hides every product.</li>
     </ul>
+    <p><strong>Also shown, not scored: AI checkout.</strong> We look for a Universal Commerce Protocol profile at <code>/.well-known/ucp</code> (one extra request). ChatGPT checkout (the Agentic Commerce Protocol) runs through your payment provider and is authenticated, so we never send requests to your checkout; <a href="/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html">our guide explains both</a>.</p>
     <p>The free plugin runs 10 checks from inside WordPress, including every product rather than one, and tells you the fix for each in order of impact.</p>
     <p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Get the full 10-check audit inside WordPress (free plugin)</a></p>
   </section>
@@ -115,9 +116,17 @@ if (/[?&]d=/.test(location.search)) document.write('<meta name="robots" content=
         (c.detail ? " (" + esc(c.detail) + ")" : "") + "</p>" + (c.fix ? "<p class='fix'>Fix: " + esc(c.fix) + "</p>" : "") + "</li>";
     }).join("");
     var link = location.origin + location.pathname + "?d=" + encodeURIComponent(d.domain);
+    var ac = d.ai_checkout, aiRows = "";
+    if (ac && ac.ucp && ac.acp) {  // information only: not part of the score (older cached results don't have it)
+      aiRows = "<h3>AI checkout (not scored)</h3><ul class='rows'>" +
+        "<li class='" + (ac.ucp.valid ? "ok" : "na") + "'><strong>UCP business profile</strong><p>" + esc(ac.ucp.plain) +
+        " <span class='small'>(Universal Commerce Protocol, spec of " + esc(ac.ucp.spec) + ")</span></p></li>" +
+        "<li class='na'><strong>ChatGPT checkout (ACP)</strong><p>" + esc(ac.acp.plain) +
+        " <a href='/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html'>What to do about it</a>.</p></li></ul>";
+    }
     out.innerHTML = "<div class='card'><div class='small'>" + esc(d.domain) + (d.cached ? " · checked in the last 6 hours" : "") + "</div>" +
       "<div class='score'>" + d.score + "<small> / 5</small></div><p>" + esc(VERDICT[d.score]) + "</p>" +
-      "<ul class='rows'>" + rows + "</ul>" +
+      "<ul class='rows'>" + rows + "</ul>" + aiRows +
       "<p><a class='btn primary' href='" + esc(PLUGIN) + "'>Get the full 10-check audit inside WordPress (free plugin)</a> " +
       "<a class='btn' href='/woocommerce/pro.html'>Fix product data with Pro AI</a></p>" +
       "<p class='small'>Share this result: <a class='share' href='" + esc(link) + "'>" + esc(link) + "</a> (the link runs the check again).</p>" +

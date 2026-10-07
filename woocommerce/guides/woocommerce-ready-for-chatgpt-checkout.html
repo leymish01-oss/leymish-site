@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Is your WooCommerce store ready for ChatGPT checkout? — LeyMish Labs</title><meta name="description" content="ChatGPT can now complete a purchase without the shopper leaving the chat. Two open protocols decide whether your store is reachable that way — ACP from OpenAI and Stripe, and UCP from Google and others. What each one actually requires, what WooCommerce gives you today, and the four things you can check this afternoon.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html"><meta property="og:title" content="Is your WooCommerce store ready for ChatGPT checkout?"><meta property="og:description" content="ChatGPT can now complete a purchase without the shopper leaving the chat. Two open protocols decide whether your store is reachable that way — ACP from OpenAI and Stripe, and UCP from Google and others. What each one actually requires, what WooCommerce gives you today, and the four things you can check this afternoon."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "HowTo", "name": "Is your WooCommerce store ready for ChatGPT checkout?", "description": "ChatGPT can now complete a purchase without the shopper leaving the chat. Two open protocols decide whether your store is reachable that way — ACP from OpenAI and Stripe, and UCP from Google and others. What each one actually requires, what WooCommerce gives you today, and the four things you can check this afternoon.", "url": "https://www.leymish.com/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html", "datePublished": "2026-10-07", "author": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "publisher": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "step": [{"@type": "HowToStep", "position": 1, "name": "Understand which protocol does what"}, {"@type": "HowToStep", "position": 2, "name": "Check what your store already publishes"}, {"@type": "HowToStep", "position": 3, "name": "Fix the product data first"}, {"@type": "HowToStep", "position": 4, "name": "Add a UCP profile if your checkout supports it"}, {"@type": "HowToStep", "position": 5, "name": "Re-check and watch the spec versions"}]}</script><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/woocommerce/#checks">What it checks</a><a href="/woocommerce/check/">Free check</a><a href="/woocommerce/guides/">Guides</a><a href="/woocommerce/pro.html">Pro</a><a href="/woocommerce/store-team/">Store Team (beta)</a><a class="hide-sm" href="/blog/">Blog</a><a href="/claude-code/">Claude Code</a><a href="/journal.html">Journal</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-10-07 · <a href='/woocommerce/guides/'>Guides</a></p><h1>Is your WooCommerce store ready for ChatGPT checkout?</h1><p>A shopper asks ChatGPT for a linen apron and buys one without ever opening a browser tab. That flow is real
+now, and it runs on open standards rather than a deal with any one shop. Which means the question "is my store
+ready?" has an answer you can check, instead of an answer you have to wait for.</p>
+<p>There are two protocols, they do different jobs, and almost every confused article about this conflates them.</p>
+<h2>ACP and UCP are not competitors in the way people think</h2>
+<p><strong>ACP — the Agentic Commerce Protocol.</strong> Maintained by OpenAI and Stripe, Apache-2.0, currently in beta. This
+is the one behind ChatGPT's checkout. It is a REST API that <em>your store</em> exposes: ChatGPT calls
+<code>POST /checkout_sessions</code> to start a cart, updates it, and calls <code>/complete</code> to turn it into an order. The
+important part, and the part most people miss: <strong>you stay the merchant of record.</strong> The order lands in your
+system, the payment runs on your payment provider's rails, and tax and compliance stay yours. OpenAI is not
+becoming the shop.</p>
+<p><strong>UCP — the Universal Commerce Protocol.</strong> Apache-2.0, at ucp.dev. This one is about <em>discovery</em>. Your store
+publishes a JSON profile at <code>/.well-known/ucp</code> saying what it can do — which checkout capabilities, which
+payment handlers, which protocol version — and any agent platform can read it and configure itself. No
+integration call, no onboarding form.</p>
+<p>A useful way to hold them apart: <strong>UCP is how an agent finds out what your store can do. ACP is how ChatGPT
+actually puts an order through it.</strong></p>
+<h2>What WooCommerce gives you today, honestly</h2>
+<p>Neither protocol is in WooCommerce core. There is no setting to switch on.</p>
+<ul>
+<li><strong>ACP</strong> comes from your payment provider. Stripe co-maintains the spec, so if you take payments through
+  Stripe that is the path to watch. Check your provider's agentic-commerce or Instant Checkout documentation
+  rather than waiting for a WooCommerce release.</li>
+<li><strong>UCP</strong> needs something to publish the profile and answer the endpoints it advertises. Today that means a
+  checkout integration that implements UCP. Very few WooCommerce stores have one.</li>
+</ul>
+<p>If an article tells you to "enable ACP in WooCommerce settings", it is describing a screen that does not
+exist.</p>
+<h2>So what is actually worth doing this week</h2>
+<p>Here is the part that matters, and it is slightly annoying: <strong>the protocol work is not where your risk is.</strong>
+Both ACP and UCP assume an agent has already decided your product is the right one. That decision happens
+earlier, from your product pages, and it is where almost every store fails.</p>
+<p>When we checked 100 WooCommerce stores from the WooCommerce showcase in September, 55 of the 76 reachable
+product pages had Product structured data — a good number. <strong>Four of them carried a GTIN or an MPN.</strong> An agent
+that cannot identify your product will not get as far as your checkout, however good your checkout is.</p>
+<p>So, in order:</p>
+<h3>1. Give every product an identifier and a brand</h3>
+<p>A SKU is an internal code and means nothing outside your business. The identifiers that travel are the GTIN
+(the barcode, from the manufacturer or GS1) and the MPN (the manufacturer's part number, which needs a <code>brand</code>
+alongside it). WooCommerce 9.2 added GTIN, UPC, EAN and ISBN as a built-in field on the product's Inventory
+tab.</p>
+<p>Do not invent barcodes. A fabricated GTIN either collides with a real product or fails validation, and it gets
+the product disapproved in Google Merchant Center. An empty GTIN field is a truthful statement that a product
+has no barcode; a wrong one is a problem you get to find twice.</p>
+<h3>2. Check that the data reaches your page's structured data</h3>
+<p>Filling the field in is half of it. Open a product page, view source, find the <code>application/ld+json</code> block and
+look for <code>gtin</code>, <code>mpn</code> and <code>brand</code>. Whether they appear depends on what generates that schema — your theme, an
+SEO plugin, or WooCommerce itself — and having all three is the usual reason a page ends up with two <code>Product</code>
+blocks that contradict each other.</p>
+<h3>3. Check that agents can reach you at all</h3>
+<p>Three things quietly block the whole thing:</p>
+<ul>
+<li><strong>robots.txt.</strong> <code>GPTBot</code> is how OpenAI crawls for training and discovery; <code>OAI-SearchBot</code> and <code>ChatGPT-User</code>
+  are how ChatGPT fetches pages for a user. Blocking the first is a reasonable choice; blocking the other two
+  makes you invisible in the answer.</li>
+<li><strong>Your CDN or firewall</strong>, which can rate-limit a bot to a 429 while every browser sails through. This is
+  separate from robots.txt and does not show up in WordPress at all.</li>
+<li><strong>A byte-order mark.</strong> If a theme or plugin file was saved as "UTF-8 with BOM", three invisible bytes go out
+  before every response, including the WooCommerce Store API's JSON. Browsers ignore them. Strict JSON parsers
+  — which is to say, every machine reading your store — reject the response. We have seen this cost a real
+  store a whole check.</li>
+</ul>
+<h3>4. Then, and only then, look at a UCP profile</h3>
+<p>If your checkout integration supports UCP, the profile at <code>/.well-known/ucp</code> must be JSON whose <code>ucp</code> member
+carries three things: <code>version</code>, <code>services</code> and <code>payment_handlers</code>. The last two are <strong>required even when they
+are empty objects</strong> — that trips people up. <code>capabilities</code> is optional, and capability names use reverse-domain
+form like <code>dev.ucp.shopping.checkout</code>. Service endpoints must be <code>https</code> and should not end in a slash.</p>
+<p>If you support older protocol versions, declare <code>supported_versions</code> mapping each one to its own complete
+profile URL, so a platform can pick a version you both speak.</p>
+<h2>Pin the version you checked against</h2>
+<p>Both specs move. ACP has shipped dated releases through 2026 and is still marked beta; UCP versions its
+protocol by date too. A "we're ACP-ready" claim with no date on it is not worth much in six months. When you
+check, write down which version you checked against — our free plugin names the spec version in the audit for
+exactly this reason.</p>
+<h2>The short answer</h2>
+<p>Your store is "ready for ChatGPT checkout" when:</p>
+<ul>
+<li>every product has a brand and a real identifier, and those reach the page's structured data;</li>
+<li><code>OAI-SearchBot</code> and <code>ChatGPT-User</code> are not blocked in robots.txt or by your CDN;</li>
+<li>the Store API returns clean JSON with no BOM;</li>
+<li>and your payment provider supports ACP, which is the one part you cannot do yourself.</li>
+</ul>
+<p>Three of those four are yours today. The fourth is worth one email to your provider.</p>
+<div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker runs 5 outside checks on your store, including this one, and gives you a score out of 5.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div>
+<p>The free plugin runs all of these from inside WordPress, including the UCP profile check and an
+information-only note on ACP, and names the specification version it judged you against.</p></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Shopping Readiness plugin gives you a 0–100 score and a fix list, and runs entirely on your site.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
+</div></body></html>

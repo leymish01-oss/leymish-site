@@ -1,0 +1,20 @@
+{
+  "$schema": "https://playground.wordpress.net/blueprint-schema.json",
+  "meta": {
+    "title": "LeyMish AI Shopping Readiness: a sample store with real gaps",
+    "description": "A throwaway WooCommerce store in your browser, seeded with six products that have the problems the audit actually finds: no GTIN, no brand, missing alt text, a thin description. Press Run the audit and see a score that isn't 100.",
+    "author": "leymish"
+  },
+  "landingPage": "/wp-admin/admin.php?page=lasr-ai-readiness",
+  "preferredVersions": { "php": "8.3", "wp": "latest" },
+  "features": { "networking": true },
+  "steps": [
+    { "step": "login", "username": "admin", "password": "password" },
+    { "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "woocommerce" }, "options": { "activate": true } },
+    { "step": "installPlugin", "pluginData": { "resource": "wordpress.org/plugins", "slug": "leymish-ai-shopping-readiness" }, "options": { "activate": true } },
+    {
+      "step": "runPHP",
+      "code": "<?php require '/wordpress/wp-load.php'; update_option('woocommerce_onboarding_profile', array('skipped' => true)); update_option('woocommerce_coming_soon', 'no'); $rows = array(array('Washed linen apron', '29', 'Washed linen apron, one size, navy. Two front pockets.'), array('Stoneware mug', '18', 'Hand-thrown stoneware mug, 300 ml, speckled glaze.'), array('Beeswax candle', '24', 'Pure beeswax candle in a reusable tin, 40 hours.'), array('Cotton tea towel', '12', 'Waffle-weave cotton tea towel, 50 x 70 cm.'), array('Olive wood board', '45', 'Olive wood serving board, 30 cm, oiled finish.'), array('Ceramic jug', '38', 'Small jug.')); foreach ($rows as $r) { $p = new WC_Product_Simple(); $p->set_name($r[0]); $p->set_regular_price($r[1]); $p->set_description($r[2]); $p->set_status('publish'); $p->save(); } "
+    }
+  ]
+}

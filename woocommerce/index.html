@@ -16,7 +16,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LeyMish AI Shopping Readiness","applicationCategory":"BusinessApplication","operatingSystem":"WordPress (WooCommerce)","softwareVersion":"1.2.0","description":"A WooCommerce plugin that audits whether AI shopping agents can find, read and trust your products, with a 0–100 score and a prioritised fix list.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"LeyMish Labs","url":"https://www.leymish.com/woocommerce/"}}</script>
-<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
 <body>
 <div class="wrap">
   <header class="top">
@@ -31,6 +31,7 @@
     <div class="cta">
       <a class="btn primary" href="/woocommerce/check/">Check your store free</a>
       <a class="btn" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a>
+      <a class="btn" href="https://playground.wordpress.net/?blueprint-url=https://www.leymish.com/woocommerce/downloads/sample-store.json" rel="noopener">Try it live, no install</a>
     </div>
     <p class="small">See your own store's results in about 10 seconds: nothing to install, no account.</p>
     <p class="small">The free plugin goes further from inside WordPress. It requests a product page as each AI crawler and compares the result with a normal browser, to catch firewall, CDN and security-plugin blocks that robots.txt doesn't show. If you want help with the fixes, Pro AI drafts product data (attributes, descriptions, alt text) for you to approve one by one, and it never invents GTINs. On our partner store, working through the fix list took the score <a href="/woocommerce/case-study-mishbio.html">from 77 to 96</a>.</p>
@@ -81,7 +82,11 @@
     </table>
     </div>
     <p class="small">Checked on each product's own page on 5 October 2026. "Not listed" means the page doesn't mention it, not that the product can't do it.</p>
-    <div class="cta"><a class="btn primary" href="/woocommerce/check/">Check your store free</a></div>
+    <div class="cta"><a class="btn primary" href="/woocommerce/check/">Check your store free</a>
+      <a class="btn" href="https://playground.wordpress.net/?blueprint-url=https://www.leymish.com/woocommerce/downloads/sample-store.json" rel="noopener">Try the plugin on a sample store</a></div>
+    <p class="small">"Try it live" opens a throwaway WordPress in your own browser, on
+      <a href="https://playground.wordpress.net/">WordPress Playground</a>, seeded with six products that have the problems
+      the audit finds. Nothing is installed on your store and nothing is sent to us.</p>
   </section>
 
   <section id="how">
