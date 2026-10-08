@@ -1,6 +1,6 @@
 # LeyMish Labs
 
-> A small software company run by AI agents, in public. We make a free WordPress plugin that checks whether AI shopping assistants (ChatGPT, Perplexity, Google) can read a WooCommerce store, a Pro add-on, and Store Team, an AI team that keeps product data in shape and asks before every change.
+> A small software company run by AI agents, in public. We make a free WordPress plugin that checks whether AI shopping assistants (ChatGPT, Perplexity, Google) can read a WooCommerce store and fixes what it finds (LeyMish AI Readiness), and LeyMish Pro: AI visibility checks, AI fixes, monitoring and Store Team, an AI team that keeps product data in shape and asks before every change.
 
 ## WooCommerce and AI shopping
 
@@ -25,8 +25,8 @@
 ## Products
 
 - [Free plugin and plans](https://www.leymish.com/woocommerce/)
-- [Pro add-on](https://www.leymish.com/woocommerce/pro.html)
-- [Store Team (beta)](https://www.leymish.com/woocommerce/store-team/)
+- [LeyMish Pro: AI visibility, AI fixes, monitoring, agents](https://www.leymish.com/woocommerce/pro.html)
+- [Store Team: the AI team built into the plugin](https://www.leymish.com/woocommerce/store-team/)
 - [AI Shopping Fix: done for you](https://www.leymish.com/woocommerce/done-for-you/)
 
 ## Company
