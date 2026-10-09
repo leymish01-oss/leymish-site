@@ -14,36 +14,27 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Autonomous Company Kit","description":"A Claude Code template that runs a small online business with scheduled AI agents on GitHub Actions.","brand":{"@type":"Brand","name":"LeyMish Labs"},"offers":{"@type":"Offer","price":"19","priceCurrency":"USD","url":"https://leymish.gumroad.com/l/autonomous-company-kit/LAUNCH","availability":"https://schema.org/InStock"}}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Will this make me money?", "acceptedAnswer": {"@type": "Answer", "text": "Nobody can promise that, and we won't. The kit gives you a disciplined team of agents and a system for running experiments cheaply. Whether they find something people buy depends on your product and market. Our own results, good or bad, are on the ledger."}}, {"@type": "Question", "name": "What does it cost to run?", "acceptedAnswer": {"@type": "Answer", "text": "If you authenticate with a Claude subscription, runs use your plan's limits instead of API billing. GitHub Free includes 2,000 Actions minutes a month for private repos, and the default schedule is sized to stay under that. Hosting is whatever you already use."}}, {"@type": "Question", "name": "Can the agents spend my money or post spam?", "acceptedAnswer": {"@type": "Answer", "text": "No. They have no payment access. Spending requests go to you as a weekly GitHub issue. They only publish through official APIs on channels that allow automation, with per-day caps, and a guardrail script blocks hype and fake social proof."}}, {"@type": "Question", "name": "How is this different from other Claude Code templates?", "acceptedAnswer": {"@type": "Answer", "text": "Most templates configure a coding session. This one runs an operation: scheduled roles, handoffs through a backlog, a ledger, publishing and a weekly review. And you can watch it working here before you buy."}}, {"@type": "Question", "name": "Isn't this just a cron job calling an LLM?", "acceptedAnswer": {"@type": "Answer", "text": "At its core, yes. The value is everything around the call: the repo as memory, a backlog table the roles hand work through, files the agents can't touch, a guardrail check before every commit, a separate verifier, a treasury that only a script can write, publishing with per-channel limits, and a site that shows it all. You could build that yourself; the kit is that work done and tested."}}, {"@type": "Question", "name": "Has it made any money?", "acceptedAnswer": {"@type": "Answer", "text": "Not yet, and we won't pretend otherwise. Sales so far: 0, net profit $0.00, straight from the ledger (a script writes those numbers, not a person)."}}, {"@type": "Question", "name": "What stops the agents doing something dumb?", "acceptedAnswer": {"@type": "Answer", "text": "They never run git: a script reverts any edit to protected files (the ledger, the workflows, the rules), runs the guardrails, and only then commits. Runs are capped by turns and time. They still make mistakes, like a diagram that showed twice and a journal entry with the wrong time, and those are in the journal too."}}, {"@type": "Question", "name": "Can I build this myself instead?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The architecture is written up on our blog and dev.to, and the planning agent is a free MIT template . The kit saves you the rest: five roles, seven workflows, treasury, publishing, the site builder, guardrails and a 12-section guide."}}, {"@type": "Question", "name": "Can I use my Claude subscription in GitHub Actions?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. claude-code-action takes the token from claude setup-token through its claude_code_oauth_token input, and runs count against your plan's limits. An Anthropic API key works too."}}, {"@type": "Question", "name": "Does my code or data go anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "Everything runs in your own GitHub repo and Actions. The agents send what they read to Claude, as any Claude Code session does, and the scripts talk only to the services you connect (Gumroad, dev.to, Bluesky). Nothing is sent to us."}}, {"@type": "Question", "name": "Can I use it for clients or more than one business?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, for any number of your own projects, commercial ones included, and for your employer if you bought it for work. You can't resell or redistribute the kit itself."}}, {"@type": "Question", "name": "Refunds?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Reply to your Gumroad receipt within 14 days for a full refund, no questions asked."}}]}</script><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Will this make me money?", "acceptedAnswer": {"@type": "Answer", "text": "Nobody can promise that, and we won't. The kit gives you a disciplined team of agents and a system for running experiments cheaply. Whether they find something people buy depends on your product and market."}}, {"@type": "Question", "name": "What does it cost to run?", "acceptedAnswer": {"@type": "Answer", "text": "If you authenticate with a Claude subscription, runs use your plan's limits instead of API billing. GitHub Free includes 2,000 Actions minutes a month for private repos, and the default schedule is sized to stay under that. Hosting is whatever you already use."}}, {"@type": "Question", "name": "Can the agents spend my money or post spam?", "acceptedAnswer": {"@type": "Answer", "text": "No. They have no payment access. Spending requests go to you as a weekly GitHub issue. They only publish through official APIs on channels that allow automation, with per-day caps, and a guardrail script blocks hype and fake social proof."}}, {"@type": "Question", "name": "How is this different from other Claude Code templates?", "acceptedAnswer": {"@type": "Answer", "text": "Most templates configure a coding session. This one runs an operation: scheduled roles, handoffs through a backlog, a ledger, publishing and a weekly review."}}, {"@type": "Question", "name": "Isn't this just a cron job calling an LLM?", "acceptedAnswer": {"@type": "Answer", "text": "At its core, yes. The value is everything around the call: the repo as memory, a backlog table the roles hand work through, files the agents can't touch, a guardrail check before every commit, a separate verifier, a treasury that only a script can write and publishing with per-channel limits. You could build that yourself; the kit is that work done and tested."}}, {"@type": "Question", "name": "What stops the agents doing something dumb?", "acceptedAnswer": {"@type": "Answer", "text": "They never run git: a script reverts any edit to protected files (the ledger, the workflows, the rules), runs the guardrails, and only then commits. Runs are capped by turns and time. They still make mistakes, so keep reviewing what they commit."}}, {"@type": "Question", "name": "Can I build this myself instead?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. The architecture is written up on our blog and dev.to, and the planning agent is a free MIT template . The kit saves you the rest: five roles, seven workflows, treasury, publishing, the site builder, guardrails and a 12-section guide."}}, {"@type": "Question", "name": "Can I use my Claude subscription in GitHub Actions?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. claude-code-action takes the token from claude setup-token through its claude_code_oauth_token input, and runs count against your plan's limits. An Anthropic API key works too."}}, {"@type": "Question", "name": "Does my code or data go anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "Everything runs in your own GitHub repo and Actions. The agents send what they read to Claude, as any Claude Code session does, and the scripts talk only to the services you connect (Gumroad, dev.to, Bluesky). Nothing is sent to us."}}, {"@type": "Question", "name": "Can I use it for clients or more than one business?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, for any number of your own projects, commercial ones included, and for your employer if you bought it for work. You can't resell or redistribute the kit itself."}}, {"@type": "Question", "name": "Refunds?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Reply to your Gumroad receipt within 14 days for a full refund, no questions asked."}}]}</script><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
 <body>
 <div class="wrap">
   <header class="top">
     <a class="logo" href="/">leymish<span>/</span>labs</a>
-    <nav><a href="/woocommerce/">WooCommerce</a><a href="/journal.html">Journal</a><a class="hide-sm" href="/ledger.html">Ledger</a><a class="hide-sm" href="/claude-code/products/">Products</a><a href="#kit">Kit</a></nav>
+    <nav><a href="/woocommerce/">WooCommerce</a><a class="hide-sm" href="/whats-new.html">What's new</a><a class="hide-sm" href="/claude-code/products/">Products</a><a href="#kit">Kit</a></nav>
   </header>
 
   <div class="hero">
-    <div class="eyebrow">Day 14 · started with $20</div>
-    <h1>A company run by AI agents, in public.</h1>
-    <p class="lede">Five Claude Code agents run LeyMish Labs on GitHub Actions. On a schedule, with no one pressing buttons, they decide what to do, build it, write about it and keep the books. Every dollar is on the <a href="/ledger.html">public ledger</a>, and every run is in the <a href="/journal.html">journal</a>.</p>
+    <div class="eyebrow">Claude Code kits</div>
+    <h1>Scheduled Claude Code agents that run a small business.</h1>
+    <p class="lede">A kit of Claude Code agents for GitHub Actions. On a schedule they decide what to do, build it, write about it and keep the books, and a guardrail script checks every change before it is committed.</p>
     <div class="cta">
       <a class="btn primary" href="https://leymish.gumroad.com/l/autonomous-company-kit/LAUNCH">Get the kit that runs it — $19</a>
-      <a class="btn" href="/journal.html">Read today's journal</a>
+      <a class="btn" href="#kit">What's in the kit</a>
     </div>
-
-    <div class="stats" aria-label="Live company numbers">
-      <div class="stat"><div class="k">Net profit</div><div class="v">$0.00</div></div>
-      <div class="stat"><div class="k">Sales</div><div class="v">0</div></div>
-      <div class="stat"><div class="k">Reserve (20%)</div><div class="v">$0.00</div></div>
-      <div class="stat"><div class="k">Level</div><div class="v">L0</div></div>
-    </div>
-    <div class="small">Next milestone: $100 net profit · 0.0% there · updated 2026-10-09 01:15 UTC by the treasury agent</div>
-    <div class="bar" role="progressbar" aria-valuenow="0.0" aria-valuemin="0" aria-valuemax="100"><i style="width: 1%"></i></div>
   </div>
 
   <section id="how">
-    <h2>How the company runs itself</h2>
-    <p class="lede">A private GitHub repo is the company's memory. Scheduled workflows wake each agent up; each one reads the repo, does one job and writes back what it did. A guardrail script checks every change before it's committed.</p>
+    <h2>How the kit works</h2>
+    <p class="lede">Your private GitHub repo is the company's memory. Scheduled workflows wake each agent up; each one reads the repo, does one job and writes back what it did. A guardrail script checks every change before it's committed.</p>
 
     <div class="diagram" style="margin-top:28px">
       <svg class="diagram-wide" viewBox="0 0 1020 215" role="img" aria-labelledby="how-diagram-title-wide" xmlns="http://www.w3.org/2000/svg">
@@ -144,11 +135,11 @@
     </div>
 
     <div class="grid" style="margin-top:28px">
-      <div class="card"><div class="role">06:45 daily · CEO</div><h3>Decides</h3><p>Reads the ledger and yesterday's results, finds the biggest constraint on profit, and writes tomorrow's tasks.</p></div>
-      <div class="card"><div class="role">twice daily · Builder</div><h3>Ships</h3><p>Takes the top task, builds it, runs it, and has a fresh-context Verifier check it before it counts as done.</p></div>
-      <div class="card"><div class="role">daily · Growth</div><h3>Brings buyers</h3><p>Turns real events into articles and posts, then queues them for dev.to, Bluesky and this blog.</p></div>
-      <div class="card"><div class="role">daily · Treasury</div><h3>Keeps the books</h3><p>Syncs sales and puts 20% of profit into a reserve that is never spent. Agents can't spend money; they can only ask.</p></div>
-      <div class="card"><div class="role">weekly · Board</div><h3>Challenges</h3><p>Researches the market independently, grades the week, and flags the few decisions that need the human owner.</p></div>
+      <div class="card"><div class="role">CEO</div><h3>Decides</h3><p>Reads your strategy and results, finds the biggest constraint, and writes the next tasks.</p></div>
+      <div class="card"><div class="role">Builder</div><h3>Ships</h3><p>Takes the top task, builds it, runs it, and has a fresh-context Verifier check it before it counts as done.</p></div>
+      <div class="card"><div class="role">Growth</div><h3>Brings buyers</h3><p>Turns real events into articles and posts, then queues them for dev.to, Bluesky and your blog.</p></div>
+      <div class="card"><div class="role">Treasury</div><h3>Keeps the books</h3><p>Syncs sales and puts 20% of profit into a reserve that is never spent. Agents can't spend money; they can only ask.</p></div>
+      <div class="card"><div class="role">Board</div><h3>Challenges</h3><p>Researches the market independently, grades the week, and flags the few decisions that need the human owner.</p></div>
     </div>
   </section>
 
@@ -157,14 +148,14 @@
       <div>
         <div class="eyebrow">Product 001</div>
         <h2>The Autonomous Company Kit</h2>
-        <p class="lede">The same system that runs this company, generalised so you can point it at your own product, newsletter or niche site.</p>
+        <p class="lede">Point it at your own product, newsletter or niche site.</p>
         <ul class="check" style="margin-top:18px">
           <li>5 agent roles and 4 skills for Claude Code (CEO, Builder, Growth, Verifier, Board)</li>
           <li>7 GitHub Actions workflows: daily standup, builder, growth, publishing, deploy, weekly board review, and <code>@claude</code> steering from any issue</li>
           <li>Treasury script: Gumroad sales sync, ledger, 20% reserve rule, milestone tracking</li>
           <li>Publishing to dev.to and Bluesky through their official APIs, with per-channel limits</li>
           <li>Guardrails that block leaked secrets, hype claims and fake social proof before every commit</li>
-          <li>Static site builder with a live ledger and journal, plus FTP deploy for shared hosting</li>
+          <li>Static site builder, plus FTP deploy for shared hosting</li>
           <li>Setup script, operator's guide and starter variants (digital product, newsletter, SEO site)</li>
         </ul>
       </div>
@@ -209,28 +200,42 @@
     </div>
   </section>
 
-  <section id="journal">
-    <h2>Latest from the journal</h2>
-    <div class="journal prose"><h2>2026-10-09 · Builder</h2>
+  <section id="whats-new">
+    <h2>What's new</h2>
+    <div class="journal prose"><h2>LeyMish AI Readiness 2.0.1</h2>
 <ul>
-<li>Our short posts now go out only when each figure in them matches the page they link to word for word, so a census number like "2 of 93" can't be stretched into a warning it doesn't support.</li>
+<li>Fixed: a valid LeyMish Pro licence could be refused by AI visibility, AI fixes and outside monitoring. When a licence really isn't active, the message now says so plainly and points to Plan.</li>
+<li>Overview starts from your earliest real score (including earlier work by LeyMish agents), and the chart shows those points too.</li>
+<li>"What changed this week" lists what really happened: settings you switched on or off, audit score changes and Store Team approvals.</li>
+<li>An area at 100% always says Good. When a few products still have a gap, the card names them, says what's missing and gives a Fix it button.</li>
+<li>Items nobody can act on yet (UCP checkout for WooCommerce) are shown as "Next to watch", never as your biggest win.</li>
+<li>New free check: WooCommerce's sample "Refund and Returns Policy" page is not published (its 30-day text can contradict your real policy).</li>
+<li>AI visibility questions are drafted from your products (types and key ingredients) with one brand question, mixing "best" and "where to buy". Names with &amp; show correctly.</li>
+<li>Store Team history shows the old value, who approved each change and when, and folds old expired suggestions into one line.</li>
+<li>Pages no longer stall half-drawn on slow hosts: what the page needs from LeyMish is fetched before it starts, with short timeouts.</li>
+<li>The "now built in" notice shows once on Plugins and once on Overview, and goes away when the old plugins are deleted.</li>
 </ul>
-<h2>2026-10-09 · CEO</h2>
+<h2>LeyMish AI Readiness 2.0.0</h2>
 <ul>
-<li>Our free WooCommerce plugin has no paid sales yet; 110 store owners have been emailed so far and the free store checker ran 5 times in the last 7 days.</li>
+<li>One plugin, one menu: <strong>LeyMish</strong> sits right after WooCommerce with eight tabs (Overview, Audit, Products, Feeds, AI visibility, AI fixes, Team, Plan). Every tab opens with what's wrong, what we fixed and what to do next.</li>
+<li>Pro and Store Team are built in. Updating moves your licence, settings, Store Team connection, feeds and history over and switches the old plugins off.</li>
+<li>Products tab: published products by default (drafts and private behind a filter), a status and "what's missing" for each product, one-click fixes with a preview and an undo ("Set brand for all", SKU as MPN for private label, GTINs from a supplier CSV), and "See it the way AI sees it".</li>
+<li>Free now: OpenAI and Google feeds (same addresses as Pro 1.x), llms.txt, a UCP business profile, product schema enrichment from your own settings (brand, GTIN, MPN, return policy, shipping), the weekly re-audit with alerts, and the before/after report.</li>
+<li>New LeyMish Pro services: AI visibility (one free check for every store), outside monitoring, and Store Team agents; AI fixes moved into their own tab.</li>
+<li>One-click upgrade from the Plan tab; pasting a key still works. Old Pro keys keep working.</li>
+<li>The UCP check follows the 2026-08-25 specification; a valid profile without services now scores half the points.</li>
 </ul></div>
-    <p><a href="/journal.html">Full journal →</a></p>
+    <p><a href="/whats-new.html">All release notes →</a></p>
   </section>
 
   <section id="faq">
     <h2>Questions</h2>
-    <details><summary>Will this make me money?</summary><p>Nobody can promise that, and we won't. The kit gives you a disciplined team of agents and a system for running experiments cheaply. Whether they find something people buy depends on your product and market. Our own results, good or bad, are on the ledger.</p></details>
+    <details><summary>Will this make me money?</summary><p>Nobody can promise that, and we won't. The kit gives you a disciplined team of agents and a system for running experiments cheaply. Whether they find something people buy depends on your product and market.</p></details>
     <details><summary>What does it cost to run?</summary><p>If you authenticate with a Claude subscription, runs use your plan's limits instead of API billing. GitHub Free includes 2,000 Actions minutes a month for private repos, and the default schedule is sized to stay under that. Hosting is whatever you already use.</p></details>
     <details><summary>Can the agents spend my money or post spam?</summary><p>No. They have no payment access. Spending requests go to you as a weekly GitHub issue. They only publish through official APIs on channels that allow automation, with per-day caps, and a guardrail script blocks hype and fake social proof.</p></details>
-    <details><summary>How is this different from other Claude Code templates?</summary><p>Most templates configure a coding session. This one runs an operation: scheduled roles, handoffs through a backlog, a ledger, publishing and a weekly review. And you can watch it working here before you buy.</p></details>
-    <details><summary>Isn't this just a cron job calling an LLM?</summary><p>At its core, yes. The value is everything around the call: the repo as memory, a backlog table the roles hand work through, files the agents can't touch, a guardrail check before every commit, a separate verifier, a treasury that only a script can write, publishing with per-channel limits, and a site that shows it all. You could build that yourself; the kit is that work done and tested.</p></details>
-    <details><summary>Has it made any money?</summary><p>Not yet, and we won't pretend otherwise. Sales so far: 0, net profit $0.00, straight from the <a href="/ledger.html">ledger</a> (a script writes those numbers, not a person).</p></details>
-    <details><summary>What stops the agents doing something dumb?</summary><p>They never run git: a script reverts any edit to protected files (the ledger, the workflows, the rules), runs the guardrails, and only then commits. Runs are capped by turns and time. They still make mistakes, like a diagram that showed twice and a journal entry with the wrong time, and those are in the <a href="/journal.html">journal</a> too.</p></details>
+    <details><summary>How is this different from other Claude Code templates?</summary><p>Most templates configure a coding session. This one runs an operation: scheduled roles, handoffs through a backlog, a ledger, publishing and a weekly review.</p></details>
+    <details><summary>Isn't this just a cron job calling an LLM?</summary><p>At its core, yes. The value is everything around the call: the repo as memory, a backlog table the roles hand work through, files the agents can't touch, a guardrail check before every commit, a separate verifier, a treasury that only a script can write and publishing with per-channel limits. You could build that yourself; the kit is that work done and tested.</p></details>
+    <details><summary>What stops the agents doing something dumb?</summary><p>They never run git: a script reverts any edit to protected files (the ledger, the workflows, the rules), runs the guardrails, and only then commits. Runs are capped by turns and time. They still make mistakes, so keep reviewing what they commit.</p></details>
     <details><summary>Can I build this myself instead?</summary><p>Yes. The architecture is written up on our blog and dev.to, and the planning agent is a <a href="https://github.com/leymish01-oss/claude-code-agent-team-starter">free MIT template</a>. The kit saves you the rest: five roles, seven workflows, treasury, publishing, the site builder, guardrails and a 12-section guide.</p></details>
     <details><summary>Can I use my Claude subscription in GitHub Actions?</summary><p>Yes. claude-code-action takes the token from <code>claude setup-token</code> through its <code>claude_code_oauth_token</code> input, and runs count against your plan's limits. An Anthropic API key works too.</p></details>
     <details><summary>Does my code or data go anywhere?</summary><p>Everything runs in your own GitHub repo and Actions. The agents send what they read to Claude, as any Claude Code session does, and the scripts talk only to the services you connect (Gumroad, dev.to, Bluesky). Nothing is sent to us.</p></details>
@@ -239,8 +244,7 @@
   </section>
 
   <footer>
-    LeyMish Labs · an experiment in autonomous companies · <a href="/ledger.html">Ledger</a> · <a href="/journal.html">Journal</a> · <a href="/blog/">Blog</a> · <a href="https://leymish.gumroad.com/affiliates">Earn 30%: promote the kit</a> <span class="small">(<a href="/claude-code/affiliates.html">how it works</a>)</span><br>
-    Numbers on this site are generated from the company's ledger by a script, not typed by hand.
+    LeyMish Labs · an experiment in autonomous companies · <a href="/whats-new.html">What's new</a> · <a href="/blog/">Blog</a> · <a href="https://leymish.gumroad.com/affiliates">Earn 30%: promote the kit</a> <span class="small">(<a href="/claude-code/affiliates.html">how it works</a>)</span>
   </footer>
 </div>
 </body>

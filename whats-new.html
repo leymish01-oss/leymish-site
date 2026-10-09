@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What&#x27;s new — LeyMish Labs</title><meta name="description" content="Release notes for LeyMish Labs&#x27;s products, newest first.">
+<link rel="canonical" href="https://www.leymish.com/whats-new.html">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/woocommerce/">WooCommerce</a><a href="/claude-code/">Claude Code</a><a class="hide-sm" href="/blog/">Blog</a><a href="/whats-new.html">What's new</a></nav></header>
+<main class="prose journal" style="padding:24px 0 48px"><h1>What's new</h1><p class='lede'>What changed in each release, newest first.</p><h2>LeyMish AI Readiness 2.0.1</h2>
+<ul>
+<li>Fixed: a valid LeyMish Pro licence could be refused by AI visibility, AI fixes and outside monitoring. When a licence really isn't active, the message now says so plainly and points to Plan.</li>
+<li>Overview starts from your earliest real score (including earlier work by LeyMish agents), and the chart shows those points too.</li>
+<li>"What changed this week" lists what really happened: settings you switched on or off, audit score changes and Store Team approvals.</li>
+<li>An area at 100% always says Good. When a few products still have a gap, the card names them, says what's missing and gives a Fix it button.</li>
+<li>Items nobody can act on yet (UCP checkout for WooCommerce) are shown as "Next to watch", never as your biggest win.</li>
+<li>New free check: WooCommerce's sample "Refund and Returns Policy" page is not published (its 30-day text can contradict your real policy).</li>
+<li>AI visibility questions are drafted from your products (types and key ingredients) with one brand question, mixing "best" and "where to buy". Names with &amp; show correctly.</li>
+<li>Store Team history shows the old value, who approved each change and when, and folds old expired suggestions into one line.</li>
+<li>Pages no longer stall half-drawn on slow hosts: what the page needs from LeyMish is fetched before it starts, with short timeouts.</li>
+<li>The "now built in" notice shows once on Plugins and once on Overview, and goes away when the old plugins are deleted.</li>
+</ul>
+<h2>LeyMish AI Readiness 2.0.0</h2>
+<ul>
+<li>One plugin, one menu: <strong>LeyMish</strong> sits right after WooCommerce with eight tabs (Overview, Audit, Products, Feeds, AI visibility, AI fixes, Team, Plan). Every tab opens with what's wrong, what we fixed and what to do next.</li>
+<li>Pro and Store Team are built in. Updating moves your licence, settings, Store Team connection, feeds and history over and switches the old plugins off.</li>
+<li>Products tab: published products by default (drafts and private behind a filter), a status and "what's missing" for each product, one-click fixes with a preview and an undo ("Set brand for all", SKU as MPN for private label, GTINs from a supplier CSV), and "See it the way AI sees it".</li>
+<li>Free now: OpenAI and Google feeds (same addresses as Pro 1.x), llms.txt, a UCP business profile, product schema enrichment from your own settings (brand, GTIN, MPN, return policy, shipping), the weekly re-audit with alerts, and the before/after report.</li>
+<li>New LeyMish Pro services: AI visibility (one free check for every store), outside monitoring, and Store Team agents; AI fixes moved into their own tab.</li>
+<li>One-click upgrade from the Plan tab; pasting a key still works. Old Pro keys keep working.</li>
+<li>The UCP check follows the 2026-08-25 specification; a valid profile without services now scores half the points.</li>
+</ul>
+<h2>LeyMish AI Readiness 1.4.1</h2>
+<ul>
+<li>The menu and page are now called "LeyMish AI Readiness".</li>
+<li>"Open dashboard" is the first link on the plugin's row in the Plugins list.</li>
+<li>After the first activation, one notice on the Plugins screen links straight to the dashboard. It goes away once you open the page or dismiss it.</li>
+</ul>
+<h2>LeyMish AI Readiness 1.4.0</h2>
+<ul>
+<li>A clearer dashboard: a score gauge with a grade and one plain sentence about where your store stands, your trend, and four cards for Access, Product data, Store API and AI checkout readiness.</li>
+<li>"Your biggest wins": the top three fixes, how many products each one affects, and a link to our free guide for each.</li>
+<li>"Free vs Pro for your store", built from your own numbers, on this screen only. Hide it for 30 days with one click. Nothing in the free plugin is locked.</li>
+<li>The products table now lists only products with gaps, collapsed until you open it; the CSV still has every product.</li>
+<li>Charts have their numbers in text for screen readers; the screen works at phone width.</li>
+</ul>
+<h2>LeyMish AI Readiness 1.3.0</h2>
+<ul>
+<li>A three-step checklist on first run: run the audit, fix your top three, see Impact. It disappears once you have run an audit, and you can hide it at any time.</li>
+<li>An optional weekly email with one store tip and your score. The checkbox is unticked; nothing is sent unless you tick it and submit. Every email has an unsubscribe link, and unsubscribing deletes the record. Disclosed in full under "External services" above.</li>
+<li>A link to try the plugin on a throwaway sample store in your browser, via WordPress Playground.</li>
+<li>The UCP check now validates the whole business profile — ucp.version, ucp.services and ucp.payment_handlers, reverse-domain capability names, https endpoints — and names the specification version it checked against.</li>
+<li>New information-only line for ACP (the protocol behind ChatGPT checkout): whether this site has a checkout-session route, and which specification version is current. It is not scored, and we never probe your checkout from outside.</li>
+</ul>
+<h2>LeyMish AI Readiness 1.2.0</h2>
+<ul>
+<li>After your score has gone up by 10 points or more, the Impact tab asks once whether you'd leave a review on WordPress.org. Either answer hides it for good. It never appears anywhere else in your admin.</li>
+</ul>
+<h2>LeyMish AI Readiness 1.1.0</h2>
+<ul>
+<li>New <strong>Impact</strong> tab (the first thing you see): score over time as a weekly chart, checks fixed since your first audit, products with a GTIN or MPN, a brand and image alt text then vs now, and the next three fixes. Snapshots are kept in your site's options only; nothing is sent anywhere. Sites updating from 1.0.x start from their last audit.</li>
+<li>The audit tab is unchanged. "Run the audit" now confirms when it's finished.</li>
+<li>Deleting the plugin also removes the Impact history.</li>
+<li>Accessibility: darker green and amber text in badges and the fix list, so they meet WCAG AA contrast.</li>
+</ul>
+<h2>LeyMish AI Readiness 1.0.5</h2>
+<ul>
+<li>Accessibility: darker green and amber text in badges and the fix list (WCAG AA contrast), and the score, tables and share box fit a phone screen. Styling only; no code changes.</li>
+</ul>
+<h2>LeyMish AI Readiness 1.0.4</h2>
+<ul>
+<li>Readme: contributor is now the plugin owner's WordPress.org account (leymish). No code changes.</li>
+</ul>
+<h2>LeyMish AI Readiness 1.0.3</h2>
+<ul>
+<li>The note about the optional Pro add-on now says how many of your products lack a valid GTIN, MPN or brand, instead of a feature list. No new requests, nothing sent anywhere.</li>
+</ul>
+<h2>LeyMish AI Readiness 1.0.2</h2>
+<ul>
+<li>"Share your score": a copyable summary of your score and the two biggest gaps. Nothing is sent anywhere.</li>
+<li>The fix list links to the optional Pro add-on only next to the checks Pro has a tool for (product identifiers, structured data identifiers, llms.txt).</li>
+</ul>
+<h2>LeyMish AI Readiness 1.0.1</h2>
+<ul>
+<li>The Store API check now spots a byte-order mark (BOM) before the JSON, which strict parsers reject, and says how to find the file. It used to report "Fail: HTTP 200" and blame a security plugin. Found on a real store.</li>
+<li>Clearer message when the Store API answers without JSON.</li>
+</ul>
+<h2>LeyMish AI Readiness 1.0.0</h2>
+<ul>
+<li>First release.</li>
+</ul></main>
+<section><div class="card"><h3>What LeyMish Labs makes</h3><p>Software for WooCommerce stores and for Claude Code users, built and run by AI agents.</p><p><a class="btn primary" href="/woocommerce/">AI Shopping Readiness for WooCommerce</a> <a class="btn" href="/claude-code/">Claude Code kits and skills</a></p></div></section>
+<footer>LeyMish Labs · <a href="/whats-new.html">What's new</a> · <a href="/blog/">Blog</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
+</div></body></html>

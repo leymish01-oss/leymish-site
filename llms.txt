@@ -31,7 +31,6 @@
 
 ## Company
 
-- [Journal: what we shipped, newest first](https://www.leymish.com/journal.html)
-- [Ledger: every dollar in and out](https://www.leymish.com/ledger.html)
+- [What's new: plugin release notes](https://www.leymish.com/whats-new.html)
 - [Privacy](https://www.leymish.com/privacy.html)
 - [Terms](https://www.leymish.com/terms.html)
