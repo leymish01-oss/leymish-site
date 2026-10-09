@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Start guide: LeyMish AI Readiness for WooCommerce | LeyMish Labs</title>
+<meta name="description" content="How to use LeyMish AI Readiness: the free 15-minute setup, where everything is in the plugin, how to upgrade to Pro, the weekly routine and how done-for-you works.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/start/">
+<meta property="og:title" content="Start guide: LeyMish AI Readiness">
+<meta property="og:description" content="From install to AI-ready: what to click, in what order, and how long it takes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.leymish.com/woocommerce/start/">
+<meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap">
+<style>
+/* Layout: one reading column; each flow is a vertical rail of steps colour-coded by path (Free / Pro / Done-for-you / Team). Tokens follow leymish.com's own system. */
+:root{
+  --bg:#f7f6f2; --surface:#ffffff; --ink:#16181d; --muted:#5d636f; --line:#e4e2da;
+  --free:#1f6f4a; --free-soft:#e3f1e9;
+  --pro:#4b3fd1;  --pro-soft:#ebe9fd;
+  --dfy:#9a5b00;  --dfy-soft:#fbefdc;
+  --team:#0b6e80; --team-soft:#dcf1f4;
+  --stop:#b42318; --stop-soft:#fde8e6;
+  --on-color:#ffffff;
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --mono:"JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --r:14px;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1113; --surface:#171a1d; --ink:#eceae4; --muted:#a0a6b0; --line:#262a2f;
+  --free:#4cc38a; --free-soft:#15271e;
+  --pro:#9d95ff;  --pro-soft:#1f1d3a;
+  --dfy:#f0b35a;  --dfy-soft:#2b2112;
+  --team:#4cc9dc; --team-soft:#122a2f;
+  --stop:#ff8a7a; --stop-soft:#2e1714;
+  --on-color:#0b0d10; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1113; --surface:#171a1d; --ink:#eceae4; --muted:#a0a6b0; --line:#262a2f;
+  --free:#4cc38a; --free-soft:#15271e;
+  --pro:#9d95ff;  --pro-soft:#1f1d3a;
+  --dfy:#f0b35a;  --dfy-soft:#2b2112;
+  --team:#4cc9dc; --team-soft:#122a2f;
+  --stop:#ff8a7a; --stop-soft:#2e1714;
+  --on-color:#0b0d10; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.55;margin:0}
+.wrap{max-width:900px;margin:0 auto;padding-inline:20px;padding-block:40px 64px;display:flex;flex-direction:column;gap:56px}
+h1,h2,h3{text-wrap:balance;margin:0;letter-spacing:-.015em}
+h1{font-size:clamp(2rem,5vw,3rem);font-weight:800;line-height:1.05}
+h2{font-size:clamp(1.4rem,3vw,1.75rem);font-weight:750}
+h3{font-size:1.05rem;font-weight:700}
+p{margin:0;max-width:65ch}
+.muted{color:var(--muted)}
+.eyebrow{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+code,.kbd{font-family:var(--mono);font-size:.82em;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:.08em .4em;white-space:nowrap}
+a{color:var(--free)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--pro);outline-offset:2px;border-radius:6px}
+section{display:flex;flex-direction:column;gap:20px}
+.sec-head{display:flex;flex-direction:column;gap:8px}
+
+/* header */
+header{display:flex;flex-direction:column;gap:16px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700}
+.mark{width:34px;height:34px;border-radius:9px;background:var(--ink);color:var(--bg);display:grid;place-items:center;font-weight:800;font-size:1.05rem}
+.meta{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:.78rem;font-weight:600;border-radius:999px;padding:.25em .7em;border:1px solid var(--line);background:var(--surface);white-space:nowrap}
+.chip.free{background:var(--free-soft);color:var(--free);border-color:transparent}
+.chip.pro{background:var(--pro-soft);color:var(--pro);border-color:transparent}
+.chip.dfy{background:var(--dfy-soft);color:var(--dfy);border-color:transparent}
+.chip.team{background:var(--team-soft);color:var(--team);border-color:transparent}
+
+/* path picker */
+.paths{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.path{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;display:flex;flex-direction:column;gap:10px;border-top:5px solid var(--c)}
+.path .who{font-size:.9rem;color:var(--muted)}
+.path .price{font-family:var(--mono);font-weight:700;color:var(--c)}
+.path a.jump{margin-top:auto;font-weight:600;color:var(--c);text-decoration:none}
+.path a.jump:hover{text-decoration:underline}
+
+/* flow rail */
+.flow{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:0;counter-reset:step}
+.step{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:14px;padding-bottom:18px}
+.step::before{content:"";position:absolute;left:21px;top:44px;bottom:0;width:2px;background:var(--c)}
+.step:last-child::before{display:none}
+.dot{counter-increment:step;width:44px;height:44px;border-radius:50%;background:var(--c);color:var(--on-color);display:grid;place-items:center;font-weight:800;font-family:var(--mono)}
+.dot::after{content:counter(step)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:6px;min-width:0}
+.card .top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:6px 12px}
+.time{font-family:var(--mono);font-size:.75rem;color:var(--muted);white-space:nowrap}
+.where{font-size:.88rem;color:var(--muted)}
+.where b{color:var(--ink);font-weight:600}
+.flow.free .step{--c:var(--free)}
+.flow.pro .step{--c:var(--pro)}
+.flow.dfy .step{--c:var(--dfy)}
+.flow.team .step{--c:var(--team)}
+
+/* decision */
+.decision{display:flex;flex-direction:column;gap:12px;align-items:stretch}
+.q{align-self:flex-start;display:flex;align-items:center;gap:12px;font-weight:700}
+.diamond{width:30px;height:30px;transform:rotate(45deg);background:var(--ink);border-radius:5px;flex:none}
+.branches{display:grid;grid-template-columns:repeat(var(--n,2),minmax(0,1fr));gap:12px}
+.branch{border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:6px;background:var(--soft);border:1px solid transparent}
+.branch .lab{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.b-free{--c:var(--free);--soft:var(--free-soft)}
+.b-pro{--c:var(--pro);--soft:var(--pro-soft)}
+.b-dfy{--c:var(--dfy);--soft:var(--dfy-soft)}
+.b-team{--c:var(--team);--soft:var(--team-soft)}
+.b-stop{--c:var(--stop);--soft:var(--stop-soft)}
+
+/* horizontal chain (upgrade) */
+.chain{display:flex;flex-wrap:wrap;align-items:stretch;gap:10px}
+.link{flex:1 1 150px;background:var(--surface);border:1px solid var(--line);border-left:5px solid var(--c);border-radius:12px;padding:12px 14px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.link small{color:var(--muted);font-size:.82rem}
+.arrow{align-self:center;color:var(--muted);font-weight:700}
+.chain.pro .link{--c:var(--pro)}
+.chain.dfy .link{--c:var(--dfy)}
+@media (max-width:640px){.chain{flex-direction:column}.arrow{transform:rotate(90deg)}}
+
+/* weekly loop */
+.loop{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.day{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px;display:flex;flex-direction:column;gap:6px;border-top:5px solid var(--c)}
+.day .when{font-family:var(--mono);font-size:.72rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--c)}
+.repeat{display:flex;align-items:center;gap:10px;font-size:.9rem;color:var(--muted);border:2px dashed var(--line);border-radius:999px;padding:8px 16px;align-self:flex-start}
+
+/* tab map */
+.tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.tab{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.tab .name{font-weight:700;display:flex;justify-content:space-between;gap:8px;align-items:center}
+.tab p{font-size:.88rem;color:var(--muted)}
+
+/* faq */
+details{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:12px 16px}
+details+details{margin-top:10px}
+summary{cursor:pointer;font-weight:650}
+details p{margin-top:8px;color:var(--muted)}
+.note{font-size:.9rem;color:var(--muted);border-left:3px solid var(--line);padding-left:12px}
+footer{display:flex;flex-wrap:wrap;gap:8px 16px;align-items:center;color:var(--muted);font-size:.9rem;border-top:1px solid var(--line);padding-top:20px}
+.copy{font:inherit;font-weight:600;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:4px 10px;cursor:pointer}
+
+@media (max-width:760px){.paths{grid-template-columns:1fr}.loop,.tabs{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:520px){.branches{grid-template-columns:1fr}.loop,.tabs{grid-template-columns:1fr}.step{grid-template-columns:36px minmax(0,1fr)}.dot{width:36px;height:36px}.step::before{left:17px;top:36px}}
+@media (prefers-reduced-motion:no-preference){.path,.tab{transition:transform .15s ease}.path:hover,.tab:hover{transform:translateY(-2px)}}
+</style>
+<style>.sitebar{display:flex;flex-wrap:wrap;gap:12px;justify-content:space-between;align-items:center;max-width:960px;margin:0 auto;padding:16px 20px 0;font-family:var(--sans)}.sitelogo{font-weight:800;color:var(--ink);text-decoration:none}.sitelogo span{color:var(--free)}.sitelinks{display:flex;flex-wrap:wrap;gap:14px}.sitelinks a{color:var(--muted);text-decoration:none;font-weight:600}.sitelinks a:hover{color:var(--ink)}</style>
+<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body>
+<nav class="sitebar" aria-label="LeyMish"><a class="sitelogo" href="/">leymish<span>/</span>labs</a><span class="sitelinks"><a href="/woocommerce/">Plugin</a><a href="/woocommerce/check/">Free check</a><a href="/woocommerce/pro.html">Pro</a><a href="/woocommerce/done-for-you/">Done for you</a></span></nav>
+<div class="wrap">
+
+<header>
+  <div class="brand"><span class="mark" aria-hidden="true">L</span><span>LeyMish AI Readiness</span></div>
+  <h1>Start guide: from install to AI-ready</h1>
+  <p class="muted">One plugin, one <b>LeyMish</b> menu in your WordPress admin. Follow the flow for your path: what to click, in what order, and how long it takes.</p>
+  <div class="meta" aria-label="Paths in this guide">
+    <span class="chip free">Free: do it yourself</span>
+    <span class="chip pro">Pro: AI helps, $12/month</span>
+    <span class="chip dfy">Done for you: from $49</span>
+    <span class="chip team">Team: agents propose, you approve</span>
+  </div>
+</header>
+
+<section aria-labelledby="pick">
+  <div class="sec-head">
+    <span class="eyebrow">Step 0</span>
+    <h2 id="pick">Pick your path</h2>
+  </div>
+  <div class="paths">
+    <div class="path" style="--c:var(--free)">
+      <span class="chip free" style="align-self:flex-start">Free</span>
+      <h3>I'll fix it myself</h3>
+      <p class="who">Up to about 50 products, and you have 15 minutes.</p>
+      <span class="price">$0, forever</span>
+      <a class="jump" href="#free">Follow the 15-minute flow ↓</a>
+    </div>
+    <div class="path" style="--c:var(--pro)">
+      <span class="chip pro" style="align-self:flex-start">Pro</span>
+      <h3>I want AI to help, every week</h3>
+      <p class="who">Many products, or you want to know if ChatGPT and Google actually mention you.</p>
+      <span class="price">$12/month or $99/year</span>
+      <a class="jump" href="#upgrade">See the upgrade and weekly flow ↓</a>
+    </div>
+    <div class="path" style="--c:var(--dfy)">
+      <span class="chip dfy" style="align-self:flex-start">Done for you</span>
+      <h3>Just fix it for me</h3>
+      <p class="who">No time. You approve every change, we do the work.</p>
+      <span class="price">$49 · 25 products</span>
+      <a class="jump" href="#dfy">See how it works ↓</a>
+    </div>
+  </div>
+</section>
+
+<section id="free" aria-labelledby="free-h">
+  <div class="sec-head">
+    <span class="eyebrow">Free path · about 15 minutes</span>
+    <h2 id="free-h">Your first 15 minutes</h2>
+    <p class="muted">Everything here runs on your own site and stays free.</p>
+  </div>
+  <ol class="flow free">
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card">
+      <div class="top"><h3>Install the plugin</h3><span class="time">2 min</span></div>
+      <p class="where"><b>Plugins → Add New</b> → search <code>LeyMish AI Shopping Readiness</code> → <b>Install → Activate</b></p>
+    </div></li>
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card">
+      <div class="top"><h3>Run your first audit</h3><span class="time">1 min</span></div>
+      <p class="where"><b>LeyMish → Overview → Run the audit</b>. It checks a few of your own pages the way AI shopping agents read them.</p>
+    </div></li>
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card">
+      <div class="top"><h3>Read your score and "Your next 3 wins"</h3><span class="time">1 min</span></div>
+      <p class="where">A score out of 100 and a grade. Each win shows the points it adds and a <b>Fix it</b> button.</p>
+    </div></li>
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card">
+      <div class="top"><h3>Fix product gaps</h3><span class="time">5 min</span></div>
+      <p class="where"><b>LeyMish → Products</b>. Use the one-click fixes: <b>Set brand for all</b>; <b>Use each SKU as the MPN</b> (only if you make the products); <b>GTINs from a supplier CSV</b>. Open <b>See it the way AI sees it</b>: red fields turn green as you fix them.</p>
+    </div></li>
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card">
+      <div class="top"><h3>Switch on feeds and schema</h3><span class="time">3 min</span></div>
+      <p class="where"><b>LeyMish → Feeds</b>: tick the OpenAI and Google feeds, llms.txt, the UCP profile and product schema. Set the return policy to match your real one, then <b>Save</b>.</p>
+    </div></li>
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card">
+      <div class="top"><h3>Run the audit again</h3><span class="time">1 min</span></div>
+      <p class="where"><b>LeyMish → Overview → Run the audit again</b>. "What we fixed" shows your score change.</p>
+    </div></li>
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card">
+      <div class="top"><h3>Turn on the weekly email</h3><span class="time">30 sec</span></div>
+      <p class="where"><b>LeyMish → Plan → Weekly email</b>. Your site re-checks itself every week and emails the score and any alerts.</p>
+    </div></li>
+  </ol>
+
+  <div class="decision" aria-label="What next after the second audit">
+    <div class="q"><span class="diamond" aria-hidden="true"></span>Is your score 90 or more?</div>
+    <div class="branches" style="--n:3">
+      <div class="branch b-free"><span class="lab">Yes</span><p>You're in good shape. Keep the weekly email on and fix new products as they appear in <b>Products</b>.</p></div>
+      <div class="branch b-pro"><span class="lab">No, many products</span><p>Let AI draft the missing details for you: <b>AI fixes</b> (20 free to try, 500 a month with Pro).</p></div>
+      <div class="branch b-dfy"><span class="lab">No, and no time</span><p>Have us do your top 25 products for $49. <a href="#dfy">How it works</a></p></div>
+    </div>
+  </div>
+</section>
+
+<section aria-labelledby="map-h">
+  <div class="sec-head">
+    <span class="eyebrow">Where things are</span>
+    <h2 id="map-h">The eight tabs</h2>
+  </div>
+  <div class="tabs">
+    <div class="tab"><div class="name">Overview <span class="chip free">Free</span></div><p>Your score, what's wrong, what changed this week and the next 3 wins.</p></div>
+    <div class="tab"><div class="name">Audit <span class="chip free">Free</span></div><p>Every check, with the fix in plain words. Download a CSV of product gaps.</p></div>
+    <div class="tab"><div class="name">Products <span class="chip free">Free</span></div><p>Barcode, brand and part number per product, with one-click fixes.</p></div>
+    <div class="tab"><div class="name">Feeds <span class="chip free">Free</span></div><p>OpenAI and Google feeds, llms.txt, UCP profile and product schema.</p></div>
+    <div class="tab"><div class="name">AI visibility <span class="chip pro">Pro</span></div><p>Do AI assistants cite your store for your shoppers' questions? One free check.</p></div>
+    <div class="tab"><div class="name">AI fixes <span class="chip pro">Pro</span></div><p>AI drafts missing details from your own product page. You approve each one.</p></div>
+    <div class="tab"><div class="name">Team <span class="chip team">Team</span></div><p>Your agents' weekly plan and the approvals inbox. Nothing changes until you approve.</p></div>
+    <div class="tab"><div class="name">Plan <span class="chip pro">Pro</span></div><p>Your plan, the upgrade button, your licence and the weekly email.</p></div>
+  </div>
+</section>
+
+<section id="upgrade" aria-labelledby="up-h">
+  <div class="sec-head">
+    <span class="eyebrow">Pro path · under a minute</span>
+    <h2 id="up-h">Upgrading to Pro</h2>
+    <p class="muted">No zip to download and usually no key to copy.</p>
+  </div>
+  <div class="chain pro">
+    <div class="link"><b>LeyMish → Plan</b><small>Click <b>Upgrade: $12/month</b></small></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="link"><b>Checkout opens</b><small>In a new tab. Pay monthly or yearly.</small></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="link"><b>Back to your tab</b><small>It says "Waiting for your purchase…"</small></div>
+    <span class="arrow" aria-hidden="true">→</span>
+    <div class="link"><b>Pro is on</b><small>By itself, usually within a minute.</small></div>
+  </div>
+  <p class="note">If Pro doesn't switch on: copy the licence key from your receipt email and paste it in <b>LeyMish → Plan → Licence</b>.</p>
+</section>
+
+<section aria-labelledby="week-h">
+  <div class="sec-head">
+    <span class="eyebrow">Pro + Team · 10 minutes a week</span>
+    <h2 id="week-h">Your weekly routine</h2>
+  </div>
+  <div class="loop">
+    <div class="day" style="--c:var(--team)"><span class="when">Monday</span><h3>Your team proposes</h3><p class="muted">The agents read your store and suggest product fixes.</p></div>
+    <div class="day" style="--c:var(--team)"><span class="when">Any day</span><h3>You approve</h3><p class="muted"><b>LeyMish → Team → Approvals</b>. A red number on the menu shows how many are waiting.</p></div>
+    <div class="day" style="--c:var(--pro)"><span class="when">Weekly</span><h3>AI visibility check</h3><p class="muted">Your 10 shopper questions are asked again. See who is cited and the trend.</p></div>
+    <div class="day" style="--c:var(--free)"><span class="when">Weekly email</span><h3>Score and alerts</h3><p class="muted">If AI crawlers get blocked or a feed breaks, you hear about it.</p></div>
+  </div>
+  <span class="repeat">↻ Repeats every week. Your before/after report builds up over the month.</span>
+
+  <div class="decision" aria-label="How to decide on one proposal">
+    <div class="q"><span class="diamond" aria-hidden="true"></span>For each proposal, compare "Now" with "Proposed". Is it right?</div>
+    <div class="branches" style="--n:3">
+      <div class="branch b-free"><span class="lab">Yes</span><p>Click <b>Approve</b>. The change is applied and logged, and you can undo it.</p></div>
+      <div class="branch b-team"><span class="lab">Almost</span><p>Click <b>Edit then approve</b>, correct the text, and save.</p></div>
+      <div class="branch b-stop"><span class="lab">No</span><p>Click <b>Reject</b>. Nothing changes on your store.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="dfy" aria-labelledby="dfy-h">
+  <div class="sec-head">
+    <span class="eyebrow">Done-for-you path · we work, you approve</span>
+    <h2 id="dfy-h">How "AI Shopping Fix: done for you" works</h2>
+  </div>
+  <ol class="flow dfy">
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card"><div class="top"><h3>Order</h3><span class="time">$49 / $129</span></div><p class="where">Top 25 products for $49, or up to 150 products plus feeds and 30 days of Pro for $129.</p></div></li>
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card"><div class="top"><h3>Install and connect</h3><span class="time">3 min</span></div><p class="where">Install the free plugin, then <b>LeyMish → Team → Connect</b>. WooCommerce shows its own approval screen, and you can disconnect at any time.</p></div></li>
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card"><div class="top"><h3>Reply to your receipt</h3><span class="time">2 min</span></div><p class="where">Send your store address and, if you have them, your supplier's product file or photos of the barcode labels.</p></div></li>
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card"><div class="top"><h3>We record your starting score</h3><span class="time">same day</span></div><p class="where">Then the fixes arrive in <b>Team → Approvals</b> for you to approve, one by one.</p></div></li>
+    <li class="step"><span class="dot" aria-hidden="true"></span><div class="card"><div class="top"><h3>You get the before/after report</h3><span class="time">within 14 days</span></div><p class="where">If your score doesn't rise by at least 10 points within 14 days, you get your money back.</p></div></li>
+  </ol>
+  <p class="note">We never touch prices, payments, shipping, tax, themes, plugins or users, and we never invent a barcode.</p>
+</section>
+
+<section aria-labelledby="faq-h">
+  <div class="sec-head">
+    <span class="eyebrow">When something looks wrong</span>
+    <h2 id="faq-h">Quick answers</h2>
+  </div>
+  <div>
+    <details><summary>The audit says "partial result"</summary><p>Some of your pages answered slowly. Run the audit again in a few minutes. If it keeps happening, check that a caching or security plugin isn't delaying your own site's requests.</p></details>
+    <details><summary>"AI bots are blocked by a firewall, CDN or security plugin"</summary><p>Look for "block AI crawlers" or bot-fight settings in your security plugin or CDN (for example Cloudflare). Allow ChatGPT, Perplexity and Claude search crawlers if you want to appear in their answers.</p></details>
+    <details><summary>Where do I find a GTIN (barcode)?</summary><p>On your supplier's product file, or the barcode on the packaging. If you make your own products, buy barcodes from GS1. Never make one up: the plugin rejects numbers that fail the check digit.</p></details>
+    <details><summary>Pro says my licence isn't active</summary><p>Open <b>LeyMish → Plan</b> and paste the key from your receipt email. If it still fails, reply to the receipt email and we'll sort it out.</p></details>
+    <details><summary>AI visibility shows 0 of 10 cited. What now?</summary><p>That's the starting point for most small stores. Fix everything in Products and Feeds, publish helpful pages that answer your shoppers' questions, and watch the trend week by week.</p></details>
+  </div>
+</section>
+
+<footer>
+  <span>Questions? Email</span>
+  <code id="mail">hello@leymish.com</code>
+  <button class="copy" id="copyBtn" type="button">Copy address</button>
+  <span id="copied" class="muted" hidden>Copied</span>
+</footer>
+
+</div>
+<script>
+document.getElementById('copyBtn').addEventListener('click',function(){
+  var t='hello@leymish.com', ok=document.getElementById('copied');
+  function sel(){var r=document.createRange();r.selectNodeContents(document.getElementById('mail'));var s=getSelection();s.removeAllRanges();s.addRange(r);}
+  if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(t).then(function(){ok.hidden=false;setTimeout(function(){ok.hidden=true},1800)}).catch(sel);}else{sel();}
+});
+</script>
+</body>
+</html>

@@ -8,6 +8,7 @@
 - [Our census of 100 WooCommerce stores: method and numbers](https://www.leymish.com/woocommerce/census.html)
 - [Case study: one real store's audit, fixed and re-run](https://www.leymish.com/woocommerce/case-study-mishbio.html)
 - [AI Shopping Fix: we fix your top products for you, you approve every change](https://www.leymish.com/woocommerce/done-for-you/)
+- [Start guide: the free 15-minute setup, the upgrade to Pro and the weekly routine](https://www.leymish.com/woocommerce/start/)
 - [How to add GTINs in WooCommerce (with the built-in field)](https://www.leymish.com/woocommerce/guides/add-gtin-woocommerce.html)
 - [Is your WooCommerce store ready for ChatGPT checkout?](https://www.leymish.com/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html)
 - [Is your WooCommerce store visible in ChatGPT shopping?](https://www.leymish.com/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html)
