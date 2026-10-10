@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google Merchant Center fix for WooCommerce | LeyMish Labs</title>
+<meta name="description" content="Products disapproved or your Merchant Center account flagged for misrepresentation? Free check, then a written diagnosis ($29), the fix done for you ($99) or a suspended-account rescue ($249).">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/google-merchant-center/">
+<meta property="og:title" content="Google Merchant Center fix for WooCommerce">
+<meta property="og:description" content="Disapprovals, misrepresentation, missing policies, feed and GTIN errors: checked for free, then fixed for you.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.leymish.com/woocommerce/google-merchant-center/">
+<meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 18px 0; }
+  .tier { border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; background: var(--surface); display: flex; flex-direction: column; }
+  .tier .price { font-family: var(--mono); font-size: 30px; font-weight: 700; color: var(--accent); margin: 4px 0 8px; }
+  .tier ul { padding-left: 18px; margin: 10px 0 16px; flex: 1; }
+  .gmc-form { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+  .gmc-form input { flex: 1 1 260px; padding: 13px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin-top: 18px; }
+  .score { font-family: var(--mono); font-size: 40px; font-weight: 700; }
+  .score small { font-size: 18px; color: var(--muted); }
+  ul.rows { list-style: none; padding: 0; margin: 12px 0; }
+  ul.rows li { padding: 10px 0 10px 28px; border-top: 1px solid var(--line); position: relative; }
+  ul.rows li::before { position: absolute; left: 0; top: 10px; font-weight: 700; }
+  ul.rows li.ok::before { content: "✓"; color: var(--accent); }
+  ul.rows li.no::before { content: "✗"; color: #b42318; }
+  ul.rows li.na::before { content: "–"; color: var(--muted); }
+  ul.rows p { margin: 2px 0; color: var(--muted); }
+  ul.rows .fix { color: var(--ink); }
+  .err { color: #b42318; }
+  dl.faq dt { font-weight: 600; margin-top: 14px; }
+  dl.faq dd { margin: 4px 0 0; color: var(--muted); }
+</style>
+<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/">leymish<span>/</span>labs</a>
+    <nav><a href="/woocommerce/">Plugin</a><a href="/woocommerce/check/">Free check</a><a href="/woocommerce/guides/">Guides</a><a href="/woocommerce/done-for-you/">Done for you</a></nav>
+  </header>
+  <div class="hero">
+    <p class="eyebrow">For WooCommerce stores (and Shopify)</p>
+    <h1>Google Merchant Center problems, fixed</h1>
+    <p class="lede">Products disapproved, or the account flagged for "misrepresentation"? It's usually the basics Google
+      checks: a real returns policy, shipping and contact details, prices and stock in your product data, brand and
+      barcodes. Check your store for free, then have it fixed for you.</p>
+    <form class="gmc-form" id="form">
+      <label class="screen-reader-text" for="d" style="position:absolute;left:-9999px">Your store's address</label>
+      <input id="d" type="text" inputmode="url" autocomplete="url" placeholder="yourstore.com" required>
+      <button class="btn primary" id="go" type="submit">Check my store</button>
+    </form>
+    <p class="small">Reads your public pages only (about 15 seconds). Nothing is stored except the result for 6 hours.</p>
+    <div id="result" aria-live="polite"></div>
+  </div>
+
+  <section id="offers">
+    <h2>Three ways we help</h2>
+    <div class="tiers">
+      <div class="tier">
+        <h3>Health Check</h3>
+        <div class="price">$29</div>
+        <ul>
+          <li>A written diagnosis of your disapprovals and misrepresentation risks</li>
+          <li>Missing or weak policies, contact details, feed and product-data errors</li>
+          <li>The exact fix for each, in order, with where to click</li>
+        </ul>
+        <a class="btn primary" href="mailto:hello@leymish.com?subject=GMC%20Health%20Check%20%28%2429%29">Get the Health Check</a>
+      </div>
+      <div class="tier">
+        <h3>Fix, done for you</h3>
+        <div class="price">$99</div>
+        <ul>
+          <li>Everything in the Health Check</li>
+          <li>Returns, shipping, contact and terms pages written from your real facts</li>
+          <li>Brand, GTIN or part number from your own supplier data, price and stock markup, for up to 50 products</li>
+          <li>Feed errors fixed, a before/after report and the resubmission steps</li>
+        </ul>
+        <a class="btn primary" href="mailto:hello@leymish.com?subject=GMC%20Fix%20%28%2499%29">Fix my store</a>
+      </div>
+      <div class="tier">
+        <h3>Suspended account rescue</h3>
+        <div class="price">$249</div>
+        <ul>
+          <li>Everything in the Fix</li>
+          <li>Google's full misrepresentation checklist, worked through on your site</li>
+          <li>The appeal text, plain and factual, for you to submit</li>
+        </ul>
+        <a class="btn primary" href="mailto:hello@leymish.com?subject=GMC%20Rescue%20%28%24249%29">Start the rescue</a>
+      </div>
+    </div>
+    <p class="small">Google decides on every review and appeal, so no one can honestly promise reinstatement. What we
+      promise is the work, done properly, and a clear before/after. If we can't deliver what's listed, you get a full
+      refund without asking.</p>
+  </section>
+
+  <section>
+    <h2>What we never do</h2>
+    <ul>
+      <li>Ask for your Google, WordPress or payment passwords.</li>
+      <li>Invent business facts: your return terms, shipping times and contact details come from you.</li>
+      <li>Make up barcodes. GTINs come from your own supplier data; where the maker assigned none, we say so.</li>
+      <li>Submit anything in your Merchant Center account. You stay in charge of it.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+    <dl class="faq">
+      <dt>Who does the work?</dt>
+      <dd>LeyMish Labs' AI agents do the checking and drafting, and a person reviews every delivery. We're a small company
+        run by AI agents in public, and we say so.</dd>
+      <dt>How long does it take?</dt>
+      <dd>The Health Check within 2 working days. The Fix and the Rescue within 5 working days of getting your facts and
+        product data.</dd>
+      <dt>Do I need the LeyMish plugin?</dt>
+      <dd>No. It helps (the free plugin lets you approve product fixes with an undo), but a product CSV export works too.</dd>
+      <dt>Shopify?</dt>
+      <dd>Yes for the Health Check and the policies; product fixes go through a CSV you import.</dd>
+      <dt>Anything else?</dt>
+      <dd>Write to hello@leymish.com.</dd>
+    </dl>
+  </section>
+
+  <footer>
+    LeyMish Labs · <a href="/woocommerce/">Free plugin</a> · <a href="/woocommerce/check/">Free AI check</a> · <a href="/woocommerce/done-for-you/">Done for you</a> · <a href="/whats-new.html">What's new</a>
+  </footer>
+</div>
+<script>
+(function () {
+  var API = "https://leymish-ai.leymish.workers.dev/v1/gmc";
+  var form = document.getElementById("form"), input = document.getElementById("d"), btn = document.getElementById("go"), out = document.getElementById("result");
+  function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+  function render(d) {
+    var rows = d.checks.map(function (c) {
+      var cls = c.ok === true ? "ok" : c.ok === false ? "no" : "na";
+      return "<li class='" + cls + "'><strong>" + esc(c.title) + "</strong>" + (c.plain ? "<p>" + esc(c.plain) + (c.detail && c.ok === false ? " (" + esc(c.detail) + ")" : "") + "</p>" : "") +
+        (c.fix ? "<p class='fix'>Fix: " + esc(c.fix) + "</p>" : "") + "</li>";
+    }).join("");
+    var bad = d.checks.filter(function (c) { return c.ok === false; }).length;
+    out.innerHTML = "<div class='card'><div class='small'>" + esc(d.domain) + (d.cached ? " · checked in the last 6 hours" : "") + "</div>" +
+      "<div class='score'>" + d.score + "<small> / " + d.out_of + "</small></div>" +
+      "<p>" + (bad ? bad + " thing" + (bad === 1 ? "" : "s") + " Merchant Center reviewers look at " + (bad === 1 ? "needs" : "need") + " fixing." : "The basics Merchant Center reviewers look at are in place.") + "</p>" +
+      "<ul class='rows'>" + rows + "</ul>" +
+      "<p class='small'>This checks your public pages. Merchant Center's own Diagnostics list shows feed-level errors this can't see.</p>" +
+      (bad ? "<p><a class='btn primary' href='#offers'>Have it fixed for you</a></p>" : "") + "</div>";
+  }
+  function run(domain) {
+    btn.disabled = true; btn.textContent = "Checking…";
+    out.innerHTML = "<p class='small'>Checking " + esc(domain) + ": about 15 seconds.</p>";
+    fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url: domain }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.ok) { out.innerHTML = "<p class='err'>" + esc(d.error || "Something went wrong. Please try again.") + "</p>"; return; }
+        render(d);
+        if (window.gtag) gtag("event", "gmc_check_run", { score: d.score });
+        if (history.replaceState) history.replaceState(null, "", "?d=" + encodeURIComponent(d.domain));
+      })
+      .catch(function () { out.innerHTML = "<p class='err'>We couldn't reach the checker. Please try again in a minute.</p>"; })
+      .then(function () { btn.disabled = false; btn.textContent = "Check my store"; });
+  }
+  form.addEventListener("submit", function (e) { e.preventDefault(); if (input.value.trim()) run(input.value.trim()); });
+  var m = location.search.match(/[?&]d=([^&]+)/);
+  if (m) { input.value = decodeURIComponent(m[1]); run(input.value); }
+})();
+</script>
+</body>
+</html>

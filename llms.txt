@@ -4,6 +4,7 @@
 
 ## WooCommerce and AI shopping
 
+- [Google Merchant Center fix: free check, then a diagnosis ($29), the fix ($99) or a rescue ($249)](https://www.leymish.com/woocommerce/google-merchant-center/)
 - [Free online check: 5 outside checks in about 10 seconds](https://www.leymish.com/woocommerce/check/)
 - [Our census of 100 WooCommerce stores: method and numbers](https://www.leymish.com/woocommerce/census.html)
 - [Case study: one real store's audit, fixed and re-run](https://www.leymish.com/woocommerce/case-study-mishbio.html)
@@ -28,6 +29,7 @@
 - [Free plugin and plans](https://www.leymish.com/woocommerce/)
 - [LeyMish Pro: AI visibility, AI fixes, monitoring, agents](https://www.leymish.com/woocommerce/pro.html)
 - [Store Team: the AI team built into the plugin](https://www.leymish.com/woocommerce/store-team/)
+- [Google Merchant Center fix: free check, diagnosis, fix, rescue](https://www.leymish.com/woocommerce/google-merchant-center/)
 - [AI Shopping Fix: done for you](https://www.leymish.com/woocommerce/done-for-you/)
 
 ## Company
