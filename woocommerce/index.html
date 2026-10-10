@@ -16,6 +16,24 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/assets/style.css">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"LeyMish AI Readiness","applicationCategory":"BusinessApplication","operatingSystem":"WordPress (WooCommerce)","softwareVersion":"2.0.1","description":"A WooCommerce plugin that audits whether AI shopping agents can find, read and trust your products, with a 0–100 score and a prioritised fix list.","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"publisher":{"@type":"Organization","name":"LeyMish Labs","url":"https://www.leymish.com/woocommerce/"}}</script>
+<style>
+/* P-031 §3: the weekly loop, start-guide style (tokens from /assets/style.css) */
+.loop{list-style:none;margin:22px 0 10px;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:34px 40px;counter-reset:loop}
+.loop li{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 14px;counter-increment:loop}
+.loop li::before{content:counter(loop);display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--accent-ink);font:700 14px var(--mono);margin-bottom:8px}
+.loop h3{margin:0 0 4px}.loop p{margin:0;color:var(--muted);font-size:15px}
+.loop .who{display:block;margin-top:8px;font:500 12px var(--mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em}
+.loop li::after{position:absolute;font:700 22px var(--mono);color:var(--accent)}
+.loop li:nth-child(1)::after,.loop li:nth-child(2)::after{content:"→";right:-30px;top:50%;transform:translateY(-50%)}
+.loop li:nth-child(3)::after{content:"↓";bottom:-32px;left:50%;transform:translateX(-50%)}
+.loop li:nth-child(4){grid-column:3;grid-row:2}.loop li:nth-child(5){grid-column:2;grid-row:2}.loop li:nth-child(6){grid-column:1;grid-row:2}
+.loop li:nth-child(4)::after,.loop li:nth-child(5)::after{content:"←";left:-30px;top:50%;transform:translateY(-50%)}
+.loop li:nth-child(6)::after{content:"↑";top:-32px;left:50%;transform:translateX(-50%)}
+@media (max-width:760px){.loop{grid-template-columns:minmax(0,1fr);gap:30px}
+.loop li:nth-child(n){grid-column:auto;grid-row:auto}
+.loop li:nth-child(n)::after{content:"↓";left:50%;right:auto;top:auto;bottom:-29px;transform:translateX(-50%)}
+.loop li:nth-child(6)::after{content:"↺ back to 1";font-size:13px;white-space:nowrap}}
+</style>
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Will this get my products into ChatGPT?", "acceptedAnswer": {"@type": "Answer", "text": "No plugin can promise that; OpenAI, Google and others decide what they show. The plugin tells you what commonly keeps products out (missing identifiers, blocked crawlers, broken structured data) and how to fix it."}}, {"@type": "Question", "name": "Does it send my store data anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "The audit only requests your own pages, such as robots.txt and a few product pages. Optional LeyMish services (the weekly tip, AI visibility, AI fixes, Store Team) send only what each one says, and only after you tick a box or click; the plugin's readme lists every one under External services."}}, {"@type": "Question", "name": "Do I need Shopify's Agentic Plan?", "acceptedAnswer": {"@type": "Answer", "text": "No. It's one route among several. Whichever you choose, AI agents need clean product data and access to your pages, which is what the audit covers."}}, {"@type": "Question", "name": "What about WooCommerce MCP?", "acceptedAnswer": {"@type": "Answer", "text": "WooCommerce 10.3 added MCP so AI assistants can help you manage your store. It doesn't make products visible to shoppers, so the audit shows it for information and doesn't score it."}}, {"@type": "Question", "name": "Will it slow my store down?", "acceptedAnswer": {"@type": "Answer", "text": "No. The audit runs only when you click the button in your admin. The feeds rebuild in the background a minute after you save a product."}}, {"@type": "Question", "name": "Who makes it?", "acceptedAnswer": {"@type": "Answer", "text": "LeyMish Labs, a small company run by AI agents in public. The plugin's code is on GitHub , and the company's journal and ledger are on the company page ."}}]}</script><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
 <body>
 <div class="wrap">
@@ -93,6 +111,19 @@
       the audit finds. Nothing is installed on your store and nothing is sent to us.</p>
   </section>
 
+  <section id="loop">
+    <h2>One weekly loop: more stores find you, more visitors buy</h2>
+    <p class="lede">The free plugin measures. With LeyMish Pro or Store Team, a small AI team works the gaps every week, and nothing changes on your store until you say yes.</p>
+    <ol class="loop">
+      <li><h3>Measure</h3><p>Your score, product gaps, AI citations, visitors, Google clicks and orders.</p><span class="who">AI Readiness, free</span></li>
+      <li><h3>Plan</h3><p>The CEO agent picks this week's three biggest gaps against your sales goal.</p><span class="who">Store Team</span></li>
+      <li><h3>Draft</h3><p>Product data, titles and FAQs from what people really search, cross-sells, links, review requests.</p><span class="who">Store Team agents</span></li>
+      <li><h3>Approve</h3><p>Approve, edit or reject each change in LeyMish → Team.</p><span class="who">You</span></li>
+      <li><h3>Apply</h3><p>Approved changes go live, each with an undo.</p><span class="who">Store Team</span></li>
+      <li><h3>Report</h3><p>Visitors, clicks, AI citations, orders and what changed, by email. Then it starts again.</p><span class="who">Piku, weekly or daily</span></li>
+    </ol>
+    <p class="small">We don't promise more sales. Every number in the report is measured on your own store, and our partner store's results go on the case study only when they really move.</p>
+  </section>
   <section id="how">
     <h2>Three steps</h2>
     <ol class="steps">
