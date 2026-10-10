@@ -23,6 +23,15 @@
   .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
   @media (max-width: 700px) { .grid2 { grid-template-columns: 1fr; } }
 </style>
+<style>
+/* Meet the team: the agents' 3D avatars (they're AI, and say so) */
+.crew{list-style:none;margin:20px 0 8px;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:14px}
+.crew li{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:16px;text-align:center}
+.crew img{width:128px;height:128px;border-radius:28px;display:block;margin:0 auto 10px;background:#dcefed}
+.crew strong{display:block;font-size:20px;letter-spacing:-.01em}
+.crew .title{display:block;font:600 12px var(--mono);color:var(--accent);text-transform:uppercase;letter-spacing:.06em;margin:2px 0 8px}
+.crew p{margin:0;color:var(--muted);font-size:14px}
+</style>
 <script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
 <body>
 <div class="wrap">
@@ -43,6 +52,17 @@
     <p class="small"><strong>The offer:</strong> Store Team is built into the free LeyMish AI Readiness plugin (the Team tab). The weekly plan is free. 5 founding stores get the agents and LeyMish Pro free for 30 days; after that it's $12/month, only if you choose to continue. No card now, and nothing is charged automatically. The 5 is a real count.</p>
   </div>
 
+  <section id="team">
+    <h2>Meet the team</h2>
+    <p class="lede">Five AI agents with friendly names. They're not people, they say so in every email, and none of them changes your store until you approve.</p>
+    <ul class="crew">
+      <li><img src="/assets/team/ceo.webp" alt="Momo, a cartoon owl with glasses and a clipboard" width="128" height="128" loading="lazy"><strong>Momo</strong><span class="title">Team Lead</span><p>Reads your store every week, picks the three biggest gaps against your goal and writes the plan.</p></li>
+      <li><img src="/assets/team/catalog.webp" alt="Pip, a cartoon hamster with a label maker and parcels" width="128" height="128" loading="lazy"><strong>Pip</strong><span class="title">Product Data Keeper</span><p>Attributes, image alt text and Google categories, using only facts already on your product pages.</p></li>
+      <li><img src="/assets/team/seo.webp" alt="Lumi, a cartoon bunny with a pencil and a magnifying glass" width="128" height="128" loading="lazy"><strong>Lumi</strong><span class="title">Search &amp; Story Writer</span><p>Descriptions and links between your products, shaped by what shoppers really search.</p></li>
+      <li><img src="/assets/team/merch.webp" alt="Bao, a cartoon panda with a shopping basket" width="128" height="128" loading="lazy"><strong>Bao</strong><span class="title">Merchandiser</span><p>Cross-sells from products your customers really buy together.</p></li>
+      <li><img src="/assets/team/reporting.webp" alt="Piku, a cartoon penguin holding a tablet with a check mark" width="128" height="128" loading="lazy"><strong>Piku</strong><span class="title">Reporter &amp; Checker</span><p>Checks every change landed, keeps the undo ready, asks buyers for honest reviews and sends your store report.</p></li>
+    </ul>
+  </section>
   <section>
     <h2>What it does, and what it never does</h2>
     <div class="grid2">
