@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WooCommerce products not syncing to Merchant Center</title><meta name="description" content="When Google for WooCommerce shows products as not synced or pending, the cause is almost always in one of six places.">
+<link rel="canonical" href="https://www.leymish.com/blog/woocommerce-products-not-syncing-to-merchant-center.html"><meta property="og:title" content="WooCommerce products not syncing to Merchant Center"><meta property="og:description" content="When Google for WooCommerce shows products as not synced or pending, the cause is almost always in one of six places."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/blog/woocommerce-products-not-syncing-to-merchant-center.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "WooCommerce products not syncing to Google Merchant Center: a checklist in the right order", "description": "When Google for WooCommerce shows products as not synced or pending, the cause is almost always in one of six places. Check them in this order: setup, terms, the job queue, failed jobs, cached checks, then the product data itself.", "url": "https://www.leymish.com/blog/woocommerce-products-not-syncing-to-merchant-center.html", "datePublished": "2026-10-18", "author": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "publisher": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}}</script><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/woocommerce/#checks">What it checks</a><a href="/woocommerce/check/">Free check</a><a href="/woocommerce/guides/">Guides</a><a class="hide-sm" href="/woocommerce/start/">Start guide</a><a href="/woocommerce/pro.html">Pro</a><a href="/woocommerce/store-team/">Store Team (beta)</a><a href="/woocommerce/done-for-you/">Done for you</a><a class="hide-sm" href="/blog/">Blog</a><a href="/claude-code/">Claude Code</a><a href="/whats-new.html">What's new</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-10-18</p><h1>WooCommerce products not syncing to Google Merchant Center: a checklist in the right order</h1><p>"Not synced", "Pending" for days, or Merchant Center showing fewer products than your store: these are the most common
+complaints about Google for WooCommerce. Recent threads in its public support forum describe the same symptom with
+different causes underneath.</p>
+<p>Most guides jump straight to product data: GTINs, prices, images. That's the last place to look. If the plugin can't
+send anything at all, perfect product data won't help. Check these six places in order, and stop at the first one
+that fails.</p>
+<h2>1. Did setup actually finish?</h2>
+<p>In <strong>Marketing → Google for WooCommerce</strong>, go through every onboarding step until the plugin stops asking: Google
+account, Merchant Center account, target audience, shipping, and the free-listings choice. A store can look connected
+while one step is unfinished. When the plugin offers to create a new Merchant Center account and you already have
+one, choose your existing account. Two accounts for one website cause their own problems.</p>
+<h2>2. Has the Merchant Center account accepted Google's terms?</h2>
+<p>Sign in at merchants.google.com as the account owner. If there's a banner or prompt about terms, accept it. Unsigned
+terms make the plugin's background jobs fail with "Terms of Service is not signed" while every screen in WordPress
+looks fine. We wrote about <a href="/blog/google-for-woocommerce-terms-of-service-not-signed.html">that trap and the cached check that follows it</a>.</p>
+<h2>3. Is the job queue running?</h2>
+<p>Go to <strong>WooCommerce → Status → Scheduled Actions</strong>, search for <code>gla</code> and open <strong>Pending</strong>. Note the oldest date, wait
+ten minutes and refresh.</p>
+<ul>
+<li><strong>The count drops:</strong> the queue is working. Give it time, especially for stores with many products or variations.</li>
+<li><strong>Nothing moves, and the dates are days or months old:</strong> the queue is stalled. On small sites WordPress cron only
+  runs when someone visits, and some hosts disable it. Ask your host to run WordPress cron from a real server cron
+  job. A queue with thousands of old failed or pending actions can also slow the database enough to stall
+  everything. Clear the backlog first.</li>
+</ul>
+<h2>4. What do the failed jobs say?</h2>
+<p>Same screen, <strong>Failed</strong> tab. Open the newest gla jobs and read the log message. It's the most useful line in the whole
+plugin:</p>
+<table>
+<thead>
+<tr>
+<th>Message (paraphrased)</th>
+<th>What it means</th>
+<th>What to do</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Terms of Service is not signed</td>
+<td>Merchant Center terms not accepted</td>
+<td>Account owner accepts them in Merchant Center</td>
+</tr>
+<tr>
+<td>401 / not connected to Google account</td>
+<td>The plugin lost authorisation</td>
+<td>Disconnect and reconnect the same accounts in the plugin's settings</td>
+</tr>
+<tr>
+<td>Job stopped, failure rate above threshold</td>
+<td>The plugin gave up after repeated failures</td>
+<td>Fix the cause above, then start a full sync again</td>
+</tr>
+<tr>
+<td>Not set up correctly</td>
+<td>Setup incomplete, or an earlier check is cached</td>
+<td>Finish setup; wait out cached checks</td>
+</tr>
+</tbody>
+</table>
+<h2>5. Is an old answer cached?</h2>
+<p>The plugin remembers some checks for hours. We saw a failed "store URL matches Merchant Center" check block syncing for
+about 12 hours after the real problem was fixed. If everything above is fixed and nothing syncs, wait out a cached
+check before changing anything else. Then start a full sync from the plugin's connection test page:
+<code>admin.php?page=connection-test-admin-page</code> → "Sync All Products with Google Merchant Center".</p>
+<h2>6. Only now: the product data</h2>
+<p>When the plugin is sending products and some still fail, open each one's issue in the plugin's product feed page or
+in Merchant Center:</p>
+<ul>
+<li><strong>Price or availability mismatch:</strong> the feed, the page and the page's structured data must agree, including sale
+  prices and currency.</li>
+<li><strong>Missing identifier:</strong> use the product's real GTIN. For genuinely own-brand or handmade products without one, set
+  that no identifier exists. Never invent a GTIN.</li>
+<li><strong>Variable products:</strong> every variation is its own item. Each needs its own price, stock status and attributes.
+  A variation without a price won't sync.</li>
+<li><strong>Images:</strong> one clear product photo, with no watermarks or promotional text.</li>
+</ul>
+<h2>Two things that look like sync problems but aren't</h2>
+<ul>
+<li><strong>Merchant Center shows products the plugin didn't send.</strong> Google can find products by crawling your site. Once the
+  plugin's feed is complete, turn off that automatic source in Merchant Center's data sources.</li>
+<li><strong>Products synced, but none appear on Google.</strong> If your account has an account-level issue (for example
+  "Misrepresentation"), no products show until it's resolved and reviewed. That's a different job: identity,
+  policies, claims and shipping.</li>
+</ul>
+<p>If you'd rather not work through this alone, our <a href="/woocommerce/google-merchant-center/">Google Merchant Center page</a>
+has a free check, a $29 written diagnosis, and fixed-price fixes. The do-it-yourself version, with templates and appeal
+text, is our Suspension Rescue Playbook, linked from that page once it's live.</p><div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker reads the public signals an AI shopping agent sees and gives you a score and a list to fix. No account, no card.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div><div class='card' style='margin:24px 0'><h3>More on WooCommerce and AI shopping</h3><ul><li><a href='/woocommerce/guides/add-gtin-woocommerce.html'>How to add GTINs in WooCommerce (with the built-in field)</a></li><li><a href='/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html'>Is your WooCommerce store ready for ChatGPT checkout?</a></li><li><a href='/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html'>Is your WooCommerce store visible in ChatGPT shopping?</a></li><li><a href='/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html'>WooCommerce robots.txt for AI crawlers: what to allow</a></li></ul><p><a href='/woocommerce/#learn'>Everything we've published on it</a> · <a href='/woocommerce/check/'>Free online check</a></p></div></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Readiness plugin gives you a 0–100 score, one-click fixes and product feeds, and runs on your site. LeyMish Pro adds AI visibility checks, AI fixes and agents.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/whats-new.html">What's new</a> · <a href="/blog/">Blog</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
+</div></body></html>

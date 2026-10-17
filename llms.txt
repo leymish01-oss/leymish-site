@@ -17,6 +17,8 @@
 - [Fix the WooCommerce Store API BOM error](https://www.leymish.com/woocommerce/guides/woocommerce-store-api-bom-error.html)
 - [Add a brand to WooCommerce products](https://www.leymish.com/woocommerce/guides/add-brand-woocommerce-products.html)
 - [llms.txt for WooCommerce stores](https://www.leymish.com/woocommerce/guides/llms-txt-woocommerce.html)
+- [WooCommerce products not syncing to Google Merchant Center: a checklist in the right order](https://www.leymish.com/blog/woocommerce-products-not-syncing-to-merchant-center.html)
+- [Google for WooCommerce: \"Terms of Service is not signed\" and the 12-hour URL check](https://www.leymish.com/blog/google-for-woocommerce-terms-of-service-not-signed.html)
 - [Three invisible bytes cost a real store 5 points. Here is the whole 77 to 96.](https://www.leymish.com/blog/three-bytes-cost-five-points.html)
 - [Your product schema is probably fine. Your product identifier probably isn't.](https://www.leymish.com/blog/structured-data-without-a-product-identifier.html)
 - [robots.txt, security plugins and AI shopping bots: a WooCommerce checklist](https://www.leymish.com/blog/woocommerce-robots-txt-ai-bots.html)
