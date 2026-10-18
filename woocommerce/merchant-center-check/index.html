@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Merchant Center Check for WooCommerce (and Shopify) | LeyMish Labs</title>
+<meta name="description" content="Free Google Merchant Center check for WooCommerce and Shopify stores: the top 3 things a reviewer would flag for misrepresentation, in plain words, and the full report by email within 24 hours.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/merchant-center-check/">
+<meta property="og:title" content="Free Merchant Center Check for WooCommerce">
+<meta property="og:description" content="Policies, contact details, claims, prices in your product data: see the top 3 issues now, get the full report by email.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.leymish.com/woocommerce/merchant-center-check/">
+<meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .mc-form { display: grid; gap: 10px; margin-top: 18px; max-width: 560px; }
+  .mc-form input[type=text], .mc-form input[type=email] { padding: 13px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; }
+  .mc-form label.tick { display: flex; gap: 8px; align-items: flex-start; font-size: 14px; color: var(--muted); }
+  .mc-form label.tick input { margin-top: 3px; }
+  .mc-form .btn { justify-self: start; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin-top: 18px; }
+  .big { font-family: var(--mono); font-size: 40px; font-weight: 700; }
+  .big small { font-size: 18px; color: var(--muted); }
+  ol.top { padding-left: 22px; margin: 12px 0; }
+  ol.top li { padding: 8px 0; border-top: 1px solid var(--line); }
+  ol.top p { margin: 4px 0 0; color: var(--muted); }
+  .where { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .tiers { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 12px; margin: 14px 0; }
+  .tier { border: 1px solid var(--line); border-radius: var(--radius); padding: 14px; background: var(--surface); }
+  .tier .price { font-family: var(--mono); font-size: 24px; font-weight: 700; color: var(--accent); }
+  .err { color: #b42318; }
+  dl.faq dt { font-weight: 600; margin-top: 14px; }
+  dl.faq dd { margin: 4px 0 0; color: var(--muted); }
+</style>
+<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/">leymish<span>/</span>labs</a>
+    <nav><a href="/woocommerce/">Plugin</a><a href="/woocommerce/google-merchant-center/">Merchant Center fix</a><a href="/woocommerce/guides/">Guides</a><a href="/woocommerce/done-for-you/">Done for you</a></nav>
+  </header>
+  <div class="hero">
+    <p class="eyebrow">Free · WooCommerce first, Shopify too</p>
+    <h1>Free Merchant Center Check</h1>
+    <p class="lede">Flagged for "misrepresentation", or worried you will be? Enter your store and we'll show you the top 3
+      things a Merchant Center reviewer would likely flag, in plain words. The full report, with the fix for every
+      finding, arrives by email within 24 hours.</p>
+    <form class="mc-form" id="form" novalidate>
+      <label for="u" style="position:absolute;left:-9999px">Your store's address</label>
+      <input id="u" type="text" inputmode="url" autocomplete="url" placeholder="yourstore.com" required>
+      <label for="e" style="position:absolute;left:-9999px">Your email</label>
+      <input id="e" type="email" autocomplete="email" placeholder="you@yourstore.com" required>
+      <p class="small" style="margin:0">We'll email your full report for this store within 24 hours. We don't add you to
+        any marketing list unless you tick the box.</p>
+      <label class="tick"><input id="m" type="checkbox"> Also send me occasional Merchant Center tips and LeyMish
+        offers. I can unsubscribe any time.</label>
+      <button class="btn primary" id="go" type="submit">Check my store</button>
+    </form>
+    <p class="small">Reads up to 15 of your public pages (about 20 seconds) and follows your robots.txt. Independent
+      tool, not affiliated with Google. Google decides every review.</p>
+    <div id="result" aria-live="polite"></div>
+  </div>
+
+  <section>
+    <h2>What it looks at</h2>
+    <ul>
+      <li>Your returns, shipping, privacy and terms pages: there, linked from your home page, and specific (time limits,
+        costs, who pays return postage). WooCommerce's sample returns page left published is a common trap.</li>
+      <li>Contact details a customer could use to identify and reach your business.</li>
+      <li>Wording that reads as a health, results or price claim.</li>
+      <li>On a few products: the price and stock in your product data compared with what the page shows, plus brand
+        and barcode.</li>
+      <li>Whether Google's crawlers are allowed in, and whether your sitemap lists your products.</li>
+    </ul>
+    <p class="small">It only sees your public pages. Merchant Center's own settings (shipping services, return policy,
+      business details) and your feed are covered in the paid Health Check.</p>
+  </section>
+
+  <section id="offers">
+    <h2>Want it fixed for you?</h2>
+    <div class="tiers">
+      <div class="tier"><h3>Health Check</h3><div class="price">$29</div><p>A written diagnosis with every fix in order,
+        reviewed by a person.</p><a class="btn" href="https://leymish.gumroad.com/l/gmc-health-check">Get the Health Check</a></div>
+      <div class="tier"><h3>Fix, done for you</h3><div class="price">$99</div><p>Policies, contact details and product
+        data fixed with you, plus the resubmission steps.</p><a class="btn primary" href="https://leymish.gumroad.com/l/gmc-fix">Fix my store</a></div>
+      <div class="tier"><h3>Suspended account rescue</h3><div class="price">$249</div><p>Everything in the Fix, plus the
+        appeal text for you to submit.</p><a class="btn" href="https://leymish.gumroad.com/l/gmc-rescue">Start the rescue</a></div>
+    </div>
+    <p class="small">Google decides every review and appeal, so no one can honestly promise reinstatement. We never ask
+      for passwords: you invite us with limited access and remove it when we're done. More on the
+      <a href="/woocommerce/google-merchant-center/">Merchant Center fix page</a>.</p>
+  </section>
+
+  <section>
+    <h2>Privacy</h2>
+    <p>We read your public pages only: no logins, no forms, no orders. We don't keep copies of your pages. The findings
+      and your request (store address and email) are deleted after 7 days. Your email is used only to send this report,
+      unless you tick the box. Every email has a link to stop all emails. See our <a href="/privacy.html">privacy
+      policy</a>.</p>
+  </section>
+
+  <section>
+    <h2>Questions</h2>
+    <dl class="faq">
+      <dt>Is it really free?</dt>
+      <dd>Yes. The top 3 issues on this page and the full report by email cost nothing. If you want the work done for
+        you, the paid options are above.</dd>
+      <dt>Does it work on Shopify?</dt>
+      <dd>Yes. It's built for WooCommerce first, because most tools aren't, and it checks Shopify stores through
+        Shopify's own policy and product addresses.</dd>
+      <dt>Can it tell me why Google suspended my account?</dt>
+      <dd>No tool outside your account can know that for sure. It shows what a reviewer would see on your public pages,
+        which is where most misrepresentation problems are.</dd>
+      <dt>Who sends the full report?</dt>
+      <dd>LeyMish Labs, from hello@leymish.com. Our AI agents prepare the report and it's checked before it's sent.</dd>
+    </dl>
+  </section>
+
+  <footer>
+    LeyMish Labs · <a href="/woocommerce/google-merchant-center/">Merchant Center fix</a> · <a href="/woocommerce/">Free plugin</a> · <a href="/privacy.html">Privacy</a> · <a href="/whats-new.html">What's new</a>
+  </footer>
+</div>
+<script>
+(function () {
+  var API = "https://leymish-ai.leymish.workers.dev/v1/mc-check";
+  var form = document.getElementById("form"), u = document.getElementById("u"), e = document.getElementById("e"),
+    m = document.getElementById("m"), btn = document.getElementById("go"), out = document.getElementById("result");
+  function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+  function render(d) {
+    var items = d.top.map(function (t) {
+      return "<li><strong>" + esc(t.title) + "</strong>" + (t.where ? " <span class='where'>" + esc(t.where) + "</span>" : "") + "<p>" + esc(t.plain) + "</p></li>";
+    }).join("");
+    var head = d.found
+      ? "<div class='big'>" + d.found + "<small> issue" + (d.found === 1 ? "" : "s") + " found</small></div><p>The top " + d.top.length + ", worst first:</p><ol class='top'>" + items + "</ol>" +
+        (d.more ? "<p>…and <strong>" + d.more + " more</strong> in your full report.</p>" : "")
+      : "<div class='big'>0<small> common issues</small></div><p>We didn't find the usual problems on your public pages. Your full report covers the details.</p>";
+    var mail = d.queued ? "<p class='small'>Your full report is on its way to your inbox within 24 hours" + (d.emailed ? " (we've just sent you a copy of these results)" : "") + ".</p>" : "";
+    var note = d.note ? "<p class='small'>" + esc(d.note) + "</p>" : "";
+    out.innerHTML = "<div class='card'><div class='small'>" + esc(d.domain) + (d.platform && d.platform !== "other" ? " · " + esc(d.platform === "woocommerce" ? "WooCommerce" : "Shopify") : "") +
+      (d.cached ? " · checked in the last 6 hours" : "") + "</div>" + head + mail + note +
+      (d.found ? "<p><a class='btn primary' href='#offers'>Get it fixed</a></p>" : "") + "</div>";
+  }
+  function run() {
+    var url = u.value.trim(), email = e.value.trim();
+    if (!url || !email) { out.innerHTML = "<p class='err'>Enter your store's address and your email.</p>"; return; }
+    btn.disabled = true; btn.textContent = "Checking…";
+    out.innerHTML = "<p class='small'>Checking " + esc(url) + ": about 20 seconds.</p>";
+    fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ url: url, email: email, marketing: m.checked }) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.ok) { out.innerHTML = "<p class='err'>" + esc(d.error || "Something went wrong. Please try again.") + "</p>"; return; }
+        render(d);
+        if (window.gtag) gtag("event", "mc_check_run", { found: d.found, platform: d.platform });
+      })
+      .catch(function () { out.innerHTML = "<p class='err'>We couldn't reach the checker. Please try again in a minute.</p>"; })
+      .then(function () { btn.disabled = false; btn.textContent = "Check my store"; });
+  }
+  form.addEventListener("submit", function (ev) { ev.preventDefault(); run(); });
+  var q = location.search.match(/[?&]d=([^&]+)/);
+  if (q) u.value = decodeURIComponent(q[1]);
+})();
+</script>
+</body>
+</html>

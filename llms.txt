@@ -5,6 +5,7 @@
 ## WooCommerce and AI shopping
 
 - [Google Merchant Center fix: free check, then a diagnosis ($29), the fix ($99) or a rescue ($249)](https://www.leymish.com/woocommerce/google-merchant-center/)
+- [Free Merchant Center Check: the top 3 issues now, the full report by email within 24 hours](https://www.leymish.com/woocommerce/merchant-center-check/)
 - [Free online check: 5 outside checks in about 10 seconds](https://www.leymish.com/woocommerce/check/)
 - [Our census of 100 WooCommerce stores: method and numbers](https://www.leymish.com/woocommerce/census.html)
 - [Case study: one real store's audit, fixed and re-run](https://www.leymish.com/woocommerce/case-study-mishbio.html)
@@ -18,6 +19,7 @@
 - [Add a brand to WooCommerce products](https://www.leymish.com/woocommerce/guides/add-brand-woocommerce-products.html)
 - [llms.txt for WooCommerce stores](https://www.leymish.com/woocommerce/guides/llms-txt-woocommerce.html)
 - [WooCommerce products not syncing to Google Merchant Center: a checklist in the right order](https://www.leymish.com/blog/woocommerce-products-not-syncing-to-merchant-center.html)
+- [Merchant Center misrepresentation on WooCommerce: what reviewers check (2026)](https://www.leymish.com/blog/woocommerce-merchant-center-misrepresentation.html)
 - [Google for WooCommerce: \"Terms of Service is not signed\" and the 12-hour URL check](https://www.leymish.com/blog/google-for-woocommerce-terms-of-service-not-signed.html)
 - [Three invisible bytes cost a real store 5 points. Here is the whole 77 to 96.](https://www.leymish.com/blog/three-bytes-cost-five-points.html)
 - [Your product schema is probably fine. Your product identifier probably isn't.](https://www.leymish.com/blog/structured-data-without-a-product-identifier.html)

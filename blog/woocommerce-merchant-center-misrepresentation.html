@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WooCommerce Merchant Center misrepresentation checks</title><meta name="description" content="What Merchant Center reviewers check on a WooCommerce store: identity, refund and shipping pages, claim words, product data, robots.txt, cool-down.">
+<link rel="canonical" href="https://www.leymish.com/blog/woocommerce-merchant-center-misrepresentation.html"><meta property="og:title" content="WooCommerce Merchant Center misrepresentation checks"><meta property="og:description" content="What Merchant Center reviewers check on a WooCommerce store: identity, refund and shipping pages, claim words, product data, robots.txt, cool-down."><meta property="og:type" content="website"><meta property="og:url" content="https://www.leymish.com/blog/woocommerce-merchant-center-misrepresentation.html"><meta property="og:image" content="https://www.leymish.com/assets/woo/cover.png"><meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/assets/style.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "Article", "headline": "Merchant Center misrepresentation on WooCommerce: what reviewers check (2026)", "description": "What Merchant Center reviewers check on a WooCommerce store: identity, refund and shipping pages, claim words, product data, robots.txt, cool-down.", "url": "https://www.leymish.com/blog/woocommerce-merchant-center-misrepresentation.html", "datePublished": "2026-10-18", "author": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}, "publisher": {"@type": "Organization", "name": "LeyMish Labs", "url": "https://www.leymish.com/"}}</script><script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I fix a misrepresentation suspension on WooCommerce without a developer?", "acceptedAnswer": {"@type": "Answer", "text": "Usually, yes. Most fixes are page text, WooCommerce settings (shipping, page setup, site visibility) and Merchant Center settings. Theme templates that add text to every product page sometimes need a developer."}}, {"@type": "Question", "name": "Should I delete WooCommerce's sample Refund and Returns Policy page?", "acceptedAnswer": {"@type": "Answer", "text": "Set it to Draft if you don't use it. What matters is that only one returns policy is public, and that Merchant Center's return policy settings point at that page with the same terms."}}, {"@type": "Question", "name": "Does Google for WooCommerce cause misrepresentation suspensions?", "acceptedAnswer": {"@type": "Answer", "text": "The plugin sends your product data; it doesn't decide the review. But stale prices, wrong stock or shipping settings copied incorrectly during setup can make your listings disagree with your store, and that disagreement is what a reviewer sees."}}, {"@type": "Question", "name": "How long does a Merchant Center review take?", "acceptedAnswer": {"@type": "Answer", "text": "Google's help pages say review requests typically take up to 3–7 business days, and complex cases can take longer."}}, {"@type": "Question", "name": "What happens if my review fails?", "acceptedAnswer": {"@type": "Answer", "text": "After a limited number of attempts, Google starts a cool-down during which you can't request another review, and later cool-downs may be longer. Use the time to recheck everything, not only the item you suspect."}}, {"@type": "Question", "name": "Can anyone promise reinstatement?", "acceptedAnswer": {"@type": "Answer", "text": "No. Google decides every review. Anyone promising reinstatement, or claiming they can contact Google for you, is promising something they don't control."}}]}</script><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body><div class="wrap">
+<header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
+<nav><a href="/woocommerce/#checks">What it checks</a><a href="/woocommerce/check/">Free check</a><a href="/woocommerce/guides/">Guides</a><a class="hide-sm" href="/woocommerce/start/">Start guide</a><a href="/woocommerce/pro.html">Pro</a><a href="/woocommerce/store-team/">Store Team (beta)</a><a href="/woocommerce/done-for-you/">Done for you</a><a class="hide-sm" href="/blog/">Blog</a><a href="/claude-code/">Claude Code</a><a href="/whats-new.html">What's new</a></nav></header>
+<main class="prose " style="padding:24px 0 48px"><p class='small'>2026-10-18</p><h1>Merchant Center misrepresentation on WooCommerce: what reviewers check (2026)</h1><p>A misrepresentation suspension arrives as a short email and one line in Merchant Center. It rarely names the page or
+the sentence that caused it. Most guides that try to fill the gap are written for Shopify, where the theme, the
+policy pages and the product feed come from one vendor. A WooCommerce store is assembled from WordPress, WooCommerce,
+a theme, a feed plugin and whatever the last developer left behind, so there are more places for two pages to
+disagree.</p>
+<p>Below is what a reviewer can see on a WooCommerce store, in the order we'd check it, with the screen where each fix
+lives.</p>
+<p><strong>Want a quick first pass?</strong> Our <a href="/woocommerce/merchant-center-check/">free Merchant Center check</a> reads your public
+pages and lists the misrepresentation risks it can see. Independent tool and service, not affiliated with Google.
+Google decides every review.</p>
+<h2>What the policy actually asks</h2>
+<p>Google's <a href="https://support.google.com/merchants/answer/6150127">misrepresentation policy</a> comes down to one question:
+would a shopper be misled about who you are, what you sell or what it costs? It names false identity or contact
+details, hiding shipping and return costs, offers you can't fulfil, and unreliable claims. It also says the most
+serious cases can lead to suspension without prior warning.</p>
+<p>On a WooCommerce store, those questions map to a handful of things a reviewer can open in a browser.</p>
+<h2>1. Business identity and contact details</h2>
+<p>The reviewer wants to know who they would be buying from and whether they could reach them. Google's
+<a href="https://support.google.com/merchants/answer/12756116">Merchant Center guidelines</a> ask for contact details that are
+easy to find: a form, an email address, a phone number or a business social profile.</p>
+<p>On WooCommerce, the business name and address live in several places that don't update each other:</p>
+<ul>
+<li><strong>WooCommerce → Settings → General → Store Address</strong>, which feeds emails and some themes.</li>
+<li><strong>The Contact page</strong>, usually a block or form plugin with its own text.</li>
+<li><strong>The footer</strong>, set in the theme's customiser or a footer widget.</li>
+<li><strong>The site's Organization structured data</strong>, often written by an SEO plugin from its own settings screen.</li>
+<li><strong>Merchant Center's business information</strong>: name, address, phone and website.</li>
+</ul>
+<p>Pick one legal name, one trading name, one phone in international format and one email at your own domain. Then
+make all five agree. Registered in one country and selling to another? Say so on the Contact page.</p>
+<h2>2. The refund and returns policy, and WooCommerce's sample page</h2>
+<p>WooCommerce creates a sample page called "Refund and Returns Policy" at <code>/refund_returns/</code>. It's template text with a
+generic return window. If that page is published alongside your real policy, the store now shows two policies that
+contradict each other, and the reviewer can't tell which one you honour.</p>
+<p>Go to <strong>Pages → All Pages</strong>, search for "Refund", and keep exactly one returns page published. Set the sample to
+Draft if you don't use it. Some feed plugins show a setup hint that looks for that sample slug. A red hint in a plugin
+is not Google's review, so don't publish the sample just to turn it green.</p>
+<p>Your real policy should state the return window, who pays return postage, how to start a return and when the refund
+arrives. Then copy the same terms into Merchant Center's return policy settings, with the URL of that page. Google's
+<a href="https://support.google.com/merchants/answer/14011730">return policy setup guide</a> expects the website and the settings
+to match.</p>
+<h2>3. Shipping page versus shipping settings versus checkout</h2>
+<p>This is the mismatch that catches stores with otherwise clean pages. Three things have to tell the same story:</p>
+<ol>
+<li><strong>Your shipping page:</strong> where you ship, how long orders take to leave, how long delivery takes, and what it costs.</li>
+<li><strong>WooCommerce → Settings → Shipping:</strong> the zones and methods that produce the price at checkout. Also check
+   <strong>WooCommerce → Settings → General → Selling location(s)</strong> and <strong>Shipping location(s)</strong>.</li>
+<li><strong>Merchant Center's shipping services:</strong> cost, handling time and transit time for each country you target.</li>
+</ol>
+<p>The quickest test is a cart. Add one unit of a product, enter an address in a country you target, and note the
+shipping price. Do the same for your heaviest product and for a far-away address. If Merchant Center says "free" and
+checkout charges anything, every listing promised something the store didn't deliver.</p>
+<p>If Google for WooCommerce offers to copy shipping from WooCommerce during setup, check the result: a rate added by a
+fulfilment app won't be in your WooCommerce zones.</p>
+<h2>4. Terms and privacy describe this store</h2>
+<p>A reviewer reads the terms for who the contract is with and what you sell. A terms page left over from a different
+business model ("we sell supplements" on a cosmetics store) contradicts you in your own words.</p>
+<p>Set the pages WooCommerce links at checkout in <strong>WooCommerce → Settings → Advanced → Page setup</strong> (the Terms and
+conditions field) and the privacy page in <strong>Settings → Privacy</strong> in WordPress. The privacy page should name the
+services that actually receive customer data: payments, hosting, analytics, the feed plugin, email and any
+fulfilment partner.</p>
+<h2>5. Claim words</h2>
+<p>Claims are where health-adjacent stores fail most often. Read every product title, short description, product tab
+and FAQ field for:</p>
+<ul>
+<li><strong>Medical wording:</strong> treat, cure, heal, prevent, or the drug-style disclaimer "not intended to diagnose, treat, cure
+  or prevent any disease" on a product that isn't a supplement or a drug.</li>
+<li><strong>Promises you can't prove:</strong> "#1", "best", "clinically proven" with no study linked, "certified" with no certifier
+  named, or a "guarantee" you couldn't honour.</li>
+<li><strong>Comparisons to treatments:</strong> "Botox-like", "medical-grade", "pharmaceutical-grade".</li>
+<li><strong>Fake discounts:</strong> a crossed-out regular price in WooCommerce that the product never sold at. The misrepresentation
+  policy covers dishonest pricing, and a permanent "sale" is the most common WooCommerce version of it.</li>
+</ul>
+<p>Check the places you don't see every day: the site tagline in <strong>Settings → General</strong> (many themes print it in the
+footer and use it as the home page meta description), page titles written by an SEO plugin, and old blog posts that
+the menu doesn't link but the sitemap does. WordPress lists every public URL at <code>/wp-sitemap.xml</code>, or at the sitemap
+address your SEO plugin uses.</p>
+<h2>6. Price and availability: page, structured data and feed</h2>
+<p>WooCommerce prints Product structured data on each product page, including the offer price, currency and stock
+status. Google for WooCommerce (in <strong>Marketing → Google for WooCommerce</strong>) sends a separate copy of the same facts to
+Merchant Center. A reviewer, or Google's own systems, can compare the page, the structured data and the feed.</p>
+<p>Typical WooCommerce causes of a mismatch:</p>
+<ul>
+<li>a scheduled sale that ended, while a page cache still serves the sale price;</li>
+<li>tax shown differently on the page than in the feed, set under <strong>WooCommerce → Settings → Tax</strong>;</li>
+<li>variable products where the feed sends one variant's price and the page shows another;</li>
+<li>"In stock" in the feed for an item set to out of stock on the product's <strong>Inventory</strong> tab.</li>
+</ul>
+<p>After any change, spot-check three products: the price on the page, in the page source (search for <code>"price"</code>) and in
+Merchant Center.</p>
+<h2>7. The cart and checkout work for a stranger</h2>
+<p>Google's guidelines require that shoppers can add items to the cart and complete checkout, with at least one
+conventional payment method on a secure page. Open the store in a private window and go as far as the payment step.</p>
+<p>Things that break this on WooCommerce:</p>
+<ul>
+<li><strong>WooCommerce → Settings → Site visibility</strong> still set to anything other than Live;</li>
+<li>a Cart or Checkout page missing from <strong>WooCommerce → Settings → Advanced → Page setup</strong>;</li>
+<li>checkout that requires an account before purchase, set in <strong>WooCommerce → Settings → Accounts &amp; Privacy</strong>;</li>
+<li>a security or maintenance plugin that blocks visitors from some countries, including the one the reviewer may be
+  browsing from.</li>
+</ul>
+<h2>8. robots.txt lets Google's crawlers in</h2>
+<p>If Google can't fetch your product pages, it can't check them. Google's
+<a href="https://support.google.com/merchants/answer/14990960">product crawl issues page</a> says robots.txt should allow
+Googlebot and Googlebot-Image to crawl the site. Google's crawler documentation also lists
+<a href="https://developers.google.com/search/docs/crawling-indexing/google-common-crawlers">Storebot-Google</a>, whose rules
+apply across Google Shopping.</p>
+<p>Open <code>yourstore.com/robots.txt</code> and look for <code>Disallow: /</code> under any of those user agents, or under <code>*</code>. In
+WordPress, also check <strong>Settings → Reading → Search engine visibility</strong>, and any rules an SEO or security plugin adds.</p>
+<h2>9. Footer and social links</h2>
+<p>Every link in the footer is part of your identity. A social profile with no name, no description and no link back to
+your store reads as a business that doesn't exist. A personal profile linked as "our Facebook page" is worse than no
+link. Fill each profile in or remove the link, and remove it from the Organization structured data too.</p>
+<p>Check the footer on a product page too: some themes use a different one there, and that's where a listing lands.</p>
+<h2>A real example: our partner store</h2>
+<p>Our partner store is a small WooCommerce skincare shop that sells to the United States. Its Merchant Center account
+was suspended for misrepresentation in October 2026, and Google's summary pointed at business transparency, policies
+and contact information. Going through it the way a reviewer would, we found:</p>
+<ul>
+<li>Merchant Center's only US shipping service said free shipping, while checkout charged a flat $6.63 for one item.</li>
+<li>The terms page said the store sold dietary supplements. It sells none.</li>
+<li>Product tabs carried the drug-style disclaimer on cosmetic products.</li>
+<li>An unnamed "certified" claim sat in the site tagline, so it appeared in the footer and meta description of every
+  page.</li>
+<li>Old blog posts, outside the menu but listed in the sitemap, used treatment comparisons such as "Botox-like".</li>
+<li>Supplier copy on some product pages still addressed other brands, and the footer linked an empty social profile.</li>
+</ul>
+<p>The WooCommerce sample refund page was already unpublished, which was one thing that didn't need fixing. The fixes
+went live between 16 and 18 October. At the time of writing, the review hasn't been requested yet. We'll only
+describe an outcome once Google has made its decision.</p>
+<h2>Requesting the review, and the cool-down</h2>
+<p>Request the review only when every item above is fixed or has a plain explanation. The button is on the account
+issue in Merchant Center. Google's
+<a href="https://support.google.com/merchants/answer/13693195">guide to warnings and suspensions</a> says reviews typically take
+up to 3–7 business days.</p>
+<p>The same page explains the cost of asking too early. A suspended account gets a limited number of review requests
+before a cool-down starts. During the cool-down the review button is disabled and the account stays suspended. After
+each further unsuccessful review, Google may make the next cool-down longer. You can find the end date under
+<strong>Products → Needs attention → View setup and Policy issues</strong>.</p>
+<p>So treat the first request as the one that counts. Keep the appeal short and checkable: who you are, what you changed,
+with a URL and date for each change. Don't claim fixes you haven't made.</p>
+<h2 id="faq-heading">FAQ</h2>
+
+<section id="faq">
+<details><summary>Can I fix a misrepresentation suspension on WooCommerce without a developer?</summary><p>Usually, yes. Most fixes are page text, WooCommerce settings (shipping, page setup, site visibility) and Merchant Center settings. Theme templates that add text to every product page sometimes need a developer.</p></details>
+<details><summary>Should I delete WooCommerce's sample Refund and Returns Policy page?</summary><p>Set it to Draft if you don't use it. What matters is that only one returns policy is public, and that Merchant Center's return policy settings point at that page with the same terms.</p></details>
+<details><summary>Does Google for WooCommerce cause misrepresentation suspensions?</summary><p>The plugin sends your product data; it doesn't decide the review. But stale prices, wrong stock or shipping settings copied incorrectly during setup can make your listings disagree with your store, and that disagreement is what a reviewer sees.</p></details>
+<details><summary>How long does a Merchant Center review take?</summary><p>Google's help pages say review requests typically take up to 3–7 business days, and complex cases can take longer.</p></details>
+<details><summary>What happens if my review fails?</summary><p>After a limited number of attempts, Google starts a cool-down during which you can't request another review, and later cool-downs may be longer. Use the time to recheck everything, not only the item you suspect.</p></details>
+<details><summary>Can anyone promise reinstatement?</summary><p>No. Google decides every review. Anyone promising reinstatement, or claiming they can contact Google for you, is promising something they don't control.</p></details>
+</section>
+
+<h2>Check your store, or hand it over</h2>
+<p>Start with the <a href="/woocommerce/merchant-center-check/">free Merchant Center check</a>. It reads your public pages and
+gives you a list to work through.</p>
+<p>If you'd rather have it done, our <a href="/woocommerce/google-merchant-center/">Google Merchant Center help</a> has three fixed
+prices: a written <strong>Health Check</strong> for $29, a <strong>Fix</strong> for $99 that writes your policy pages from your real facts and
+corrects product data, and a <strong>Rescue</strong> for $249 that works through the misrepresentation checklist and drafts plain
+appeal text for you to submit. You keep control of your Merchant Center account throughout.</p>
+<p>Independent tool and service, not affiliated with Google. Google decides every review. No one can honestly promise
+reinstatement, and we don't.</p><div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker reads the public signals an AI shopping agent sees and gives you a score and a list to fix. No account, no card.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div><div class='card' style='margin:24px 0'><h3>More on WooCommerce and AI shopping</h3><ul><li><a href='/woocommerce/guides/add-gtin-woocommerce.html'>How to add GTINs in WooCommerce (with the built-in field)</a></li><li><a href='/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html'>Is your WooCommerce store ready for ChatGPT checkout?</a></li><li><a href='/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html'>Is your WooCommerce store visible in ChatGPT shopping?</a></li><li><a href='/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html'>WooCommerce robots.txt for AI crawlers: what to allow</a></li></ul><p><a href='/woocommerce/#learn'>Everything we've published on it</a> · <a href='/woocommerce/check/'>Free online check</a></p></div></main>
+<section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Readiness plugin gives you a 0–100 score, one-click fixes and product feeds, and runs on your site. LeyMish Pro adds AI visibility checks, AI fixes and agents.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
+<footer>LeyMish Labs · <a href="/whats-new.html">What's new</a> · <a href="/blog/">Blog</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
+</div></body></html>
