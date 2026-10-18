@@ -83,7 +83,7 @@
     <h2>Want it fixed for you?</h2>
     <div class="tiers">
       <div class="tier"><h3>Health Check</h3><div class="price">$29</div><p>A written diagnosis with every fix in order,
-        reviewed by a person.</p><a class="btn" href="https://leymish.gumroad.com/l/gmc-health-check">Get the Health Check</a></div>
+        approved before it's sent.</p><a class="btn" href="https://leymish.gumroad.com/l/gmc-health-check">Get the Health Check</a></div>
       <div class="tier"><h3>Fix, done for you</h3><div class="price">$99</div><p>Policies, contact details and product
         data fixed with you, plus the resubmission steps.</p><a class="btn primary" href="https://leymish.gumroad.com/l/gmc-fix">Fix my store</a></div>
       <div class="tier"><h3>Suspended account rescue</h3><div class="price">$249</div><p>Everything in the Fix, plus the
@@ -137,7 +137,7 @@
       ? "<div class='big'>" + d.found + "<small> issue" + (d.found === 1 ? "" : "s") + " found</small></div><p>The top " + d.top.length + ", worst first:</p><ol class='top'>" + items + "</ol>" +
         (d.more ? "<p>…and <strong>" + d.more + " more</strong> in your full report.</p>" : "")
       : "<div class='big'>0<small> common issues</small></div><p>We didn't find the usual problems on your public pages. Your full report covers the details.</p>";
-    var mail = d.queued ? "<p class='small'>Your full report is on its way to your inbox within 24 hours" + (d.emailed ? " (we've just sent you a copy of these results)" : "") + ".</p>" : "";
+    var mail = d.queued && !d.note ?"<p class='small'>Your full report is on its way to your inbox within 24 hours" + (d.emailed ? " (we've just sent you a copy of these results)" : "") + ".</p>" : "";
     var note = d.note ? "<p class='small'>" + esc(d.note) + "</p>" : "";
     out.innerHTML = "<div class='card'><div class='small'>" + esc(d.domain) + (d.platform && d.platform !== "other" ? " · " + esc(d.platform === "woocommerce" ? "WooCommerce" : "Shopify") : "") +
       (d.cached ? " · checked in the last 6 hours" : "") + "</div>" + head + mail + note +
