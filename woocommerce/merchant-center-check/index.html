@@ -145,12 +145,13 @@
   var form = document.getElementById("form"), u = document.getElementById("u"), e = document.getElementById("e"),
     m = document.getElementById("m"), btn = document.getElementById("go"), out = document.getElementById("result");
   function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
-  var FIX = "https://leymish.gumroad.com/l/gmc-fix", HEALTH = "https://leymish.gumroad.com/l/gmc-health-check";
+  var FIX = "https://leymish.gumroad.com/l/gmc-fix", HEALTH = "https://leymish.gumroad.com/l/gmc-health-check", KINDLE = "https://www.amazon.com/dp/B0HNLCQ3SP";
+  function diy() { return KINDLE ? "<p class='small'>Prefer to fix it yourself? The step-by-step guide is on <a href='" + KINDLE + "'>Kindle ($6.99)</a>.</p>" : ""; }
   function cta(d) {
     if (d.found) {
       return "<p><strong>Your check found " + d.found + " issue" + (d.found === 1 ? "" : "s") + " on " + esc(d.domain) +
         ". The $99 Fix covers " + (d.found === 1 ? "it" : "all of them") + ", with a before/after change log.</strong></p>" +
-        "<p><a class='btn primary' href='" + FIX + "'>Fix my store ($99)</a> <a class='btn' href='#offers'>Compare options</a></p>";
+        "<p><a class='btn primary' href='" + FIX + "'>Fix my store ($99)</a> <a class='btn' href='#offers'>Compare options</a></p>" + diy();
     }
     return "<p>Good news: none of the common problems showed up on your public pages. If Merchant Center still shows an " +
       "issue, the $29 Health Check also looks at what only your account shows, and if it finds nothing worth fixing, we refund it.</p>" +
