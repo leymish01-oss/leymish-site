@@ -43,11 +43,12 @@
     <nav><a href="/woocommerce/">Plugin</a><a href="/woocommerce/google-merchant-center/">Merchant Center fix</a><a href="/woocommerce/guides/">Guides</a><a href="/woocommerce/done-for-you/">Done for you</a></nav>
   </header>
   <div class="hero">
-    <p class="eyebrow">Free · WooCommerce first, Shopify too</p>
-    <h1>Free Merchant Center Check</h1>
-    <p class="lede">Flagged for "misrepresentation", or worried you will be? Enter your store and we'll show you the top 3
-      things a Merchant Center reviewer would likely flag, in plain words. The full report, with the fix for every
-      finding, arrives by email within 24 hours.</p>
+    <p class="eyebrow">Free Merchant Center Check · WooCommerce first, Shopify too</p>
+    <h1>Find out what's keeping your products off Google</h1>
+    <p class="lede">"Misrepresentation" doesn't tell you what's wrong. This does: 14 checks on your public pages, the
+      top 3 issues a Merchant Center reviewer would likely flag, in plain words, with the page where we saw each. The
+      full report, with the fix for every finding, arrives by email within 24 hours.</p>
+    <p class="small"><a href="/woocommerce/sample-health-check.pdf">See what a full report looks like (sample PDF)</a></p>
     <form class="mc-form" id="form" novalidate>
       <label for="u" style="position:absolute;left:-9999px">Your store's address</label>
       <input id="u" type="text" inputmode="url" autocomplete="url" placeholder="yourstore.com" required>
@@ -79,16 +80,31 @@
       business details) and your feed are covered in the paid Health Check.</p>
   </section>
 
+  <section>
+    <h2>Why it's worth fixing before you ask for a review</h2>
+    <p>While an account is suspended, Google says its products are "disabled from appearing across Google"
+      (<a href="https://support.google.com/merchants/answer/2948694">Google: Issues in Merchant Center</a>). And after a
+      limited number of review requests, Google starts a cool-down during which you can't ask again; each further
+      unsuccessful review may make the next one longer
+      (<a href="https://support.google.com/merchants/answer/13693195">Google: warnings and account suspensions</a>).
+      Fix everything first, then send one short, checkable request.</p>
+  </section>
+
   <section id="offers">
     <h2>Want it fixed for you?</h2>
     <div class="tiers">
-      <div class="tier"><h3>Health Check</h3><div class="price">$29</div><p>A written diagnosis with every fix in order,
-        approved before it's sent.</p><a class="btn" href="https://leymish.gumroad.com/l/gmc-health-check">Get the Health Check</a></div>
-      <div class="tier"><h3>Fix, done for you</h3><div class="price">$99</div><p>Policies, contact details and product
-        data fixed with you, plus the resubmission steps.</p><a class="btn primary" href="https://leymish.gumroad.com/l/gmc-fix">Fix my store</a></div>
-      <div class="tier"><h3>Suspended account rescue</h3><div class="price">$249</div><p>Everything in the Fix, plus the
-        appeal text for you to submit.</p><a class="btn" href="https://leymish.gumroad.com/l/gmc-rescue">Start the rescue</a></div>
+      <div class="tier"><h3>Suspended account rescue</h3><div class="price">$249</div><p>Everything in the Fix, plus
+        Google's full misrepresentation checklist worked through and the review request text for you to submit.</p>
+        <a class="btn" href="https://leymish.gumroad.com/l/gmc-rescue">Start the rescue</a></div>
+      <div class="tier" style="border-color:var(--accent)"><p class="eyebrow" style="margin:0">Most stores need this</p>
+        <h3>Fix, done for you</h3><div class="price">$99</div><p>Every issue your report finds, fixed with you:
+        policies and contact details from your real facts, price, stock, brand and GTIN for up to 50 products, a
+        before/after change log and the resubmission steps.</p><a class="btn primary" href="https://leymish.gumroad.com/l/gmc-fix">Fix my store</a></div>
+      <div class="tier"><h3>Health Check</h3><div class="price">$29</div><p>A written diagnosis of your account and
+        store, every fix in order, within 2 working days (<a href="/woocommerce/sample-health-check.pdf">sample</a>).</p>
+        <a class="btn" href="https://leymish.gumroad.com/l/gmc-health-check">Get the Health Check</a></div>
     </div>
+    <p><strong>If the Health Check finds nothing worth fixing, we refund it.</strong></p>
     <p class="small">Google decides every review and appeal, so no one can honestly promise reinstatement. We never ask
       for passwords: you invite us with limited access and remove it when we're done. More on the
       <a href="/woocommerce/google-merchant-center/">Merchant Center fix page</a>.</p>
@@ -129,6 +145,17 @@
   var form = document.getElementById("form"), u = document.getElementById("u"), e = document.getElementById("e"),
     m = document.getElementById("m"), btn = document.getElementById("go"), out = document.getElementById("result");
   function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+  var FIX = "https://leymish.gumroad.com/l/gmc-fix", HEALTH = "https://leymish.gumroad.com/l/gmc-health-check";
+  function cta(d) {
+    if (d.found) {
+      return "<p><strong>Your check found " + d.found + " issue" + (d.found === 1 ? "" : "s") + " on " + esc(d.domain) +
+        ". The $99 Fix covers " + (d.found === 1 ? "it" : "all of them") + ", with a before/after change log.</strong></p>" +
+        "<p><a class='btn primary' href='" + FIX + "'>Fix my store ($99)</a> <a class='btn' href='#offers'>Compare options</a></p>";
+    }
+    return "<p>Good news: none of the common problems showed up on your public pages. If Merchant Center still shows an " +
+      "issue, the $29 Health Check also looks at what only your account shows, and if it finds nothing worth fixing, we refund it.</p>" +
+      "<p><a class='btn' href='" + HEALTH + "'>Get the Health Check ($29)</a></p>";
+  }
   function render(d) {
     var items = d.top.map(function (t) {
       return "<li><strong>" + esc(t.title) + "</strong>" + (t.where ? " <span class='where'>" + esc(t.where) + "</span>" : "") + "<p>" + esc(t.plain) + "</p></li>";
@@ -141,7 +168,7 @@
     var note = d.note ? "<p class='small'>" + esc(d.note) + "</p>" : "";
     out.innerHTML = "<div class='card'><div class='small'>" + esc(d.domain) + (d.platform && d.platform !== "other" ? " · " + esc(d.platform === "woocommerce" ? "WooCommerce" : "Shopify") : "") +
       (d.cached ? " · checked in the last 6 hours" : "") + "</div>" + head + mail + note +
-      (d.found ? "<p><a class='btn primary' href='#offers'>Get it fixed</a></p>" : "") + "</div>";
+      cta(d) + "</div>";
   }
   function run() {
     var url = u.value.trim(), email = e.value.trim();
