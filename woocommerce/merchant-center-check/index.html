@@ -187,6 +187,11 @@
       .then(function () { btn.disabled = false; btn.textContent = "Check my store"; });
   }
   form.addEventListener("submit", function (ev) { ev.preventDefault(); run(); });
+  // S-008: a click on the result card's paid button ($99 Fix or $29 Health Check). Counts only, like pricing_click.
+  out.addEventListener("click", function (ev) {
+    var a = ev.target.closest && ev.target.closest("a"), h = a ? a.getAttribute("href") || "" : "";
+    if (h && (h === FIX || h === HEALTH || /gumroad\.com/.test(h))) { try { navigator.sendBeacon(API.replace("/v1/mc-check", "/v1/count"), JSON.stringify({ e: "mc_buy_click" })); } catch (x) {} }
+  });
   var q = location.search.match(/[?&]d=([^&]+)/);
   if (q) u.value = decodeURIComponent(q[1]);
 })();
