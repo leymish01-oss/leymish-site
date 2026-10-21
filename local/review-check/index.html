@@ -3,25 +3,25 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Free Google review check for local businesses | LeyMish Labs</title>
-<meta name="description" content="See your Google rating, review count and how recent your reviews are, the way customers see them. Free, for Australian local businesses.">
+<title>Free Review Health Check for local businesses | LeyMish Labs</title>
+<meta name="description" content="See your Google rating, review count and how recent your reviews are, next to the first three businesses Google shows for your category and suburb. Free.">
 <meta name="robots" content="noindex">
 <link rel="canonical" href="https://www.leymish.com/local/review-check/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&family=Roboto:wght@400&display=optional" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/assets/style.css">
 <style>
-  .rc-form { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; max-width: 560px; }
-  .rc-form input { flex: 1 1 220px; padding: 13px 16px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; min-width: 0; }
+  .rc-form { display: grid; gap: 10px; margin-top: 18px; max-width: 560px; }
+  .rc-form input, .rc-form select { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; width: 100%; }
+  .rc-form .btn { justify-self: start; cursor: pointer; }
   .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin-top: 18px; }
-  .big { font-family: var(--mono); font-size: 40px; font-weight: 700; }
-  .big small { font-size: 18px; color: var(--muted); }
   .pick { display: block; width: 100%; text-align: left; margin: 8px 0; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; cursor: pointer; }
-  .gm { border: 1px solid var(--line); border-radius: 12px; padding: 12px; margin-top: 14px; }
-  .gm .attr { font-family: Roboto, Arial, sans-serif; font-size: 12px; color: #5E5E5E; }
-  .rev { border-top: 1px solid var(--line); padding: 10px 0; }
-  .rev img { width: 24px; height: 24px; border-radius: 50%; vertical-align: middle; margin-right: 6px; }
+  .cmp { width: 100%; border-collapse: collapse; font-size: 15px; margin-top: 10px; }
+  .cmp th, .cmp td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .cmp tr.you td { font-weight: 700; background: var(--accent-soft); }
+  .attr { font-family: Roboto, Arial, sans-serif; font-size: 12px; color: #5E5E5E; margin-top: 8px; }
   .err { color: #b42318; }
+  .tbl { overflow-x: auto; }
 </style>
 <script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=1;s.src=document.getElementById("ga-src").dataset.src;document.head.appendChild(s)},800)})</script><script id="ga-src" type="text/plain" data-src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
 <body>
@@ -31,31 +31,45 @@
     <nav><a href="/products/">Products</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav>
   </header>
   <div class="hero">
-    <p class="eyebrow">Free check · local businesses</p>
-    <h1>How do your Google reviews look to a new customer?</h1>
-    <p class="lede">Your rating, how many reviews you have and how recent they are, straight from Google. Type your
-      business name and suburb.</p>
+    <p class="eyebrow">Free Review Health Check · local businesses</p>
+    <h1>How do your Google reviews compare with the business down the road?</h1>
+    <p class="lede">Your rating, review count and how recent your newest review is, next to the first three businesses
+      Google shows for your category in your suburb. Straight from Google, and we keep nothing it sends us.</p>
     <form class="rc-form" id="form" novalidate>
-      <label for="q" style="position:absolute;left:-9999px">Business name and suburb</label>
-      <input id="q" type="text" autocomplete="organization" placeholder="Bean House, Glenelg" required>
+      <label for="q" style="position:absolute;left:-9999px">Business name</label>
+      <input id="q" type="text" autocomplete="organization" placeholder="Your business name" required>
+      <label for="s" style="position:absolute;left:-9999px">Suburb</label>
+      <input id="s" type="text" placeholder="Suburb, e.g. Norwood SA" required>
+      <label for="c" style="position:absolute;left:-9999px">Category</label>
+      <select id="c" required>
+        <option value="">Your category</option>
+        <option value="cafe">Café</option><option value="restaurant">Restaurant</option>
+        <option value="physiotherapist">Physio</option><option value="dentist">Dentist</option>
+        <option value="hair salon">Hair salon</option><option value="beauty salon">Beauty salon</option>
+        <option value="plumber">Plumber</option><option value="electrician">Electrician</option>
+        <option value="mechanic">Mechanic</option><option value="gym">Gym</option>
+      </select>
       <button class="btn primary" id="go" type="submit">Check</button>
     </form>
-    <p class="small">We ask Google each time and keep nothing it sends us.</p>
+    <p class="small">What it can't see: Google doesn't share owner replies through its data service, so this check can't
+      tell which reviews you've answered. Open your profile on Google Maps to see that.</p>
     <div id="result" aria-live="polite"></div>
   </div>
   <section>
-    <h2>Want every review answered?</h2>
-    <p>Google Review Replies: your backlog answered, then a reply drafted for every new review within 24 hours, each one
-      approved by you. A$199 setup, then A$79 a month. <a href="/local/review-replies/">See how it works</a>.</p>
+    <h2>Want replying to be one tap?</h2>
+    <p>We're planning Reply Desk: Google reviews and Facebook and Instagram comments in one place, with a draft reply
+      for each that you approve in one tap. It's in development. <a href="/local/review-replies/">Join the waitlist</a>.</p>
   </section>
-  <footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li><li><a href="/local/review-replies/">Google Review Replies</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+  <footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div>
 <script>
 (function () {
   var API = "https://leymish-ai.leymish.workers.dev/v1/review-check";
-  var form = document.getElementById("form"), q = document.getElementById("q"), btn = document.getElementById("go"), out = document.getElementById("result");
-  function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+  var form = document.getElementById("form"), q = document.getElementById("q"), s = document.getElementById("s"), c = document.getElementById("c"),
+    btn = document.getElementById("go"), out = document.getElementById("result"), chosenName = "";
+  function esc(x) { return String(x == null ? "" : x).replace(/[&<>"']/g, function (k) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[k]; }); }
   function safe(u) { return /^https:\/\//.test(u || "") ? esc(u) : "#"; }
+  function age(d) { return d == null ? "–" : d === 0 ? "today" : d + " day" + (d === 1 ? "" : "s") + " ago"; }
   function call(body, done) {
     btn.disabled = true;
     fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
@@ -64,38 +78,35 @@
       .catch(function () { out.innerHTML = "<p class='err'>We couldn't reach the check. Please try again in a minute.</p>"; })
       .then(function () { btn.disabled = false; });
   }
+  function row(p, you) {
+    return "<tr" + (you ? " class='you'" : "") + "><td><a href='" + safe(p.maps_url) + "' rel='nofollow noopener'>" + esc(p.name) + "</a>" + (you ? " (you)" : "") +
+      "</td><td>" + (p.rating ? esc(p.rating.toFixed(1)) + "★" : "–") + "</td><td>" + esc(p.count) + "</td><td>" + age(p.newest_days) + "</td></tr>";
+  }
   function result(d) {
-    var stars = d.rating ? d.rating.toFixed(1) : "–";
     var notes = d.notes.length ? "<ul>" + d.notes.map(function (n) { return "<li>" + esc(n) + "</li>"; }).join("") + "</ul>" : "<p>Your numbers look healthy.</p>";
-    var revs = d.reviews.map(function (r) {
-      return "<div class='rev'>" + (r.author_photo ? "<img src='" + safe(r.author_photo) + "' alt=''>" : "") +
-        "<a href='" + safe(r.author_url) + "' rel='nofollow noopener'>" + esc(r.author) + "</a> · " + esc(r.rating) + "★ · " + esc(r.when) +
-        "<p>" + esc(r.text) + "</p><a class='small' href='" + safe(r.url) + "' rel='nofollow noopener'>See on Google Maps</a></div>";
-    }).join("");
-    out.innerHTML = "<div class='card'><h3>" + esc(d.name) + "</h3><div class='small'>" + esc(d.address) + "</div>" +
-      "<div class='big'>" + stars + "<small> from " + d.count + " review" + (d.count === 1 ? "" : "s") + "</small></div>" + notes +
-      "<p class='small'>Google doesn't share owner replies through its data service, so this check can't count unanswered reviews. " +
-      "<a href='" + safe(d.maps_url) + "' rel='nofollow noopener'>Open your profile</a> to see which have no reply.</p>" +
-      "<div class='gm'><div class='attr' translate='no'>Google Maps</div><p class='small'>Up to 5 reviews, in the order Google ranks them as most relevant.</p>" + revs + "</div></div>";
+    out.innerHTML = "<div class='card'><h3>" + esc(d.name) + "</h3>" + notes +
+      "<div class='tbl'><table class='cmp'><thead><tr><th>Business</th><th>Rating</th><th>Reviews</th><th>Newest review</th></tr></thead><tbody>" +
+      row(d, true) + d.others.map(function (o) { return row(o, false); }).join("") + "</tbody></table></div>" +
+      "<p class='small'>The others are the first three businesses Google returns for \"" + esc(d.query) + "\". \"Newest review\" is the newest of up to 5 reviews Google shares per business.</p>" +
+      "<div class='attr' translate='no'>Google Maps</div></div>";
   }
   function pick(d) {
-    if (!d.matches.length) { out.innerHTML = "<p class='err'>Google didn't find a match. Try the name as it appears on Google, plus the suburb.</p>"; return; }
+    if (!d.matches.length) { out.innerHTML = "<p class='err'>Google didn't find a match. Try the name as it appears on Google.</p>"; return; }
     out.innerHTML = "<div class='card'><p>Which one is yours?</p>" + d.matches.map(function (m) {
-      return "<button class='pick' type='button' data-id='" + esc(m.place_id) + "'><strong>" + esc(m.name) + "</strong><br><span class='small'>" + esc(m.address) + "</span></button>";
-    }).join("") + "<div class='attr small' translate='no'>Google Maps</div></div>";
+      return "<button class='pick' type='button' data-id='" + esc(m.place_id) + "' data-name='" + esc(m.name) + "'><strong>" + esc(m.name) + "</strong><br><span class='small'>" + esc(m.address) + "</span></button>";
+    }).join("") + "<div class='attr' translate='no'>Google Maps</div></div>";
   }
   out.addEventListener("click", function (ev) {
     var b = ev.target.closest && ev.target.closest("button.pick");
     if (!b) return;
     out.innerHTML = "<p class='small'>Asking Google…</p>";
-    call({ place_id: b.getAttribute("data-id") }, result);
+    call({ place_id: b.getAttribute("data-id"), name: b.getAttribute("data-name"), category: c.value, suburb: s.value.trim() }, result);
   });
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
-    var v = q.value.trim();
-    if (!v) { out.innerHTML = "<p class='err'>Type your business name and suburb.</p>"; return; }
+    if (!q.value.trim() || !s.value.trim() || !c.value) { out.innerHTML = "<p class='err'>Fill in your business name, suburb and category.</p>"; return; }
     out.innerHTML = "<p class='small'>Asking Google…</p>";
-    call({ query: v }, pick);
+    call({ query: q.value.trim() + " " + s.value.trim() }, pick);
   });
 })();
 </script>

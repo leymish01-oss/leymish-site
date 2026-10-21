@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How we diagnose a Merchant Center suspension | LeyMish Labs</title>
+<meta name="description" content="What our Merchant Center diagnosis checks, what you get, a sample report, and a real case timeline from our partner store, with Google's review still pending.">
+<link rel="canonical" href="https://www.leymish.com/woocommerce/how-we-diagnose/">
+<meta property="og:title" content="How we diagnose a Google Merchant Center suspension">
+<meta property="og:description" content="The checks, the report, a sample and a real case timeline. No promises Google can't keep.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://www.leymish.com/woocommerce/how-we-diagnose/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=optional" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .tl { list-style: none; padding: 0; margin: 14px 0; border-left: 2px solid var(--line); }
+  .tl li { padding: 6px 0 14px 18px; position: relative; }
+  .tl li::before { content: ""; position: absolute; left: -7px; top: 12px; width: 12px; height: 12px; border-radius: 50%; background: var(--accent); }
+  .tl li.pending::before { background: var(--warn); }
+  .tl .d { font-family: var(--mono); font-size: 13px; color: var(--muted); }
+  .note { border: 1px solid var(--warn); border-radius: var(--radius); padding: 14px 16px; }
+</style>
+<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=1;s.src=document.getElementById("ga-src").dataset.src;document.head.appendChild(s)},800)})</script><script id="ga-src" type="text/plain" data-src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/">leymish<span>/</span>labs</a>
+    <nav><a href="/products/">Products</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav>
+  </header>
+  <main class="prose" style="padding:24px 0 48px">
+    <p class="eyebrow">Merchant Center help · how we work</p>
+    <h1>How we diagnose a Merchant Center suspension</h1>
+    <p class="lede">"Misrepresentation" doesn't tell you what Google saw. A diagnosis does: every place your site and
+      your Merchant Center account disagree, or say something a reviewer can't check, with the fix for each, in the order
+      that avoids a failed review.</p>
+
+    <h2>What we check</h2>
+    <ul class="check">
+      <li><strong>Who you are:</strong> one business name, email, phone and location, the same on your contact page,
+        footer, structured data and in Merchant Center</li>
+      <li><strong>Policies:</strong> returns with a real time limit and who pays postage; shipping costs and times that
+        match checkout; terms and privacy that describe what you actually do</li>
+      <li><strong>Claims:</strong> medical or drug-like wording, unnamed "certified" badges, supplier copy written for
+        resellers, placeholder pages</li>
+      <li><strong>Product data:</strong> price, stock and identifiers on the page match the feed; the feed is actually
+        connected</li>
+      <li><strong>Account settings:</strong> shipping service, return policy, data sources and target countries</li>
+    </ul>
+    <p>We read your public pages only and never ask for passwords. Where something only shows inside Merchant Center,
+      the report says "check in Merchant Center" and tells you where to click.</p>
+
+    <h2>What you get</h2>
+    <ul class="check">
+      <li>A written report: each finding, why it matters to a reviewer, and the exact fix</li>
+      <li>The order to fix things in, so you request a review once</li>
+      <li>Within 2 working days</li>
+    </ul>
+    <p><a class="btn primary" href="/woocommerce/sample-health-check.pdf">See a sample report (PDF)</a>
+      <a class="btn" href="/woocommerce/merchant-center-check/">Run the free check first</a></p>
+    <p class="small">The sample uses a made-up store. It shows the format, not a real customer.</p>
+
+    <h2>A real case, step by step</h2>
+    <p><strong>Disclosure:</strong> this is our partner store, a WooCommerce skincare store that sells to the US. We work
+      with it, so we could make the changes ourselves. Store details are left out.</p>
+    <ul class="tl">
+      <li><span class="d">11 Oct 2026</span><br>Google suspends the account for misrepresentation: "review business
+        transparency, policies, and website contact information". 11 of 23 products are in Merchant Center, all not
+        approved.</li>
+      <li><span class="d">16 Oct</span><br>Diagnosis: 23 checks. 12 fail, including supplement wording on a store that
+        sells no supplements, an unnamed "certified" claim, supplier copy written for resellers, no delivery times on the
+        shipping page, a privacy page missing services that handle customer data, and a product feed that was never
+        connected.</li>
+      <li><span class="d">16–18 Oct</span><br>Fixes: policies rewritten from the owner's real terms, claims removed,
+        product pages rewritten, placeholder pages unpublished, shipping in Merchant Center matched to checkout, and the
+        feed connected: 23 of 23 products synced.</li>
+      <li class="pending"><span class="d">Now</span><br><strong>Google's review is still pending.</strong> We send the
+        review request only when every item is fixed, so a failed review doesn't start a longer wait. We'll update this
+        page with Google's answer, whatever it is.</li>
+    </ul>
+    <p class="note small"><strong>No one can promise reinstatement.</strong> Google decides every review. What we can
+      promise is the work, done properly, with a clear before and after. If the diagnosis finds nothing worth fixing, we
+      refund it.</p>
+
+    <h2>Prices</h2>
+    <p>Diagnosis (Health Check) $29 · Fix $99 · Suspended account rescue $249, all in USD.
+      <a href="/woocommerce/google-merchant-center/">Compare what each includes</a>. Prefer to do it yourself? The
+      step-by-step guide is on <a href="https://www.amazon.com/dp/B0HNLCQ3SP">Kindle</a>.</p>
+    <p class="small">Questions: <a href="/contact/">contact us</a>. Independent; not affiliated with Google.</p>
+  </main>
+  <footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+</div>
+</body>
+</html>

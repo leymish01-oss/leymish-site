@@ -3,23 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Google review replies for local businesses (South Australia) | LeyMish Labs</title>
-<meta name="description" content="Every Google review answered: your backlog replied to, then each new review answered within 24 hours, with you approving every reply. A$199 setup, then A$79 a month. For South Australian businesses.">
+<title>Reply Desk (in development): join the waitlist | LeyMish Labs</title>
+<meta name="description" content="Reply Desk is in development: Google reviews and Facebook and Instagram comments in one place, with draft replies you approve in one tap. Planned from A$29 a month per location. Join the waitlist; no payment.">
 <link rel="canonical" href="https://www.leymish.com/local/review-replies/">
-<meta property="og:title" content="Every Google review answered, with your OK on each reply">
-<meta property="og:description" content="Backlog replies, then new reviews answered within 24 hours. A$199 setup, A$79 a month. For South Australian businesses.">
+<meta property="og:title" content="Reply Desk: one tap to answer every review (in development)">
+<meta property="og:description" content="Google reviews and Facebook and Instagram comments in one place. Planned from A$29 a month per location. Join the waitlist.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://www.leymish.com/local/review-replies/">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=optional" media="print" onload="this.media='all'">
 <link rel="stylesheet" href="/assets/style.css">
 <style>
-  .offer { border: 2px solid var(--accent); }
-  .offer .price { font-size: 36px; }
-  .offer .then { font-family: var(--mono); font-size: 18px; color: var(--muted); }
+  .badge-dev { display: inline-block; font-family: var(--mono); font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+  .wl-form { display: grid; gap: 12px; max-width: 560px; margin-top: 14px; }
+  .wl-form label { font-weight: 600; font-size: 15px; display: grid; gap: 6px; }
+  .wl-form input[type=text], .wl-form input[type=email] { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; width: 100%; }
+  .wl-form fieldset { border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; }
+  .wl-form legend { font-weight: 600; font-size: 15px; padding: 0 4px; }
+  .wl-form .tick { display: inline-flex; gap: 6px; align-items: center; font-weight: 400; margin: 4px 14px 4px 0; }
+  .wl-form .btn { justify-self: start; cursor: pointer; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .err { color: #b42318; }
+  .ok { border: 1px solid var(--accent); border-radius: var(--radius); padding: 16px; background: var(--accent-soft); }
 </style>
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"Service","name":"Google Review Replies","provider":{"@type":"Organization","name":"LeyMish Labs","url":"https://www.leymish.com/"},"areaServed":"AU","offers":[{"@type":"Offer","name":"Setup and backlog","price":"199","priceCurrency":"AUD"},{"@type":"Offer","name":"Monthly replies","price":"79","priceCurrency":"AUD"}]}</script>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Who writes the replies?", "acceptedAnswer": {"@type": "Answer", "text": "LeyMish Labs' AI agents write first drafts, with professional oversight, and nothing goes up until you approve it. How we work ."}}, {"@type": "Question", "name": "What about a really bad review?", "acceptedAnswer": {"@type": "Answer", "text": "We draft a short, calm reply that takes it offline and flag it to you first. If a review breaks Google's rules, we tell you how to report it; whether it comes down is Google's call."}}, {"@type": "Question", "name": "I run a clinic. Is this allowed?", "acceptedAnswer": {"@type": "Answer", "text": "Replying to reviews is fine. Your replies must not confirm that someone is a patient or discuss their care, and you can't quote patients' reviews in your advertising. Our clinic version follows that, and doesn't ask patients for reviews."}}, {"@type": "Question", "name": "Can I stop?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Cancel the monthly part any time and remove us as a manager on your profile."}}]}</script><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=1;s.src=document.getElementById("ga-src").dataset.src;document.head.appendChild(s)},800)})</script><script id="ga-src" type="text/plain" data-src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Doesn't Google already suggest replies?", "acceptedAnswer": {"@type": "Answer", "text": "In some places, yes: Google's Gemini can draft Business Profile replies, and other tools do too. Reply Desk would put Google, Facebook and Instagram in one place, follow Australian rules for reviews and clinics, and need only one tap from you."}}, {"@type": "Question", "name": "Who writes the drafts?", "acceptedAnswer": {"@type": "Answer", "text": "AI drafts each reply, and nothing is posted until you approve it (or it matches the rule you set). How we work ."}}, {"@type": "Question", "name": "Can I get help with reviews now?", "acceptedAnswer": {"@type": "Answer", "text": "Not as a paid service at the moment. Questions are welcome on our contact page ."}}]}</script><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=1;s.src=document.getElementById("ga-src").dataset.src;document.head.appendChild(s)},800)})</script><script id="ga-src" type="text/plain" data-src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
 <body>
 <div class="wrap">
   <header class="top">
@@ -27,80 +34,85 @@
     <nav><a href="/products/">Products</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav>
   </header>
   <div class="hero">
-    <p class="eyebrow">For cafés, clinics, trades and salons · South Australian businesses</p>
-    <h1>Every Google review answered, with your OK on each reply</h1>
-    <p class="lede">People read how a business answers its reviews, good and bad. Most owners mean to reply and never
-      get to it. We write every reply, you approve it with one tap, and it goes up on your Google profile.</p>
-    <div class="cta">
-      <a class="btn primary" href="mailto:hello@leymish.com?subject=Google%20Review%20Replies%20%28A%24199%20setup%29">Start with the backlog</a>
-      <a class="btn" href="#how">How it works</a>
-    </div>
+    <p><span class="badge-dev">In development · not for sale yet</span></p>
+    <h1>Reply Desk: answer every review in one tap</h1>
+    <p class="lede">We're planning a small tool for local businesses: your Google reviews and your Facebook and Instagram
+      comments in one place, with a draft reply waiting for each one. You approve it with one tap and it's posted.</p>
+    <p>We'll only build it if enough businesses want it. Join the waitlist and we'll email you once if it launches.
+      There's no payment and no launch date yet.</p>
   </div>
 
-  <section id="how">
-    <h2>How it works</h2>
-    <ol class="steps">
-      <li><strong>You add us as a manager</strong> on your Google Business Profile. You stay the owner and can remove us
-        any time. We never ask for your password.</li>
-      <li><strong>We draft replies to your backlog,</strong> up to 100 reviews, in your voice: thanks for the good ones,
-        a calm, specific answer for the bad ones.</li>
-      <li><strong>You approve them</strong> by email, all at once or one by one. Change any word you like.</li>
-      <li><strong>Then every new review gets a draft within 24 hours.</strong> Once you approve it, we post it.</li>
-    </ol>
-  </section>
-
-  <section id="price">
-    <h2>Price</h2>
-    <div class="two">
-      <div>
-        <ul class="check">
-          <li>Replies to up to 100 existing reviews</li>
-          <li>A draft for every new review within 24 hours, posted once you approve it</li>
-          <li>A review-request kit: a printable QR card, an SMS you can send after a visit, and a 20-second script for
-            staff, written to the ACCC's rules on reviews</li>
-          <li>Clinics get a version that suits Ahpra's advertising rules: it never asks patients for reviews, and its replies
-            never confirm someone is a patient</li>
-          <li>Cancel the monthly part any time</li>
-        </ul>
-      </div>
-      <div class="card offer">
-        <h3>Google Review Replies</h3>
-        <div class="price">A$199</div>
-        <div class="then">setup and backlog, then A$79 a month</div>
-        <p class="small">If we can't deliver what's listed, you get a full refund.</p>
-        <p><a class="btn primary" href="mailto:hello@leymish.com?subject=Google%20Review%20Replies%20%28A%24199%20setup%29" style="width:100%;text-align:center">Start with the backlog</a></p>
-        <p class="small">Questions first? Email <a href="mailto:hello@leymish.com">hello@leymish.com</a>. LeyMish Labs, South Australia.</p>
-      </div>
-    </div>
-  </section>
-
   <section>
-    <h2>What we never do</h2>
-    <ul>
-      <li>Write fake reviews, or reviews of your business from anyone connected to it.</li>
-      <li>Offer customers anything in return for a review, or only ask the happy ones. The
-        <a href="https://www.accc.gov.au/business/advertising-and-promotions/online-reviews-for-product-and-services">ACCC's
-        rules</a> forbid both, so the kit asks everyone the same way.</li>
-      <li>Post a reply you haven't approved.</li>
-      <li>Promise a star rating. Google and your customers decide that.</li>
+    <h2>What it would do</h2>
+    <ul class="check">
+      <li>Google reviews plus Facebook and Instagram comments, in one inbox</li>
+      <li>A draft reply for each one, sent to you by email or SMS; one tap approves and posts it</li>
+      <li>Your rule: auto-post thank-yous for 4–5★ reviews, and approve anything lower yourself</li>
+      <li>Review-request links to send customers, the same way to everyone, as the ACCC requires</li>
+      <li>A clinic mode for Ahpra: it never asks patients for reviews, and replies never confirm someone is a patient</li>
     </ul>
+    <p><strong>Planned price: from A$29 a month per location.</strong> That's a plan, not an offer; we'll confirm it if we
+      launch.</p>
+  </section>
+
+  <section id="waitlist">
+    <h2>Join the waitlist</h2>
+    <form class="wl-form" id="form" novalidate>
+      <label>Business name<input id="business" type="text" autocomplete="organization" maxlength="120" required></label>
+      <label>Your email<input id="email" type="email" autocomplete="email" maxlength="254" required></label>
+      <label>Suburb or region<input id="region" type="text" maxlength="80" placeholder="e.g. Norwood SA" required></label>
+      <fieldset><legend>Where do your customers leave reviews or comments?</legend>
+        <label class="tick"><input type="checkbox" name="pf" value="Google"> Google</label>
+        <label class="tick"><input type="checkbox" name="pf" value="Facebook"> Facebook</label>
+        <label class="tick"><input type="checkbox" name="pf" value="Instagram"> Instagram</label>
+        <label class="tick"><input type="checkbox" name="pf" value="Other"> Other</label>
+      </fieldset>
+      <div class="hp" aria-hidden="true"><label>Company website<input id="company_url" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <p class="small" style="margin:0">We'll email you once if Reply Desk launches. Nothing else. Ask us any time to delete
+        your details (<a href="/privacy.html">privacy</a>).</p>
+      <button class="btn primary" id="go" type="submit">Join the waitlist</button>
+    </form>
+    <div id="result" aria-live="polite"></div>
   </section>
 
   <section id="faq">
     <h2>Questions</h2>
-    <details><summary>Who writes the replies?</summary><p>LeyMish Labs' AI agents write first drafts, with professional
-      oversight, and nothing goes up until you approve it. <a href="/how-we-work.html">How we work</a>.</p></details>
-    <details><summary>What about a really bad review?</summary><p>We draft a short, calm reply that takes it offline and
-      flag it to you first. If a review breaks Google's rules, we tell you how to report it; whether it comes down is
-      Google's call.</p></details>
-    <details><summary>I run a clinic. Is this allowed?</summary><p>Replying to reviews is fine. Your replies must not
-      confirm that someone is a patient or discuss their care, and you can't quote patients' reviews in your
-      advertising. Our clinic version follows that, and doesn't ask patients for reviews.</p></details>
-    <details><summary>Can I stop?</summary><p>Yes. Cancel the monthly part any time and remove us as a manager on your
-      profile.</p></details>
+    <details><summary>Doesn't Google already suggest replies?</summary><p>In some places, yes: Google's Gemini can draft
+      Business Profile replies, and other tools do too. Reply Desk would put Google, Facebook and Instagram in one
+      place, follow Australian rules for reviews and clinics, and need only one tap from you.</p></details>
+    <details><summary>Who writes the drafts?</summary><p>AI drafts each reply, and nothing is posted until you approve it
+      (or it matches the rule you set). <a href="/how-we-work.html">How we work</a>.</p></details>
+    <details><summary>Can I get help with reviews now?</summary><p>Not as a paid service at the moment. Questions are
+      welcome on our <a href="/contact/">contact page</a>.</p></details>
   </section>
 
-  <footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li><li><a href="/local/review-replies/">Google Review Replies</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+  <footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div>
+<script>
+(function () {
+  var API = "https://leymish-ai.leymish.workers.dev/v1/waitlist";
+  var form = document.getElementById("form"), btn = document.getElementById("go"), out = document.getElementById("result");
+  function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+  function v(id) { return document.getElementById(id).value; }
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var pf = [].slice.call(document.querySelectorAll("input[name=pf]:checked")).map(function (x) { return x.value; });
+    var body = { business: v("business"), email: v("email"), region: v("region"), platforms: pf, company_url: v("company_url") };
+    if (!body.business.trim() || !body.email.trim() || !body.region.trim() || !pf.length) {
+      out.innerHTML = "<p class='err'>Please fill in every field and tick at least one platform.</p>"; return;
+    }
+    btn.disabled = true; btn.textContent = "Joining…"; out.innerHTML = "";
+    fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.ok) { out.innerHTML = "<p class='err'>" + esc(d.error || "Something went wrong. Please email hello@leymish.com.") + "</p>"; return; }
+        form.hidden = true;
+        out.innerHTML = "<div class='ok'><strong>Thanks, you're on the list.</strong><p>We'll email you once if Reply Desk launches.</p></div>";
+      })
+      .catch(function () { out.innerHTML = "<p class='err'>We couldn't add you just now. Please email hello@leymish.com.</p>"; })
+      .then(function () { btn.disabled = false; btn.textContent = "Join the waitlist"; });
+  });
+})();
+</script>
 </body>
 </html>
