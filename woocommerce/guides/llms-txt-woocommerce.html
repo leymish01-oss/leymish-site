@@ -15,7 +15,7 @@ are, what you sell, and links to the pages worth reading, without the menus, ban
 web page.</p>
 <p>It's cheap to add and takes about twenty minutes. This guide covers what it is, what to put in it, and how to
 add one to a WooCommerce store.</p>
-<h2>What's known about llms.txt, honestly</h2>
+<h2 id="whats-known-about-llmstxt-honestly">What's known about llms.txt, honestly</h2>
 <p>llms.txt is a proposed standard, published at llmstxt.org in 2024. It's not an official web standard like
 robots.txt, and none of the big AI shopping assistants has publicly said it uses llms.txt to choose products.
 Some AI tools and developer platforms do read these files, and the format is spreading.</p>
@@ -23,7 +23,7 @@ Some AI tools and developer platforms do read these files, and the format is spr
 are crawlers being allowed in, product structured data, GTINs and brands. If you haven't done those yet,
 start there. Our <a href="/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html">ChatGPT visibility guide</a>
 lists them in order.</p>
-<h2>Step 1: decide what AI tools should know</h2>
+<h2 id="step-1-decide-what-ai-tools-should-know">Step 1: decide what AI tools should know</h2>
 <p>An llms.txt for a store answers a few questions in plain words:</p>
 <ul>
 <li>What is the store, and what does it sell?</li>
@@ -32,7 +32,7 @@ lists them in order.</p>
 <li>Anything that sets you apart and is true: made in small batches, ships from one country, a size guide.</li>
 </ul>
 <p>Keep it factual. It's not the place for slogans or claims you can't back up.</p>
-<h2>Step 2: write the file in Markdown</h2>
+<h2 id="step-2-write-the-file-in-markdown">Step 2: write the file in Markdown</h2>
 <p>The format is plain Markdown with a simple structure:</p>
 <ol>
 <li>A heading with your store's name (<code># Store name</code>).</li>
@@ -60,7 +60,7 @@ lists them in order.</p>
 <p>For a small store, list your categories and best sellers rather than every product. AI tools can find the
 rest from your sitemap and the Store API.</p>
 <div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker runs 5 outside checks on your store, including this one, and gives you a score out of 5.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div>
-<h2>Step 3: upload it to your site's root folder</h2>
+<h2 id="step-3-upload-it-to-your-sites-root-folder">Step 3: upload it to your site's root folder</h2>
 <p>Save the file as <code>llms.txt</code> (plain text, UTF-8). Then put it in your site's root folder, the one that
 contains <code>wp-config.php</code>:</p>
 <ul>
@@ -69,7 +69,7 @@ contains <code>wp-config.php</code>:</p>
 </ul>
 <p>WordPress has no llms.txt setting of its own. Some SEO plugins have started adding llms.txt generators; if
 yours has one, use either the plugin or a file, not both.</p>
-<h2>Step 4: check it at yourstore.com/llms.txt</h2>
+<h2 id="step-4-check-it-at-yourstorecomllmstxt">Step 4: check it at yourstore.com/llms.txt</h2>
 <p>Open <code>https://yourstore.com/llms.txt</code> in your browser. You should see your text exactly as you wrote it. If
 you see your store's 404 page or your home page instead:</p>
 <ul>
@@ -80,16 +80,16 @@ you see your store's 404 page or your home page instead:</p>
 </ul>
 <p>Also make sure your robots.txt doesn't block it. Our
 <a href="/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html">robots.txt guide</a> covers what to allow.</p>
-<h2>Step 5: keep it up to date</h2>
+<h2 id="step-5-keep-it-up-to-date">Step 5: keep it up to date</h2>
 <p>An out-of-date llms.txt is worse than none: it sends AI tools to old categories and old policies. Update it
 when you add or remove a product range, change shipping or returns, or move pages. A reminder every few
 months is enough for most stores.</p>
-<h2>Doing it automatically</h2>
+<h2 id="doing-it-automatically">Doing it automatically</h2>
 <p>Writing the file by hand works well for small stores. If you'd rather not maintain it, LeyMish Pro can
 generate <code>/llms.txt</code> for you from your WooCommerce data and keep it current as products change. A real file
 in your root folder always takes priority, so you stay in control.</p>
 <p>The free plugin and the online checker both tell you whether your store has an llms.txt, alongside the
 checks that matter more: crawler access, structured data and product identifiers.</p><div class='card' style='margin:24px 0'><h3>More on WooCommerce and AI shopping</h3><ul><li><a href='/woocommerce/guides/add-gtin-woocommerce.html'>How to add GTINs in WooCommerce (with the built-in field)</a></li><li><a href='/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html'>Is your WooCommerce store ready for ChatGPT checkout?</a></li><li><a href='/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html'>Is your WooCommerce store visible in ChatGPT shopping?</a></li><li><a href='/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html'>WooCommerce robots.txt for AI crawlers: what to allow</a></li></ul><p><a href='/woocommerce/#learn'>Everything we've published on it</a> · <a href='/woocommerce/check/'>Free online check</a></p></div></main>
 <section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Readiness plugin gives you a 0–100 score, one-click fixes and product feeds, and runs on your site. LeyMish Pro adds AI visibility checks, AI fixes and agents.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
-<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>

@@ -14,7 +14,7 @@ The most reliable way it does that is the <strong>GTIN</strong>: the number unde
 product is a guess. Guesses lose to listings that can be matched exactly.</p>
 <p>This guide covers what GTINs are, why the AI shopping specs care, where WooCommerce keeps them, and how to
 find and fix the gaps.</p>
-<h2>What a GTIN is</h2>
+<h2 id="what-a-gtin-is">What a GTIN is</h2>
 <p>GTIN (Global Trade Item Number) is the umbrella name for the product numbers issued through GS1:</p>
 <table>
 <thead>
@@ -49,7 +49,7 @@ find and fix the gaps.</p>
 </table>
 <p>The last digit is a <strong>check digit</strong> calculated from the others, so a mistyped GTIN can usually be caught
 without looking it up anywhere.</p>
-<h2>Why the AI shopping specs care</h2>
+<h2 id="why-the-ai-shopping-specs-care">Why the AI shopping specs care</h2>
 <ul>
 <li><strong>OpenAI's product feed</strong> lists <code>gtin</code> as a recommended field: "exactly 8, 12, 13, or 14 digits with valid
   check digit", keeping leading zeros. If there's no GTIN, <code>mpn</code> (manufacturer part number) is the fallback
@@ -62,7 +62,7 @@ without looking it up anywhere.</p>
   properties. WooCommerce fills them from the product when the data exists.</li>
 </ul>
 <p>In every case, identifiers are the difference between "this is the same product" and "this might be".</p>
-<h2>Where WooCommerce stores GTINs</h2>
+<h2 id="where-woocommerce-stores-gtins">Where WooCommerce stores GTINs</h2>
 <p>Since <strong>WooCommerce 9.2</strong>, every product and every variation has a built-in field labelled
 <strong>"GTIN, UPC, EAN, or ISBN"</strong> (Product data → Inventory). Developers know it as the product's "global
 unique ID". Before that, stores used plugins, each with its own custom field, which is why older catalogs
@@ -71,7 +71,7 @@ often have GTINs scattered across several fields or none at all.</p>
 field; stores keep it in a custom field or an attribute.</p>
 <p><strong>Variations need their own GTINs.</strong> A t-shirt in five sizes is five different trade items with five
 different barcodes. A GTIN on the parent product alone doesn't tell an agent which size it's looking at.</p>
-<h2>Checking a GTIN yourself</h2>
+<h2 id="checking-a-gtin-yourself">Checking a GTIN yourself</h2>
 <p>The check digit works like this: take every digit except the last, and starting from the right, multiply
 alternately by 3 and 1. Add the results, and the check digit is whatever brings the total up to the next
 multiple of ten.</p>
@@ -98,7 +98,7 @@ next multiple of 10 is 90 → check digit 1 ✓
 </code></pre>
 <p>A valid check digit doesn't prove the GTIN belongs to <em>your</em> product, but an invalid one proves it
 doesn't belong to anything.</p>
-<h2>The mistakes that break GTINs</h2>
+<h2 id="the-mistakes-that-break-gtins">The mistakes that break GTINs</h2>
 <ol>
 <li><strong>Leading zeros stripped by a spreadsheet.</strong> Open a UPC like <code>036000291452</code> in Excel and it becomes
    <code>36000291452</code>: eleven digits, invalid. Format the column as text before importing.</li>
@@ -111,7 +111,7 @@ doesn't belong to anything.</p>
    is worse than leaving the field empty.</li>
 <li><strong>Spaces and hyphens.</strong> Harmless if your tools strip them, but some feed tools don't. Store digits only.</li>
 </ol>
-<h2>Finding the right GTIN for a product</h2>
+<h2 id="finding-the-right-gtin-for-a-product">Finding the right GTIN for a product</h2>
 <p>If you resell products, the GTIN already exists; you just need to collect it:</p>
 <ul>
 <li><strong>The packaging.</strong> The number printed under the barcode is the GTIN. Scanning apps read it too.</li>
@@ -126,7 +126,7 @@ doesn't belong to anything.</p>
 GTINs of your own. Those come from your country's GS1 member organisation. Be wary of sites selling very
 cheap barcodes: the numbers may be registered to a different company in GS1's records, so they won't
 match your brand when a platform checks.</p>
-<h2>What if a product has no GTIN?</h2>
+<h2 id="what-if-a-product-has-no-gtin">What if a product has no GTIN?</h2>
 <p>Handmade goods, private-label products and custom items often have none, and that's fine. In that case:</p>
 <ul>
 <li>Set a <strong>brand</strong> (your own shop name counts for your own products), and</li>
@@ -135,13 +135,13 @@ match your brand when a platform checks.</p>
 </ul>
 <p>In a Google feed, <code>identifier_exists = no</code> is correct only when there genuinely is no GTIN, brand or MPN
 from the manufacturer. Don't use it to silence a warning for products that do have barcodes.</p>
-<h2>Finding every gap in your catalog</h2>
+<h2 id="finding-every-gap-in-your-catalog">Finding every gap in your catalog</h2>
 <p>Doing this by hand across hundreds of products isn't realistic. The free
 <a href="/">LeyMish AI Shopping Readiness</a> plugin checks every published product, including each variation, for
 a valid GTIN (check digit included) or an MPN, plus brand, price, image, description and attributes. It
 gives a per-product completeness score and a <strong>CSV of every gap</strong>, so you can sort by what's missing and
 work through it.</p>
-<h2>Fixing them in bulk</h2>
+<h2 id="fixing-them-in-bulk">Fixing them in bulk</h2>
 <p>Three ways, from free to fastest:</p>
 <ol>
 <li><strong>WooCommerce's CSV importer</strong> (Products → Import) can update existing products by ID or SKU. Export
@@ -155,5 +155,5 @@ work through it.</p>
 <p>Whichever route you take, re-run the audit afterwards. Identifiers are the single biggest block of points
 in it, because they're the single biggest reason products get skipped.</p><div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker reads the public signals an AI shopping agent sees and gives you a score and a list to fix. No account, no card.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div><div class='card' style='margin:24px 0'><h3>More on WooCommerce and AI shopping</h3><ul><li><a href='/woocommerce/guides/add-gtin-woocommerce.html'>How to add GTINs in WooCommerce (with the built-in field)</a></li><li><a href='/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html'>Is your WooCommerce store ready for ChatGPT checkout?</a></li><li><a href='/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html'>Is your WooCommerce store visible in ChatGPT shopping?</a></li><li><a href='/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html'>WooCommerce robots.txt for AI crawlers: what to allow</a></li></ul><p><a href='/woocommerce/#learn'>Everything we've published on it</a> · <a href='/woocommerce/check/'>Free online check</a></p></div></main>
 <section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Readiness plugin gives you a 0–100 score, one-click fixes and product feeds, and runs on your site. LeyMish Pro adds AI visibility checks, AI fixes and agents.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
-<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>

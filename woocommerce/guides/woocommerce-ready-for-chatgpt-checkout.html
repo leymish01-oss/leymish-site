@@ -13,7 +13,7 @@
 now, and it runs on open standards rather than a deal with any one shop. Which means the question "is my store
 ready?" has an answer you can check, instead of an answer you have to wait for.</p>
 <p>There are two protocols, they do different jobs, and almost every confused article about this conflates them.</p>
-<h2>ACP and UCP are not competitors in the way people think</h2>
+<h2 id="acp-and-ucp-are-not-competitors-in-the-way-people-think">ACP and UCP are not competitors in the way people think</h2>
 <p><strong>ACP — the Agentic Commerce Protocol.</strong> Maintained by OpenAI and Stripe, Apache-2.0, currently in beta. This
 is the one behind ChatGPT's checkout. It is a REST API that <em>your store</em> exposes: ChatGPT calls
 <code>POST /checkout_sessions</code> to start a cart, updates it, and calls <code>/complete</code> to turn it into an order. The
@@ -26,7 +26,7 @@ payment handlers, which protocol version — and any agent platform can read it 
 integration call, no onboarding form.</p>
 <p>A useful way to hold them apart: <strong>UCP is how an agent finds out what your store can do. ACP is how ChatGPT
 actually puts an order through it.</strong></p>
-<h2>What WooCommerce gives you today, honestly</h2>
+<h2 id="what-woocommerce-gives-you-today-honestly">What WooCommerce gives you today, honestly</h2>
 <p>Neither protocol is in WooCommerce core. There is no setting to switch on.</p>
 <ul>
 <li><strong>ACP</strong> comes from your payment provider. Stripe co-maintains the spec, so if you take payments through
@@ -37,7 +37,7 @@ actually puts an order through it.</strong></p>
 </ul>
 <p>If an article tells you to "enable ACP in WooCommerce settings", it is describing a screen that does not
 exist.</p>
-<h2>So what is actually worth doing this week</h2>
+<h2 id="so-what-is-actually-worth-doing-this-week">So what is actually worth doing this week</h2>
 <p>Here is the part that matters, and it is slightly annoying: <strong>the protocol work is not where your risk is.</strong>
 Both ACP and UCP assume an agent has already decided your product is the right one. That decision happens
 earlier, from your product pages, and it is where almost every store fails.</p>
@@ -45,7 +45,7 @@ earlier, from your product pages, and it is where almost every store fails.</p>
 product pages had Product structured data — a good number. <strong>Four of them carried a GTIN or an MPN.</strong> An agent
 that cannot identify your product will not get as far as your checkout, however good your checkout is.</p>
 <p>So, in order:</p>
-<h3>1. Give every product an identifier and a brand</h3>
+<h3 id="1-give-every-product-an-identifier-and-a-brand">1. Give every product an identifier and a brand</h3>
 <p>A SKU is an internal code and means nothing outside your business. The identifiers that travel are the GTIN
 (the barcode, from the manufacturer or GS1) and the MPN (the manufacturer's part number, which needs a <code>brand</code>
 alongside it). WooCommerce 9.2 added GTIN, UPC, EAN and ISBN as a built-in field on the product's Inventory
@@ -53,12 +53,12 @@ tab.</p>
 <p>Do not invent barcodes. A fabricated GTIN either collides with a real product or fails validation, and it gets
 the product disapproved in Google Merchant Center. An empty GTIN field is a truthful statement that a product
 has no barcode; a wrong one is a problem you get to find twice.</p>
-<h3>2. Check that the data reaches your page's structured data</h3>
+<h3 id="2-check-that-the-data-reaches-your-pages-structured-data">2. Check that the data reaches your page's structured data</h3>
 <p>Filling the field in is half of it. Open a product page, view source, find the <code>application/ld+json</code> block and
 look for <code>gtin</code>, <code>mpn</code> and <code>brand</code>. Whether they appear depends on what generates that schema — your theme, an
 SEO plugin, or WooCommerce itself — and having all three is the usual reason a page ends up with two <code>Product</code>
 blocks that contradict each other.</p>
-<h3>3. Check that agents can reach you at all</h3>
+<h3 id="3-check-that-agents-can-reach-you-at-all">3. Check that agents can reach you at all</h3>
 <p>Three things quietly block the whole thing:</p>
 <ul>
 <li><strong>robots.txt.</strong> <code>GPTBot</code> is how OpenAI crawls for training and discovery; <code>OAI-SearchBot</code> and <code>ChatGPT-User</code>
@@ -71,19 +71,19 @@ blocks that contradict each other.</p>
   — which is to say, every machine reading your store — reject the response. We have seen this cost a real
   store a whole check.</li>
 </ul>
-<h3>4. Then, and only then, look at a UCP profile</h3>
+<h3 id="4-then-and-only-then-look-at-a-ucp-profile">4. Then, and only then, look at a UCP profile</h3>
 <p>If your checkout integration supports UCP, the profile at <code>/.well-known/ucp</code> must be JSON whose <code>ucp</code> member
 carries three things: <code>version</code>, <code>services</code> and <code>payment_handlers</code>. The last two are <strong>required even when they
 are empty objects</strong> — that trips people up. <code>capabilities</code> is optional, and capability names use reverse-domain
 form like <code>dev.ucp.shopping.checkout</code>. Service endpoints must be <code>https</code> and should not end in a slash.</p>
 <p>If you support older protocol versions, declare <code>supported_versions</code> mapping each one to its own complete
 profile URL, so a platform can pick a version you both speak.</p>
-<h2>Pin the version you checked against</h2>
+<h2 id="pin-the-version-you-checked-against">Pin the version you checked against</h2>
 <p>Both specs move. ACP has shipped dated releases through 2026 and is still marked beta; UCP versions its
 protocol by date too. A "we're ACP-ready" claim with no date on it is not worth much in six months. When you
 check, write down which version you checked against — our free plugin names the spec version in the audit for
 exactly this reason.</p>
-<h2>The short answer</h2>
+<h2 id="the-short-answer">The short answer</h2>
 <p>Your store is "ready for ChatGPT checkout" when:</p>
 <ul>
 <li>every product has a brand and a real identifier, and those reach the page's structured data;</li>
@@ -96,5 +96,5 @@ exactly this reason.</p>
 <p>The free plugin runs all of these from inside WordPress, including the UCP profile check and an
 information-only note on ACP, and names the specification version it judged you against.</p><div class='card' style='margin:24px 0'><h3>More on WooCommerce and AI shopping</h3><ul><li><a href='/woocommerce/guides/add-gtin-woocommerce.html'>How to add GTINs in WooCommerce (with the built-in field)</a></li><li><a href='/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html'>Is your WooCommerce store visible in ChatGPT shopping?</a></li><li><a href='/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html'>WooCommerce robots.txt for AI crawlers: what to allow</a></li><li><a href='/woocommerce/guides/woocommerce-store-api-bom-error.html'>Fix the WooCommerce Store API BOM error</a></li></ul><p><a href='/woocommerce/#learn'>Everything we've published on it</a> · <a href='/woocommerce/check/'>Free online check</a></p></div></main>
 <section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Readiness plugin gives you a 0–100 score, one-click fixes and product feeds, and runs on your site. LeyMish Pro adds AI visibility checks, AI fixes and agents.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
-<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>

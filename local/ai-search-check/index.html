@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free AI Search Check: does AI recommend your business? | LeyMish Labs</title>
+<meta name="description" content="Ask AI search what people ask (best café in your suburb) and see whether your business is named, who is named instead, and 3 fixes. Free, for Australian local businesses.">
+<link rel="canonical" href="https://www.leymish.com/local/ai-search-check/">
+<meta property="og:title" content="Does AI recommend your business?">
+<meta property="og:description" content="A free check: whether AI search names your business for your category and suburb, who it names instead, and 3 fixes.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.leymish.com/local/ai-search-check/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=optional" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .ai-form { display: grid; gap: 10px; margin-top: 18px; max-width: 560px; }
+  .ai-form input, .ai-form select { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; width: 100%; }
+  .ai-form .btn { justify-self: start; cursor: pointer; }
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin-top: 18px; }
+  .big { font-family: var(--mono); font-size: 40px; font-weight: 700; }
+  .big small { font-size: 18px; color: var(--muted); }
+  .qa li { padding: 6px 0; border-top: 1px solid var(--line); }
+  .err { color: #b42318; }
+</style>
+<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=1;s.src=document.getElementById("ga-src").dataset.src;document.head.appendChild(s)},800)})</script><script id="ga-src" type="text/plain" data-src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/">leymish<span>/</span>labs</a>
+    <nav><a href="/products/">Products</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav>
+  </header>
+  <div class="hero">
+    <p class="eyebrow">Free AI Search Check · local businesses</p>
+    <h1>When someone asks AI for the best café in your suburb, are you named?</h1>
+    <p class="lede">More people now ask AI tools to find local businesses. We ask an AI search tool three questions your
+      customers might ask, and show whether it names you, who it names instead, and three fixes.</p>
+    <form class="ai-form" id="form" novalidate>
+      <label for="b" style="position:absolute;left:-9999px">Business name</label>
+      <input id="b" type="text" autocomplete="organization" maxlength="80" placeholder="Your business name" required>
+      <label for="s" style="position:absolute;left:-9999px">Suburb</label>
+      <input id="s" type="text" maxlength="60" placeholder="Suburb, e.g. Norwood SA" required>
+      <label for="c" style="position:absolute;left:-9999px">Category</label>
+      <select id="c" required>
+        <option value="">Your category</option>
+        <option value="cafe">Café</option><option value="restaurant">Restaurant</option><option value="physio">Physio</option>
+        <option value="dentist">Dentist</option><option value="hair salon">Hair salon</option><option value="beauty salon">Beauty salon</option>
+        <option value="plumber">Plumber</option><option value="electrician">Electrician</option><option value="mechanic">Mechanic</option>
+        <option value="gym">Gym</option><option value="real estate agent">Real estate agent</option><option value="accountant">Accountant</option>
+      </select>
+      <button class="btn primary" id="go" type="submit">Check</button>
+    </form>
+    <p class="small">About 30 seconds. It's a sample of AI answers at one moment, not a ranking: answers change from day
+      to day and person to person.</p>
+    <div id="result" aria-live="polite"></div>
+  </div>
+  <section>
+    <h2>Make replying to reviews one tap</h2>
+    <p>Recent reviews with owner replies help AI tools and customers trust you. <a href="/local/reply-desk/">Reply
+      Desk</a> drafts a reply to every review you forward it: A$19 a month, 14-day free trial.</p>
+  </section>
+  <footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+</div>
+<script>
+(function () {
+  var API = "https://leymish-ai.leymish.workers.dev/v1/ai-search-check";
+  var form = document.getElementById("form"), btn = document.getElementById("go"), out = document.getElementById("result");
+  function esc(x) { return String(x == null ? "" : x).replace(/[&<>"']/g, function (k) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[k]; }); }
+  function card(d) {
+    var c = document.createElement("canvas"); c.width = 1080; c.height = 1080; var g = c.getContext("2d");
+    g.fillStyle = "#f7f6f2"; g.fillRect(0, 0, 1080, 1080);
+    g.fillStyle = "#1f6f4a"; g.font = "700 40px monospace"; g.fillText("leymish/labs · AI Search Check", 70, 110);
+    g.fillStyle = "#16181d"; g.font = "700 64px sans-serif"; g.fillText(d.business.slice(0, 28), 70, 260);
+    g.font = "400 40px sans-serif"; g.fillStyle = "#5d636f"; g.fillText(d.category + " · " + d.suburb, 70, 320);
+    g.fillStyle = d.named ? "#1f6f4a" : "#9a5b00"; g.font = "700 150px monospace"; g.fillText(d.named + " / " + d.asked, 70, 540);
+    g.fillStyle = "#16181d"; g.font = "400 44px sans-serif"; g.fillText("AI answers that named this business", 70, 610);
+    g.fillStyle = "#5d636f"; g.font = "400 32px sans-serif";
+    g.fillText("A sample of AI answers on " + d.checked_at.slice(0, 10) + ", not a ranking.", 70, 960);
+    g.fillText("Check yours free: leymish.com/local/ai-search-check", 70, 1010);
+    return c.toDataURL("image/png");
+  }
+  function render(d) {
+    var instead = d.instead.length ? "<h3>Named instead</h3><ul>" + d.instead.map(function (o) { return "<li>" + esc(o.name) + " <span class='small'>(" + o.times + " of " + d.asked + ")</span></li>"; }).join("") + "</ul>" : "";
+    out.innerHTML = "<div class='card'><div class='small'>" + esc(d.category) + " · " + esc(d.suburb) + (d.cached ? " · checked in the last 24 hours" : "") + "</div>" +
+      "<div class='big'>" + d.named + "<small> of " + d.asked + " AI answers named " + esc(d.business) + "</small></div>" +
+      "<ul class='qa'>" + d.answers.map(function (a) { return "<li>" + (a.named ? "✓ " : "✗ ") + esc(a.question) + "</li>"; }).join("") + "</ul>" + instead +
+      "<h3>Three fixes</h3><ol>" + d.fixes.map(function (f) { return "<li>" + esc(f) + "</li>"; }).join("") + "</ol>" +
+      "<p class='small'>" + esc(d.note) + "</p><p><a class='btn' id='dl' download='ai-search-check.png' href='#'>Download your result card</a></p></div>";
+    document.getElementById("dl").href = card(d);
+  }
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var body = { business: document.getElementById("b").value.trim(), suburb: document.getElementById("s").value.trim(), category: document.getElementById("c").value };
+    if (!body.business || !body.suburb || !body.category) { out.innerHTML = "<p class='err'>Fill in your business name, suburb and category.</p>"; return; }
+    btn.disabled = true; btn.textContent = "Asking AI…"; out.innerHTML = "<p class='small'>Asking three questions: about 30 seconds.</p>";
+    fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) { if (!d.ok) { out.innerHTML = "<p class='err'>" + esc(d.error || "Something went wrong. Please try again.") + "</p>"; return; } render(d); })
+      .catch(function () { out.innerHTML = "<p class='err'>We couldn't reach the check. Please try again in a minute.</p>"; })
+      .then(function () { btn.disabled = false; btn.textContent = "Check"; });
+  });
+})();
+</script>
+</body>
+</html>

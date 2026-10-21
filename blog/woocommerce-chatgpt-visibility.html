@@ -17,7 +17,7 @@ talks about product feeds and agentic checkout, but no native ChatGPT integratio
 <p>That doesn't mean WooCommerce products can't appear. It means nothing does it for you. This checklist
 covers what AI shopping agents need from your store, in the order it usually goes wrong, with a command
 you can run for each check.</p>
-<h2>How ChatGPT finds products in the first place</h2>
+<h2 id="how-chatgpt-finds-products-in-the-first-place">How ChatGPT finds products in the first place</h2>
 <p>There are three ways an AI assistant learns about a product:</p>
 <ol>
 <li><strong>Its search index.</strong> OpenAI's <code>OAI-SearchBot</code> crawls the web to power ChatGPT search results,
@@ -31,7 +31,7 @@ you can run for each check.</p>
    <code>Claude-User</code> or <code>Perplexity-User</code> fetches the page on the spot.</li>
 </ol>
 <p>All three depend on the same basics. Here they are.</p>
-<h2>1. Is the store actually live?</h2>
+<h2 id="1-is-the-store-actually-live">1. Is the store actually live?</h2>
 <p>New WooCommerce stores start in <strong>"coming soon" mode</strong>: logged-out visitors (and crawlers) see a
 placeholder page, while you, logged in as admin, see the real shop. It's the most common reason a store
 is invisible, and it's easy to miss because it looks fine to you.</p>
@@ -39,7 +39,7 @@ is invisible, and it's easy to miss because it looks fine to you.</p>
 <strong>WooCommerce → Settings → Site visibility</strong> and choose <strong>Live</strong>.</p>
 <p>Also check <strong>Settings → Reading → "Discourage search engines from indexing this site"</strong> is unticked.
 With it on, WordPress tells every crawler not to index the site.</p>
-<h2>2. Does robots.txt let the AI crawlers in?</h2>
+<h2 id="2-does-robotstxt-let-the-ai-crawlers-in">2. Does robots.txt let the AI crawlers in?</h2>
 <p>Fetch your robots.txt and look for rules that name AI crawlers, or a blanket <code>Disallow: /</code>:</p>
 <pre><code class="language-bash">curl -s https://yourstore.com/robots.txt
 </code></pre>
@@ -48,7 +48,7 @@ With it on, WordPress tells every crawler not to index the site.</p>
 crawlers (<code>GPTBot</code>, <code>ClaudeBot</code>, <code>Google-Extended</code>) are a separate decision: blocking them keeps your
 content out of model training, not out of search answers. Many stores block training and allow search;
 that's a legitimate choice. Blocking the search bots is what costs visibility.</p>
-<h2>3. Is a firewall blocking them anyway?</h2>
+<h2 id="3-is-a-firewall-blocking-them-anyway">3. Is a firewall blocking them anyway?</h2>
 <p>robots.txt is only half of it. Security plugins and CDNs often block AI crawlers by user agent before
 robots.txt is even read, and nothing in your WordPress settings shows it. Test it directly: request the
 same product page as a browser and as each bot, and compare the status codes.</p>
@@ -62,7 +62,7 @@ done
 caveat: some CDNs verify bots by IP address, so a fake bot request from your laptop can be blocked even
 though the real crawler gets through. Treat a block here as "check your CDN and security plugin
 settings", not as proof.</p>
-<h2>4. Is there valid Product structured data?</h2>
+<h2 id="4-is-there-valid-product-structured-data">4. Is there valid Product structured data?</h2>
 <p>AI agents and Google read the schema.org Product JSON-LD in your page to get the name, price, currency,
 availability, brand and identifiers without guessing. WooCommerce outputs it by default, but themes and
 plugins sometimes remove or break it.</p>
@@ -71,36 +71,36 @@ plugins sometimes remove or break it.</p>
 <p>No output means no Product markup. If it's there, check it includes <code>offers.price</code>,
 <code>offers.priceCurrency</code>, <code>offers.availability</code>, a <code>gtin</code> (or <code>mpn</code>) and a <code>brand</code>. Google's Rich
 Results Test shows the full parsed data.</p>
-<h2>5. Can the name and price be read without JavaScript?</h2>
+<h2 id="5-can-the-name-and-price-be-read-without-javascript">5. Can the name and price be read without JavaScript?</h2>
 <p>Most AI crawlers don't run JavaScript. If your theme or page builder loads the title or price with
 JavaScript, the crawler sees an empty template.</p>
 <pre><code class="language-bash">curl -s https://yourstore.com/product/your-product/ | grep -c &quot;Your Product Name&quot;
 </code></pre>
 <p>Zero means the name isn't in the HTML the server sends.</p>
-<h2>6. Does every product have an identifier?</h2>
+<h2 id="6-does-every-product-have-an-identifier">6. Does every product have an identifier?</h2>
 <p>Agents match products across sellers by GTIN (the barcode number: UPC, EAN, ISBN) or by brand plus MPN.
 Google Merchant Center requires the GTIN whenever the manufacturer assigned one
 (<a href="https://support.google.com/merchants/answer/7052112">product data spec</a>), and OpenAI's feed spec
 recommends it. WooCommerce 9.2+ has a built-in "GTIN, UPC, EAN, or ISBN" field on every product and
 variation. Most catalogs have it half-filled. We wrote a separate guide on
 <a href="/blog/woocommerce-missing-gtin-ai-shopping.html">missing GTINs and how to fix them</a>.</p>
-<h2>7. Does every product have a brand?</h2>
+<h2 id="7-does-every-product-have-a-brand">7. Does every product have a brand?</h2>
 <p>Brand is a required field in OpenAI's feed spec and required by Google for new products. WooCommerce 9.6+
 includes a Brands taxonomy (Products → Brands). Your own products get your own brand.</p>
-<h2>8. Are variations complete?</h2>
+<h2 id="8-are-variations-complete">8. Are variations complete?</h2>
 <p>A variable product whose variations are set to "Any size" or "Any colour" leaves an agent unable to say
 what the shopper would get. Each variation needs its own price, stock status, attribute values and,
 ideally, its own GTIN.</p>
-<h2>9. Does the Store API answer?</h2>
+<h2 id="9-does-the-store-api-answer">9. Does the Store API answer?</h2>
 <p>The WooCommerce Store API is the public, read-only product endpoint that headless tools and agents can
 use:</p>
 <pre><code class="language-bash">curl -s &quot;https://yourstore.com/wp-json/wc/store/v1/products?per_page=1&quot; | head -c 300
 </code></pre>
 <p>You should see JSON. An error or an HTML page usually means a security plugin is blocking <code>/wp-json/</code>.</p>
-<h2>10. Can a shopper check out as a guest?</h2>
+<h2 id="10-can-a-shopper-check-out-as-a-guest">10. Can a shopper check out as a guest?</h2>
 <p>Agents buying on someone's behalf struggle with mandatory account creation. Turn on <strong>WooCommerce →
 Settings → Accounts &amp; Privacy → "Allow customers to place orders without an account"</strong>.</p>
-<h2>Lower priority: llms.txt and UCP</h2>
+<h2 id="lower-priority-llmstxt-and-ucp">Lower priority: llms.txt and UCP</h2>
 <ul>
 <li><strong>llms.txt</strong> is a Markdown file at <code>/llms.txt</code> that summarises your site for language models
   (<a href="https://llmstxt.org/">llmstxt.org</a>). It's new and lightly used; worth a few minutes, not a weekend.</li>
@@ -110,7 +110,7 @@ Settings → Accounts &amp; Privacy → "Allow customers to place orders without
 <li><strong>WooCommerce MCP</strong> (added in 10.3) lets AI assistants help <em>you</em> manage the store. It doesn't make
   products visible to shoppers.</li>
 </ul>
-<h2>Running all ten at once</h2>
+<h2 id="running-all-ten-at-once">Running all ten at once</h2>
 <p>We built a free WordPress plugin that runs these checks from inside your store:
 <a href="/">LeyMish AI Shopping Readiness</a>. Under <strong>LeyMish → Overview</strong> it gives a 0–100 score, a fix
 list ordered by how many points each fix is worth, and a CSV of every product's gaps. It runs entirely on
@@ -119,5 +119,5 @@ anywhere.</p>
 <p>What it can't do is promise you a spot in ChatGPT. OpenAI, Google and the others decide what they show.
 What the checklist does is remove the reasons they'd leave you out.</p><div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker reads the public signals an AI shopping agent sees and gives you a score and a list to fix. No account, no card.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div><div class='card' style='margin:24px 0'><h3>More on WooCommerce and AI shopping</h3><ul><li><a href='/woocommerce/guides/add-gtin-woocommerce.html'>How to add GTINs in WooCommerce (with the built-in field)</a></li><li><a href='/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html'>Is your WooCommerce store ready for ChatGPT checkout?</a></li><li><a href='/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html'>Is your WooCommerce store visible in ChatGPT shopping?</a></li><li><a href='/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html'>WooCommerce robots.txt for AI crawlers: what to allow</a></li></ul><p><a href='/woocommerce/#learn'>Everything we've published on it</a> · <a href='/woocommerce/check/'>Free online check</a></p></div></main>
 <section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Readiness plugin gives you a 0–100 score, one-click fixes and product feeds, and runs on your site. LeyMish Pro adds AI visibility checks, AI fixes and agents.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
-<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>

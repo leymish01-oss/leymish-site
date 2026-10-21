@@ -18,13 +18,13 @@ lives.</p>
 <p><strong>Want a quick first pass?</strong> Our <a href="/woocommerce/merchant-center-check/">free Merchant Center check</a> reads your public
 pages and lists the misrepresentation risks it can see. Independent tool and service, not affiliated with Google.
 Google decides every review.</p>
-<h2>What the policy actually asks</h2>
+<h2 id="what-the-policy-actually-asks">What the policy actually asks</h2>
 <p>Google's <a href="https://support.google.com/merchants/answer/6150127">misrepresentation policy</a> comes down to one question:
 would a shopper be misled about who you are, what you sell or what it costs? It names false identity or contact
 details, hiding shipping and return costs, offers you can't fulfil, and unreliable claims. It also says the most
 serious cases can lead to suspension without prior warning.</p>
 <p>On a WooCommerce store, those questions map to a handful of things a reviewer can open in a browser.</p>
-<h2>1. Business identity and contact details</h2>
+<h2 id="1-business-identity-and-contact-details">1. Business identity and contact details</h2>
 <p>The reviewer wants to know who they would be buying from and whether they could reach them. Google's
 <a href="https://support.google.com/merchants/answer/12756116">Merchant Center guidelines</a> ask for contact details that are
 easy to find: a form, an email address, a phone number or a business social profile.</p>
@@ -38,7 +38,7 @@ easy to find: a form, an email address, a phone number or a business social prof
 </ul>
 <p>Pick one legal name, one trading name, one phone in international format and one email at your own domain. Then
 make all five agree. Registered in one country and selling to another? Say so on the Contact page.</p>
-<h2>2. The refund and returns policy, and WooCommerce's sample page</h2>
+<h2 id="2-the-refund-and-returns-policy-and-woocommerces-sample-page">2. The refund and returns policy, and WooCommerce's sample page</h2>
 <p>WooCommerce creates a sample page called "Refund and Returns Policy" at <code>/refund_returns/</code>. It's template text with a
 generic return window. If that page is published alongside your real policy, the store now shows two policies that
 contradict each other, and the reviewer can't tell which one you honour.</p>
@@ -49,7 +49,7 @@ is not Google's review, so don't publish the sample just to turn it green.</p>
 arrives. Then copy the same terms into Merchant Center's return policy settings, with the URL of that page. Google's
 <a href="https://support.google.com/merchants/answer/14011730">return policy setup guide</a> expects the website and the settings
 to match.</p>
-<h2>3. Shipping page versus shipping settings versus checkout</h2>
+<h2 id="3-shipping-page-versus-shipping-settings-versus-checkout">3. Shipping page versus shipping settings versus checkout</h2>
 <p>This is the mismatch that catches stores with otherwise clean pages. Three things have to tell the same story:</p>
 <ol>
 <li><strong>Your shipping page:</strong> where you ship, how long orders take to leave, how long delivery takes, and what it costs.</li>
@@ -62,14 +62,14 @@ shipping price. Do the same for your heaviest product and for a far-away address
 checkout charges anything, every listing promised something the store didn't deliver.</p>
 <p>If Google for WooCommerce offers to copy shipping from WooCommerce during setup, check the result: a rate added by a
 fulfilment app won't be in your WooCommerce zones.</p>
-<h2>4. Terms and privacy describe this store</h2>
+<h2 id="4-terms-and-privacy-describe-this-store">4. Terms and privacy describe this store</h2>
 <p>A reviewer reads the terms for who the contract is with and what you sell. A terms page left over from a different
 business model ("we sell supplements" on a cosmetics store) contradicts you in your own words.</p>
 <p>Set the pages WooCommerce links at checkout in <strong>WooCommerce → Settings → Advanced → Page setup</strong> (the Terms and
 conditions field) and the privacy page in <strong>Settings → Privacy</strong> in WordPress. The privacy page should name the
 services that actually receive customer data: payments, hosting, analytics, the feed plugin, email and any
 fulfilment partner.</p>
-<h2>5. Claim words</h2>
+<h2 id="5-claim-words">5. Claim words</h2>
 <p>Claims are where health-adjacent stores fail most often. Read every product title, short description, product tab
 and FAQ field for:</p>
 <ul>
@@ -85,7 +85,7 @@ and FAQ field for:</p>
 footer and use it as the home page meta description), page titles written by an SEO plugin, and old blog posts that
 the menu doesn't link but the sitemap does. WordPress lists every public URL at <code>/wp-sitemap.xml</code>, or at the sitemap
 address your SEO plugin uses.</p>
-<h2>6. Price and availability: page, structured data and feed</h2>
+<h2 id="6-price-and-availability-page-structured-data-and-feed">6. Price and availability: page, structured data and feed</h2>
 <p>WooCommerce prints Product structured data on each product page, including the offer price, currency and stock
 status. Google for WooCommerce (in <strong>Marketing → Google for WooCommerce</strong>) sends a separate copy of the same facts to
 Merchant Center. A reviewer, or Google's own systems, can compare the page, the structured data and the feed.</p>
@@ -98,7 +98,7 @@ Merchant Center. A reviewer, or Google's own systems, can compare the page, the 
 </ul>
 <p>After any change, spot-check three products: the price on the page, in the page source (search for <code>"price"</code>) and in
 Merchant Center.</p>
-<h2>7. The cart and checkout work for a stranger</h2>
+<h2 id="7-the-cart-and-checkout-work-for-a-stranger">7. The cart and checkout work for a stranger</h2>
 <p>Google's guidelines require that shoppers can add items to the cart and complete checkout, with at least one
 conventional payment method on a secure page. Open the store in a private window and go as far as the payment step.</p>
 <p>Things that break this on WooCommerce:</p>
@@ -109,7 +109,7 @@ conventional payment method on a secure page. Open the store in a private window
 <li>a security or maintenance plugin that blocks visitors from some countries, including the one the reviewer may be
   browsing from.</li>
 </ul>
-<h2>8. robots.txt lets Google's crawlers in</h2>
+<h2 id="8-robotstxt-lets-googles-crawlers-in">8. robots.txt lets Google's crawlers in</h2>
 <p>If Google can't fetch your product pages, it can't check them. Google's
 <a href="https://support.google.com/merchants/answer/14990960">product crawl issues page</a> says robots.txt should allow
 Googlebot and Googlebot-Image to crawl the site. Google's crawler documentation also lists
@@ -117,12 +117,12 @@ Googlebot and Googlebot-Image to crawl the site. Google's crawler documentation 
 apply across Google Shopping.</p>
 <p>Open <code>yourstore.com/robots.txt</code> and look for <code>Disallow: /</code> under any of those user agents, or under <code>*</code>. In
 WordPress, also check <strong>Settings → Reading → Search engine visibility</strong>, and any rules an SEO or security plugin adds.</p>
-<h2>9. Footer and social links</h2>
+<h2 id="9-footer-and-social-links">9. Footer and social links</h2>
 <p>Every link in the footer is part of your identity. A social profile with no name, no description and no link back to
 your store reads as a business that doesn't exist. A personal profile linked as "our Facebook page" is worse than no
 link. Fill each profile in or remove the link, and remove it from the Organization structured data too.</p>
 <p>Check the footer on a product page too: some themes use a different one there, and that's where a listing lands.</p>
-<h2>A real example: our partner store</h2>
+<h2 id="a-real-example-our-partner-store">A real example: our partner store</h2>
 <p>Our partner store is a small WooCommerce skincare shop that sells to the United States. Its Merchant Center account
 was suspended for misrepresentation in October 2026, and Google's summary pointed at business transparency, policies
 and contact information. Going through it the way a reviewer would, we found:</p>
@@ -138,7 +138,7 @@ and contact information. Going through it the way a reviewer would, we found:</p
 <p>The WooCommerce sample refund page was already unpublished, which was one thing that didn't need fixing. The fixes
 went live between 16 and 18 October. At the time of writing, the review hasn't been requested yet. We'll only
 describe an outcome once Google has made its decision.</p>
-<h2>Requesting the review, and the cool-down</h2>
+<h2 id="requesting-the-review-and-the-cool-down">Requesting the review, and the cool-down</h2>
 <p>Request the review only when every item above is fixed or has a plain explanation. The button is on the account
 issue in Merchant Center. Google's
 <a href="https://support.google.com/merchants/answer/13693195">guide to warnings and suspensions</a> says reviews typically take
@@ -160,7 +160,7 @@ with a URL and date for each change. Don't claim fixes you haven't made.</p>
 <details><summary>Can anyone promise reinstatement?</summary><p>No. Google decides every review. Anyone promising reinstatement, or claiming they can contact Google for you, is promising something they don't control.</p></details>
 </section>
 
-<h2>Check your store, or hand it over</h2>
+<h2 id="check-your-store-or-hand-it-over">Check your store, or hand it over</h2>
 <p>Start with the <a href="/woocommerce/merchant-center-check/">free Merchant Center check</a>. It reads your public pages and
 gives you a list to work through.</p>
 <p>If you'd rather have it done, our <a href="/woocommerce/google-merchant-center/">Google Merchant Center help</a> has three fixed
@@ -172,5 +172,5 @@ our recovery guide: <a href="https://www.amazon.com/dp/B0HNLCQ3SP">the Kindle eb
 <p>Independent tool and service, not affiliated with Google. Google decides every review. No one can honestly promise
 reinstatement, and we don't.</p><div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker reads the public signals an AI shopping agent sees and gives you a score and a list to fix. No account, no card.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div><div class='card' style='margin:24px 0'><h3>More on WooCommerce and AI shopping</h3><ul><li><a href='/woocommerce/guides/add-gtin-woocommerce.html'>How to add GTINs in WooCommerce (with the built-in field)</a></li><li><a href='/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html'>Is your WooCommerce store ready for ChatGPT checkout?</a></li><li><a href='/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html'>Is your WooCommerce store visible in ChatGPT shopping?</a></li><li><a href='/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html'>WooCommerce robots.txt for AI crawlers: what to allow</a></li></ul><p><a href='/woocommerce/#learn'>Everything we've published on it</a> · <a href='/woocommerce/check/'>Free online check</a></p></div></main>
 <section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Readiness plugin gives you a 0–100 score, one-click fixes and product feeds, and runs on your site. LeyMish Pro adds AI visibility checks, AI fixes and agents.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
-<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>

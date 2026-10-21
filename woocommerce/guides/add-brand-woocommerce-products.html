@@ -15,7 +15,7 @@ whether it matches what the shopper asked for: "a Le Creuset casserole dish", "a
 maker". A product with no brand is just a name and a price.</p>
 <p>WooCommerce has a built-in <strong>Brands</strong> feature (it became part of WooCommerce itself in version 9.6, so on an
 up-to-date store you don't need an extension). This guide shows how to use it.</p>
-<h2>Who is the brand?</h2>
+<h2 id="who-is-the-brand">Who is the brand?</h2>
 <ul>
 <li><strong>If you resell other companies' products,</strong> the brand is the manufacturer's brand, exactly as it's
   printed on the packaging.</li>
@@ -24,12 +24,12 @@ up-to-date store you don't need an extension). This guide shows how to use it.</
 </ul>
 <p>Use the same spelling every time. "Linen &amp; Co", "Linen and Co" and "LINEN&amp;CO" look like three different brands
 to a machine.</p>
-<h2>Step 1: open Products → Brands</h2>
+<h2 id="step-1-open-products-brands">Step 1: open Products → Brands</h2>
 <p>In your WordPress admin, go to <strong>Products → Brands</strong>. If you don't see it, update WooCommerce. Older versions
 needed the separate WooCommerce Brands extension, and if you used that before, your existing brands carry
 over.</p>
 <p><img alt="The Product brands screen in WooCommerce: an Add New Brand form on the left and the brand list on the right" src="/assets/woo/guides/brands-page.png" /></p>
-<h2>Step 2: create your brands</h2>
+<h2 id="step-2-create-your-brands">Step 2: create your brands</h2>
 <p>Fill in the <strong>Add New Brand</strong> form on the left:</p>
 <ul>
 <li><strong>Name:</strong> the brand as customers know it.</li>
@@ -37,11 +37,11 @@ over.</p>
 <li><strong>Description and Thumbnail:</strong> optional. Some themes show them on the brand's archive page.</li>
 </ul>
 <p>Click <strong>Add New Brand</strong>. Repeat for each brand you sell. If you only sell your own brand, you need just one.</p>
-<h2>Step 3: assign a brand to each product</h2>
+<h2 id="step-3-assign-a-brand-to-each-product">Step 3: assign a brand to each product</h2>
 <p>Open a product (<strong>Products</strong>, then click its name). In the right-hand column there's a <strong>Brands</strong> box, much
 like the <strong>Product categories</strong> box. Tick the brand and click <strong>Update</strong>.</p>
 <p>A product should normally have one brand. Ticking several makes it unclear which one made the product.</p>
-<h2>Step 4: assign brands in bulk</h2>
+<h2 id="step-4-assign-brands-in-bulk">Step 4: assign brands in bulk</h2>
 <p>For a large catalogue, use bulk edit:</p>
 <ol>
 <li>Go to <strong>Products → All Products</strong>. Filter or search to show the products of one brand, for example by
@@ -53,7 +53,7 @@ like the <strong>Product categories</strong> box. Tick the brand and click <stro
 Export</strong>) to see the exact column name your store uses, fill it in, and import with <strong>Update existing
 products</strong> ticked. Try two or three products before the whole file.</p>
 <div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker runs 5 outside checks on your store, including this one, and gives you a score out of 5.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div>
-<h2>Step 5: check the brand reaches the product page</h2>
+<h2 id="step-5-check-the-brand-reaches-the-product-page">Step 5: check the brand reaches the product page</h2>
 <p>WooCommerce writes each product's details into the page as structured data, the code AI tools and search
 engines read. When a product has a brand, that block includes it. To check, open the product page, right-click,
 choose <strong>View page source</strong>, and search for <code>"brand"</code>. You should see something like:</p>
@@ -69,17 +69,17 @@ reading it will cope, but if you have the choice, "and" avoids the question.</p>
 <li><strong>Check your SEO plugin.</strong> Some replace WooCommerce's structured data with their own and have a separate
   setting for which field to use as the brand. Point it at the WooCommerce brand.</li>
 </ul>
-<h2>Brand plus part number when there's no barcode</h2>
+<h2 id="brand-plus-part-number-when-theres-no-barcode">Brand plus part number when there's no barcode</h2>
 <p>If your products have no GTIN (handmade, made to order, or your own brand without barcodes), the brand
 becomes even more important. Shopping systems accept <strong>brand plus manufacturer part number (MPN)</strong> as the
 next best identifier. If you're the maker, your SKU can serve as the MPN, as long as each SKU is unique and
 stays the same.</p>
 <p>Where you do have barcodes, add those as well. Our guide on
 <a href="/woocommerce/guides/add-gtin-woocommerce.html">adding GTINs in WooCommerce</a> shows where they go.</p>
-<h2>Check every product at once</h2>
+<h2 id="check-every-product-at-once">Check every product at once</h2>
 <p>The free plugin counts how many of your products are missing a brand, a GTIN or MPN, an image, attributes
 or a real description, and puts the biggest gap first. On our partner store, filling in brands and other
 product data was part of what moved its score from 77 to 96.</p><div class='card' style='margin:24px 0'><h3>More on WooCommerce and AI shopping</h3><ul><li><a href='/woocommerce/guides/add-gtin-woocommerce.html'>How to add GTINs in WooCommerce (with the built-in field)</a></li><li><a href='/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html'>Is your WooCommerce store ready for ChatGPT checkout?</a></li><li><a href='/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html'>Is your WooCommerce store visible in ChatGPT shopping?</a></li><li><a href='/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html'>WooCommerce robots.txt for AI crawlers: what to allow</a></li></ul><p><a href='/woocommerce/#learn'>Everything we've published on it</a> · <a href='/woocommerce/check/'>Free online check</a></p></div></main>
 <section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Readiness plugin gives you a 0–100 score, one-click fixes and product feeds, and runs on your site. LeyMish Pro adds AI visibility checks, AI fixes and agents.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
-<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>

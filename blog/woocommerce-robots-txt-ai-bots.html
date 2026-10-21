@@ -13,7 +13,7 @@ because the crawlers never get the page. There are two places that happens: <str
 crawlers to stay out, and <strong>firewalls</strong> (security plugins, CDNs, hosting rules), which block them
 outright. The first is easy to see. The second usually isn't.</p>
 <p>This checklist covers both, with the exact user agents to look for and commands to test them.</p>
-<h2>The AI crawlers, and what each one does</h2>
+<h2 id="the-ai-crawlers-and-what-each-one-does">The AI crawlers, and what each one does</h2>
 <p>Each vendor now runs separate bots for training, search indexing and user-requested fetches, and you can
 treat them differently.</p>
 <table>
@@ -88,7 +88,7 @@ treat them differently.</p>
 <p><strong>For shopping visibility, the search bots matter most:</strong> <code>OAI-SearchBot</code>, <code>Claude-SearchBot</code> and
 <code>PerplexityBot</code> build the indexes that product recommendations come from. The user bots matter when a
 shopper pastes your link. The training bots are a separate question.</p>
-<h2>A robots.txt that allows search and blocks training</h2>
+<h2 id="a-robotstxt-that-allows-search-and-blocks-training">A robots.txt that allows search and blocks training</h2>
 <p>If you want to be recommended but would rather not have your content used for model training, this is a
 reasonable starting point:</p>
 <pre><code># AI search and user-requested fetches: allowed
@@ -122,7 +122,7 @@ Disallow: /my-account/
 <li><strong>Blocking training is fine; blocking search is what costs you.</strong> A blanket <code>User-agent: * / Disallow: /</code>
   or a plugin's "block all AI bots" button hides you from the search bots too.</li>
 </ul>
-<h2>WooCommerce URLs that must stay crawlable</h2>
+<h2 id="woocommerce-urls-that-must-stay-crawlable">WooCommerce URLs that must stay crawlable</h2>
 <p>When you tighten robots.txt, it's easy to block something a shopping agent needs. Keep these open:</p>
 <ul>
 <li><strong>Product pages</strong> (<code>/product/…/</code> by default) and <strong>product category pages</strong> (<code>/product-category/…/</code>).
@@ -138,14 +138,14 @@ Disallow: /my-account/
 </ul>
 <p>Cart, checkout and account pages can stay disallowed: there's nothing there for a crawler, and keeping
 bots out saves your server work.</p>
-<h2>Where WordPress robots.txt comes from</h2>
+<h2 id="where-wordpress-robotstxt-comes-from">Where WordPress robots.txt comes from</h2>
 <p>WordPress serves a virtual robots.txt unless a real <code>robots.txt</code> file exists in your site's root folder,
 in which case the file wins and the virtual rules are ignored. SEO plugins usually offer an editor for the
 virtual one. So if your edits don't show up, check for a physical file (your host's file manager shows
 it).</p>
 <p>Also check <strong>Settings → Reading → "Discourage search engines from indexing this site"</strong>. With it on,
 WordPress asks every crawler not to index your pages.</p>
-<h2>The part robots.txt doesn't show: firewalls</h2>
+<h2 id="the-part-robotstxt-doesnt-show-firewalls">The part robots.txt doesn't show: firewalls</h2>
 <p>Security plugins, CDNs and hosts can block crawlers by user agent, by IP reputation or by rate, and the
 crawler never gets far enough to read robots.txt. Common causes:</p>
 <ul>
@@ -155,7 +155,7 @@ crawler never gets far enough to read robots.txt. Common causes:</p>
 <li>rate limits that treat a crawler's burst of requests as an attack,</li>
 <li>a hosting-level firewall rule you never set yourself.</li>
 </ul>
-<h3>Test it</h3>
+<h3 id="test-it">Test it</h3>
 <p>Ask for the same product page as a browser and as each bot, and compare:</p>
 <pre><code class="language-bash">URL=https://yourstore.com/product/your-product/
 curl -s -o /dev/null -w &quot;browser          %{http_code}\n&quot; -A &quot;Mozilla/5.0&quot; &quot;$URL&quot;
@@ -166,13 +166,13 @@ done
 </code></pre>
 <p>If the browser gets <code>200</code> and a bot gets <code>403</code>, <code>406</code>, <code>429</code> or <code>503</code>, or a challenge page, something is
 blocking that bot.</p>
-<h3>Read the result carefully</h3>
+<h3 id="read-the-result-carefully">Read the result carefully</h3>
 <p>Some CDNs verify crawlers by IP address: a request claiming to be <code>OAI-SearchBot</code> from your laptop is
 obviously fake, so it gets blocked, while the real crawler from OpenAI's published IP ranges gets through.
 OpenAI publishes those ranges for each of its bots, and good CDNs use them. So a block in this test means
 <strong>look at your firewall's bot settings and logs</strong>, not necessarily that the real crawler is blocked. If the
 logs show real crawler requests (from the vendor's published IPs) being blocked, that's the one to fix.</p>
-<h2>Checking all of this from inside WordPress</h2>
+<h2 id="checking-all-of-this-from-inside-wordpress">Checking all of this from inside WordPress</h2>
 <p>The free <a href="/">LeyMish AI Shopping Readiness</a> plugin does both checks from your own store:</p>
 <ul>
 <li>it reads your robots.txt and evaluates it for nine AI user agents (the ones in the table above), using
@@ -182,7 +182,7 @@ logs show real crawler requests (from the vendor's published IPs) being blocked,
 </ul>
 <p>It also checks that the store is live, which catches WooCommerce's "coming soon" mode, the other common
 reason crawlers see nothing. Everything runs on your site with no outside calls.</p>
-<h2>The short version</h2>
+<h2 id="the-short-version">The short version</h2>
 <ol>
 <li>Store live, and search engines not discouraged.</li>
 <li>robots.txt allows <code>OAI-SearchBot</code>, <code>Claude-SearchBot</code> and <code>PerplexityBot</code> on product pages.</li>
@@ -191,5 +191,5 @@ reason crawlers see nothing. Everything runs on your site with no outside calls.
 <li>Training bots: your call. Blocking them doesn't hurt shopping visibility.</li>
 </ol><div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker reads the public signals an AI shopping agent sees and gives you a score and a list to fix. No account, no card.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div><div class='card' style='margin:24px 0'><h3>More on WooCommerce and AI shopping</h3><ul><li><a href='/woocommerce/guides/add-gtin-woocommerce.html'>How to add GTINs in WooCommerce (with the built-in field)</a></li><li><a href='/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html'>Is your WooCommerce store ready for ChatGPT checkout?</a></li><li><a href='/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html'>Is your WooCommerce store visible in ChatGPT shopping?</a></li><li><a href='/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html'>WooCommerce robots.txt for AI crawlers: what to allow</a></li></ul><p><a href='/woocommerce/#learn'>Everything we've published on it</a> · <a href='/woocommerce/check/'>Free online check</a></p></div></main>
 <section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Readiness plugin gives you a 0–100 score, one-click fixes and product feeds, and runs on your site. LeyMish Pro adds AI visibility checks, AI fixes and agents.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
-<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>

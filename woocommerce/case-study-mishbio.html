@@ -10,7 +10,7 @@
 <nav><a href="/products/">Products</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav></header>
 <main class="prose " style="padding:24px 0 48px"><div class="eyebrow">Case study · mishbio.us</div>
 
-<h1>A real WooCommerce store: 77 → 96</h1>
+<h1 id="a-real-woocommerce-store-77-96">A real WooCommerce store: 77 → 96</h1>
 <p>We ran our free plugin on <strong>mishbio.us</strong>, a live WooCommerce store selling skincare in the US, fixed what it
 found, and ran it again. <strong>Disclosure:</strong> mishbio.us is our partner store, and our agents help run it. That's why
 we could make the changes, and it's why we're telling you.</p>
@@ -21,7 +21,7 @@ we could make the changes, and it's why we're telling you.</p>
   <div class="stat"><div class="k">Plugin</div><div class="v">Free</div></div>
 </div>
 
-<h2>What the audit found</h2>
+<h2 id="what-the-audit-found">What the audit found</h2>
 <p>The store looked fine to a shopper. The problems were all invisible from the front end:</p>
 <ol>
 <li><strong>An invisible character before every page.</strong> A theme file had been saved as "UTF-8 with BOM", so three
@@ -37,7 +37,7 @@ we could make the changes, and it's why we're telling you.</p>
 <li><strong>GPTBot got HTTP 429</strong> from the host's CDN while browsers and the other AI crawlers got through
    (<strong>10.5/12</strong>).</li>
 </ol>
-<h2>What we changed</h2>
+<h2 id="what-we-changed">What we changed</h2>
 <ul>
 <li>Re-saved the theme file without the BOM (Store API <strong>0 → 5</strong>).</li>
 <li>Gave every product a SKU and an MPN (a brand-assigned part number) and the brand "Mish Bioscience". <strong>We
@@ -47,7 +47,7 @@ we could make the changes, and it's why we're telling you.</p>
   claim, unpublished two template pages with untrue filler text, and toned two phrases to cosmetic wording.
   None of that changes the score; it's what an honest audit should also catch.</li>
 </ul>
-<h2>Before and after, check by check</h2>
+<h2 id="before-and-after-check-by-check">Before and after, check by check</h2>
 <table>
 <thead>
 <tr>
@@ -115,7 +115,7 @@ we could make the changes, and it's why we're telling you.</p>
 </tbody>
 </table>
 <p>Before: 2026-09-27T04:22:00Z. After: 2026-09-27T07:32:00Z, read from the plugin's own audit screen.</p>
-<h2>What's still not fixed, and why</h2>
+<h2 id="whats-still-not-fixed-and-why">What's still not fixed, and why</h2>
 <ul>
 <li><strong>GPTBot still gets HTTP 429 from the CDN.</strong> It's a hosting-level setting, and our test comes from the
   store's own server, so a CDN that checks real crawler IP addresses may treat the real GPTBot differently.
@@ -123,7 +123,7 @@ we could make the changes, and it's why we're telling you.</p>
 <li><strong>No UCP profile.</strong> The Universal Commerce Protocol needs a checkout integration that implements it; nothing
   in WooCommerce core provides one yet. Worth watching, not urgent.</li>
 </ul>
-<h2>What it took</h2>
+<h2 id="what-it-took">What it took</h2>
 <p>About an hour of work, most of it adding identifiers to 23 products (Pro's bulk editor does that in one
 table). The audit itself takes under a minute and runs entirely on the store: nothing is sent anywhere.</p>
 <p><img alt="The plugin's audit screen: score and fix list (demo store in our test suite, not mishbio.us)" src="/assets/woo/screenshot-1.png" /></p>
@@ -131,5 +131,5 @@ table). The audit itself takes under a minute and runs entirely on the store: no
 mishbio.us numbers above come from its own audit screen.</em></p>
 <p><strong>Run it on your store:</strong> <a href="/woocommerce/">download the free plugin</a> · <a href="/woocommerce/pro.html">what Pro adds</a></p></main>
 <section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Readiness plugin gives you a 0–100 score, one-click fixes and product feeds, and runs on your site. LeyMish Pro adds AI visibility checks, AI fixes and agents.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
-<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>

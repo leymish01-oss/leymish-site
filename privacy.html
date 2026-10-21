@@ -8,12 +8,12 @@
 <body><div class="wrap">
 <header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
 <nav><a href="/products/">Products</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav></header>
-<main class="prose " style="padding:24px 0 48px"><h1>Privacy</h1>
+<main class="prose " style="padding:24px 0 48px"><h1 id="privacy">Privacy</h1>
 <p>LeyMish Labs is a small software company in South Australia (<a href="/how-we-work.html">how we work</a>). This page lists everything we
 collect, in plain words. If something here is wrong or unclear, write to <strong>hello@leymish.com</strong>.</p>
 <p><strong>Who we are:</strong> LeyMish Labs is operated by Mish Bioscience Pty Ltd (ACN 672 734 637), South Australia. Contact: <a href="/contact/">contact form</a> or hello@leymish.com.
 Last changed 21 October 2026.</p>
-<h2>This website</h2>
+<h2 id="this-website">This website</h2>
 <ul>
 <li><strong>Google Analytics 4</strong> runs on our pages (it sets cookies) so we can see which pages people read. Google
   processes that data under its own policy. Block it with any content blocker; the site works the same.</li>
@@ -22,7 +22,7 @@ Last changed 21 October 2026.</p>
 <li><strong>Referral code:</strong> if you arrive with <code>?ref=</code> in the address, the code is kept in your browser tab only
   (sessionStorage, gone when you close it) and added to Gumroad links you click.</li>
 </ul>
-<h2>The free online check (/woocommerce/check/)</h2>
+<h2 id="the-free-online-check-woocommercecheck">The free online check (/woocommerce/check/)</h2>
 <ul>
 <li>We fetch at most 6 public pages from the store you enter, as <code>LeyMishCheck/1.0</code>, and obey its robots.txt.</li>
 <li>Kept permanently: a one-way hash of the domain, the time and the score (for anonymous totals).</li>
@@ -32,7 +32,7 @@ Last changed 21 October 2026.</p>
   and the time. Every email has an unsubscribe link; unsubscribing deletes what we stored for that address and
   stops future emails.</li>
 </ul>
-<h2>The free Merchant Center Check (/woocommerce/merchant-center-check/)</h2>
+<h2 id="the-free-merchant-center-check-woocommercemerchant-center-check">The free Merchant Center Check (/woocommerce/merchant-center-check/)</h2>
 <ul>
 <li>We read at most 15 public pages of the store you enter, as <code>LeyMishCheck/1.0</code>, and obey its robots.txt.</li>
 <li>Kept for 6 hours: the result, so a second look is fast.</li>
@@ -41,41 +41,51 @@ Last changed 21 October 2026.</p>
   then deleted. If you tick the box for occasional tips, we keep your email and the consent wording until you
   unsubscribe.</li>
 </ul>
-<h2>The free card surcharge check (/local/surcharge-check/)</h2>
+<h2 id="the-free-card-surcharge-check-localsurcharge-check">The free card surcharge check (/local/surcharge-check/)</h2>
 <ul>
 <li>We read at most 20 public pages and 3 linked PDFs of the website you enter, as <code>LeyMishCheck/1.0</code>, and obey its
   robots.txt.</li>
 <li>Kept for 6 hours: the result. Kept for an hour: a one-way hash of your IP address, to limit checks to 10 an hour.</li>
 </ul>
-<h2>The free Review Health Check (/local/review-check/)</h2>
+<h2 id="the-free-review-health-check-localreview-check">The free Review Health Check (/local/review-check/)</h2>
 <ul>
 <li>What you type, the business you pick, your suburb and category go to Google's Places service, which answers with
   public ratings and review counts for your business and for others in your category nearby. We show that answer and
   keep none of it.</li>
 <li>Kept for an hour: a one-way hash of your IP address, to limit checks.</li>
 </ul>
-<h2>The contact form (/contact/)</h2>
+<h2 id="the-contact-form-contact">The contact form (/contact/)</h2>
 <ul>
 <li>What you type (name, email, website if you add one, topic and message) is sent to us as one email, so we can reply.
   Our service doesn't keep a copy; the email stays in our inbox for as long as we need it to answer you.</li>
 <li>Kept for an hour: a one-way hash of your IP address, to limit messages to 5 an hour.</li>
 </ul>
-<h2>The Reply Desk waitlist (/local/review-replies/)</h2>
+<h2 id="reply-desk-localreply-desk">Reply Desk (/local/reply-desk/)</h2>
 <ul>
-<li>We keep your business name, email, suburb or region, the platforms you ticked, the consent wording and the time, so
-  we can count interest and email you once if Reply Desk launches.</li>
-<li>Ask us at hello@leymish.com and we delete your details. If we decide not to build Reply Desk, we delete the whole
-  list.</li>
-<li>Kept for an hour: a one-way hash of your IP address, to limit sign-ups to 5 an hour.</li>
+<li><strong>Your account:</strong> business name, your email, tone, sign-off, clinic setting, trial or subscription status, and the
+  consent wording, for as long as you use Reply Desk. Ask us at hello@leymish.com and we delete it.</li>
+<li><strong>Notifications you forward:</strong> we read each one to write a draft. The review or comment text (and the reviewer's
+  displayed name) is sent to our AI provider (OpenRouter and the model provider it routes to) to write the draft, then
+  emailed to you. We don't store it. Our email provider (Resend) receives the forwarded email and keeps it for its
+  standard retention period.</li>
+<li><strong>Drafts</strong> and the link to the review are kept for 30 days so the copy button works, then deleted. We keep weekly
+  counts (reviews, drafts, average rating).</li>
+<li>Emails that aren't review or comment notifications, a Gmail forwarding confirmation, or your own forward are ignored.</li>
 </ul>
-<h2>The free WordPress plugin</h2>
+<h2 id="the-ai-search-check-localai-search-check">The AI Search Check (/local/ai-search-check/)</h2>
+<ul>
+<li>The business name, category and suburb you enter are sent as questions to an AI search service (through OpenRouter).
+  We keep the result for 24 hours so a second look is fast, and a one-way hash of your IP address for an hour, to limit
+  checks.</li>
+</ul>
+<h2 id="the-free-wordpress-plugin">The free WordPress plugin</h2>
 <ul>
 <li>The audit runs on your own server. Nothing about your store is sent to us.</li>
 <li><strong>The weekly store tip</strong> (only if you tick the box in the plugin and submit): your email, your site's domain,
   the consent wording and the time. Each week we run our free outside check on that domain's public pages (as
   above) to put its score in the email. Unsubscribing deletes the record and stops the checks.</li>
 </ul>
-<h2>Pro and Pro AI</h2>
+<h2 id="pro-and-pro-ai">Pro and Pro AI</h2>
 <ul>
 <li>Purchases go through <strong>Gumroad</strong>, which handles payment and gives us your name, email and licence key.</li>
 <li>The Pro plugin checks your licence with Gumroad.</li>
@@ -84,7 +94,7 @@ Last changed 21 October 2026.</p>
   not your product text. Anthropic processes the request under its commercial terms, which don't allow training
   on it.</li>
 </ul>
-<h2>Store Team (beta)</h2>
+<h2 id="store-team-beta">Store Team (beta)</h2>
 <ul>
 <li>Connecting gives our service a WooCommerce API key for your store. It is stored encrypted and used only to read
   products and write the changes you approve. Disconnect any time and the key is deleted.</li>
@@ -93,27 +103,27 @@ Last changed 21 October 2026.</p>
   and undo it.</li>
 <li>The daily notice goes to the store owner's email you give us.</li>
 </ul>
-<h2>Emails we send to stores we don't know yet</h2>
+<h2 id="emails-we-send-to-stores-we-dont-know-yet">Emails we send to stores we don't know yet</h2>
 <p>We email online store owners and local Australian businesses at the contact address their own website publishes,
 about a specific thing we found on their site that relates to their business. We record the domain, the address, the
 time and which email was sent, so we never send twice and can honour opt-outs. Every email comes from Nick at
 LeyMish Labs and includes our postal address and an unsubscribe option.
 Replying "unsubscribe" or using the link puts the domain on a do-not-contact list, permanently.</p>
-<h2>Referral programme</h2>
+<h2 id="referral-programme">Referral programme</h2>
 <ul>
 <li>A referral code is tied to a one-way hash of the email on your purchase, not your licence key.</li>
 <li>For referred sales we keep Gumroad's sale id, the credit and its status. The buyer's email is used once to check
   it isn't your own purchase, as a hash, and not stored.</li>
 <li>When you redeem credit we keep your email until the discount code is sent, then delete it.</li>
 </ul>
-<h2>Who else handles data</h2>
+<h2 id="who-else-handles-data">Who else handles data</h2>
 <p>Cloudflare (runs our service and its database), Hostinger (hosts this site), Gumroad (payments), Anthropic
 (the AI model, for Pro AI and Store Team), Resend (sends our emails) and Google (Analytics, and the Places
 service for the review check). We don't sell
 data and don't share it with anyone else.</p>
-<h2>Your choices</h2>
+<h2 id="your-choices">Your choices</h2>
 <p>Ask us at hello@leymish.com to see or delete anything we hold about you or your store, and we'll do it within 30
 days. Unsubscribe links work immediately.</p></main>
 <section></section>
-<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>

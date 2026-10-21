@@ -15,7 +15,7 @@ lean on the same kind of product data when they decide what to recommend. Withou
 harder to match, compare and trust.</p>
 <p>WooCommerce has had a built-in field for it since version 9.2, so you don't need a plugin. This guide shows
 where it is, what to put in it, and how to check it worked.</p>
-<h2>What counts as a GTIN</h2>
+<h2 id="what-counts-as-a-gtin">What counts as a GTIN</h2>
 <p>GTIN is the umbrella name. The number on your product will be one of these:</p>
 <ul>
 <li><strong>UPC</strong> (12 digits): common in the US and Canada.</li>
@@ -28,15 +28,15 @@ where it is, what to put in it, and how to check it worked.</p>
 GTIN, and inventing one does more harm than leaving it blank, because a made-up number can match someone
 else's product. Brand owners get real numbers from GS1, the body that issues barcodes. If you resell, the
 number is printed on the packaging or in your supplier's product sheet.</p>
-<h2>Step 1: find the number</h2>
+<h2 id="step-1-find-the-number">Step 1: find the number</h2>
 <p>Look at the barcode on the product or its packaging. The digits printed under the bars are the GTIN. Your
 supplier's price list or product spreadsheet usually has a column called EAN, UPC or barcode too. That is
 the quickest way to get numbers for a whole range.</p>
-<h2>Step 2: open the product's Inventory tab</h2>
+<h2 id="step-2-open-the-products-inventory-tab">Step 2: open the product's Inventory tab</h2>
 <p>In your WordPress admin, go to <strong>Products</strong>, click the product, and scroll down to the <strong>Product data</strong> box.
 Click the <strong>Inventory</strong> tab on the left.</p>
 <p><img alt="The Inventory tab of a WooCommerce product, with the SKU box and, below it, the box labelled GTIN, UPC, EAN, or ISBN" src="/assets/woo/guides/gtin-inventory-tab.png" /></p>
-<h2>Step 3: type the number</h2>
+<h2 id="step-3-type-the-number">Step 3: type the number</h2>
 <p>Put the digits in the box labelled <strong>GTIN, UPC, EAN, or ISBN</strong>, then click <strong>Update</strong> at the top right of
 the page. That's it for a simple product.</p>
 <p>Two things that often go wrong:</p>
@@ -45,13 +45,13 @@ the page. That's it for a simple product.</p>
 <li><strong>Putting the GTIN in the SKU box.</strong> The SKU is your own stock code. Keep the two separate, so the SKU can
   stay whatever your warehouse uses.</li>
 </ul>
-<h2>Step 4: add numbers to each variation</h2>
+<h2 id="step-4-add-numbers-to-each-variation">Step 4: add numbers to each variation</h2>
 <p>If a product comes in sizes or colours, each one usually has its own barcode. Open the <strong>Variations</strong> tab,
 expand each variation, and you'll find the same <strong>GTIN, UPC, EAN, or ISBN</strong> box there. Fill it in for every
 variation that has its own barcode, then click <strong>Save changes</strong>.</p>
 <p>If the variations really do share one barcode (rare, but it happens with some bundles), put the number on
 the main product only.</p>
-<h2>Step 5: fill many products at once</h2>
+<h2 id="step-5-fill-many-products-at-once">Step 5: fill many products at once</h2>
 <p>Typing numbers one by one is fine for ten products. For a hundred, use a spreadsheet:</p>
 <ol>
 <li>Go to <strong>Products → All Products</strong> and click <strong>Export</strong>. Tick at least the ID, SKU and GTIN columns.</li>
@@ -64,7 +64,7 @@ the main product only.</p>
 </ol>
 <p>Import a small test file with two or three products first and check them before you run the full file.</p>
 <div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker runs 5 outside checks on your store, including this one, and gives you a score out of 5.</p><p><a class='btn primary' href='/woocommerce/check/'>Run the free check</a></p></div>
-<h2>Step 6: check it reaches your product page</h2>
+<h2 id="step-6-check-it-reaches-your-product-page">Step 6: check it reaches your product page</h2>
 <p>WooCommerce writes product details into each product page as structured data: a block of code that search
 engines and AI tools read instead of guessing from the page design. When the GTIN box is filled, that block
 includes a <code>gtin</code> value.</p>
@@ -77,17 +77,17 @@ can't find it:</p>
   the plugin's WooCommerce or schema settings for a GTIN option, or test the page in Google's Rich Results
   Test to see what it actually outputs.</li>
 </ul>
-<h2>How many products need it</h2>
+<h2 id="how-many-products-need-it">How many products need it</h2>
 <p>All of them, ideally, but start where it pays. Fill your best sellers first, then everything you advertise,
 then the rest. In our census of 100 WooCommerce stores, only 4 of the 76 product pages we could read had a
 GTIN or MPN, so even a partly filled catalogue puts you ahead of most stores.</p>
 <p>If a product genuinely has no GTIN (handmade, made to order, or your own brand with no barcodes), give it a
 <strong>brand</strong> and keep your SKU as the manufacturer part number instead. Our guide on
 <a href="/woocommerce/guides/add-brand-woocommerce-products.html">adding a brand to WooCommerce products</a> covers that.</p>
-<h2>Check the whole catalogue</h2>
+<h2 id="check-the-whole-catalogue">Check the whole catalogue</h2>
 <p>Checking one page by hand is easy. Checking every product is what the free plugin does: it counts how many
 products are missing a GTIN or MPN, a brand, an image or a real description, and lists them in order of how
 much each fix is worth.</p><div class='card' style='margin:24px 0'><h3>More on WooCommerce and AI shopping</h3><ul><li><a href='/woocommerce/guides/woocommerce-ready-for-chatgpt-checkout.html'>Is your WooCommerce store ready for ChatGPT checkout?</a></li><li><a href='/woocommerce/guides/woocommerce-chatgpt-shopping-visibility.html'>Is your WooCommerce store visible in ChatGPT shopping?</a></li><li><a href='/woocommerce/guides/woocommerce-robots-txt-ai-crawlers.html'>WooCommerce robots.txt for AI crawlers: what to allow</a></li><li><a href='/woocommerce/guides/woocommerce-store-api-bom-error.html'>Fix the WooCommerce Store API BOM error</a></li></ul><p><a href='/woocommerce/#learn'>Everything we've published on it</a> · <a href='/woocommerce/check/'>Free online check</a></p></div></main>
 <section><div class="card"><h3>Is your WooCommerce store readable by AI shopping agents?</h3><p>The free LeyMish AI Readiness plugin gives you a 0–100 score, one-click fixes and product feeds, and runs on your site. LeyMish Pro adds AI visibility checks, AI fixes and agents.</p><p><a class="btn primary" href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">Download the free plugin</a> <a class="btn" href="/woocommerce/pro.html">See Pro</a></p></div></section>
-<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>

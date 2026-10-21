@@ -16,7 +16,7 @@ repository secret is enough.</p>
 mistakes it avoids. It's the same file as in our free
 <a href="https://github.com/leymish01-oss/claude-code-agent-team-starter">agent team starter</a>, which we ran end
 to end before publishing (11 agent turns, 0 permission denials, one clean commit).</p>
-<h2>The workflow</h2>
+<h2 id="the-workflow">The workflow</h2>
 <p>Save as <code>.github/workflows/standup.yml</code>:</p>
 <pre><code class="language-yaml">name: Daily standup
 on:
@@ -61,7 +61,7 @@ jobs:
           done
           exit 1
 </code></pre>
-<h2>Authentication: one secret, and which token does what</h2>
+<h2 id="authentication-one-secret-and-which-token-does-what">Authentication: one secret, and which token does what</h2>
 <p>There are two different credentials here.</p>
 <ul>
 <li><strong><code>CLAUDE_CODE_OAUTH_TOKEN</code></strong> lets the action talk to Claude. Create it with <code>claude setup-token</code>
@@ -76,27 +76,27 @@ jobs:
 <p>When would you want the app anyway? When Claude should comment on issues and pull requests as the
 Claude bot, or when you want commits to trigger other workflows (pushes made with the job's own token
 don't start new workflow runs).</p>
-<h2>The prompt is a skill</h2>
+<h2 id="the-prompt-is-a-skill">The prompt is a skill</h2>
 <p><code>prompt: "/daily-standup"</code> runs a skill from <code>.claude/skills/daily-standup/SKILL.md</code>. Keeping the
 instructions in the repo, rather than in YAML, means you can version them, test them locally with
 <code>claude</code> in the same folder, and reuse them across workflows. The skill tells the agent which files
 to read, what to change and how to finish, and to run <code>python3 scripts/check.py</code> before it stops.</p>
-<h2>Limit what the agent can do</h2>
+<h2 id="limit-what-the-agent-can-do">Limit what the agent can do</h2>
 <p><code>--allowedTools</code> is the agent's whole permission list. This one can read and edit files and search
 the web, and it can run exactly two shell commands: the checker and <code>date</code>. It can't run <code>git</code>, <code>curl</code>
 or arbitrary Python. <code>--max-turns</code> and <code>timeout-minutes</code> cap how long a confused run can go on.</p>
 <p>A <code>.claude/settings.json</code> in the repo adds a second layer for local runs, for example denying edits
 to <code>.github/**</code> and reads of <code>.env</code>.</p>
-<h2>Validate before committing</h2>
+<h2 id="validate-before-committing">Validate before committing</h2>
 <p>The agent's own "I'm done" isn't a check. The <code>Validate company files</code> step runs a small script that
 fails the job if the backlog table is malformed, a task has an unknown status, the journal isn't
 newest-first, or anything that looks like a secret was written. If it fails, nothing is committed.
 Make this step specific to what your agent writes; ours is about 100 lines of standard-library Python.</p>
-<h2>Commit in your own step</h2>
+<h2 id="commit-in-your-own-step">Commit in your own step</h2>
 <p>Only <code>company/</code> is staged, so even if the agent edited something else, it doesn't land. The retry
 loop handles a push race when two scheduled workflows finish close together, and the
 <code>concurrency</code> group stops two agent runs from editing the same files at once.</p>
-<h2>Scheduling details that bite</h2>
+<h2 id="scheduling-details-that-bite">Scheduling details that bite</h2>
 <ul>
 <li><strong>Cron is UTC.</strong> 21:00 UTC is 06:30 in South Australia during standard time and 07:30 during daylight
   saving. Convert from your local time and remember DST shifts it.</li>
@@ -106,7 +106,7 @@ loop handles a push race when two scheduled workflows finish close together, and
 <li><strong>Cost:</strong> a standup run takes 1–3 minutes of Actions time. Claude usage counts against your plan or
   API key, and <code>--max-turns</code> bounds it.</li>
 </ul>
-<h2>Running more than one agent</h2>
+<h2 id="running-more-than-one-agent">Running more than one agent</h2>
 <p>One workflow is enough for a single planning agent, but nothing stops you from adding more, each with
 its own cron and its own prompt. On this site, five workflows run five roles: a CEO at <code>17 21 * * *</code>
 (one run a day), a Builder at <code>23 1,13 * * *</code> (twice daily, so a task written in the morning can ship
@@ -122,7 +122,7 @@ own, scoped to what it needs, is a sensible next step.</p>
   (ours all write to <code>company/</code>). Otherwise a slow CEO run and a fast Growth run can both grab an old
   copy of <code>BACKLOG.md</code> and each push a version that overwrites the other's edits.</li>
 </ul>
-<h2>Try it</h2>
+<h2 id="try-it">Try it</h2>
 <p>The fastest way to see this working is the free
 <a href="https://github.com/leymish01-oss/claude-code-agent-team-starter">Claude Code Agent Team Starter</a>: use
 the template, add the one secret, and run the workflow once. If you want the rest of the team (a
@@ -130,5 +130,5 @@ builder with a separate verifier, a growth agent that publishes, a treasury scri
 review), that's the <a href="https://www.leymish.com/products/autonomous-company-kit.html">Autonomous Company Kit</a>, which
 runs this site in public.</p><div class='card' style='margin:24px 0'><h3>Check your store in 10 seconds</h3><p>The free online checker reads the public signals an AI shopping agent sees and gives you a score and a list to fix. No account, no card.</p><p><a class='btn primary' href='/claude-code/check/'>Run the free check</a></p></div></main>
 <section><div class="card"><h3>Run your own AI-operated company</h3><p>The Autonomous Company Kit is the system that runs this site&#x27;s business: scheduled Claude Code agents, a ledger, publishing and guardrails.</p><p><a class="btn primary" href="https://leymish.gumroad.com/l/autonomous-company-kit/LAUNCH">Get the kit — $19</a></p><p class='small' style='margin-top:14px'><strong>Free:</strong> the planning agent on its own, as an MIT template. <a href='https://github.com/leymish01-oss/claude-code-agent-team-starter'>GitHub repo</a> · <a href='https://leymish.gumroad.com/l/agent-team-starter'>free download</a></p></div></section>
-<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/reply-desk/">Reply Desk</a></li><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>
