@@ -109,7 +109,8 @@
   function where(url) { try { var x = new URL(url); return x.hostname.replace(/^www\./, "") + x.pathname; } catch (e) { return url; } }
   function list(items) {
     return "<ol class='hits'>" + items.map(function (m) {
-      return "<li><a class='where' href='" + esc(m.url) + "' rel='nofollow noopener'>" + esc(where(m.url)) + "</a><q>" + esc(m.snippet) + "</q></li>";
+      return "<li><a class='where' href='" + esc(m.url) + "' rel='nofollow noopener'>" + esc(where(m.url)) + "</a>" +
+        (m.also ? " <span class='small'>and " + m.also + " other page" + (m.also === 1 ? "" : "s") + "</span>" : "") + "<q>" + esc(m.snippet) + "</q></li>";
     }).join("") + "</ol>";
   }
   function render(d) {
