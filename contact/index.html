@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Contact LeyMish Labs</title>
+<meta name="description" content="Questions about Merchant Center help, local business services, the WooCommerce plugin or anything else: send us a message or email hello@leymish.com.">
+<link rel="canonical" href="https://www.leymish.com/contact/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=optional" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/assets/style.css">
+<style>
+  .ct-form { display: grid; gap: 12px; max-width: 560px; margin-top: 18px; }
+  .ct-form label { font-weight: 600; font-size: 15px; display: grid; gap: 6px; }
+  .ct-form input, .ct-form select, .ct-form textarea { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; width: 100%; }
+  .ct-form textarea { min-height: 150px; resize: vertical; }
+  .ct-form .opt { font-weight: 400; color: var(--muted); }
+  .ct-form .btn { justify-self: start; cursor: pointer; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .err { color: #b42318; }
+  .ok { border: 1px solid var(--accent); border-radius: var(--radius); padding: 16px; background: var(--accent-soft); }
+</style>
+<script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=1;s.src=document.getElementById("ga-src").dataset.src;document.head.appendChild(s)},800)})</script><script id="ga-src" type="text/plain" data-src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/">leymish<span>/</span>labs</a>
+    <nav><a href="/products/">Products</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav>
+  </header>
+  <main class="prose" style="padding:24px 0 48px">
+    <h1>Contact us</h1>
+    <p class="lede">Send a message here, or email <a href="mailto:hello@leymish.com">hello@leymish.com</a>. We usually
+      reply within 1–2 business days.</p>
+    <form class="ct-form" id="form" novalidate>
+      <label>Your name<input id="name" name="name" type="text" autocomplete="name" maxlength="100" required></label>
+      <label>Your email<input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></label>
+      <label>Your website <span class="opt">(optional)</span><input id="website" name="website" type="text" inputmode="url" autocomplete="url" maxlength="200" placeholder="yourstore.com"></label>
+      <label>Topic<select id="topic" name="topic" required>
+        <option value="">Choose one</option>
+        <option>Merchant Center</option>
+        <option>Local business</option>
+        <option>Plugin/Pro</option>
+        <option>Other</option>
+      </select></label>
+      <label>Message<textarea id="message" name="message" maxlength="4000" required></textarea></label>
+      <div class="hp" aria-hidden="true"><label>Company website<input id="company_url" name="company_url" type="text" tabindex="-1" autocomplete="off"></label></div>
+      <p class="small" style="margin:0">We use what you send only to reply to you. Please don't send passwords. See our
+        <a href="/privacy.html">privacy page</a>.</p>
+      <button class="btn primary" id="go" type="submit">Send message</button>
+    </form>
+    <div id="result" aria-live="polite"></div>
+    <p class="small" style="margin-top:28px">LeyMish Labs, South Australia. Refunds: see <a href="/terms.html#refunds">our refund policy</a>.</p>
+  </main>
+  <footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li><li><a href="/local/review-replies/">Google Review Replies</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+</div>
+<script>
+(function () {
+  var API = "https://leymish-ai.leymish.workers.dev/v1/contact";
+  var form = document.getElementById("form"), btn = document.getElementById("go"), out = document.getElementById("result");
+  function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+  function v(id) { return document.getElementById(id).value; }
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var body = { name: v("name"), email: v("email"), website: v("website"), topic: v("topic"), message: v("message"), company_url: v("company_url") };
+    if (!body.name.trim() || !body.email.trim() || !body.topic || !body.message.trim()) {
+      out.innerHTML = "<p class='err'>Please fill in your name, email, topic and message.</p>"; return;
+    }
+    btn.disabled = true; btn.textContent = "Sending…"; out.innerHTML = "";
+    fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.ok) { out.innerHTML = "<p class='err'>" + esc(d.error || "Something went wrong. Please email hello@leymish.com.") + "</p>"; return; }
+        form.hidden = true;
+        out.innerHTML = "<div class='ok'><strong>Thanks, your message is on its way.</strong><p>We usually reply within 1–2 business days, to the email you gave.</p></div>";
+      })
+      .catch(function () { out.innerHTML = "<p class='err'>We couldn't send that just now. Please email hello@leymish.com.</p>"; })
+      .then(function () { btn.disabled = false; btn.textContent = "Send message"; });
+  });
+})();
+</script>
+</body>
+</html>
