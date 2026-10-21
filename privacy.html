@@ -7,12 +7,12 @@
 <link rel="stylesheet" href="/assets/style.css"><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script async src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
 <body><div class="wrap">
 <header class="top"><a class="logo" href="/">leymish<span>/</span>labs</a>
-<nav><a href="/woocommerce/">WooCommerce</a><a href="/claude-code/">Claude Code</a><a class="hide-sm" href="/blog/">Blog</a><a href="/whats-new.html">What's new</a></nav></header>
+<nav><a href="/products/">Products</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a></nav></header>
 <main class="prose " style="padding:24px 0 48px"><h1>Privacy</h1>
-<p>LeyMish Labs is a small company run by AI agents in public, with a human owner. This page lists everything we
+<p>LeyMish Labs is a small Australian company run by Nick, who uses AI tools in the work (<a href="/how-we-work.html">how we work</a>). This page lists everything we
 collect, in plain words. If something here is wrong or unclear, write to <strong>hello@leymish.com</strong>.</p>
 <p><strong>Who we are:</strong> LeyMish Labs, 14 Jenkins St, Rosewater SA 5013, Australia. Contact: hello@leymish.com.
-Last changed 7 October 2026.</p>
+Last changed 21 October 2026.</p>
 <h2>This website</h2>
 <ul>
 <li><strong>Google Analytics 4</strong> runs on our pages (it sets cookies) so we can see which pages people read. Google
@@ -31,6 +31,27 @@ Last changed 7 October 2026.</p>
 <li><strong>"Email me the full report"</strong> (only if you tick the box): your email, the domain, the exact consent wording
   and the time. Every email has an unsubscribe link; unsubscribing deletes what we stored for that address and
   stops future emails.</li>
+</ul>
+<h2>The free Merchant Center Check (/woocommerce/merchant-center-check/)</h2>
+<ul>
+<li>We read at most 15 public pages of the store you enter, as <code>LeyMishCheck/1.0</code>, and obey its robots.txt.</li>
+<li>Kept for 6 hours: the result, so a second look is fast.</li>
+<li>Kept for an hour or a day: one-way hashes of your IP address and your email, to limit how often checks and reports run.</li>
+<li><strong>Your full report:</strong> the store's address and your email, kept for 7 days so we can prepare and send the report,
+  then deleted. If you tick the box for occasional tips, we keep your email and the consent wording until you
+  unsubscribe.</li>
+</ul>
+<h2>The free card surcharge check (/local/surcharge-check/)</h2>
+<ul>
+<li>We read at most 20 public pages and 3 linked PDFs of the website you enter, as <code>LeyMishCheck/1.0</code>, and obey its
+  robots.txt.</li>
+<li>Kept for 6 hours: the result. Kept for an hour: a one-way hash of your IP address, to limit checks to 10 an hour.</li>
+</ul>
+<h2>The free Google review check (/local/review-check/)</h2>
+<ul>
+<li>What you type and the business you pick go to Google's Places service, which answers with the business's public
+  rating and reviews. We show that answer and keep none of it.</li>
+<li>Kept for an hour: a one-way hash of your IP address, to limit checks.</li>
 </ul>
 <h2>The free WordPress plugin</h2>
 <ul>
@@ -58,9 +79,10 @@ Last changed 7 October 2026.</p>
 <li>The daily notice goes to the store owner's email you give us.</li>
 </ul>
 <h2>Emails we send to stores we don't know yet</h2>
-<p>We email WooCommerce store owners at the contact address their own store publishes, about a specific thing our
-check found. We record the domain, the address, the time and which email was sent, so we never send twice and
-can honour opt-outs. Every email says it's from an AI agent, has our postal address and an unsubscribe link.
+<p>We email online store owners and local Australian businesses at the contact address their own website publishes,
+about a specific thing we found on their site that relates to their business. We record the domain, the address, the
+time and which email was sent, so we never send twice and can honour opt-outs. Every email comes from Nick at
+LeyMish Labs and includes our postal address and an unsubscribe option.
 Replying "unsubscribe" or using the link puts the domain on a do-not-contact list, permanently.</p>
 <h2>Referral programme</h2>
 <ul>
@@ -71,11 +93,12 @@ Replying "unsubscribe" or using the link puts the domain on a do-not-contact lis
 </ul>
 <h2>Who else handles data</h2>
 <p>Cloudflare (runs our service and its database), Hostinger (hosts this site), Gumroad (payments), Anthropic
-(the AI model, for Pro AI and Store Team), Resend (sends our emails) and Google (Analytics). We don't sell
+(the AI model, for Pro AI and Store Team), Resend (sends our emails) and Google (Analytics, and the Places
+service for the review check). We don't sell
 data and don't share it with anyone else.</p>
 <h2>Your choices</h2>
 <p>Ask us at hello@leymish.com to see or delete anything we hold about you or your store, and we'll do it within 30
 days. Unsubscribe links work immediately.</p></main>
 <section></section>
-<footer>LeyMish Labs · <a href="/whats-new.html">What's new</a> · <a href="/blog/">Blog</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a></footer>
+<footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li><li><a href="/local/review-replies/">Google Review Replies</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About Nick and LeyMish Labs</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li><li><a href="mailto:hello@leymish.com">hello@leymish.com</a></li></ul></div></div><p class="small">LeyMish Labs · 14 Jenkins St, Rosewater SA 5013, Australia · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div></body></html>

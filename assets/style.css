@@ -89,3 +89,31 @@ footer { padding: 36px 0 60px; color: var(--muted); font-size: 14px; border-top:
 .compare tbody th { font-weight: 600; color: var(--muted); }
 .compare td:nth-child(2), .compare thead th:nth-child(2) { background: var(--accent-soft); }
 .compare tbody tr:last-child th, .compare tbody tr:last-child td { border-bottom: 0; }
+
+/* P-048: product catalog, filters, trust strip, site-wide nav and footer */
+header.top { flex-wrap: wrap; gap: 8px 18px; }
+header.top nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+header.top nav a { margin-left: 0; }
+.prose.wide { max-width: none; }
+.pgrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin: 18px 0; }
+.pcard { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; }
+.pcard.hero { border-color: var(--accent); }
+.pcard h3 { margin: 0 0 4px; }
+.pcard h3 a { color: var(--ink); text-decoration: none; }
+.pcard p { margin: 6px 0 0; color: var(--muted); font-size: 15px; }
+.pcard ul.check { margin: 10px 0 0; font-size: 15px; }
+.pprice { font-family: var(--mono); font-size: 26px; font-weight: 700; margin: 4px 0; }
+.pbuy { margin-top: auto !important; padding-top: 14px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+.filters { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 6px; }
+.filters button { font: 600 14px var(--sans); padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+.filters button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: var(--accent-ink); }
+.pcat { padding: 28px 0; }
+.trust { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; font-size: 15px; }
+footer .fcols { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 18px; margin-bottom: 18px; }
+footer .fcols ul { list-style: none; padding: 0; margin: 6px 0 0; }
+footer .fcols li { margin: 4px 0; }
+footer .fcols strong { color: var(--ink); }
+@media (max-width: 760px) {
+  header.top nav { gap: 4px 14px; }
+  header.top nav a { font-size: 14px; }
+}
