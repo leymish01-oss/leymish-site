@@ -142,6 +142,12 @@
   var API = "https://leymish-ai.leymish.workers.dev/v1/mc-check";
   var form = document.getElementById("form"), u = document.getElementById("u"), e = document.getElementById("e"),
     m = document.getElementById("m"), btn = document.getElementById("go"), out = document.getElementById("result");
+  // ?site=yourstore.com (links in our emails) fills in the store, so only the email address is left to type
+  try {
+    var pre = (new URLSearchParams(location.search).get("site") || "").trim().toLowerCase()
+      .replace(/^https?:\/\//, "").replace(/[\/?#].*$/, "");
+    if (/^[a-z0-9.-]{3,253}$/.test(pre) && pre.indexOf(".") > 0 && !u.value) { u.value = pre; }
+  } catch (err) { /* old browsers: the field just stays empty */ }
   function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
   var FIX = "https://leymish.gumroad.com/l/gmc-fix", HEALTH = "https://leymish.gumroad.com/l/gmc-health-check", KINDLE = "https://www.amazon.com/dp/B0HNLCQ3SP";
   function diy() { return KINDLE ? "<p class='small'>Prefer to fix it yourself? The step-by-step guide is on <a href='" + KINDLE + "'>Kindle ($6.99)</a>.</p>" : ""; }

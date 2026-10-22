@@ -114,6 +114,12 @@
 (function () {
   var API = "https://leymish-ai.leymish.workers.dev/v1/surcharge-check";
   var form = document.getElementById("form"), u = document.getElementById("u"), btn = document.getElementById("go"), out = document.getElementById("result");
+  // ?site=yourcafe.com.au (links in our emails) fills in the website
+  try {
+    var pre = (new URLSearchParams(location.search).get("site") || "").trim().toLowerCase()
+      .replace(/^https?:\/\//, "").replace(/[\/?#].*$/, "");
+    if (/^[a-z0-9.-]{3,253}$/.test(pre) && pre.indexOf(".") > 0 && !u.value) { u.value = pre; }
+  } catch (err) { /* old browsers: the field just stays empty */ }
   function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
   function where(url) { try { var x = new URL(url); return x.hostname.replace(/^www\./, "") + x.pathname; } catch (e) { return url; } }
   function list(items) {
