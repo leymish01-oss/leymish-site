@@ -31,6 +31,30 @@
     <h1>Contact us</h1>
     <p class="lede">Send a message here, email <a href="mailto:hello@leymish.com">hello@leymish.com</a>, or message our
       <a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook Page</a>. We usually reply within 1–2 business days.</p>
+    <!-- P-059: three questions for a Merchant Center problem; sent like the form below (topic Merchant Center) -->
+    <section style="border:1px solid var(--line);border-radius:var(--radius);padding:18px;margin:8px 0 28px">
+      <h2 style="margin-top:0">What's wrong with my Merchant Center?</h2>
+      <p class="small" style="margin-top:0">Three quick questions. We read your store and reply with what we'd fix first, free.</p>
+      <form class="ct-form" id="mcform" novalidate>
+        <label>1. What does Merchant Center say?<select id="mc_issue" required>
+          <option value="">Choose one</option>
+          <option>Account suspended for misrepresentation</option>
+          <option>Account suspended (another policy)</option>
+          <option>Products disapproved or limited</option>
+          <option>Products approved but not showing</option>
+          <option>Account stuck in review</option>
+          <option>Something else</option>
+        </select></label>
+        <label>2. Your store's website<input id="mc_site" type="text" inputmode="url" maxlength="200" placeholder="yourstore.com" required></label>
+        <label>3. Since when, and what have you tried? <span class="opt">(optional)</span><textarea id="mc_tried" maxlength="1500" style="min-height:90px"></textarea></label>
+        <label>Your name<input id="mc_name" type="text" autocomplete="name" maxlength="100" required></label>
+        <label>Your email<input id="mc_email" type="email" autocomplete="email" maxlength="254" required></label>
+        <div class="hp" aria-hidden="true"><label>Company website<input id="mc_company_url" type="text" tabindex="-1" autocomplete="off"></label></div>
+        <button class="btn primary" id="mcgo" type="submit">Ask us</button>
+      </form>
+      <div id="mcresult" aria-live="polite"></div>
+    </section>
+    <h2>Anything else</h2>
     <form class="ct-form" id="form" novalidate>
       <label>Your name<input id="name" name="name" type="text" autocomplete="name" maxlength="100" required></label>
       <label>Your email<input id="email" name="email" type="email" autocomplete="email" maxlength="254" required></label>
@@ -59,6 +83,31 @@
   var form = document.getElementById("form"), btn = document.getElementById("go"), out = document.getElementById("result");
   function esc(s) { return String(s || "").replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
   function v(id) { return document.getElementById(id).value; }
+  var mc = document.getElementById("mcform"), mcbtn = document.getElementById("mcgo"), mcout = document.getElementById("mcresult");
+  mc.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    var issue = v("mc_issue"), site = v("mc_site").trim();
+    var body = { name: v("mc_name"), email: v("mc_email"), website: site, topic: "Merchant Center",
+      message: "MERCHANT CENTER HELP (3 questions)
+1. What Merchant Center says: " + issue + "
+2. Store: " + site +
+        "
+3. Since when / tried: " + (v("mc_tried").trim() || "(not given)"), company_url: v("mc_company_url") };
+    if (!issue || !site || !body.name.trim() || !body.email.trim()) {
+      mcout.innerHTML = "<p class='err'>Please answer 1 and 2, and give your name and email.</p>"; return;
+    }
+    if (window.gtag) { gtag("event", "mc_help_form", { issue: issue }); }
+    mcbtn.disabled = true; mcbtn.textContent = "Sending…"; mcout.innerHTML = "";
+    fetch(API, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) })
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        if (!d.ok) { mcout.innerHTML = "<p class='err'>" + esc(d.error || "Something went wrong. Please email hello@leymish.com.") + "</p>"; return; }
+        mc.hidden = true;
+        mcout.innerHTML = "<div class='ok'><strong>Thanks, we'll look at your store.</strong><p>We reply within 1–2 business days with what we'd fix first.</p></div>";
+      })
+      .catch(function () { mcout.innerHTML = "<p class='err'>We couldn't send that just now. Please email hello@leymish.com.</p>"; })
+      .then(function () { mcbtn.disabled = false; mcbtn.textContent = "Ask us"; });
+  });
   form.addEventListener("submit", function (ev) {
     ev.preventDefault();
     var body = { name: v("name"), email: v("email"), website: v("website"), topic: v("topic"), message: v("message"), company_url: v("company_url") };
