@@ -128,3 +128,6 @@ footer .fcols strong { color: var(--ink); }
   header.top nav { gap: 4px 14px; }
   header.top nav a { font-size: 14px; }
 }
+
+/* P-064: the Black Friday video maker banner on the home page (until 1 Dec) */
+.bfbanner { margin: 16px 0 0; } .bfbanner a { display: block; padding: 11px 16px; border-radius: 14px; background: var(--accent-soft); color: var(--ink); text-decoration: none; font-size: 15px; } .bfbanner a:hover { filter: brightness(.98); }

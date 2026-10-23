@@ -4,6 +4,11 @@ ErrorDocument 404 /404.html
 DirectoryIndex index.html
 
 RewriteEngine On
+# P-064: never serve a dotfile or dot-folder (.env, .git, .htaccess, ...) except /.well-known/
+RewriteRule (^|/)\.(?!well-known(/|$)) - [F,L]
+<FilesMatch "^\.">
+  Require all denied
+</FilesMatch>
 # HTTPS and apex -> www (one hop)
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^leymish\.com$ [NC]
