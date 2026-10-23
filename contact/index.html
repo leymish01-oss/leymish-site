@@ -88,11 +88,8 @@
     ev.preventDefault();
     var issue = v("mc_issue"), site = v("mc_site").trim();
     var body = { name: v("mc_name"), email: v("mc_email"), website: site, topic: "Merchant Center",
-      message: "MERCHANT CENTER HELP (3 questions)
-1. What Merchant Center says: " + issue + "
-2. Store: " + site +
-        "
-3. Since when / tried: " + (v("mc_tried").trim() || "(not given)"), company_url: v("mc_company_url") };
+      message: "MERCHANT CENTER HELP (3 questions)\n1. What Merchant Center says: " + issue + "\n2. Store: " + site +
+        "\n3. Since when / tried: " + (v("mc_tried").trim() || "(not given)"), company_url: v("mc_company_url") };
     if (!issue || !site || !body.name.trim() || !body.email.trim()) {
       mcout.innerHTML = "<p class='err'>Please answer 1 and 2, and give your name and email.</p>"; return;
     }
