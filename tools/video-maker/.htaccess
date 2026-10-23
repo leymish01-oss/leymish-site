@@ -1,0 +1,6 @@
+# P-060: cross-origin isolation for the video maker only, so the voice (WebAssembly) can use all CPU threads.
+# credentialless keeps the voice model (Hugging Face), the speech runtime (jsDelivr) and analytics loading.
+<IfModule mod_headers.c>
+  Header always set Cross-Origin-Opener-Policy "same-origin"
+  Header always set Cross-Origin-Embedder-Policy "credentialless"
+</IfModule>
