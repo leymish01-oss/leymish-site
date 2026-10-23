@@ -69,11 +69,14 @@ RewriteRule ^(.+?)/?$ $1.html [L]
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
   Header always set Permissions-Policy "camera=(), geolocation=(), payment=()"
-  Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://www.googletagmanager.com https://cdn.jsdelivr.net; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://leymish-ai.leymish.workers.dev https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://cdn.jsdelivr.net https://huggingface.co https://*.hf.co blob: data:; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://leymish-ai.leymish.workers.dev"
+  Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' 'wasm-unsafe-eval' https://www.googletagmanager.com https://cdn.jsdelivr.net blob:; worker-src 'self' blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: blob: https:; media-src 'self' blob:; connect-src 'self' https://leymish-ai.leymish.workers.dev https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com https://cdn.jsdelivr.net https://huggingface.co https://*.hf.co blob: data:; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://leymish-ai.leymish.workers.dev"
   # Day 7 (docs/runbook-hosting.md): enforce the CSP above and turn on HSTS:
   # Header always set Strict-Transport-Security "max-age=31536000"
-  <FilesMatch "\.(css|js|svg|woff2?)$">
+  <FilesMatch "\.(css|svg|woff2?)$">
     Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "\.js$">
+    Header set Cache-Control "public, max-age=86400"
   </FilesMatch>
   <FilesMatch "\.(jpg|jpeg|png|webp|gif|ico|mp4|webm|pdf|zip)$">
     Header set Cache-Control "public, max-age=2592000"
