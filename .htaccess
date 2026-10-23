@@ -9,6 +9,8 @@ RewriteRule (^|/)\.(?!well-known(/|$)) - [F,L]
 <FilesMatch "^\.">
   Require all denied
 </FilesMatch>
+# P-064: personalised outreach videos: never indexed, and their id list is never served
+RewriteRule ^v/manifest\.json$ - [F,L]
 # HTTPS and apex -> www (one hop)
 RewriteCond %{HTTPS} off [OR]
 RewriteCond %{HTTP_HOST} ^leymish\.com$ [NC]
@@ -70,6 +72,8 @@ RewriteCond %{REQUEST_FILENAME}.html -f
 RewriteRule ^(.+?)/?$ $1.html [L]
 
 <IfModule mod_headers.c>
+  SetEnvIf Request_URI "^/v/" NOINDEX_V
+  Header set X-Robots-Tag "noindex, nofollow" env=NOINDEX_V
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "strict-origin-when-cross-origin"
   Header always set X-Frame-Options "SAMEORIGIN"
