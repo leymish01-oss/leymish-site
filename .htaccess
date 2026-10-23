@@ -1,0 +1,86 @@
+# Written by scripts/build_site.py (P-061). Edit the generator, not this file.
+Options -Indexes -MultiViews
+ErrorDocument 404 /404.html
+DirectoryIndex index.html
+
+RewriteEngine On
+# HTTPS and apex -> www (one hop)
+RewriteCond %{HTTPS} off [OR]
+RewriteCond %{HTTP_HOST} ^leymish\.com$ [NC]
+RewriteCond %{HTTP_HOST} (^|\.)leymish\.com$ [NC]
+RewriteRule ^(.*)$ https://www.leymish.com/$1 [R=301,L]
+
+# The old shop (closed): gone for good
+RewriteRule ^product(/.*)?$ - [G,L]
+RewriteRule ^product\-category(/.*)?$ - [G,L]
+RewriteRule ^product\-tag(/.*)?$ - [G,L]
+RewriteRule ^shop(/.*)?$ - [G,L]
+RewriteRule ^cart(/.*)?$ - [G,L]
+RewriteRule ^checkout(/.*)?$ - [G,L]
+RewriteRule ^my\-account(/.*)?$ - [G,L]
+RewriteRule ^wp\-json(/.*)?$ - [G,L]
+RewriteRule ^wp\-admin(/.*)?$ - [G,L]
+RewriteRule ^wp\-login\.php(/.*)?$ - [G,L]
+RewriteRule ^xmlrpc\.php(/.*)?$ - [G,L]
+RewriteRule ^wp\-content(/.*)?$ - [G,L]
+RewriteRule ^wp\-includes(/.*)?$ - [G,L]
+
+# Old URLs -> new ones (site/config.json "redirects")
+RewriteRule ^about\-us/$ /about.html [R=301,L]
+RewriteRule ^about\-us$ /about.html [R=301,L]
+RewriteRule ^about/$ /about.html [R=301,L]
+RewriteRule ^about$ /about.html [R=301,L]
+RewriteRule ^affiliates\.html$ /claude-code/affiliates.html [R=301,L]
+RewriteRule ^labs/$ /claude-code/ [R=301,L]
+RewriteRule ^labs$ /claude-code/ [R=301,L]
+RewriteRule ^labs/affiliates\.html$ /claude-code/affiliates.html [R=301,L]
+RewriteRule ^labs/products/$ /claude-code/products/ [R=301,L]
+RewriteRule ^labs/products$ /claude-code/products/ [R=301,L]
+RewriteRule ^labs/products/agent\-team\-starter\.html$ /claude-code/products/agent-team-starter.html [R=301,L]
+RewriteRule ^labs/products/autonomous\-company\-kit\.html$ /claude-code/products/autonomous-company-kit.html [R=301,L]
+RewriteRule ^labs/products/bundle\.html$ /claude-code/products/bundle.html [R=301,L]
+RewriteRule ^labs/products/skills\-pack\.html$ /claude-code/products/skills-pack.html [R=301,L]
+RewriteRule ^local/review\-replies/$ /local/reply-desk/ [R=301,L]
+RewriteRule ^local/review\-replies$ /local/reply-desk/ [R=301,L]
+RewriteRule ^privacy\-policy/$ /privacy.html [R=301,L]
+RewriteRule ^privacy\-policy$ /privacy.html [R=301,L]
+RewriteRule ^pro\.html$ /woocommerce/pro.html [R=301,L]
+RewriteRule ^products/agent\-team\-starter\.html$ /claude-code/products/agent-team-starter.html [R=301,L]
+RewriteRule ^products/autonomous\-company\-kit\.html$ /claude-code/products/autonomous-company-kit.html [R=301,L]
+RewriteRule ^products/bundle\.html$ /claude-code/products/bundle.html [R=301,L]
+RewriteRule ^products/skills\-pack\.html$ /claude-code/products/skills-pack.html [R=301,L]
+RewriteRule ^refund\-policy/$ /terms.html [R=301,L]
+RewriteRule ^refund\-policy$ /terms.html [R=301,L]
+RewriteRule ^refund_returns/$ /terms.html [R=301,L]
+RewriteRule ^refund_returns$ /terms.html [R=301,L]
+RewriteRule ^terms\-and\-conditions/$ /terms.html [R=301,L]
+RewriteRule ^terms\-and\-conditions$ /terms.html [R=301,L]
+RewriteRule ^terms\-of\-service/$ /terms.html [R=301,L]
+RewriteRule ^terms\-of\-service$ /terms.html [R=301,L]
+
+# Clean URLs, as GitHub Pages serves them (/about -> /about.html)
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+
+<IfModule mod_headers.c>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set X-Frame-Options "SAMEORIGIN"
+  Header always set Permissions-Policy "camera=(), geolocation=(), payment=()"
+  Header always set Content-Security-Policy-Report-Only "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self'; connect-src 'self' https://leymish-ai.leymish.workers.dev https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com; frame-ancestors 'self'; base-uri 'self'; form-action 'self' https://leymish-ai.leymish.workers.dev"
+  # Day 7 (docs/runbook-hosting.md): enforce the CSP above and turn on HSTS:
+  # Header always set Strict-Transport-Security "max-age=31536000"
+  <FilesMatch "\.(css|js|svg|woff2?)$">
+    Header set Cache-Control "public, max-age=604800"
+  </FilesMatch>
+  <FilesMatch "\.(jpg|jpeg|png|webp|gif|ico|mp4|webm|pdf|zip)$">
+    Header set Cache-Control "public, max-age=2592000"
+  </FilesMatch>
+  <FilesMatch "\.(html|xml|txt|json)$">
+    Header set Cache-Control "public, max-age=300"
+  </FilesMatch>
+</IfModule>
+AddType video/mp4 .mp4
+AddType application/wasm .wasm
