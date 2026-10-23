@@ -1,0 +1,286 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Black Friday Video Maker, No Watermark | LeyMish Labs</title>
+<meta name="description" content="Make a Black Friday sale video free in your browser: your discount, code and deadline, captions and music. 9:16 or 16:9 MP4. No sign-up, no watermark.">
+<meta name="vm-api" content="https://leymish-ai.leymish.workers.dev">
+<meta name="vm-preset" content="template=blackfriday&amp;theme=midnight-neon">
+<base href="/tools/video-maker/">
+<link rel="canonical" href="https://www.leymish.com/tools/video-maker/black-friday/">
+<link rel="preload" href="./fonts/inter-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/assets/style.css?v=19e0d29097">
+<style>
+  [hidden] { display: none !important; } /* our display rules (.panel, .row, …) must never un-hide a hidden block */
+  .vmhero { position: relative; overflow: hidden; margin: 22px 0 22px; padding: 30px 32px 26px; border-radius: 26px; color: #f4f6ff;
+    background: radial-gradient(60% 90% at 88% 0%, rgba(0,229,255,.20), transparent 60%),
+                radial-gradient(50% 80% at 0% 100%, rgba(255,43,214,.18), transparent 60%), #0a0b14; }
+  .vmhero .eyebrow { color: #7cecff; }
+  .vmhero h1 { color: #fff; font-size: clamp(30px, 4.4vw, 50px); line-height: 1.04; letter-spacing: -.03em; margin: 8px 0 10px; max-width: 18ch; }
+  .vmhero h1 em { font-style: normal; background: linear-gradient(90deg, #7cecff, #ff7be2); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .vmhero .lede { color: #c9cde3; max-width: 62ch; margin: 0; }
+  .vmhero .lede strong { color: #fff; }
+  .studio { display: grid; grid-template-columns: minmax(0, 1fr) minmax(280px, 400px); gap: 28px; align-items: start; }
+  @media (max-width: 860px) { .studio { grid-template-columns: 1fr; } .stage { order: -1; position: static !important; } .vmhero { padding: 24px 18px 20px; border-radius: 20px; } }
+  .stepper { list-style: none; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; padding: 0; margin: 0 0 16px; }
+  .stepper button { width: 100%; justify-content: flex-start; }
+  @media (max-width: 520px) { .stepper button { flex-direction: column; padding: 6px 2px; font-size: 12px; gap: 4px; justify-content: center; } }
+  .stepper button { display: flex; align-items: center; gap: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--muted);
+    border-radius: 999px; padding: 6px 12px 6px 6px; font: 600 14px/1 var(--sans); cursor: pointer; }
+  .stepper button b { display: inline-grid; place-items: center; width: 24px; height: 24px; border-radius: 50%; background: var(--line); color: var(--ink); font-size: 13px; }
+  .stepper button[aria-current=step] { border-color: var(--navy, #0b1f3f); color: var(--ink); }
+  .stepper button[aria-current=step] b { background: var(--navy, #0b1f3f); color: #fff; }
+  .stepper button.done b { background: var(--accent-soft); color: var(--accent); }
+  .step { border: 1px solid var(--line); border-radius: 18px; padding: 20px; background: var(--surface); box-shadow: 0 1px 0 rgba(0,0,0,.03), 0 10px 30px -22px rgba(0,0,0,.3); }
+  .step h2 { margin: 0 0 6px; font-size: 22px; } .step > p.small:first-of-type { margin-top: 0; }
+  .step label { display: grid; gap: 5px; font-weight: 600; font-size: 15px; }
+  .step input[type=text], .step input[type=url], .step input[type=email], .step select { padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font: inherit; }
+  .panel { display: grid; gap: 12px; }
+  .navrow { display: flex; justify-content: space-between; gap: 10px; margin-top: 18px; flex-wrap: wrap; }
+  .linkrow { display: flex; gap: 10px; flex-wrap: wrap; } .linkrow input { flex: 1 1 260px; min-width: 0; font-size: 17px !important; padding: 14px 16px !important; }
+  .linkbtn { background: none; border: 0; color: var(--accent); text-decoration: underline; text-underline-offset: 3px; font: inherit; cursor: pointer; padding: 0; }
+  #themes { display: grid; grid-template-columns: repeat(auto-fill, minmax(112px, 1fr)); gap: 10px; }
+  .swatch { display: grid; gap: 5px; padding: 6px; border-radius: 14px; border: 2px solid transparent; background: var(--bg); color: var(--ink);
+    font: 600 13px/1.2 var(--sans); cursor: pointer; text-align: left; }
+  .swatch canvas { width: 100%; aspect-ratio: 180 / 230; height: auto; border-radius: 10px; display: block; }
+  .swatch:hover { border-color: var(--line); }
+  .swatch:focus-visible { outline: 3px solid var(--cta, #ff7a2e); outline-offset: 2px; }
+  .swatch[aria-pressed=true] { border-color: var(--navy, #0b1f3f); }
+  .swatch .badge { font: 700 10.5px/1 var(--mono); letter-spacing: .04em; font-style: normal; justify-self: start; padding: 3px 6px; border-radius: 999px; }
+  .swatch .badge:empty { display: none; }
+  .swatch .badge.free { background: #e3f4ec; color: #14532d; } .swatch .badge.pro { background: #fdeee4; color: #8a3507; }
+  .packrow { margin: 12px 0 0; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; font-size: 14px; color: var(--muted); }
+  .pbtn { background: var(--cta, #ff7a2e); color: var(--cta-ink, #0b1f3f); border-radius: 999px; padding: 7px 14px; font-weight: 700; text-decoration: none; }
+  .toggle { display: flex; gap: 8px; } .toggle button { flex: 1; border: 2px solid var(--line); border-radius: 12px; padding: 12px; background: var(--bg); color: var(--ink); font: 600 15px var(--sans); cursor: pointer; }
+  .toggle button[aria-pressed=true] { border-color: var(--navy, #0b1f3f); background: var(--surface); }
+  details.more { border: 1px solid var(--line); border-radius: 12px; padding: 10px 14px; } details.more summary { font-weight: 700; cursor: pointer; }
+  details.more .grid3 { margin-top: 12px; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; } @media (max-width: 520px) { .grid3 { grid-template-columns: 1fr; } }
+  .row { display: flex; gap: 14px; flex-wrap: wrap; align-items: center; } .row label { display: flex; gap: 6px; align-items: center; font-weight: 500; }
+  .cards { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; } @media (max-width: 640px) { .cards { grid-template-columns: 1fr; } }
+  .card-choice { text-align: left; border: 2px solid var(--line); border-radius: 14px; padding: 14px; background: var(--bg); color: var(--ink); font: inherit; cursor: pointer; display: grid; gap: 4px; }
+  .card-choice b { font-size: 16px; } .card-choice span { font-size: 13px; color: var(--muted); }
+  .card-choice[aria-pressed=true] { border-color: var(--navy, #0b1f3f); background: var(--surface); box-shadow: 0 0 0 3px rgba(11,31,63,.08); }
+  .big { font-size: 19px !important; padding: 16px 26px !important; }
+  .progress { height: 10px; background: var(--line); border-radius: 999px; overflow: hidden; } .progress i { display: block; height: 100%; width: 0; background: var(--cta, #ff7a2e); transition: width .2s; }
+  .stage { position: sticky; top: 16px; display: grid; gap: 10px; }
+  #preview { width: 100%; max-width: 400px; aspect-ratio: 9 / 16; border-radius: 18px; background: #000; display: block; box-shadow: 0 24px 60px -28px rgba(10,11,20,.55); }
+  #preview.landscape { aspect-ratio: 16 / 9; max-width: 100%; }
+  @media (max-width: 860px) { #preview { max-height: 34vh; width: auto; margin: 0 auto; } #preview.landscape { width: 100%; max-height: none; }
+    .vmhero .lede { font-size: 15px; } .vmhero { margin: 14px 0; } .stage .small { display: none; }
+    .studio[data-step="1"] .stage { display: none; } /* nothing to preview before the words: the link box comes first */ }
+  .small { font-size: 14px; color: var(--muted); }
+  .note { border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px; background: var(--surface); }
+  .pro-box { border: 2px solid var(--cta, #ff7a2e); border-radius: 16px; padding: 16px; background: var(--surface); display: grid; gap: 10px; }
+  #unsupported, .err { border-color: #b42318; color: #b42318; }
+  #resultVideo { width: 100%; max-width: 400px; border-radius: 14px; background: #000; }
+  #logoDots i { display: inline-block; width: 18px; height: 18px; border-radius: 50%; margin-right: 4px; vertical-align: middle; border: 1px solid var(--line); }
+  input[type=color] { width: 100%; height: 38px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 2px; }
+  .gallery { margin: 40px 0 10px; } .gal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+  .gal figure { margin: 0; } .gal figure.wide { grid-column: 1 / -1; }
+  .gal video { width: 100%; border-radius: 14px; background: #000; display: block; }
+  .gal figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
+  @media (max-width: 640px) { .gal { grid-template-columns: 1fr 1fr; } }
+  #faq details { border-bottom: 1px solid var(--line); padding: 10px 0; } #faq summary { font-weight: 700; cursor: pointer; }
+  .landings { display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0 0; } .landings a { font-size: 14px; }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Is this Black Friday video maker really free?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. Making and downloading the video is free: the Black Friday template, the 4 free themes (Midnight Neon, Sunset Pop, Clean Mono and Earthy Clay), your own colours, captions, music and the voice options. There's no sign-up and no watermark. The only paid part is optional Designer themes."}}, {"@type": "Question", "name": "What goes into a Black Friday sale video?", "acceptedAnswer": {"@type": "Answer", "text": "The template has an opening line, the discount shown big, what it covers, an optional code, a countdown line such as \"Ends Monday at midnight\", a call to action and your web address or @handle. You can add one photo. Every line is yours to change."}}, {"@type": "Question", "name": "Is there a festive theme for Black Friday?", "acceptedAnswer": {"@type": "Answer", "text": "Holiday Glow is one of the optional Designer themes. You can preview it free; unlocking it costs US$3, or US$5 for all 8 Designer themes, one-time. Midnight Neon, the free theme this page starts with, also suits a sale, and you can set your own colours for free."}}, {"@type": "Question", "name": "Which sizes can I export?", "acceptedAnswer": {"@type": "Answer", "text": "9:16 for Reels, Shorts and TikTok, or 16:9 for YouTube. Both export as a 1080p MP4 at 30 frames per second."}}, {"@type": "Question", "name": "Can I add a voice-over?", "acceptedAnswer": {"@type": "Answer", "text": "Yes, if you want one. You can add an AI-generated voice, which runs on your device and is labelled as AI, record your own voice while the preview plays, or use music only. The AI voice downloads about 90 MB the first time and takes about 15 seconds per line in Chrome."}}, {"@type": "Question", "name": "Can I use it for Cyber Monday too?", "acceptedAnswer": {"@type": "Answer", "text": "The Black Friday template shows the words \"Black Friday\" in its opening scene. For a Cyber Monday post, use the Announcement / offer template, where you write the heading, the offer, two details and the deadline yourself."}}]}</script><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=1;s.src=document.getElementById("ga-src").dataset.src;document.head.appendChild(s)},800)})</script><script id="ga-src" type="text/plain" data-src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/">leymish<span>/</span>labs</a>
+    <nav><a href="/products/">Products</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav>
+  </header>
+  <section class="vmhero" aria-labelledby="vmh">
+    <div class="eyebrow">Free tool · no sign-up · no watermark</div>
+    <h1 id="vmh">Free Black Friday video maker for your sale</h1>
+    <p class="lede">Type your discount, what it covers, your code and when the sale ends, add a photo, and export a Black Friday sale video as an MP4. It runs in your browser, with no sign-up and no watermark, and your photos are never uploaded. This page opens the Black Friday sale template with the free Midnight Neon theme. <strong>Your photos and your video never leave your device.</strong></p>
+  </section>
+  <p id="unlockMsg" class="note" role="status" hidden></p>
+  <p id="unsupported" class="note" hidden></p>
+  <div class="studio">
+    <div class="steps">
+      <ol class="stepper" aria-label="Steps">
+        <li><button type="button" data-go="1"><b>1</b> Link</button></li>
+        <li><button type="button" data-go="2"><b>2</b> Words</button></li>
+        <li><button type="button" data-go="3"><b>3</b> Look</button></li>
+        <li><button type="button" data-go="4"><b>4</b> Sound</button></li>
+        <li><button type="button" data-go="5"><b>5</b> Make</button></li>
+      </ol>
+
+      <section class="step" data-step="1" aria-labelledby="s1h">
+        <h2 id="s1h">Paste your link</h2>
+        <p class="small">We read your page's public details (name, price, photos) and write the first draft for you.</p>
+        <form id="fromUrlForm" class="linkrow">
+          <input id="fromUrlInput" type="url" inputmode="url" placeholder="Paste your product or website link" aria-label="Your product or website link">
+          <button id="fromUrlBtn" class="btn primary" type="submit">✨ Grab my details</button>
+        </form>
+        <p id="fromUrlStatus" class="small" role="status">Use pages you own or have permission to use.</p>
+        <p><button id="typeMyself" class="linkbtn" type="button">No link? Type it myself</button></p>
+        <p id="noServer" class="small" hidden>Type your details in the next step.</p>
+      </section>
+
+      <section class="step" data-step="2" aria-labelledby="s2h" hidden>
+        <h2 id="s2h">Your words</h2>
+        <label>Video type<select id="template"></select></label>
+        <p id="blurb" class="small"></p>
+        <p class="small">Tip: keep each line short; it reads better on a phone.</p>
+        <div id="fields" class="panel"></div>
+        <div id="photosRow"><label>Photos<input id="photos" type="file" accept="image/*" multiple></label>
+          <p id="photoHint" class="small"></p></div>
+        <div class="navrow"><button class="btn" type="button" data-nav="back">← Back</button><button class="btn primary" type="button" data-nav="next">Next: your look →</button></div>
+      </section>
+
+      <section class="step" data-step="3" aria-labelledby="s3h" hidden>
+        <h2 id="s3h">Your look</h2>
+        <p id="lockNote" class="note small" hidden></p>
+        <div id="themes" role="group" aria-label="Video themes"></div>
+        <div id="packRow" class="packrow" hidden><span id="packBannerText"></span> <a id="packBanner" class="pbtn" href="#">Get all 8</a></div>
+        <div id="customBox" class="panel" hidden>
+          <div class="grid3">
+            <label>Background <input id="c_bg" type="color"></label>
+            <label>Text <input id="c_ink" type="color"></label>
+            <label>Accent <input id="c_accent" type="color"></label>
+          </div>
+          <p id="customNote" class="small" aria-live="polite"></p>
+        </div>
+        <p class="small" style="margin:14px 0 6px">Shape</p>
+        <div class="toggle" id="aspectToggle">
+          <button type="button" data-aspect="9x16" aria-pressed="true">▯ 9:16 · Reels, Shorts, TikTok</button>
+          <button type="button" data-aspect="16x9" aria-pressed="false">▭ 16:9 · YouTube</button>
+        </div>
+        <details class="more" style="margin-top:14px">
+          <summary>More style options</summary>
+          <div class="grid3">
+            <label>Fonts <select id="font"><option id="fontDefault" value="">Theme's own</option></select></label>
+            <label>Motion <select id="motion"></select></label>
+            <label>Texture <select id="texture"><option id="textureDefault" value="">Theme's own</option></select></label>
+          </div>
+          <div class="row" style="margin-top:10px">
+            <label>Logo <input id="logo" type="file" accept="image/*"></label> <span id="logoDots" title="Colours found in your logo"></span>
+          </div>
+          <div class="row" style="margin-top:6px">
+            <label><input id="captions" type="checkbox" checked> Captions</label>
+            <label><input id="endcard" type="checkbox" checked> End card "Made free at leymish.com"</label>
+          </div>
+          <p class="small">Every theme keeps captions readable (WCAG AA contrast, checked in code).</p>
+        </details>
+        <div class="navrow"><button class="btn" type="button" data-nav="back">← Back</button><button class="btn primary" type="button" data-nav="next">Next: your sound →</button></div>
+      </section>
+
+      <section class="step" data-step="4" aria-labelledby="s4h" hidden>
+        <h2 id="s4h">Your sound</h2>
+        <div class="cards" role="group" aria-label="Sound">
+          <button type="button" class="card-choice" data-sound="none" aria-pressed="true"><b>🎵 Music only</b><span>A music bed under the captions.</span></button>
+          <button type="button" class="card-choice" data-sound="ai" aria-pressed="false"><b>🗣️ AI voice + music</b><span>An AI-generated voice reads your lines.</span></button>
+          <button type="button" class="card-choice" data-sound="record" aria-pressed="false"><b>🎙️ My own voice + music</b><span>Record yourself reading the captions.</span></button>
+        </div>
+        <div class="row" style="margin-top:14px">
+          <label>Music <select id="music"></select></label>
+          <button id="musicPreview" class="btn" type="button">▶ Hear 3 s</button>
+        </div>
+        <div id="aiBox" class="panel" hidden style="margin-top:12px">
+          <div class="row">
+            <label>Voice <select id="voice"></select></label>
+            <label>Speed <input id="speed" type="range" min="0.85" max="1.15" step="0.05" value="1"> <span id="speedVal" class="small">1.00×</span></label>
+            <button id="voiceSample" class="btn" type="button">▶ Hear a sample</button>
+          </div>
+          <p class="small">An AI-generated voice that runs on your device (Kokoro). The first time, it downloads about 90 MB;
+            each line then takes a few seconds. No voice cloning. It's made when you press Make my video.</p>
+        </div>
+        <div id="recBox" class="panel" hidden style="margin-top:12px">
+          <button class="btn" id="recBtn" type="button">● Record my voice</button>
+          <p class="small">The preview plays while you read each caption aloud. Your recording stays on your device.</p>
+        </div>
+        <p id="voiceStatus" class="small" aria-live="polite"></p>
+        <div class="navrow"><button class="btn" type="button" data-nav="back">← Back</button><button class="btn primary" type="button" data-nav="next">Next: make it →</button></div>
+      </section>
+
+      <section class="step" data-step="5" aria-labelledby="s5h" hidden>
+        <h2 id="s5h">Make my video</h2>
+        <p id="summary" class="small"></p>
+        <button class="btn primary big" id="exportBtn" type="button">🎬 Make my video</button>
+        <div id="progressBox" class="panel" hidden style="margin-top:14px">
+          <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+          <p id="exportStatus" class="small" aria-live="polite"></p>
+        </div>
+        <div id="result" class="panel" hidden style="margin-top:16px">
+          <video id="resultVideo" controls playsinline></video>
+          <div id="proBox" class="pro-box" hidden>
+            <strong id="proTitle">This preview is stamped.</strong>
+            <p class="small" style="margin:0">Unlock <span id="proName"></span> to download it without the stamp. We'll re-make it for you right away.</p>
+            <p class="row" style="margin:0"><a id="pwSingle" class="btn primary" href="#">Unlock this theme and download: US$3</a>
+              <a id="pwPack" class="btn" href="#">All 8 + Match my logo: US$5</a></p>
+            <p id="pwSoon" class="small" hidden>Designer themes are coming soon. Until then, the free themes download free.</p>
+            <p class="small" style="margin:0"><strong>Where your money goes:</strong> these few dollars keep the video maker free
+              for everyone and pay for better free features. One-time, no subscription; prices in US dollars, so your bank may
+              convert. If it doesn't work for you, we refund it (<a href="/terms/#designer-themes">terms</a>).</p>
+            <p class="row" style="margin:0"><button id="useFree" class="btn" type="button">Use a free theme instead</button></p>
+            <form id="pwRestore" class="row">
+              <label>Already bought? <input id="pwEmail" type="email" placeholder="Email you paid with" autocomplete="email" required></label>
+              <button class="btn" type="submit">Send restore link</button>
+            </form>
+            <p id="pwRestoreMsg" class="small" role="status"></p>
+          </div>
+          <div id="freeActions" class="row">
+            <a class="btn primary" id="download" href="#">⬇ Download MP4</a>
+            <button class="btn" id="shareLook" type="button">Share this look</button>
+            <button class="btn" id="makeAnother" type="button">Make another</button>
+          </div>
+          <div id="buyerNote" class="note" hidden><strong>Thank you for buying Designer themes.</strong> One more thing we do:
+            if Google Shopping ever disapproves your products or suspends your Merchant Center account, our
+            <a href="/woocommerce/google-merchant-center/?utm_source=video-maker&amp;utm_medium=tool&amp;utm_campaign=vm-buyer">Merchant Center Fix</a>
+            is US$99, done for you.</div>
+          <div id="urlCheck" class="note" hidden><strong>Want a free check of this store's Google listing?</strong> Our
+            <a id="urlCheckLink" href="/woocommerce/merchant-center-check/">free Merchant Center check</a> reads the same store
+            in about a minute.</div>
+          <form id="tipsForm" class="note panel" hidden>
+            <label style="display:flex;gap:8px;align-items:flex-start;font-weight:500"><input id="tipsConsent" type="checkbox">
+              <span>Send me 1 short tip a month for better shop videos and Google Shopping.</span></label>
+            <div class="row"><input id="tipsEmail" type="email" placeholder="you@yourshop.com" autocomplete="email" aria-label="Your email">
+              <button class="btn" type="submit">Send me tips</button></div>
+            <p id="tipsMsg" class="small" role="status">We'll email you once to confirm. Unsubscribe any time.</p>
+          </form>
+          <div class="note">
+            <strong>Selling online?</strong> If Google Shopping has disapproved your products or suspended your Merchant
+            Center account, our <a id="ctaCheck" href="/woocommerce/merchant-center-check/?utm_source=video-maker&amp;utm_medium=tool&amp;utm_campaign=vm">free Merchant Center check</a>
+            shows why in about a minute, and we can <a id="ctaFix" href="/woocommerce/google-merchant-center/?utm_source=video-maker&amp;utm_medium=tool&amp;utm_campaign=vm">fix it for you</a>.
+          </div>
+        </div>
+        <div class="navrow"><button class="btn" type="button" data-nav="back">← Back</button><span></span></div>
+      </section>
+    </div>
+
+    <div class="stage">
+      <canvas id="preview" width="1080" height="1920" aria-label="Video preview"></canvas>
+      <div class="row"><button class="btn" id="playBtn" type="button">▶ Play</button><span class="small">Length: <span id="dur"></span></span></div>
+      <p class="small">Free and open source (GPL-3): <a href="https://github.com/leymish01-oss/free-video-maker">source on GitHub</a>.
+        Designer themes are a separate paid content pack. Works best in Chrome or Edge on a computer or Android phone.</p>
+    </div>
+  </div>
+  <section class="gallery" aria-labelledby="madewith">
+    <h2 id="madewith">Made with LeyMish</h2>
+    <p class="small">Each of these was made on this page, in a browser, with the free themes.</p>
+    <div class="gal">
+      <figure><video controls playsinline preload="none" poster="./samples/promo-9x16-music.jpg" src="./samples/promo-9x16-music.mp4"></video><figcaption>Product promo · Sunset Pop · music</figcaption></figure>
+      <figure><video controls playsinline preload="none" poster="./samples/promo-9x16-voice.jpg" src="./samples/promo-9x16-voice.mp4"></video><figcaption>Product promo · Midnight Neon · AI voice</figcaption></figure>
+      <figure><video controls playsinline preload="none" poster="./samples/launch-reel-9x16.jpg" src="./samples/launch-reel-9x16.mp4"></video><figcaption>Offer · Midnight Neon · Snappy motion</figcaption></figure>
+      <figure class="wide"><video controls playsinline preload="none" poster="./samples/promo-16x9-music.jpg" src="./samples/promo-16x9-music.mp4"></video><figcaption>Product promo, 16:9 · Clean Mono</figcaption></figure>
+    </div>
+    <p class="small" style="margin-top:14px">Made for your platform or season: <span class="landings"><a href="/tools/video-maker/shopify-product-video/">Free Shopify product video maker</a> · <a href="/tools/video-maker/woocommerce-product-video/">Make a WooCommerce product video for free</a> · <a href="/tools/video-maker/christmas/">Free Christmas product video and gift guide maker</a> · <a href="/tools/video-maker/">All templates</a></span></p>
+  </section>
+  <section id="faq">
+    <h2>Questions</h2>
+    <details><summary>Is this Black Friday video maker really free?</summary><p>Yes. Making and downloading the video is free: the Black Friday template, the 4 free themes (Midnight Neon, Sunset Pop, Clean Mono and Earthy Clay), your own colours, captions, music and the voice options. There's no sign-up and no watermark. The only paid part is optional Designer themes.</p></details>
+    <details><summary>What goes into a Black Friday sale video?</summary><p>The template has an opening line, the discount shown big, what it covers, an optional code, a countdown line such as &quot;Ends Monday at midnight&quot;, a call to action and your web address or @handle. You can add one photo. Every line is yours to change.</p></details>
+    <details><summary>Is there a festive theme for Black Friday?</summary><p>Holiday Glow is one of the optional Designer themes. You can preview it free; unlocking it costs US$3, or US$5 for all 8 Designer themes, one-time. Midnight Neon, the free theme this page starts with, also suits a sale, and you can set your own colours for free.</p></details>
+    <details><summary>Which sizes can I export?</summary><p>9:16 for Reels, Shorts and TikTok, or 16:9 for YouTube. Both export as a 1080p MP4 at 30 frames per second.</p></details>
+    <details><summary>Can I add a voice-over?</summary><p>Yes, if you want one. You can add an AI-generated voice, which runs on your device and is labelled as AI, record your own voice while the preview plays, or use music only. The AI voice downloads about 90 MB the first time and takes about 15 seconds per line in Chrome.</p></details>
+    <details><summary>Can I use it for Cyber Monday too?</summary><p>The Black Friday template shows the words &quot;Black Friday&quot; in its opening scene. For a Cyber Monday post, use the Announcement / offer template, where you write the heading, the offer, two details and the deadline yourself.</p></details>
+  </section>
+  <footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/videos/">Short videos</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+</div>
+<script type="module" src="./app.js?v=33daf8b8ad"></script>
+</body>
+</html>
