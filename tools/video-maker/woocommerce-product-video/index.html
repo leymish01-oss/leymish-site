@@ -10,7 +10,7 @@
 <base href="/tools/video-maker/">
 <link rel="canonical" href="https://www.leymish.com/tools/video-maker/woocommerce-product-video/">
 <link rel="preload" href="./fonts/inter-latin-800-normal.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/style.css?v=19e0d29097">
+<link rel="stylesheet" href="/assets/style.css?v=0a006d4b6c">
 <style>
   [hidden] { display: none !important; } /* our display rules (.panel, .row, …) must never un-hide a hidden block */
   .vmhero { position: relative; overflow: hidden; margin: 22px 0 22px; padding: 30px 32px 26px; border-radius: 26px; color: #f4f6ff;
@@ -112,10 +112,14 @@
   #resultVideo { width: 100%; max-width: 400px; border-radius: 14px; background: #000; }
   #logoDots i { display: inline-block; width: 18px; height: 18px; border-radius: 50%; margin-right: 4px; vertical-align: middle; border: 1px solid var(--line); }
   input[type=color] { width: 100%; height: 38px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); padding: 2px; }
-  .gallery { margin: 40px 0 10px; } .gal { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 14px; }
+  .gallery { margin: 40px 0 10px; } .gal { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
   @media (max-width: 760px) { .gal { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
   .gal .tag { font: 700 10.5px/1 var(--mono); letter-spacing: .04em; padding: 3px 6px; border-radius: 999px; margin-right: 4px; }
-  .gal .tag.free { background: #e3f4ec; color: #14532d; } .gal .tag.pro { background: #fdeee4; color: #8a3507; }
+  .gal .tag.free { background: #e3f4ec; color: #14532d; } .gal .tag.pro { background: #fdeee4; color: #8a3507; } .gal .tag.voice { background: #e8eefc; color: #1e3a8a; }
+  .vwrap { position: relative; } .vwrap video { width: 100%; display: block; }
+  .soundbtn { position: absolute; left: 50%; bottom: 14px; transform: translateX(-50%); border: 0; border-radius: 999px; padding: 9px 16px;
+    background: rgba(11,31,63,.88); color: #fff; font: 700 15px/1 system-ui, -apple-system, "Segoe UI", sans-serif; cursor: pointer; white-space: nowrap; }
+  .soundbtn:focus-visible { outline: 3px solid var(--cta, #ff7a2e); outline-offset: 2px; }
   .gal figure { margin: 0; } .gal figure.wide { grid-column: 1 / -1; }
   .gal video { width: 100%; border-radius: 14px; background: #000; display: block; }
   .gal figcaption { font-size: 13px; color: var(--muted); margin-top: 6px; }
@@ -128,7 +132,7 @@
 <div class="wrap">
   <header class="top">
     <a class="logo" href="/">leymish<span>/</span>labs</a>
-    <nav><a href="/products/">Products</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav>
+    <nav><a href="/products/">Products</a><a href="/tools/video-maker/">Free video maker</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav>
   </header>
   <section class="vmhero" aria-labelledby="vmh">
     <div class="eyebrow">Free tool · no sign-up · no watermark</div>
@@ -336,12 +340,14 @@
   </div>
   <section class="gallery" aria-labelledby="madewith">
     <h2 id="madewith">Made with LeyMish</h2>
-    <p class="small">Each of these was made on this page, in a browser, with real products from our partner store, mishbio.us.</p>
+    <p class="small">Each of these was made on this page, in a browser: product videos with real products from our partner store, mishbio.us, and a tip video from one of our own blog posts.</p>
     <div class="gal">
-      <figure><video controls playsinline preload="none" poster="./samples/free-clean-mono-promo.jpg" src="./samples/free-clean-mono-promo.mp4"></video><figcaption><b class="tag free">FREE</b> Product promo · Clean Mono · basic motion</figcaption></figure>
-      <figure><video controls playsinline preload="none" poster="./samples/free-sunset-pop-giftguide.jpg" src="./samples/free-sunset-pop-giftguide.mp4"></video><figcaption><b class="tag free">FREE</b> Gift guide · Sunset Pop · basic motion</figcaption></figure>
-      <figure><video controls playsinline preload="none" poster="./samples/pack-bold-brand-blackfriday.jpg" src="./samples/pack-bold-brand-blackfriday.mp4"></video><figcaption><b class="tag pro">✨ MOTION PACK</b> Black Friday sale · Black Friday Blast</figcaption></figure>
-      <figure><video controls playsinline preload="none" poster="./samples/pack-luxe-gold-promo.jpg" src="./samples/pack-luxe-gold-promo.mp4"></video><figcaption><b class="tag pro">✨ MOTION PACK</b> Product promo · Luxe Gold</figcaption></figure>
+      <figure><div class="vwrap"><video muted loop playsinline preload="none" poster="./samples/free-clean-mono-promo.jpg" data-src="./samples/free-clean-mono-promo.mp4" aria-label="FREE Product promo · Clean Mono · music"></video></div><figcaption><b class="tag free">FREE</b> Product promo · Clean Mono · music</figcaption></figure>
+      <figure><div class="vwrap"><video muted loop playsinline preload="none" poster="./samples/free-sunset-pop-giftguide.jpg" data-src="./samples/free-sunset-pop-giftguide.mp4" aria-label="FREE Gift guide · Sunset Pop · music"></video></div><figcaption><b class="tag free">FREE</b> Gift guide · Sunset Pop · music</figcaption></figure>
+      <figure class="voiced"><div class="vwrap"><video muted loop playsinline preload="none" poster="./samples/voice-tip-midnight-neon-heart.jpg" data-src="./samples/voice-tip-midnight-neon-heart.mp4" aria-label="FREE 🗣️ AI voice + music Tip from a blog post · Midnight Neon · voice: Heart"></video><button type="button" class="soundbtn">🔊 Tap for sound</button></div><figcaption><b class="tag free">FREE</b> <b class="tag voice">🗣️ AI voice + music</b> Tip from a blog post · Midnight Neon · voice: Heart</figcaption></figure>
+      <figure><div class="vwrap"><video muted loop playsinline preload="none" poster="./samples/pack-bold-brand-blackfriday.jpg" data-src="./samples/pack-bold-brand-blackfriday.mp4" aria-label="✨ MOTION PACK Black Friday sale · Black Friday Blast · music"></video></div><figcaption><b class="tag pro">✨ MOTION PACK</b> Black Friday sale · Black Friday Blast · music</figcaption></figure>
+      <figure><div class="vwrap"><video muted loop playsinline preload="none" poster="./samples/pack-luxe-gold-promo.jpg" data-src="./samples/pack-luxe-gold-promo.mp4" aria-label="✨ MOTION PACK Product promo · Luxe Gold · music"></video></div><figcaption><b class="tag pro">✨ MOTION PACK</b> Product promo · Luxe Gold · music</figcaption></figure>
+      <figure class="voiced"><div class="vwrap"><video muted loop playsinline preload="none" poster="./samples/voice-pack-holiday-glow-george.jpg" data-src="./samples/voice-pack-holiday-glow-george.mp4" aria-label="✨ MOTION PACK 🗣️ AI voice + music Product promo · Holiday Glow · voice: George"></video><button type="button" class="soundbtn">🔊 Tap for sound</button></div><figcaption><b class="tag pro">✨ MOTION PACK</b> <b class="tag voice">🗣️ AI voice + music</b> Product promo · Holiday Glow · voice: George</figcaption></figure>
     </div>
     <p class="small" style="margin-top:14px">Made for your platform or season: <span class="landings"><a href="/tools/video-maker/black-friday/">Free Black Friday video maker for your sale</a> · <a href="/tools/video-maker/shopify-product-video/">Free Shopify product video maker</a> · <a href="/tools/video-maker/christmas/">Free Christmas product video and gift guide maker</a> · <a href="/tools/video-maker/">All templates</a></span></p>
   </section>
@@ -355,6 +361,6 @@
   </section>
   <footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/videos/">Short videos</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
 </div>
-<script type="module" src="./app.js?v=8fb4748b5a"></script>
+<script type="module" src="./app.js?v=8754f4d18f"></script>
 </body>
 </html>
