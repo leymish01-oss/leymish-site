@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Black Friday Sale Claim Checker (Australia) | LeyMish Labs</title>
+<meta name="description" content="Paste your Black Friday ad, email or product page and see the sale claims the ACCC has warned about: was/now prices, countdown timers, up to % off, hidden fees. Free.">
+<link rel="canonical" href="https://www.leymish.com/tools/black-friday-price-check/">
+<meta property="og:title" content="Check your Black Friday sale claims before you publish">
+<meta property="og:description" content="A free checklist for Australian sellers: paste your sale copy and see which claims the ACCC has flagged, with a safer way to say each one.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.leymish.com/tools/black-friday-price-check/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=optional" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/assets/style.css?v=0a006d4b6c">
+<style>
+  .bf-tool { margin-top: 18px; max-width: 760px; }
+  .bf-tool label { font-weight: 600; display: block; margin-bottom: 6px; }
+  .bf-tool textarea { display: block; width: 100%; box-sizing: border-box; min-height: 220px; padding: 14px 16px; border-radius: var(--radius);
+    border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: 15px/1.55 var(--sans); resize: vertical; }
+  .bf-tool textarea:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+  .bf-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; align-items: center; }
+  .bf-actions .btn { cursor: pointer; font: 600 16px/1.2 var(--sans); }
+  .bf-actions button.btn:not(.primary) { font-size: 15px; padding: 11px 16px; }
+  .bf-sum { border: 2px solid var(--accent); }
+  .bf-sum h2 { margin: 0 0 8px; font-size: clamp(22px, 3vw, 28px); }
+  .bf-sum ol { margin: 8px 0 0; padding-left: 22px; }
+  .bf-sum li { margin: 6px 0; }
+  .bf-ok { border: 2px solid #1f7a4d; }
+  .bf-find { margin-top: 14px; }
+  .bf-find h3 { margin: 0 0 6px; font-size: 18px; }
+  .bf-find .tag { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--warn); }
+  .bf-snip { margin: 8px 0; padding: 10px 12px; border-left: 3px solid var(--accent); background: var(--accent-soft); border-radius: 0 8px 8px 0;
+    font-size: 15px; overflow-wrap: anywhere; }
+  .bf-snip mark { background: #ffd666; color: #1a1300; padding: 0 2px; border-radius: 3px; font-weight: 600; }
+  .bf-find dl { margin: 8px 0 0; }
+  .bf-find dt { font-weight: 600; margin-top: 8px; }
+  .bf-find dd { margin: 2px 0 0; color: var(--muted); }
+  .bf-find dd.rw { color: var(--ink); }
+  .bf-note { color: var(--warn); font-size: 15px; margin-top: 8px; }
+  .bf-next { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px; margin-top: 14px; }
+  .bf-next .card { margin: 0; }
+  .bf-next .btn { margin-top: 6px; }
+  .bf-legal { font-size: 15px; }
+  .bf-legal ul { padding-left: 20px; }
+  .bf-legal li { margin: 4px 0; overflow-wrap: anywhere; }
+  #result:empty { display: none; }
+</style>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","name":"Black Friday sale claim checker","url":"https://www.leymish.com/tools/black-friday-price-check/","applicationCategory":"BusinessApplication","operatingSystem":"Any","isAccessibleForFree":true,"offers":{"@type":"Offer","price":"0","priceCurrency":"AUD"},"provider":{"@type":"Organization","name":"LeyMish Labs","url":"https://www.leymish.com/"}}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Why check Black Friday sale claims at all?", "acceptedAnswer": {"@type": "Answer", "text": "The ACCC checks Black Friday and Boxing Day sales every year. After its 2025 Black Friday sweep it wrote to major retailers about countdown timers that didn't match the sale, storewide claims with exclusions, fine print that undercut the headline, \"up to\" discounts few items got, and was/now prices. Misleading pricing is one of its compliance and enforcement priorities for 2026–27."}}, {"@type": "Question", "name": "When is a \"was\" price OK?", "acceptedAnswer": {"@type": "Answer", "text": "When it's a price you actually charged for a reasonable period just before the sale. If an item has been \"on sale\" for a long time, the sale price has become the normal price. Keep records of what you charged and when, because the ACCC can ask you to back up a was/now claim."}}, {"@type": "Question", "name": "Does a flag mean my ad breaks the law?", "acceptedAnswer": {"@type": "Answer", "text": "No. A flag means the wording matches a kind of claim the ACCC has warned about, so it's worth a second look. Many flagged claims are fine if they're true and you can show it. The checker reads words only, so it can't know your price history or stock levels."}}, {"@type": "Question", "name": "Can I still add a card surcharge?", "acceptedAnswer": {"@type": "Answer", "text": "Not on eftpos, Mastercard or Visa. Card surcharges on those networks have been banned in Australia since 1 October 2026. Other unavoidable fees, like a booking fee, need to be included in the price you advertise."}}, {"@type": "Question", "name": "Is what I paste saved or sent anywhere?", "acceptedAnswer": {"@type": "Answer", "text": "No. The check runs in your browser on this page. The text you paste isn't uploaded or stored."}}]}</script><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=1;s.src=document.getElementById("ga-src").dataset.src;document.head.appendChild(s)},800)})</script><script id="ga-src" type="text/plain" data-src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/">leymish<span>/</span>labs</a>
+    <nav><a href="/products/">Products</a><a href="/tools/video-maker/">Free video maker</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav>
+  </header>
+  <div class="hero">
+    <p class="eyebrow">Free tool · Australian sellers</p>
+    <h1>Black Friday sale claim checker</h1>
+    <p class="lede">Paste the text of your Black Friday ad, email or product page and this free checker flags the sale claims
+      the ACCC has warned retailers about: was/now prices, countdown timers, "up to" discounts, sitewide fine print,
+      free-shipping catches, added fees, "lowest price" and "only 3 left". Each one comes with a plain reason and a safer
+      way to say it, and the check runs in your browser, so nothing you paste is sent anywhere.</p>
+
+    <form class="bf-tool" id="form" novalidate>
+      <label for="ad">Your sale copy</label>
+      <textarea id="ad" spellcheck="false" maxlength="50000"
+        placeholder="Copy the text of your page or ad and paste it here. For example: BLACK FRIDAY! Up to 70% off sitewide*. Was $120 now $59. Ends tonight!"></textarea>
+      <p class="small">Copy the text of your page or ad and paste it here: a product page, a sale banner, an email or a
+        social post. Text only; links aren't opened.</p>
+      <div class="bf-actions">
+        <button class="btn primary" id="go" type="submit">Check my sale claims</button>
+        <button class="btn" id="sample" type="button">Try a sample ad</button>
+        <button class="btn" id="clear" type="button">Clear</button>
+      </div>
+    </form>
+    <div id="result" aria-live="polite"></div>
+  </div>
+
+  <section id="next">
+    <h2>Sale copy sorted? Two free next steps</h2>
+    <div class="bf-next">
+      <div class="card">
+        <h3>Make your Black Friday video free</h3>
+        <p>Turn your sale into a short video with your discount, code and end date, captions and music. In your browser,
+          no sign-up, no watermark.</p>
+        <a class="btn primary" href="/tools/video-maker/black-friday/?utm_source=bf-checker&amp;utm_medium=tool&amp;utm_campaign=bf-check">Make your Black Friday video free</a>
+      </div>
+      <div class="card">
+        <h3>Free Merchant Center check</h3>
+        <p>Running Google Shopping ads for the sale? Check the issues a Merchant Center reviewer would flag on your store,
+          in about 60 seconds.</p>
+        <a class="btn" href="/woocommerce/merchant-center-check/?utm_source=bf-checker&amp;utm_medium=tool&amp;utm_campaign=bf-check">Free Merchant Center check</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="what-it-checks">
+    <h2>What it checks</h2>
+    <ul class="check">
+      <li><strong>Was/now and strike-through prices</strong>, RRP, "save $X" and "compare at", when nothing says when the higher price applied</li>
+      <li><strong>Countdown timers and urgency</strong>: "ends tonight", "today only", "hurry", "6 hours left"</li>
+      <li><strong>"Up to X% off"</strong> when it doesn't say how many items get the top discount</li>
+      <li><strong>Sitewide or "everything" headlines</strong> with exclusions, an asterisk or "conditions apply"</li>
+      <li><strong>"Free" offers</strong> whose minimum spend or condition sits away from the claim</li>
+      <li><strong>Added fees</strong>: booking, service or card fees and surcharges added on top of the price</li>
+      <li><strong>"Lowest", "best" or "cheapest" price</strong> claims that need evidence</li>
+      <li><strong>Limited stock claims</strong>: "only 3 left", "selling fast", "while stocks last"</li>
+    </ul>
+  </section>
+
+  <section id="faq">
+    <h2>Questions</h2>
+    <details><summary>Why check Black Friday sale claims at all?</summary><p>The ACCC checks Black Friday and Boxing Day
+      sales every year. After its 2025 Black Friday sweep it wrote to major retailers about countdown timers that didn't
+      match the sale, storewide claims with exclusions, fine print that undercut the headline, "up to" discounts few items
+      got, and was/now prices. Misleading pricing is one of its compliance and enforcement priorities for 2026–27.</p></details>
+    <details><summary>When is a "was" price OK?</summary><p>When it's a price you actually charged for a reasonable
+      period just before the sale. If an item has been "on sale" for a long time, the sale price has become the normal
+      price. Keep records of what you charged and when, because the ACCC can ask you to back up a was/now claim.</p></details>
+    <details><summary>Does a flag mean my ad breaks the law?</summary><p>No. A flag means the wording matches a kind
+      of claim the ACCC has warned about, so it's worth a second look. Many flagged claims are fine if they're true and you
+      can show it. The checker reads words only, so it can't know your price history or stock levels.</p></details>
+    <details><summary>Can I still add a card surcharge?</summary><p>Not on eftpos, Mastercard or Visa. Card surcharges
+      on those networks have been banned in Australia since 1 October 2026. Other unavoidable fees, like a booking fee,
+      need to be included in the price you advertise.</p></details>
+    <details><summary>Is what I paste saved or sent anywhere?</summary><p>No. The check runs in your browser on this
+      page. The text you paste isn't uploaded or stored.</p></details>
+  </section>
+
+  <section id="not-legal-advice" class="bf-legal">
+    <h2>Not legal advice: a checklist based on ACCC guidance</h2>
+    <p>This tool is a word checklist built from the ACCC's published guidance on sales and pricing. It isn't legal advice
+      and can't tell you whether a claim is true. For your own situation, read the ACCC's guidance or talk to a lawyer.</p>
+    <ul>
+      <li><a href="https://www.accc.gov.au/media-release/accc-warns-major-retailers-to-not-mislead-or-deceive-consumers-during-boxing-day-sales">ACCC warns major retailers not to mislead consumers during Boxing Day sales</a> (18 December 2025)</li>
+      <li><a href="https://www.accc.gov.au/publications/advertising-selling/advertising-and-selling-guide/pricing/two-price-comparison-advertising">ACCC advertising and selling guide: two-price comparison (was/now) advertising</a></li>
+      <li><a href="https://www.accc.gov.au/publications/advertising-selling/advertising-and-selling-guide/pricing/component-pricing">ACCC advertising and selling guide: component pricing (showing the total price)</a></li>
+      <li><a href="https://www.accc.gov.au/consumers/pricing/price-displays">ACCC: price displays and drip pricing</a></li>
+      <li><a href="https://www.accc.gov.au/publications/advertising-selling/advertising-and-selling-guide/advertising-selling-and-promotional-techniques/advertising-techniques">ACCC advertising and selling guide: advertising techniques (free offers, bait advertising)</a></li>
+      <li><a href="https://www.accc.gov.au/about-us/news/speeches/acccs-compliance-and-enforcement-priorities-update-2026-27-address">ACCC compliance and enforcement priorities 2026–27</a></li>
+    </ul>
+  </section>
+
+  <footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li><li><a href="/local/holiday-surcharge/">Christmas holiday-surcharge kit</a></li><li><a href="/local/google-business-profile-suspended/">Google Business Profile rescue</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/videos/">Short videos</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+</div>
+<script type="module">
+import { checkText, summarize } from "./rules.js";
+
+var SAMPLE = "BLACK FRIDAY MEGA SALE - up to 70% off sitewide*!\n\n" +
+  "Hurry, ends tonight! Only 6 hours left on the countdown.\n\n" +
+  "Classic linen shirt\nWas $120 now $59\nOnly 3 left in stock!\n\n" +
+  "The lowest prices in Australia. FREE SHIPPING on every order this weekend.\n" +
+  "A 1.5% credit card surcharge applies at checkout.\n\n" +
+  "*Excludes gift cards and new arrivals. Free shipping on orders over $150.";
+
+var form = document.getElementById("form"), ad = document.getElementById("ad"), out = document.getElementById("result");
+var ran = false, timer = null;
+
+function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;", "'": "&#39;" }[c]; }); }
+
+function snip(m) {
+  return "<div class='bf-snip'>" + esc(m.snippet.before) + "<mark>" + esc(m.snippet.match) + "</mark>" + esc(m.snippet.after) + "</div>";
+}
+
+function render(text) {
+  if (!text.trim()) { out.innerHTML = "<p class='small'>Paste your sale copy above first.</p>"; return; }
+  var fs = checkText(text), sum = summarize(fs);
+  if (!fs.length) {
+    out.innerHTML = "<div class='card bf-ok'><h2>" + esc(sum.headline) + "</h2><p>None of the wording matches the sale claims the ACCC has flagged. " +
+      "That doesn't prove every claim is right: make sure any prices, dates and stock numbers are true.</p></div>";
+    return;
+  }
+  var html = "<div class='card bf-sum'><h2>" + esc(sum.headline) + "</h2><ol>" +
+    sum.top.map(function (t) { return "<li><strong>" + esc(t.title) + ":</strong> " + esc(t.check) + "</li>"; }).join("") + "</ol>" +
+    (sum.more ? "<p class='small'>Plus " + sum.more + " more below.</p>" : "") + "</div>";
+  html += fs.map(function (f, i) {
+    var more = f.count > f.matches.length ? "<p class='small'>And " + (f.count - f.matches.length) + " more like this.</p>" : "";
+    return "<div class='card bf-find'><span class='tag'>" + (i + 1) + " · " + (f.severity >= 3 ? "Check first" : "Worth a look") + "</span>" +
+      "<h3>" + esc(f.title) + "</h3>" + f.matches.map(snip).join("") + more +
+      "<dl><dt>Why it can be risky</dt><dd>" + esc(f.why) + "</dd>" +
+      "<dt>A safer way to say it</dt><dd class='rw'>" + esc(f.rewrite) + "</dd></dl>" +
+      (f.note ? "<p class='bf-note'>" + esc(f.note) + "</p>" : "") + "</div>";
+  }).join("");
+  html += "<p class='small'>Fixed your copy? <a href='#next'>Make your Black Friday video free</a>.</p>";
+  out.innerHTML = html;
+}
+
+form.addEventListener("submit", function (ev) { ev.preventDefault(); ran = true; render(ad.value); out.scrollIntoView({ behavior: "smooth", block: "start" }); });
+ad.addEventListener("input", function () { if (!ran) return; clearTimeout(timer); timer = setTimeout(function () { render(ad.value); }, 300); });
+document.getElementById("sample").addEventListener("click", function () { ad.value = SAMPLE; ran = true; render(ad.value); });
+document.getElementById("clear").addEventListener("click", function () { ad.value = ""; ran = false; out.innerHTML = ""; ad.focus(); });
+</script>
+</body>
+</html>

@@ -1,0 +1,166 @@
+{
+  "title": "Australian public holidays by state and territory, 1 November 2026 to 31 March 2027",
+  "from": "2026-11-01",
+  "to": "2027-03-31",
+  "checked": "2026-10-24",
+  "status_values": {
+    "confirmed": "Listed on the state or territory government's own public-holidays page and on the Fair Work Ombudsman list (or the state page alone for regional days Fair Work doesn't list).",
+    "unconfirmed": "Not yet listed on an official page. Don't rely on it."
+  },
+  "scope_values": {
+    "statewide": "A public holiday across the whole state or territory.",
+    "regional": "A public holiday only in the areas named in 'area'.",
+    "limited": "Listed by the state but generally for the state public service only, so most businesses don't treat it as a public holiday."
+  },
+  "cross_check": [
+    "https://www.fairwork.gov.au/employment-conditions/public-holidays/2026-public-holidays",
+    "https://www.fairwork.gov.au/employment-conditions/public-holidays/2027-public-holidays"
+  ],
+  "states": {
+    "NSW": {
+      "name": "New South Wales",
+      "sources": ["https://www.nsw.gov.au/about-nsw/public-holidays"],
+      "note": "Boxing Day falls on a Saturday in 2026, so NSW adds a public holiday on Monday 28 December.",
+      "holidays": [
+        {"date": "2026-12-25", "name": "Christmas Day", "scope": "statewide", "status": "confirmed", "source": "https://www.nsw.gov.au/about-nsw/public-holidays"},
+        {"date": "2026-12-26", "name": "Boxing Day", "scope": "statewide", "status": "confirmed", "source": "https://www.nsw.gov.au/about-nsw/public-holidays"},
+        {"date": "2026-12-28", "name": "Additional public holiday for Boxing Day", "scope": "statewide", "status": "confirmed", "source": "https://www.nsw.gov.au/about-nsw/public-holidays"},
+        {"date": "2027-01-01", "name": "New Year's Day", "scope": "statewide", "status": "confirmed", "source": "https://www.nsw.gov.au/about-nsw/public-holidays"},
+        {"date": "2027-01-26", "name": "Australia Day", "scope": "statewide", "status": "confirmed", "source": "https://www.nsw.gov.au/about-nsw/public-holidays"},
+        {"date": "2027-03-26", "name": "Good Friday", "scope": "statewide", "status": "confirmed", "source": "https://www.nsw.gov.au/about-nsw/public-holidays"},
+        {"date": "2027-03-27", "name": "Easter Saturday", "scope": "statewide", "status": "confirmed", "source": "https://www.nsw.gov.au/about-nsw/public-holidays"},
+        {"date": "2027-03-28", "name": "Easter Sunday", "scope": "statewide", "status": "confirmed", "source": "https://www.nsw.gov.au/about-nsw/public-holidays"},
+        {"date": "2027-03-29", "name": "Easter Monday", "scope": "statewide", "status": "confirmed", "source": "https://www.nsw.gov.au/about-nsw/public-holidays"}
+      ]
+    },
+    "VIC": {
+      "name": "Victoria",
+      "sources": [
+        "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2026",
+        "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027"
+      ],
+      "note": "Boxing Day falls on a Saturday in 2026, so Victoria adds a public holiday on Monday 28 December. Some non-metro councils hold a local holiday instead of Melbourne Cup Day.",
+      "holidays": [
+        {"date": "2026-11-03", "name": "Melbourne Cup Day", "scope": "statewide", "status": "confirmed", "note": "Across Victoria unless a non-metro council has arranged an alternative local holiday.", "source": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2026"},
+        {"date": "2026-12-25", "name": "Christmas Day", "scope": "statewide", "status": "confirmed", "source": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2026"},
+        {"date": "2026-12-26", "name": "Boxing Day", "scope": "statewide", "status": "confirmed", "source": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2026"},
+        {"date": "2026-12-28", "name": "Additional public holiday for Boxing Day", "scope": "statewide", "status": "confirmed", "source": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2026"},
+        {"date": "2027-01-01", "name": "New Year's Day", "scope": "statewide", "status": "confirmed", "source": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027"},
+        {"date": "2027-01-26", "name": "Australia Day", "scope": "statewide", "status": "confirmed", "source": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027"},
+        {"date": "2027-03-08", "name": "Labour Day", "scope": "statewide", "status": "confirmed", "source": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027"},
+        {"date": "2027-03-26", "name": "Good Friday", "scope": "statewide", "status": "confirmed", "source": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027"},
+        {"date": "2027-03-27", "name": "Saturday before Easter Sunday", "scope": "statewide", "status": "confirmed", "source": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027"},
+        {"date": "2027-03-28", "name": "Easter Sunday", "scope": "statewide", "status": "confirmed", "source": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027"},
+        {"date": "2027-03-29", "name": "Easter Monday", "scope": "statewide", "status": "confirmed", "source": "https://business.vic.gov.au/business-information/public-holidays/victorian-public-holidays-2027"}
+      ]
+    },
+    "QLD": {
+      "name": "Queensland",
+      "sources": ["https://www.qld.gov.au/recreation/travel/holidays/public"],
+      "note": "Christmas Eve is a part-day public holiday from 6pm to midnight. New Year's Eve is not a public holiday in Queensland. Boxing Day falls on a Saturday in 2026, so Queensland adds a public holiday on Monday 28 December. Regional show holidays aren't included.",
+      "holidays": [
+        {"date": "2026-12-24", "name": "Christmas Eve (6pm to midnight)", "scope": "statewide", "status": "confirmed", "part_day": {"from": "18:00", "to": "24:00", "label": "6pm to midnight"}, "source": "https://www.qld.gov.au/recreation/travel/holidays/public"},
+        {"date": "2026-12-25", "name": "Christmas Day", "scope": "statewide", "status": "confirmed", "source": "https://www.qld.gov.au/recreation/travel/holidays/public"},
+        {"date": "2026-12-26", "name": "Boxing Day", "scope": "statewide", "status": "confirmed", "source": "https://www.qld.gov.au/recreation/travel/holidays/public"},
+        {"date": "2026-12-28", "name": "Additional public holiday for Boxing Day", "scope": "statewide", "status": "confirmed", "source": "https://www.qld.gov.au/recreation/travel/holidays/public"},
+        {"date": "2027-01-01", "name": "New Year's Day", "scope": "statewide", "status": "confirmed", "source": "https://www.qld.gov.au/recreation/travel/holidays/public"},
+        {"date": "2027-01-26", "name": "Australia Day", "scope": "statewide", "status": "confirmed", "source": "https://www.qld.gov.au/recreation/travel/holidays/public"},
+        {"date": "2027-03-26", "name": "Good Friday", "scope": "statewide", "status": "confirmed", "source": "https://www.qld.gov.au/recreation/travel/holidays/public"},
+        {"date": "2027-03-27", "name": "The day after Good Friday", "scope": "statewide", "status": "confirmed", "source": "https://www.qld.gov.au/recreation/travel/holidays/public"},
+        {"date": "2027-03-28", "name": "Easter Sunday", "scope": "statewide", "status": "confirmed", "source": "https://www.qld.gov.au/recreation/travel/holidays/public"},
+        {"date": "2027-03-29", "name": "Easter Monday", "scope": "statewide", "status": "confirmed", "source": "https://www.qld.gov.au/recreation/travel/holidays/public"}
+      ]
+    },
+    "WA": {
+      "name": "Western Australia",
+      "sources": ["https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia"],
+      "note": "Boxing Day falls on a Saturday in 2026, so the following Monday (28 December) is also a public holiday. WA has no Easter Saturday public holiday.",
+      "holidays": [
+        {"date": "2026-12-25", "name": "Christmas Day", "scope": "statewide", "status": "confirmed", "source": "https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia"},
+        {"date": "2026-12-26", "name": "Boxing Day", "scope": "statewide", "status": "confirmed", "source": "https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia"},
+        {"date": "2026-12-28", "name": "Additional public holiday for Boxing Day", "scope": "statewide", "status": "confirmed", "source": "https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia"},
+        {"date": "2027-01-01", "name": "New Year's Day", "scope": "statewide", "status": "confirmed", "source": "https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia"},
+        {"date": "2027-01-26", "name": "Australia Day", "scope": "statewide", "status": "confirmed", "source": "https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia"},
+        {"date": "2027-03-01", "name": "Labour Day", "scope": "statewide", "status": "confirmed", "source": "https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia"},
+        {"date": "2027-03-26", "name": "Good Friday", "scope": "statewide", "status": "confirmed", "source": "https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia"},
+        {"date": "2027-03-28", "name": "Easter Sunday", "scope": "statewide", "status": "confirmed", "source": "https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia"},
+        {"date": "2027-03-29", "name": "Easter Monday", "scope": "statewide", "status": "confirmed", "source": "https://www.wa.gov.au/service/employment/workplace-agreements/public-holidays-western-australia"}
+      ]
+    },
+    "SA": {
+      "name": "South Australia",
+      "sources": ["https://www.safework.sa.gov.au/resources/public-holidays"],
+      "note": "Christmas Eve and New Year's Eve are part-day public holidays from 7pm to midnight. The Proclamation Day holiday is observed on 26 December; because that's a Saturday in 2026, Monday 28 December is an additional public holiday.",
+      "holidays": [
+        {"date": "2026-12-24", "name": "Christmas Eve (7pm to midnight)", "scope": "statewide", "status": "confirmed", "part_day": {"from": "19:00", "to": "24:00", "label": "7pm to midnight"}, "source": "https://www.safework.sa.gov.au/resources/public-holidays"},
+        {"date": "2026-12-25", "name": "Christmas Day", "scope": "statewide", "status": "confirmed", "source": "https://www.safework.sa.gov.au/resources/public-holidays"},
+        {"date": "2026-12-26", "name": "Proclamation Day holiday", "scope": "statewide", "status": "confirmed", "source": "https://www.safework.sa.gov.au/resources/public-holidays"},
+        {"date": "2026-12-28", "name": "Additional public holiday for Proclamation Day", "scope": "statewide", "status": "confirmed", "source": "https://www.safework.sa.gov.au/resources/public-holidays"},
+        {"date": "2026-12-31", "name": "New Year's Eve (7pm to midnight)", "scope": "statewide", "status": "confirmed", "part_day": {"from": "19:00", "to": "24:00", "label": "7pm to midnight"}, "source": "https://www.safework.sa.gov.au/resources/public-holidays"},
+        {"date": "2027-01-01", "name": "New Year's Day", "scope": "statewide", "status": "confirmed", "source": "https://www.safework.sa.gov.au/resources/public-holidays"},
+        {"date": "2027-01-26", "name": "Australia Day", "scope": "statewide", "status": "confirmed", "source": "https://www.safework.sa.gov.au/resources/public-holidays"},
+        {"date": "2027-03-08", "name": "Adelaide Cup Day", "scope": "statewide", "status": "confirmed", "source": "https://www.safework.sa.gov.au/resources/public-holidays"},
+        {"date": "2027-03-26", "name": "Good Friday", "scope": "statewide", "status": "confirmed", "source": "https://www.safework.sa.gov.au/resources/public-holidays"},
+        {"date": "2027-03-27", "name": "Easter Saturday", "scope": "statewide", "status": "confirmed", "source": "https://www.safework.sa.gov.au/resources/public-holidays"},
+        {"date": "2027-03-28", "name": "Easter Sunday", "scope": "statewide", "status": "confirmed", "source": "https://www.safework.sa.gov.au/resources/public-holidays"},
+        {"date": "2027-03-29", "name": "Easter Monday", "scope": "statewide", "status": "confirmed", "source": "https://www.safework.sa.gov.au/resources/public-holidays"}
+      ]
+    },
+    "TAS": {
+      "name": "Tasmania",
+      "sources": ["https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"],
+      "note": "Tasmania moves Boxing Day to Monday 28 December in 2026; Saturday 26 December is not a public holiday there. Several Tasmanian holidays are regional; check the area.",
+      "holidays": [
+        {"date": "2026-11-02", "name": "Recreation Day", "scope": "regional", "area": "All parts of Tasmania that don't observe Royal Hobart Regatta", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2026-11-27", "name": "Devonport Show", "scope": "regional", "area": "Municipal areas of Devonport, Kentish and Latrobe", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2026-12-25", "name": "Christmas Day", "scope": "statewide", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2026-12-28", "name": "Boxing Day", "scope": "statewide", "status": "confirmed", "note": "Boxing Day (26 December) is a Saturday, so the Monday is the public holiday.", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2027-01-01", "name": "New Year's Day", "scope": "statewide", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2027-01-06", "name": "Devonport Cup (half day)", "scope": "limited", "area": "Municipal area of Devonport; generally Tasmanian State Service only", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2027-01-26", "name": "Australia Day", "scope": "statewide", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2027-02-08", "name": "Royal Hobart Regatta", "scope": "regional", "area": "South of and including Oatlands and Swansea, excluding Bronte Park, Catagunya, Strathgordon, Tarraleah, Wayatinah and the West Coast", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2027-02-24", "name": "Launceston Cup", "scope": "limited", "area": "Launceston and surrounding municipal areas; generally Tasmanian State Service only", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2027-03-02", "name": "King Island Show", "scope": "regional", "area": "King Island only", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2027-03-08", "name": "Eight Hours Day", "scope": "statewide", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2027-03-26", "name": "Good Friday", "scope": "statewide", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2027-03-29", "name": "Easter Monday", "scope": "statewide", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"},
+        {"date": "2027-03-30", "name": "Easter Tuesday", "scope": "limited", "area": "Generally Tasmanian Public Service only", "status": "confirmed", "source": "https://worksafe.tas.gov.au/topics/laws-and-compliance/public-holidays"}
+      ]
+    },
+    "ACT": {
+      "name": "Australian Capital Territory",
+      "sources": ["https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving"],
+      "note": "Boxing Day falls on a Saturday in 2026, so both Saturday 26 and Monday 28 December are public holidays.",
+      "holidays": [
+        {"date": "2026-12-25", "name": "Christmas Day", "scope": "statewide", "status": "confirmed", "source": "https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving"},
+        {"date": "2026-12-26", "name": "Boxing Day", "scope": "statewide", "status": "confirmed", "source": "https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving"},
+        {"date": "2026-12-28", "name": "Additional public holiday for Boxing Day", "scope": "statewide", "status": "confirmed", "source": "https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving"},
+        {"date": "2027-01-01", "name": "New Year's Day", "scope": "statewide", "status": "confirmed", "source": "https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving"},
+        {"date": "2027-01-26", "name": "Australia Day", "scope": "statewide", "status": "confirmed", "source": "https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving"},
+        {"date": "2027-03-08", "name": "Canberra Day", "scope": "statewide", "status": "confirmed", "source": "https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving"},
+        {"date": "2027-03-26", "name": "Good Friday", "scope": "statewide", "status": "confirmed", "source": "https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving"},
+        {"date": "2027-03-27", "name": "Easter Saturday", "scope": "statewide", "status": "confirmed", "source": "https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving"},
+        {"date": "2027-03-28", "name": "Easter Sunday", "scope": "statewide", "status": "confirmed", "source": "https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving"},
+        {"date": "2027-03-29", "name": "Easter Monday", "scope": "statewide", "status": "confirmed", "source": "https://www.act.gov.au/living-in-the-act/public-holidays-school-terms-and-daylight-saving"}
+      ]
+    },
+    "NT": {
+      "name": "Northern Territory",
+      "sources": ["https://nt.gov.au/nt-public-holidays"],
+      "note": "Christmas Eve and New Year's Eve are part-day public holidays from 7pm to midnight. Boxing Day falls on a Saturday in 2026, so Monday 28 December is also a public holiday. NT show days fall outside these dates.",
+      "holidays": [
+        {"date": "2026-12-24", "name": "Christmas Eve (7pm to midnight)", "scope": "statewide", "status": "confirmed", "part_day": {"from": "19:00", "to": "24:00", "label": "7pm to midnight"}, "source": "https://nt.gov.au/nt-public-holidays"},
+        {"date": "2026-12-25", "name": "Christmas Day", "scope": "statewide", "status": "confirmed", "source": "https://nt.gov.au/nt-public-holidays"},
+        {"date": "2026-12-26", "name": "Boxing Day", "scope": "statewide", "status": "confirmed", "source": "https://nt.gov.au/nt-public-holidays"},
+        {"date": "2026-12-28", "name": "Boxing Day Monday", "scope": "statewide", "status": "confirmed", "source": "https://nt.gov.au/nt-public-holidays"},
+        {"date": "2026-12-31", "name": "New Year's Eve (7pm to midnight)", "scope": "statewide", "status": "confirmed", "part_day": {"from": "19:00", "to": "24:00", "label": "7pm to midnight"}, "source": "https://nt.gov.au/nt-public-holidays"},
+        {"date": "2027-01-01", "name": "New Year's Day", "scope": "statewide", "status": "confirmed", "source": "https://nt.gov.au/nt-public-holidays"},
+        {"date": "2027-01-26", "name": "Australia Day", "scope": "statewide", "status": "confirmed", "source": "https://nt.gov.au/nt-public-holidays"},
+        {"date": "2027-03-26", "name": "Good Friday", "scope": "statewide", "status": "confirmed", "source": "https://nt.gov.au/nt-public-holidays"},
+        {"date": "2027-03-27", "name": "Easter Saturday", "scope": "statewide", "status": "confirmed", "source": "https://nt.gov.au/nt-public-holidays"},
+        {"date": "2027-03-28", "name": "Easter Sunday", "scope": "statewide", "status": "confirmed", "source": "https://nt.gov.au/nt-public-holidays"},
+        {"date": "2027-03-29", "name": "Easter Monday", "scope": "statewide", "status": "confirmed", "source": "https://nt.gov.au/nt-public-holidays"}
+      ]
+    }
+  }
+}

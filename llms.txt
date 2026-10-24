@@ -18,6 +18,7 @@
 - [Fix the WooCommerce Store API BOM error](https://www.leymish.com/woocommerce/guides/woocommerce-store-api-bom-error.html)
 - [Add a brand to WooCommerce products](https://www.leymish.com/woocommerce/guides/add-brand-woocommerce-products.html)
 - [llms.txt for WooCommerce stores](https://www.leymish.com/woocommerce/guides/llms-txt-woocommerce.html)
+- [Can you still charge a public holiday surcharge in Australia? Yes, and here's the Christmas 2026 wording](https://www.leymish.com/blog/public-holiday-surcharge-christmas-2026.html)
 - [WooCommerce products not syncing to Google Merchant Center: a checklist in the right order](https://www.leymish.com/blog/woocommerce-products-not-syncing-to-merchant-center.html)
 - [Merchant Center misrepresentation on WooCommerce: what reviewers check (2026)](https://www.leymish.com/blog/woocommerce-merchant-center-misrepresentation.html)
 - [Google for WooCommerce: \"Terms of Service is not signed\" and the 12-hour URL check](https://www.leymish.com/blog/google-for-woocommerce-terms-of-service-not-signed.html)
@@ -38,8 +39,41 @@
 - [All products with prices](https://www.leymish.com/products/)
 - [Free tools](https://www.leymish.com/free-tools/)
 
+## Paid services and products
+
+- [Merchant Center Health Check](https://www.leymish.com/woocommerce/google-merchant-center/): US$29. A written diagnosis of why Google is disapproving products or flagging your store, with the exact fix for each. For: Stores with disapprovals or a misrepresentation warning. Order: https://leymish.gumroad.com/l/gmc-health-check
+- [Merchant Center Fix, done for you](https://www.leymish.com/woocommerce/google-merchant-center/): US$99. Policies, product data and feed errors fixed on your store, with a before/after log and resubmission steps. For: Stores that want it fixed, not explained. Order: https://leymish.gumroad.com/l/gmc-fix
+- [Suspended account rescue](https://www.leymish.com/woocommerce/google-merchant-center/): US$249. Google's misrepresentation checklist worked through on your site, plus plain review-request text for you to submit. For: Suspended Merchant Center accounts. Order: https://leymish.gumroad.com/l/gmc-rescue
+- [Merchant Center fix on Fiverr](https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals): from US$15. The same diagnosis and fixes, ordered and paid through Fiverr. For: Buyers who prefer to order on Fiverr.
+- [Disapproved products and feed errors on Fiverr](https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors): from US$15. Google Shopping disapprovals and Merchant Center feed errors fixed, ordered through Fiverr. For: Buyers who prefer to order on Fiverr.
+- [Shopping ads suspension on Fiverr](https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation): from US$15. Help with a Google Shopping ads suspension or Merchant Center misrepresentation, ordered through Fiverr. For: Buyers who prefer to order on Fiverr.
+- [Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook](https://www.amazon.com/dp/B0HNLCQ3SP): US$6.99. The step-by-step recovery method, the order that avoids a failed review, and the appeal text. For: Owners who want to fix it themselves.
+- [Recovery guide: workbook edition](https://leymish.gumroad.com/l/gmc-workbook): US$19. The 80-page guide as a PDF, with every template and worksheet as an editable Word file. For: Owners who want templates to fill in.
+- [Pre-review checklist](https://leymish.gumroad.com/l/gmc-pre-review-checklist): US$9. Everything to tick before you request a Merchant Center review, on one printable page. For: Owners about to request a review.
+- [AI Shopping Fix: top 25 products](https://www.leymish.com/woocommerce/done-for-you/): US$49. Your 25 best sellers' product data fixed so AI shopping assistants can read them. For: Small WooCommerce stores. Order: https://leymish.gumroad.com/l/ai-shopping-fix-25
+- [AI Shopping Fix: up to 150 products](https://www.leymish.com/woocommerce/done-for-you/): US$129. The same fix across up to 150 products. For: Growing WooCommerce stores. Order: https://leymish.gumroad.com/l/ai-shopping-fix-150
+- [AI Shopping Fix for agencies](https://www.leymish.com/woocommerce/done-for-you/): US$39 per store. The fix, white-label, for one client store at a time. For: Agencies with WooCommerce clients. Order: https://leymish.gumroad.com/l/ai-shopping-fix-agency
+- [LeyMish Pro](https://www.leymish.com/woocommerce/pro.html): from US$12 a month. Weekly AI visibility checks, AI fixes you approve, outside monitoring and Store Team agents. For: One WooCommerce store. Order: https://leymish.gumroad.com/l/proai
+- [LeyMish Pro Agency](https://www.leymish.com/woocommerce/pro.html): US$39 a month. LeyMish Pro on up to 10 client stores, with before/after reports. For: Agencies. Order: https://leymish.gumroad.com/l/proai-agency
+- [Card surcharge clean-up](https://www.leymish.com/local/surcharge-check/): A$99. Every surcharge mention on your website and PDF menus listed, with replacement wording. For: Australian businesses that used to surcharge cards.
+- [Christmas holiday-surcharge kit](https://www.leymish.com/local/holiday-surcharge/): A$29. Editable signs, menu lines, a website banner and Google post, every public holiday to March 2027 by state. For: Australian cafés and shops that surcharge on public holidays.
+- [Google Business Profile rescue](https://www.leymish.com/local/google-business-profile-suspended/): A$199. The cause found, the evidence gathered and the appeal prepared for a suspended or unverified profile. For: Australian businesses with a suspended or stuck Google Business Profile.
+
+## Free tools
+
+- [Free video maker](https://www.leymish.com/tools/video-maker/): free. Make a product video in your browser, with no watermark and no sign-up. Paste a product link or a blog post and get product promos, Black Friday sales, gift guides and tips, with captions, music and an optional AI voice. Your photos are never uploaded. For: Shop owners and small businesses.
+- [Black Friday sale claim checker](https://www.leymish.com/tools/black-friday-price-check/): free. Paste your Black Friday ad, email or product page and see the sale claims the ACCC has warned about: was/now prices, countdown timers, up to % off, sitewide fine print and added fees, each with a safer way to say it. Runs in your browser. For: Australian online sellers.
+- [Free Merchant Center Check](https://www.leymish.com/woocommerce/merchant-center-check/): free. Enter your store's address. In about 60 seconds it shows the top issues a Merchant Center reviewer would flag, and can email you the full report. For: Online stores (WooCommerce first; Shopify works too).
+- [AI shopping check](https://www.leymish.com/woocommerce/check/): free. A 10-second score for how well AI shopping assistants can read your store, and what to fix. For: WooCommerce stores.
+- [LeyMish AI Readiness plugin](https://wordpress.org/plugins/leymish-ai-shopping-readiness/): free. The free WordPress plugin: a 0–100 score, one-click fixes and product feeds, running on your own site. For: WooCommerce stores.
+- [AI Search Check](https://www.leymish.com/local/ai-search-check/): free. Does AI search name your business when people ask for the best in your suburb? See who it names instead, and 3 fixes. For: Australian local businesses.
+- [Card surcharge check](https://www.leymish.com/local/surcharge-check/): free. Card surcharges on eftpos, Mastercard and Visa ended in Australia on 1 October 2026. Enter your website and we list every page and PDF menu that still mentions a surcharge. For: Australian businesses.
+- [Christmas holiday-surcharge wording generator](https://www.leymish.com/local/holiday-surcharge/): free. Wording for a Christmas and public holiday surcharge notice. For: Australian businesses.
+
 ## Company
 
+- [About LeyMish Labs](https://www.leymish.com/about.html)
+- [Contact](https://www.leymish.com/contact/): hello@leymish.com
 - [What's new: plugin release notes](https://www.leymish.com/whats-new.html)
 - [Privacy](https://www.leymish.com/privacy.html)
 - [Terms](https://www.leymish.com/terms.html)

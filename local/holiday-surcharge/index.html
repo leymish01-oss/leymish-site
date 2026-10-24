@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Christmas public holiday surcharge wording generator (Australia) | LeyMish Labs</title>
+<meta name="description" content="Free: pick your state and get public holiday surcharge wording for Christmas and New Year 2026, for your menu, door sign, website and Google profile. Every date checked against official lists.">
+<link rel="canonical" href="https://www.leymish.com/local/holiday-surcharge/">
+<meta property="og:title" content="Christmas public holiday surcharge wording, by state">
+<meta property="og:description" content="Free generator for Australian cafés, restaurants, bars and salons: the right days for your state, ready to copy and print.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://www.leymish.com/local/holiday-surcharge/">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@500;700&display=optional" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="/assets/style.css?v=0a006d4b6c">
+<style>
+  .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; margin-top: 18px; min-width: 0; }
+  .hs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+  .hs-grid label, fieldset legend { display: block; font-weight: 600; font-size: 14px; margin-bottom: 6px; }
+  .hs-grid select, .hs-grid input { width: 100%; padding: 11px 13px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); font: inherit; min-width: 0; }
+  .pcts { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+  .pcts button { font: 600 14px var(--sans); padding: 6px 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); cursor: pointer; }
+  .pcts button[aria-pressed="true"] { background: var(--navy); border-color: var(--navy); color: #fff; }
+  fieldset { border: 0; padding: 0; margin: 16px 0 0; min-width: 0; }
+  .days { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 4px 16px; }
+  .days h4 { grid-column: 1 / -1; margin: 10px 0 2px; font-size: 13px; font-family: var(--mono); color: var(--accent); text-transform: uppercase; letter-spacing: .04em; }
+  .days label { display: flex; gap: 8px; align-items: flex-start; padding: 6px 0; font-size: 15px; cursor: pointer; }
+  .days input { margin-top: 4px; flex: none; }
+  .tag { display: inline-block; font-size: 12px; padding: 1px 7px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); margin-left: 4px; }
+  .area { display: block; font-size: 12px; color: var(--muted); }
+  .quick { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; }
+  .quick button { font: 13px var(--sans); background: none; border: 0; padding: 0; color: var(--accent); text-decoration: underline; cursor: pointer; }
+  .out h3 { margin: 0 0 6px; font-size: 17px; }
+  .out .hint { margin: 0 0 8px; }
+  .out textarea { width: 100%; min-height: 84px; padding: 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--ink); font: 15px/1.5 var(--sans); resize: vertical; }
+  .out .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; align-items: center; }
+  .btn.sm { padding: 8px 14px; font-size: 14px; cursor: pointer; }
+  .copied { font-size: 13px; color: var(--accent); }
+  .outs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 0 18px; }
+  .err { color: #b42318; }
+  .rules li { margin: 8px 0; }
+  .offer { border: 2px solid var(--accent); }
+  .offer .price { font-size: 36px; }
+  #kitBuy { display: inline-block; padding: 13px 20px; border-radius: 999px; font-weight: 700; text-decoration: none; background: var(--cta); color: var(--cta-ink); }
+  #kitBuy:hover { filter: brightness(1.05); }
+  .two { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 26px; align-items: start; }
+  @media (max-width: 760px) { .two { grid-template-columns: minmax(0, 1fr); } }
+  .src li { margin: 6px 0; overflow-wrap: anywhere; }
+  /* A4 sign preview: the sheet scales with its box on screen and prints at 210 x 297 mm */
+  .sheet-wrap { container-type: inline-size; width: 100%; max-width: 460px; margin: 10px auto 0; }
+  .sheet { aspect-ratio: 210 / 297; background: #fff; color: #0b1f3f; border: 1px solid #d9d4c8; box-shadow: 0 6px 24px rgba(11,31,63,.12);
+           display: flex; flex-direction: column; padding: 8cqw 7cqw; font-family: var(--sans); font-size: 3.4cqw; line-height: 1.35; overflow: hidden; }
+  .sheet .s-name { font-size: 1.1em; font-weight: 600; letter-spacing: .02em; color: #4a5568; min-height: 1.3em; }
+  .sheet .s-rule { height: 1.2cqw; background: #ff7a2e; width: 22%; margin: 3cqw 0 4cqw; border-radius: 99px; }
+  .sheet .s-head { font-size: 1.5em; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; color: #b5470a; }
+  .sheet .s-pct { font-size: 4.6em; font-weight: 700; line-height: 1; margin: 2cqw 0 1cqw; letter-spacing: -.03em; }
+  .sheet .s-lead { font-size: 1.45em; font-weight: 600; margin-bottom: 3cqw; }
+  .sheet ul { list-style: none; padding: 0; margin: 0; font-size: 1.2em; }
+  .sheet li { padding: 1.4cqw 0; border-top: 1px solid #e6e0d4; }
+  .sheet li:last-child { border-bottom: 1px solid #e6e0d4; }
+  .sheet .s-foot { margin-top: auto; font-size: 1.05em; color: #4a5568; }
+  @media print {
+    @page { size: A4 portrait; margin: 0; }
+    body { background: #fff !important; }
+    body { margin: 0; }
+    body > *:not(.wrap), .wrap > *:not(#sign), #sign > *:not(#signWrap) { display: none !important; }
+    .wrap, #sign { max-width: none; padding: 0 !important; margin: 0 !important; border: 0 !important; }
+    #signWrap .sheet { break-inside: avoid; page-break-after: avoid; }
+    #signWrap { width: 210mm; max-width: none; margin: 0; }
+    #signWrap .sheet { width: 210mm; height: 297mm; border: 0; box-shadow: none; }
+  }
+</style>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Can I still charge a surcharge on Christmas Day and Boxing Day?", "acceptedAnswer": {"@type": "Answer", "text": "Yes. A public holiday surcharge isn't a card surcharge, so the 1 October 2026 ban doesn't stop it. It must be shown clearly before customers order, and on a café or restaurant menu the ACCC wording must be at least as prominent as the most prominent price."}}, {"@type": "Question", "name": "Which days are public holidays over Christmas 2026?", "acceptedAnswer": {"@type": "Answer", "text": "Christmas Day is Friday 25 December and Boxing Day is Saturday 26 December. Because Boxing Day falls on a Saturday, every state and territory except Tasmania also has a public holiday on Monday 28 December; in Tasmania, Monday 28 December is the Boxing Day holiday instead of the Saturday. New Year's Day is Friday 1 January 2027."}}, {"@type": "Question", "name": "Are Christmas Eve and New Year's Eve public holidays?", "acceptedAnswer": {"@type": "Answer", "text": "Only for part of the day, and only in some places: South Australia and the Northern Territory from 7pm to midnight on both days, and Queensland from 6pm to midnight on Christmas Eve. They aren't public holidays in the other states and territories."}}, {"@type": "Question", "name": "How big does the notice have to be?", "acceptedAnswer": {"@type": "Answer", "text": "For restaurants and cafés, the ACCC says the words must be at least as prominent as the most prominent price on the menu. If your prices are in 14-point bold, the surcharge line should be at least 14-point bold too."}}, {"@type": "Question", "name": "Can I call it a card fee instead?", "acceptedAnswer": {"@type": "Answer", "text": "No. A fee charged only to people who pay by card is a card surcharge, which is banned on eftpos, Mastercard and Visa from 1 October 2026. A public holiday surcharge applies to everyone, however they pay."}}, {"@type": "Question", "name": "Is this legal advice?", "acceptedAnswer": {"@type": "Answer", "text": "No. It's a wording tool built from public guidance. For advice about your business, talk to the Small Business Ombudsman's office, your state's fair trading office or a lawyer."}}]}</script><script id="ls-count">(function(){var u="https://leymish-ai.leymish.workers.dev/v1/count";function s(e){try{navigator.sendBeacon(u,JSON.stringify({e:e}))}catch(x){}}s('pageview');document.addEventListener('click',function(v){var a=v.target.closest&&v.target.closest('a');if(!a)return;var h=a.getAttribute('href')||'';if(/\.zip($|\?)|\/releases\//.test(h))s('download_click');else if(/gumroad\.com/.test(h)||a.classList.contains('gumroad-button'))s('pricing_click');});var q=new URLSearchParams(location.search),c=(q.get('utm_content')||'').toLowerCase();if(q.get('utm_medium')==='outreach'&&/^[abc]$/.test(c)){s('email_visit_'+c);window.lsEmailVariant=c;}var pc=q.get('utm_campaign')||'';if(q.get('utm_source')==='plugin'&&/^(fix-free|fix-in-pro|free-vs-pro)$/.test(pc))s('plugin_'+pc.replace(/-/g,'_'));})();</script><script id="ls-ref">(function(){var k="ls_ref",r=(new URLSearchParams(location.search).get("ref")||"").toLowerCase();try{if(/^[a-z2-9]{8}$/.test(r))sessionStorage.setItem(k,r);else r=sessionStorage.getItem(k)||"";}catch(x){}if(!/^[a-z2-9]{8}$/.test(r))return;document.addEventListener("click",function(v){var a=v.target.closest&&v.target.closest("a[href*='gumroad.com']");if(!a)return;try{var u=new URL(a.href);u.searchParams.set("ref",r);a.href=u.toString();}catch(x){}},true);})();</script><script>addEventListener("load",function(){setTimeout(function(){var s=document.createElement("script");s.async=1;s.src=document.getElementById("ga-src").dataset.src;document.head.appendChild(s)},800)})</script><script id="ga-src" type="text/plain" data-src="https://www.googletagmanager.com/gtag/js?id=G-JKVW6C7D0P"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-JKVW6C7D0P');document.addEventListener('click',function(e){var a=e.target.closest&&e.target.closest('a[href$=".zip"]');if(a){gtag('event','download',{file_name:a.getAttribute('href').split('/').pop()});}});</script></head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="logo" href="/">leymish<span>/</span>labs</a>
+    <nav><a href="/products/">Products</a><a href="/tools/video-maker/">Free video maker</a><a href="/free-tools/">Free tools</a><a href="/woocommerce/google-merchant-center/">Merchant Center help</a><a href="/woocommerce/">WooCommerce plugin</a><a href="/blog/">Blog</a><a href="/about.html">About</a><a href="/contact/">Contact</a></nav>
+  </header>
+
+  <div class="hero">
+    <p class="eyebrow">Free tool · Australian businesses</p>
+    <h1>Christmas public holiday surcharge wording, for your state</h1>
+    <p class="lede">You can still charge a public holiday surcharge in Australia: the ban that started on 1 October 2026
+      covers surcharges for paying by card, not surcharges on public holidays. On a café or restaurant menu, write
+      "A surcharge of 15% applies on public holidays: Friday 25, Monday 28 December and Friday 1 January", at least as
+      prominently as the most prominent price.</p>
+    <p>Pick your state below. You get the right Christmas and New Year 2026 days, ready to copy for your menu, door
+      sign, website and Google Business Profile, plus an A4 sign to print. Every date is checked against your state
+      government's list.</p>
+  </div>
+
+  <section id="generator" class="card">
+    <h2 style="margin-top:0">Make your wording</h2>
+    <div class="hs-grid">
+      <div><label for="st">State or territory</label>
+        <select id="st">
+          <option value="NSW">New South Wales</option><option value="VIC">Victoria</option>
+          <option value="QLD">Queensland</option><option value="WA">Western Australia</option>
+          <option value="SA" selected>South Australia</option><option value="TAS">Tasmania</option>
+          <option value="ACT">Australian Capital Territory</option><option value="NT">Northern Territory</option>
+        </select></div>
+      <div><label for="biz">Business type</label>
+        <select id="biz">
+          <option value="cafe">Café or restaurant</option><option value="bar">Bar or pub</option>
+          <option value="salon">Salon or beauty</option><option value="other">Other business</option>
+        </select></div>
+      <div><label for="pct">Surcharge (%)</label>
+        <input id="pct" type="number" inputmode="decimal" min="1" max="100" step="0.5" value="15">
+        <div class="pcts" id="pcts"><button type="button" data-p="10">10%</button><button type="button" data-p="12.5">12.5%</button><button type="button" data-p="15">15%</button><button type="button" data-p="20">20%</button></div></div>
+      <div><label for="nm">Business name (optional)</label>
+        <input id="nm" type="text" maxlength="60" autocomplete="organization" placeholder="e.g. Corner Café"></div>
+    </div>
+    <fieldset>
+      <legend>Which public holidays does the surcharge apply on?</legend>
+      <p class="small" id="stNote"></p>
+      <div class="quick"><button type="button" id="qXmas">Christmas and New Year only</button><button type="button" id="qAll">All to March 2027</button><button type="button" id="qNone">Clear</button></div>
+      <div class="days" id="days"><p class="small">Loading the public holidays…</p></div>
+    </fieldset>
+  </section>
+
+  <section id="wording" aria-live="polite">
+    <h2>Your wording</h2>
+    <p id="msg" class="err" hidden></p>
+    <div class="outs">
+      <div class="card out"><h3>Menu line</h3><p class="small hint">Print it at least as large and bold as your biggest price.</p>
+        <textarea id="oMenu" readonly rows="3"></textarea><div class="row"><button class="btn sm" type="button" data-copy="oMenu">Copy</button><span class="copied" hidden>Copied</span></div></div>
+      <div class="card out"><h3>Website banner</h3><p class="small hint">For the top of your home page and your online menu or booking page.</p>
+        <textarea id="oBanner" readonly rows="3"></textarea><div class="row"><button class="btn sm" type="button" data-copy="oBanner">Copy</button><span class="copied" hidden>Copied</span></div></div>
+      <div class="card out"><h3>Counter or door sign</h3><p class="small hint">The same text as the A4 sign below, if you'd rather make your own.</p>
+        <textarea id="oSign" readonly rows="9"></textarea><div class="row"><button class="btn sm" type="button" data-copy="oSign">Copy</button><span class="copied" hidden>Copied</span></div></div>
+      <div class="card out"><h3>Google Business Profile post</h3><p class="small hint">Post it as an "Update" a week or two before Christmas.</p>
+        <textarea id="oGbp" readonly rows="9"></textarea><div class="row"><button class="btn sm" type="button" data-copy="oGbp">Copy</button><span class="copied" hidden>Copied</span></div></div>
+    </div>
+    <p class="small" id="bizNote"></p>
+  </section>
+
+  <section id="sign">
+    <h2>Printable A4 sign</h2>
+    <p>Put it where customers see it before they order: the door, the counter, next to the menu board.</p>
+    <p><button class="btn primary" type="button" id="printBtn">Print the A4 sign</button></p>
+    <div class="sheet-wrap" id="signWrap">
+      <div class="sheet" id="sheet">
+        <div class="s-name" id="sName"></div>
+        <div class="s-rule"></div>
+        <div class="s-head" id="sHead">Public holiday surcharge</div>
+        <div class="s-pct" id="sPct">15%</div>
+        <div class="s-lead" id="sLead"></div>
+        <ul id="sDays"></ul>
+        <div class="s-foot" id="sFoot"></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="rules">
+    <h2>The rules in short</h2>
+    <ul class="check rules">
+      <li><strong>Public holiday surcharges are still allowed.</strong> The ban from 1 October 2026 is on surcharges for
+        paying with an eftpos, Mastercard or Visa card (American Express agreed to stop too). Weekend and public
+        holiday surcharges aren't part of it.</li>
+      <li><strong>Show it before people order.</strong> For restaurants and cafés, the ACCC says the menu must say
+        "A surcharge of [percentage] applies on [day or days]", at least as prominently as the most prominent price
+        on the menu. If your menu has no prices, show it in another prominent way.</li>
+      <li><strong>Not a café or restaurant?</strong> That menu shortcut is described for restaurants and cafés. Other
+        businesses should show the total public holiday price wherever it can be worked out (a public holiday price
+        list works), as well as the notice.</li>
+      <li><strong>Never call it a card fee or card surcharge,</strong> and don't charge it only to people who pay by card.
+        A public holiday surcharge applies to everyone, however they pay.</li>
+      <li><strong>Be honest about why.</strong> Don't give customers a reason for the surcharge that isn't true.</li>
+      <li><strong>Check your part-day holidays.</strong> In South Australia and the Northern Territory, Christmas Eve and
+        New Year's Eve are public holidays from 7pm to midnight; in Queensland, Christmas Eve from 6pm. A surcharge
+        on those days should start at that time, and the wording above says so.</li>
+    </ul>
+  </section>
+
+  <section id="kit">
+    <h2>Want it done in five minutes, with signs that look good?</h2>
+    <div class="two">
+      <div>
+        <p>The Christmas holiday-surcharge kit gives you ready-made signs you can edit in any text editor or SVG editor,
+          no Canva account needed:</p>
+        <ul class="check">
+          <li>A4 counter sign, A5 table tent, menu insert strip, website banner (1200 × 300) and square social image
+            (1080 × 1080), as editable SVG and print-ready PDF</li>
+          <li>Every public holiday to March 2027 for all 8 states and territories, as a spreadsheet (CSV)</li>
+          <li>The wording for each state, written out</li>
+          <li>A price-rise calculator that works offline: see how much to lift prices to cover your card fees now that
+            you can't add a card surcharge</li>
+          <li>A short how-to guide with the rules and the official links</li>
+        </ul>
+      </div>
+      <div class="card offer">
+        <h3>Christmas holiday-surcharge kit</h3>
+        <div class="price">A$29</div>
+        <p class="small">One-off. Instant download after payment. If it isn't what's described here, email us for a full refund.</p>
+        <p><a id="kitBuy" href="https://buy.stripe.com/6oUbJ25vZ8AccIp2Zp6wE0a" data-buy="holiday-kit">Get the kit, A$29</a></p>
+        <p class="small">Still have card surcharge notices on your website? <a href="/local/surcharge-check/">Run the free card surcharge check</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="faq">
+    <h2>Questions</h2>
+    <details><summary>Can I still charge a surcharge on Christmas Day and Boxing Day?</summary><p>Yes. A public holiday surcharge
+      isn't a card surcharge, so the 1 October 2026 ban doesn't stop it. It must be shown clearly before customers order,
+      and on a café or restaurant menu the ACCC wording must be at least as prominent as the most prominent price.</p></details>
+    <details><summary>Which days are public holidays over Christmas 2026?</summary><p>Christmas Day is Friday 25 December and
+      Boxing Day is Saturday 26 December. Because Boxing Day falls on a Saturday, every state and territory except Tasmania
+      also has a public holiday on Monday 28 December; in Tasmania, Monday 28 December is the Boxing Day holiday instead of
+      the Saturday. New Year's Day is Friday 1 January 2027.</p></details>
+    <details><summary>Are Christmas Eve and New Year's Eve public holidays?</summary><p>Only for part of the day, and only in
+      some places: South Australia and the Northern Territory from 7pm to midnight on both days, and Queensland from 6pm
+      to midnight on Christmas Eve. They aren't public holidays in the other states and territories.</p></details>
+    <details><summary>How big does the notice have to be?</summary><p>For restaurants and cafés, the ACCC says the words must be at
+      least as prominent as the most prominent price on the menu. If your prices are in 14-point bold, the surcharge line
+      should be at least 14-point bold too.</p></details>
+    <details><summary>Can I call it a card fee instead?</summary><p>No. A fee charged only to people who pay by card is a card
+      surcharge, which is banned on eftpos, Mastercard and Visa from 1 October 2026. A public holiday surcharge applies to
+      everyone, however they pay.</p></details>
+    <details><summary>Is this legal advice?</summary><p>No. It's a wording tool built from public guidance. For advice about your
+      business, talk to the Small Business Ombudsman's office, your state's fair trading office or a lawyer.</p></details>
+  </section>
+
+  <section id="sources">
+    <h2>Official sources</h2>
+    <ul class="src">
+      <li>Reserve Bank of Australia: <a href="https://rba.gov.au/media-releases/2026/mr-26-10.html">the decision to end card surcharges from 1 October 2026</a></li>
+      <li>Australian Small Business and Family Enterprise Ombudsman: <a href="https://asbfeo.gov.au/resources-tools-centre/card-surcharging-ban">card surcharging ban guide</a></li>
+      <li>ACCC: <a href="https://www.accc.gov.au/business/pricing/price-displays">price displays, including weekend and public holiday surcharges</a></li>
+      <li>Consumer Affairs Victoria: <a href="https://www.consumer.vic.gov.au/products-and-services/business-practices/advertising-and-promotions/pricing">pricing, including restaurant and café surcharges</a></li>
+      <li>Fair Work Ombudsman: <a href="https://www.fairwork.gov.au/employment-conditions/public-holidays">public holidays</a></li>
+      <li id="stSrc">Your state's public holiday list: loading…</li>
+    </ul>
+    <p class="small">Dates checked on 24 October 2026 against each state and territory government's list and the Fair Work
+      Ombudsman's. <a href="/local/holiday-surcharge/holidays-au-2026-27.json">The data file</a> lists the source for every date.
+      Not legal advice. LeyMish Labs, South Australia · <a href="mailto:hello@leymish.com">hello@leymish.com</a></p>
+  </section>
+
+  <footer><div class="fcols"><div><strong>Merchant Center help</strong><ul><li><a href="https://leymish.gumroad.com/l/gmc-health-check">Merchant Center Health Check</a></li><li><a href="https://leymish.gumroad.com/l/gmc-fix">Merchant Center Fix, done for you</a></li><li><a href="https://leymish.gumroad.com/l/gmc-rescue">Suspended account rescue</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-merchant-center-misrepresentation-and-product-disapprovals">Merchant Center fix on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-disapproved-products-and-merchant-center-feed-errors">Disapproved products and feed errors on Fiverr</a></li><li><a href="https://www.fiverr.com/nicky4214/fix-google-shopping-ads-suspension-and-merchant-center-misrepresentation">Shopping ads suspension on Fiverr</a></li></ul></div><div><strong>Learn it yourself</strong><ul><li><a href="https://www.amazon.com/dp/B0HNLCQ3SP">Fix a Google Merchant Center Misrepresentation Suspension (2026): Kindle ebook</a></li><li><a href="https://leymish.gumroad.com/l/gmc-workbook">Recovery guide: workbook edition</a></li><li><a href="https://leymish.gumroad.com/l/gmc-pre-review-checklist">Pre-review checklist</a></li></ul></div><div><strong>AI shopping for WooCommerce</strong><ul><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-25">AI Shopping Fix: top 25 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-150">AI Shopping Fix: up to 150 products</a></li><li><a href="https://leymish.gumroad.com/l/ai-shopping-fix-agency">AI Shopping Fix for agencies</a></li><li><a href="https://wordpress.org/plugins/leymish-ai-shopping-readiness/">LeyMish AI Readiness plugin</a></li><li><a href="https://leymish.gumroad.com/l/proai">LeyMish Pro</a></li><li><a href="https://leymish.gumroad.com/l/proai-agency">LeyMish Pro Agency</a></li></ul></div><div><strong>Local businesses (Australia)</strong><ul><li><a href="/local/surcharge-check/">Card surcharge clean-up</a></li><li><a href="/local/holiday-surcharge/">Christmas holiday-surcharge kit</a></li><li><a href="/local/google-business-profile-suspended/">Google Business Profile rescue</a></li></ul></div><div><strong>Claude Code kits</strong><ul><li><a href="https://leymish.gumroad.com/l/agent-team-starter">Claude Code Agent Team Starter</a></li><li><a href="https://leymish.gumroad.com/l/claude-code-skills-pack">Claude Code Skills Pack</a></li><li><a href="https://leymish.gumroad.com/l/autonomous-company-kit">Autonomous Company Kit</a></li><li><a href="https://leymish.gumroad.com/l/kit-plus-skills">Company Kit + Skills Pack</a></li></ul></div><div><strong>Company</strong><ul><li><a href="/about.html">About LeyMish Labs</a></li><li><a href="/contact/">Contact</a></li><li><a href="https://www.facebook.com/profile.php?id=61595551085026">Facebook</a></li><li><a href="/how-we-work.html">How we work</a></li><li><a href="/free-tools/">Free tools</a></li><li><a href="/videos/">Short videos</a></li><li><a href="/local/">Local businesses (Australia)</a></li><li><a href="/whats-new.html">What&#x27;s new</a></li><li><a href="/privacy.html">Privacy</a></li><li><a href="/terms.html">Terms</a></li><li><a href="/terms.html#refunds">Refunds</a></li></ul></div></div><p class="small">Products are developed by LeyMish Labs. The company is run by a team of AI agents, with professional oversight; every customer deliverable is checked before it ships. LeyMish Labs, South Australia · <a href='/contact/'>Contact</a> · <a href='mailto:hello@leymish.com'>hello@leymish.com</a> · Independent; not affiliated with Google.</p></footer>
+</div>
+<script src="/local/holiday-surcharge/wording.js"></script>
+<script>
+(function () {
+  var W = window.HolidayWording, DATA = null;
+  var $ = function (id) { return document.getElementById(id); };
+  var st = $("st"), biz = $("biz"), pct = $("pct"), nm = $("nm"), daysBox = $("days");
+  var MONTHS = W.MONTHS, DAYS = W.DAYS;
+  function esc(s) { return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) { return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]; }); }
+  try {
+    var q = new URLSearchParams(location.search), qs = (q.get("state") || "").toUpperCase(), qp = q.get("pct"), qb = q.get("type");
+    if (/^(NSW|VIC|QLD|WA|SA|TAS|ACT|NT)$/.test(qs)) { st.value = qs; }
+    if (qp && W.pctText(qp)) { pct.value = parseFloat(qp); }
+    if (qb && W.BUSINESS[qb]) { biz.value = qb; }
+  } catch (e) { /* old browsers: defaults stay */ }
+
+  function holidays() { return DATA ? DATA.states[st.value].holidays : []; }
+  function picked() {
+    var hs = holidays();
+    return Array.prototype.slice.call(daysBox.querySelectorAll("input:checked")).map(function (i) { return hs[+i.value]; });
+  }
+  function renderDays(pick) {
+    var s = DATA.states[st.value], last = "", html = "";
+    s.holidays.forEach(function (h, i) {
+      var p = h.date.split("-"), d = new Date(Date.UTC(+p[0], +p[1] - 1, +p[2])), mk = MONTHS[d.getUTCMonth()] + " " + p[0];
+      if (mk !== last) { html += "<h4>" + esc(mk) + "</h4>"; last = mk; }
+      var tags = (h.part_day ? "<span class='tag'>" + esc(h.part_day.label) + "</span>" : "") +
+        (h.scope === "regional" ? "<span class='tag'>regional</span>" : h.scope === "limited" ? "<span class='tag'>public service only</span>" : "") +
+        (h.status !== "confirmed" ? "<span class='tag'>unconfirmed</span>" : "");
+      var name = h.name.replace(/\s*\([^)]*\)\s*$/, "");
+      html += "<label><input type='checkbox' value='" + i + "'" + (pick(h) ? " checked" : "") + "><span>" + DAYS[d.getUTCDay()] + " " + (+p[2]) + " " +
+        MONTHS[d.getUTCMonth()] + ": " + esc(name) + tags + (h.area ? "<span class='area'>" + esc(h.area) + "</span>" : "") + "</span></label>";
+    });
+    daysBox.innerHTML = html;
+    $("stNote").textContent = s.note || "";
+    $("stSrc").innerHTML = s.name + " public holidays: " + s.sources.map(function (u) { return "<a href='" + esc(u) + "'>" + esc(u.replace(/^https:\/\/(www\.)?/, "")) + "</a>"; }).join(", ");
+    update();
+  }
+  function update() {
+    if (!DATA) { return; }
+    var s = DATA.states[st.value];
+    var r = W.build({ pct: pct.value, business: biz.value, holidays: picked(), stateName: s.name, name: nm.value });
+    Array.prototype.forEach.call(document.querySelectorAll("#pcts button"), function (b) { b.setAttribute("aria-pressed", String(parseFloat(b.getAttribute("data-p")) === parseFloat(pct.value))); });
+    var msg = $("msg");
+    if (!r.ok) { msg.hidden = false; msg.textContent = r.error; ["oMenu", "oBanner", "oSign", "oGbp"].forEach(function (k) { $(k).value = ""; }); return; }
+    msg.hidden = true;
+    $("oMenu").value = r.menu; $("oBanner").value = r.banner; $("oSign").value = r.signText; $("oGbp").value = r.gbp;
+    $("sName").textContent = nm.value.trim().slice(0, 60);
+    $("sPct").textContent = r.pct;
+    $("sLead").textContent = r.signLead.replace("A surcharge of " + r.pct + " applies", "applies");
+    $("sDays").innerHTML = r.signLines.map(function (l) { return "<li>" + esc(l) + "</li>"; }).join("");
+    $("sFoot").textContent = r.signFooter + " " + r.signThanks;
+    $("bizNote").textContent = biz.value === "cafe" ? "" :
+      "Restaurants and cafés can use the menu line on its own. Other businesses should also show the total public holiday price wherever it can be worked out, for example on a public holiday price list.";
+  }
+  function setPick(fn) { if (DATA) { renderDays(fn); } }
+  st.addEventListener("change", function () { renderDays(W.defaultPick); });
+  [biz, pct, nm].forEach(function (el) { el.addEventListener("input", update); el.addEventListener("change", update); });
+  daysBox.addEventListener("change", update);
+  $("pcts").addEventListener("click", function (ev) { var b = ev.target.closest && ev.target.closest("button"); if (b) { pct.value = b.getAttribute("data-p"); update(); } });
+  $("qXmas").addEventListener("click", function () { setPick(W.defaultPick); });
+  $("qAll").addEventListener("click", function () { setPick(function (h) { return h.scope === "statewide"; }); });
+  $("qNone").addEventListener("click", function () { setPick(function () { return false; }); });
+  $("printBtn").addEventListener("click", function () { window.print(); });
+  document.addEventListener("click", function (ev) {
+    var b = ev.target.closest && ev.target.closest("[data-copy]");
+    if (!b) { return; }
+    var ta = $(b.getAttribute("data-copy")), ok = b.parentNode.querySelector(".copied");
+    function done() { ok.hidden = false; setTimeout(function () { ok.hidden = true; }, 1800); }
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(ta.value).then(done, function () { ta.select(); document.execCommand("copy"); done(); }); }
+    else { ta.select(); document.execCommand("copy"); done(); }
+  });
+  fetch("/local/holiday-surcharge/holidays-au-2026-27.json")
+    .then(function (r) { return r.json(); })
+    .then(function (d) { DATA = d; renderDays(W.defaultPick); })
+    .catch(function () { daysBox.innerHTML = "<p class='err'>We couldn't load the public holiday list. Refresh the page to try again.</p>"; });
+})();
+</script>
+</body>
+</html>
